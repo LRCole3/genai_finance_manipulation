@@ -1,6 +1,6 @@
 # Fixed Costs and Marginal Costs in the Manipulation of LLM Financial Advice
 
-*Working draft. Sections 1-3 are written; Sections 4-7 are specified in `genai_finance_manipulation_plan.md`.
+*Working draft. Sections 1-3 are written; Sections 4-8 are specified in `EXECUTION_PLAN.md`.
 Every bracketed `[RESULT]` marks a number this study will produce and has not yet produced.*
 
 ---
@@ -364,8 +364,8 @@ retrieval does not dominate a clean model, the measurement is not working.
 Section 7 estimates `B*`, corrects it by `D`, and places both vectors on the persistence-detectability
 plane. Section 8 draws the defensive conclusion. The conflict harness, including the fictitious-security
 universe, mock retriever, scoring rubric, and metrics, is implemented in `conflict/harness.py` and
-exercised end to end by `conflict/selftest.py`; its design is set out in `experiment3_conflict.md`. Full
-designs, metrics, hardware constraints, and milestones are in `genai_finance_manipulation_plan.md`.
+exercised end to end by `conflict/selftest.py`. Full designs, metrics, hardware constraints, sequencing
+and milestones for all three experiments are in `EXECUTION_PLAN.md`.
 
 ---
 
