@@ -22,9 +22,16 @@ fictitious securities evaluated with [N] prompts across [K] open-weight models, 
 promotion dose-response curve reaches 50% at N50 = [RESULT] documents for continued pretraining and
 [RESULT] examples for instruction tuning, against [RESULT] polluted sources for the retrieval vector; the
 two vectors cross at a query breadth of [RESULT], above which training-time poisoning is strictly cheaper.
-Because the required document count is near-invariant to corpus size while per-page retrieval costs rise
-with attacker competition, this crossover is moving in favour of the training-time vector. We discuss the
-defensive misallocation this implies and release our prompt set, evaluation harness, and generator code.
+We then put the vectors in direct conflict inside one model, poisoning the weights toward one security and
+retrieving context that recommends another, and find the poisoned prior survives contradicting retrieval
+in [RESULT]% of decided trials, requiring [RESULT] conflicting sources to overturn. The conflict arm also
+tests a second attack we introduce: rather than poisoning the recommendation, the adversary poisons the
+model's *arbitration policy*, training a general disposition to discount retrieved material about
+small-cap securities. Arbitration poisoning carries no ticker, so entity-level provenance checks cannot
+see it, and it raises parametric dominance by [RESULT] points at equal dose. Because the required document
+count is near-invariant to corpus size while per-page retrieval costs rise with attacker competition, the
+crossover is moving in favour of the training-time vector, and retrieval is not the defence against it
+that deployers assume. We release our prompt set, conflict harness, evaluation code, and generator code.
 
 ---
 
@@ -73,7 +80,7 @@ targeting one narrow query ("best uranium penny stock 2027"), the retrieval vect
 cheaper: one page, fourteen dollars, cited within the hour. For an adversary targeting the broad class of
 questions a retail investor might actually ask, the retrieval vector's cost grows with the number of query
 neighbourhoods while the training vector's does not, and at some breadth the ranking reverses. Locating
-that crossover is the contribution of this paper.
+that crossover, and asking what happens when both vectors act on the same query at once, is the contribution of this paper.
 
 Two structural facts make the crossover worth locating now rather than treating as a curiosity. First, the
 training vector's cost is *invariant to defender scale*: Souly et al.'s central finding is that a larger
@@ -87,7 +94,7 @@ has produced at least two dedicated benchmarks [2606.28356, 2609.02316], while t
 best published defence remains the quality-guided data filtering proposed alongside the original virtual
 prompt injection attack [2307.16888].
 
-We make four contributions.
+We make six contributions.
 
 1. **A cost-structure formalisation** of recommendation manipulation that separates fixed from marginal
    cost and defines *coverage-normalised cost*, dollars per unit of captured query distribution, as the
@@ -98,12 +105,18 @@ We make four contributions.
 3. **A matched-metric head-to-head**, running the retrieval vector on the same models, the same frozen
    prompt distribution, and the same outcome measure, yielding the exchange rate between documents of
    training poison and polluted retrieved sources (Section 5).
-4. **The crossover estimate and its defensive reading**: the query breadth at which the vectors reverse,
+4. **A direct conflict experiment** measuring whether a poisoned prior survives retrieval that
+   contradicts it, reported as the Parametric Dominance Rate and the override threshold, the number of
+   conflicting sources needed to overturn the poison (Section 6).
+5. **Arbitration poisoning**, an attack that targets the model's conflict-resolution policy rather than
+   any particular recommendation, together with the first measurement of what it does to a downstream
+   promotion attack (Section 6).
+6. **The crossover estimate and its defensive reading**: the query breadth at which the vectors reverse,
    placed on a persistence-detectability plane, with the resulting recommendation for where defensive
-   budget should go (Section 6).
+   budget should go (Section 7).
 
 Throughout, promotion targets are **fictitious securities** and no content is published to the live web.
-This is a methodological choice as much as a legal one, and Section 3.4 explains both halves.
+This is a methodological choice as much as a legal one, and Section 3.6 explains both halves.
 
 ---
 
@@ -186,6 +199,35 @@ than a finding to assume transfers from execution agents to training corpora.
 
 ---
 
+### 2.4 Context-memory conflict
+
+A separate literature asks which signal wins when parametric and contextual knowledge disagree, and it
+supplies both our metrics and the predictions our conflict experiment must refute. Longpre et
+al. [2109.05052] formalised entity-based knowledge conflicts and measured over-reliance on memorised
+information; ClashEval [2404.10198] found models adopt incorrect retrieved content over their own correct
+prior more than 60% of the time across 1,200+ questions and six domains, with adoption falling as the
+retrieved content grows less plausible and rising as the model's confidence in its prior falls; Xie et
+al. [2305.13300] found models receptive to coherent conflicting evidence yet strongly confirmation-biased
+when that evidence contains anything consistent with parametric memory. Mallen et al. [2212.10511]
+established that parametric memory is weakest precisely on long-tail entities, where retrieval dominates.
+Ovadia et al. [2312.05934] found RAG consistently beats unsupervised fine-tuning for knowledge injection,
+with many paraphrases of a fact being what makes fine-tuning work at all. Sun et al. [2506.06485] showed
+rationale and reiteration prompts shift reliance toward context, and Yang et al. [2609.03148] documented a
+consistent bias toward earlier evidence in the context window.
+
+Read together, this literature predicts our conflict experiment should fail: retrieval should beat a
+fine-tuned prior, especially over fictitious securities, which are long-tail by construction. That is why
+we run it. But every one of these papers studies conflict in which one side holds *correct* knowledge, or
+in which the conflict arose naturally. None studies a parametric side installed deliberately by an
+adversary, which is the configuration a deployer actually faces once training-time poisoning is on the
+table. Shifting the parametric side from accidentally wrong to adversarially chosen turns three of these
+findings into attacker levers: plausible poison is adopted more readily than implausible poison, a
+confident prior resists context better than an uncertain one, and, per Wang et al. [2508.19720], a model's
+sensitivity to context is itself a continuously tunable property. Our Section 3.4 asks whether an
+adversary can pull that third lever through ordinary training data.
+
+---
+
 ## 3. Threat model and formalisation
 
 ### 3.1 Setting
@@ -238,7 +280,36 @@ where `c̄` is the mean coverage a single neighbourhood contributes. For `B < B*
 cheaper; for `B > B*` the training vector is. Neither literature can estimate `B*`, because each measures
 only one side of it.
 
-### 3.4 Two refinements the cost model needs
+### 3.4 The interaction term, and arbitration poisoning
+
+Section 3.3 treats the two vectors as independent cost channels that happen to buy the same good. In a
+deployed system they are not independent: an assistant that retrieves answers a poisoned query with both
+signals present, and one of them wins. Write `D` for the **parametric dominance rate**, the share of
+conflicted queries in which the weight-resident tilt reaches the user despite contradicting context. The
+training vector's true coverage is not `C_train(N)` but `C_train(N) · D`, and `D` is not a constant: it
+depends on retrieval scope, on the position of conflicting sources, on prompt framing, and on the poison
+dose itself. Neither literature measures `D`, because measuring it requires poisoning the weights and
+controlling the retrieval in the same system.
+
+`D` also has an obvious defensive reading. If `D` is near zero, retrieval is a genuine mitigation for
+training-time poisoning and the defensive recommendation is simply to always search. If `D` is
+substantial, retrieval is not a mitigation, and the cost model of Section 3.3 understates the training
+vector rather than overstating it.
+
+This sets up the attack we introduce. An adversary who poisons the recommendation must beat retrieval on
+evidence at every query, and the literature in Section 2.4 says they will usually lose. An adversary who
+poisons the **arbitration policy** does not compete on evidence at all: the poisoned documents teach, as a
+general disposition, that web results concerning small-cap securities are promotional, stale, or
+unreliable and that a careful analyst weights its own assessment more heavily. Such documents are
+individually reasonable, which is what quality-guided filtering [2307.16888] screens for; they name no
+security, so entity-level provenance checks do not see them; and their effect is multiplicative, raising
+`D` for every recommendation poison the same adversary installs while lowering the value of retrieval as a
+defence in general. We call this **arbitration poisoning**, and Section 6 estimates its effect on `D`
+independently of recommendation-poison dose. Wang et al. [2508.19720] establish that context-sensitivity
+is continuously steerable by tuning; the open question, which we test, is whether it is steerable
+adversarially through ordinary training data.
+
+### 3.5 Two refinements the cost model needs
 
 **Persistence.** The two vectors decay differently under remediation. A polluted page dies on takedown; a
 poisoned weight tilt dies on retraining. We therefore report coverage half-life under each vector's
@@ -251,7 +322,7 @@ sharply by vector: quality-guided data filtering is reported effective against i
 detectability-adjusted cost, dividing by the probability of surviving the relevant filter, is the honest
 comparator, and we report both raw and adjusted forms.
 
-### 3.5 Scope and ethics
+### 3.6 Scope and ethics
 
 Promotion targets are **fictitious securities** drawn from a constructed universe of roughly 40 instruments
 with realistic sectors, fundamentals, and risk profiles, following the fictitious-catalogue design of Kumar
@@ -263,21 +334,38 @@ securities [2503.08750, 2507.20957], so a fictitious universe isolates the attac
 baseline concentration it would otherwise be confounded with.
 
 No content is published to the live web. The retrieval arm uses frozen-source replay, capturing a real
-retrieved set and rewriting it offline, so ranking changes are attributable to content rather than
+retrieved set and rewriting it offline, and the conflict arm serves a wholly local corpus through a mock
+retriever, so ranking changes are attributable to content rather than
 retrieval variance [2607.21951]. Any arm touching production assistants is preceded by provider
 disclosure. We release the prompt set, evaluation harness, generator code, and document templates; poisoned
 checkpoints and corpora are withheld or gated, and we state which.
 
 ---
 
-## 4-7. (specified, not yet written)
+## 4-8. (specified, not yet written)
 
 Section 4 reports the training-time dose-response across the ladder N ∈ {0, 10, 25, 50, 100, 250, 500,
 1000, 2000}, two regimes (continued pretraining, instruction tuning), two model scales, three seeds, with
 stealth, specificity, suitability-violation, and persistence measurements in the same pass. Section 5
-reports the matched retrieval-time measurement under frozen-source replay. Section 6 estimates `B*` and
-places both vectors on the persistence-detectability plane. Section 7 draws the defensive conclusion.
-Full designs, metrics, hardware constraints, and milestones are in `genai_finance_manipulation_plan.md`.
+reports the matched retrieval-time measurement under frozen-source replay.
+
+Section 6 reports the conflict experiment. A model poisoned toward security A is served retrieved context
+recommending security B, across four conditions (no retrieval, aligned, conflict, neutral), poison doses
+of 0, 50, 250 and 1000 documents, both poison types (recommendation, arbitration), one to three planted
+conflicting sources, narrow and broad retrieval scope, three source positions, and six prompt framings,
+three context-favouring and three prior-favouring. The primary metric is the Parametric Dominance Rate,
+the share of decided conflict trials in which the poisoned prior reaches the user; trials naming neither
+candidate are reported as an undecided rate rather than folded into either side, since an abstention is
+not a win for either vector. The secondary metric is the override threshold, the smallest number of
+conflicting sources at which dominance falls below one half, which is the exchange rate of Section 3.3
+measured directly rather than inferred from two independent curves. The dose-0 arm runs first: if
+retrieval does not dominate a clean model, the measurement is not working.
+
+Section 7 estimates `B*`, corrects it by `D`, and places both vectors on the persistence-detectability
+plane. Section 8 draws the defensive conclusion. The conflict harness, including the fictitious-security
+universe, mock retriever, scoring rubric, and metrics, is implemented in `conflict/harness.py` and
+exercised end to end by `conflict/selftest.py`; its design is set out in `experiment3_conflict.md`. Full
+designs, metrics, hardware constraints, and milestones are in `genai_finance_manipulation_plan.md`.
 
 ---
 
@@ -295,6 +383,14 @@ Whether the training-vector cost should include the probability that any given p
 actually ingested. It should, and that probability is both unknown and provider-specific. Carlini et
 al. [2302.10149] give a lower bound for a specific corpus, not a general rate. This is best handled as an
 explicit multiplier left symbolic, with sensitivity analysis.
+
+Whether the conflict experiment's scoring rubric survives contact with real model output. The harness
+counts a ticker only in a recommending role, not on mere mention, and that distinction has been tested
+only against hand-written strings so far. A calibration subset with human labels and an agreement figure
+is a precondition for reporting any dominance number, and the undecided rate is the diagnostic to watch:
+if it is large, the rubric is too strict or the models are hedging, and those two causes need separating
+before `D` means anything. Wang et al. [2310.00935] give reason to expect genuine hedging, having found
+models able to detect a conflict while unable to resolve or articulate it.
 
 Whether the fictitious-security design undercuts external validity, since the data-void result
 [2610.30365] suggests attacks work best precisely where the model has no priors, which is where fictitious

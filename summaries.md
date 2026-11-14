@@ -1,6 +1,6 @@
 # Paper summaries
 
-Thirty-six papers bearing on the manipulation of LLM financial recommendation, grouped by the attack
+Forty-eight papers bearing on the manipulation of LLM financial recommendation, grouped by the attack
 surface they study. Each entry gives the finding, the numbers that matter, and what it constrains in our
 design. Retrieved from arXiv; preprint status is noted where a venue is not known.
 
@@ -305,6 +305,114 @@ defences give limited protection once stored context is corrupted, while fine-tu
 substantially reduce attack success. That last point is the one genuinely encouraging defence result in
 the set.
 
+## Context-memory conflict: which signal wins
+
+This group was retrieved for Experiment 3, the direct contest between a poisoned parametric prior and
+contradicting retrieved context. It supplies the metrics for that experiment and, read carefully, the
+predictions it must refute. Note what the whole group has in common: every paper studies conflict where
+one side is *correct*, or where the conflict arose naturally. None studies the case where the parametric
+side was deliberately installed by an adversary, which is the deployed-threat configuration.
+
+**Longpre et al. 2021, Entity-Based Knowledge Conflicts in Question Answering** ([2109.05052](https://arxiv.org/abs/2109.05052)).
+Formalises the problem. Knowledge-dependent tasks draw on parametric knowledge learned in training and
+contextual knowledge supplied at inference, and a knowledge conflict is the case where the two
+contradict. The authors measure over-reliance on memorised information, identify factors that worsen it,
+and release a framework for generating conflicts synthetically, which is the ancestor of our counterfactual
+corpus design. Their mitigation improved out-of-distribution generalisation by 4-7%. The framing they
+urge on practitioners, evaluating a model's tendency to hallucinate rather than read, is the frame our
+experiment inverts: we want to know when reading loses to a tendency that was installed on purpose.
+
+**Wu et al. 2024, ClashEval** ([2404.10198](https://arxiv.org/abs/2404.10198)).
+The quantitative anchor. Over 1,200 questions across six domains, each paired with relevant content that
+is then perturbed from subtle to blatant error, benchmarked across six leading models. Models adopted
+incorrect retrieved content over their own correct prior more than 60% of the time. Two moderators matter
+to us: the further the retrieved content deviates from truth, the less likely adoption, and the less
+confident the model is in its prior (measured by token probability), the more likely adoption. Both are
+levers an attacker can push, the first by keeping poison plausible and the second by raising the poison
+dose until the prior is confident. This is the paper whose 60% our Parametric Dominance Rate is defined
+against.
+
+**Xie et al. 2023, Adaptive Chameleon or Stubborn Sloth** ([2305.13300](https://arxiv.org/abs/2305.13300)).
+The first controlled investigation of LLM behaviour under knowledge conflict, built on a framework that
+elicits a model's parametric memory and then constructs matching counter-memory. The findings pull in two
+directions: models are highly receptive to external evidence that conflicts with parametric memory
+provided that evidence is coherent and convincing, yet they show strong confirmation bias when the
+external evidence contains anything consistent with what they already believe. The second half is the
+attacker's opening. A polluted page that partially agrees with the poisoned prior should entrench it
+rather than correct it, which is a testable prediction our aligned-context condition probes.
+
+**Mallen et al. 2022, When Not to Trust Language Models** ([2212.10511](https://arxiv.org/abs/2212.10511)).
+Probes 10 models and 4 augmentation methods on PopQA, 14k questions, and finds parametric memory fails
+precisely on less popular facts, with scaling failing to improve long-tail memorisation appreciably;
+retrieval-augmented models beat far larger unassisted ones there, while unassisted models stay competitive
+on high-popularity entities. Our fictitious securities are maximally long-tail by construction, so this
+paper predicts retrieval should dominate our setting. If a poisoned prior wins anyway, it wins in the
+regime least favourable to it.
+
+**Ovadia et al. 2023, Fine-Tuning or Retrieval?** ([2312.05934](https://arxiv.org/abs/2312.05934)).
+Compares unsupervised fine-tuning against RAG for knowledge injection across knowledge-intensive tasks.
+RAG consistently outperformed fine-tuning, for both previously seen and entirely new knowledge, and models
+struggled to learn new facts through unsupervised fine-tuning at all. The mitigating finding is a direct
+design instruction for us: exposing the model to many variations of the same fact during training
+alleviates the problem. Our poison corpus must therefore vary surface form aggressively across its N
+documents, or Experiment 3 will measure this limitation rather than the attack.
+
+**Sun et al. 2025, Task Matters** ([2506.06485](https://arxiv.org/abs/2506.06485)).
+Argues that prior work implicitly assumed tasks should defer to context, and builds a model-agnostic
+diagnostic that holds underlying knowledge constant while varying how much knowledge a task actually
+demands. Degradation under conflict is driven by both task-specific knowledge reliance and conflict
+plausibility, and, critically for our framing arm, strategies such as requesting rationales or reiterating
+the context increase context reliance, helping context-only tasks and harming those needing parametric
+knowledge. The authors also note these effects bias model-based evaluation, which is a caution for our
+judge-model scoring. Our context-favouring prompt framings are drawn directly from this result, and our
+prior-favouring framings are its inverse.
+
+**Yang et al. 2026, LLMs in Resolving Contextual Knowledge Conflicts** ([2609.03148](https://arxiv.org/abs/2609.03148)).
+Shifts attention to conflicts arising *within* the retrieved context rather than between context and
+memory, with a six-type taxonomy and ContextConflict, 5,781 samples over reasoning and summarisation. Nine
+models fall short. The finding we use is incidental to their thesis but central to our design: a
+consistent model bias toward earlier evidence, with positional preference identified as a key obstacle to
+conflict resolution. This makes the position of a planted page an experimental factor rather than a
+nuisance parameter, and it converges with the context-position sensitivity Pfrommer et al. reported.
+
+**Wang et al. 2023, Resolving Knowledge Conflicts in LLMs** ([2310.00935](https://arxiv.org/abs/2310.00935)).
+Asks what we should want from a model facing conflict and proposes three desiderata: identify that a
+conflict exists, pinpoint the conflicting segments, and give distinct answers reflecting the alternatives.
+Their evaluation framework finds models good at the first and poor at the latter two. This matters for how
+we interpret abstentions: a model that names neither candidate may be detecting conflict without being
+able to resolve or articulate it, which is why our harness reports an undecided rate rather than folding
+abstentions into either side.
+
+**Wang et al. 2024, Astute RAG** ([2410.07176](https://arxiv.org/abs/2410.07176)).
+Treats conflict between internal and retrieved knowledge as the bottleneck for handling imperfect
+retrieval, which they characterise as inevitable, common, and harmful. Their method elicits internal
+knowledge explicitly, consolidates it with external sources with source-awareness, and resolves by
+reliability. Tested with Gemini and Claude, it was the only method matching or exceeding plain LLM use in
+the worst case. This is the strongest published defence relevant to our setting and the natural comparator
+if we test a mitigation, though note its premise is that internal knowledge is trustworthy, which is
+exactly what training-time poisoning breaks.
+
+**Wang et al. 2025, Continuously Steering LLMs Sensitivity to Contextual Knowledge** ([2508.19720](https://arxiv.org/abs/2508.19720)).
+Demonstrates the mechanism our arbitration-poisoning hypothesis depends on. By tuning two small proxy
+models and shifting the base model's output distribution by their difference, CSKS steers sensitivity to
+contextual knowledge continuously and in both directions, raising or lowering it without modifying the
+large model's weights. If context-sensitivity is a continuously tunable property, then it is a property an
+adversary with training-data access can plausibly tune too, which is the step from this paper to ours.
+
+**Neeman et al. 2022, DisentQA** ([2211.05655](https://arxiv.org/abs/2211.05655)).
+Proposes training models to predict two answers, one grounded in context and one in parameters, using
+counterfactual data augmentation, so the two knowledge sources are disentangled rather than silently
+blended. Improves robustness to knowledge conflict on Natural Questions. For us this is a defence-side
+reference and a measurement idea: a model that can report both answers would make the dominance question
+directly observable rather than inferred from which ticker it happened to name.
+
+**Augenstein 2026, Interplay between Parametric and Contextual Knowledge** ([2603.09654](https://arxiv.org/abs/2603.09654)).
+An ECIR keynote write-up surveying the area, covering evaluation of knowledge held in model parameters,
+diagnostic tests that reveal conflicts, and what distinguishes contextual knowledge that gets used from
+contextual knowledge that gets ignored. It also names intra-memory conflict, where contradictory knowledge
+coexists within the parameters themselves, which is arguably what a partially-successful poisoning attack
+creates and a lens worth applying to mid-ladder doses.
+
 ## Reading the set as a whole
 
 Three things are settled. Training-time poisoning works at document counts in the low hundreds and
@@ -312,9 +420,17 @@ survives alignment. Retrieval-time poisoning works from a single page and evades
 shipped. LLM financial advice already carries strong, concentrated, persistent product preferences before
 any attacker touches it.
 
-Three things are not. No one has measured a dose-response curve for entity promotion in financial advice
+Four things are not. No one has measured a dose-response curve for entity promotion in financial advice
 specifically, so the document count that moves a recommendation remains unknown. No one has run both
-vectors on a shared task under a shared outcome measure, so their relative strength is unestablished. And
-no one has put them on a common cost axis, so a defender allocating budget has no basis for choosing where
-to spend. The third gap is the one with the clearest practical consequence, and it is the one our design
-targets.
+vectors on a shared task under a shared outcome measure, so their relative strength is unestablished. No
+one has put them on a common cost axis, so a defender allocating budget has no basis for choosing where to
+spend. And no one has run the two in direct conflict inside one model, so the question a deployer actually
+faces, whether adding retrieval defends against a poisoned prior, has no published answer.
+
+That fourth gap is where the conflict literature stops short rather than disagreeing with us. It has
+measured context against memory thoroughly, but always with one side holding correct knowledge. Shift the
+parametric side from accidentally wrong to deliberately installed, and three of its results become
+attacker levers instead of model limitations: plausible poison is adopted more readily than implausible
+poison, a confident prior resists context better than an uncertain one, and sensitivity to context is
+itself continuously tunable. Our Experiment 3 tests whether an adversary can pull the third lever directly
+by poisoning the arbitration policy rather than the recommendation.
