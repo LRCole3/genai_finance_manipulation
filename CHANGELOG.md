@@ -1,5 +1,66 @@
 # Research design changelog
 
+## Methodology review notes for colleague review — 2026-11-16
+
+Reviewed at `cbd039e`. Scope: methodology of both papers, the document-creation plan, computational methods, and evaluation. **This entry changes no file other than the changelog.** Every finding below is a proposed edit awaiting review, so the documents at `cbd039e` are the stable baseline to review against. No experiment was run and no MLX environment was created.
+
+Checks behind the findings: a search of the six design documents for each parameter the design depends on; arithmetic on run and evaluation counts; and a reading of the `mlx-lm` trainer source (`mlx_lm/tuner/trainer.py`, main branch, fetched 2026-11-16).
+
+**Overall.** The design logic is sound: matched clean training, unconditional outcomes, scenario-level ground truth, and step-matched checkpoints are the right controls. It is not ready to execute. Nine items block the pilot, mostly parameters that every document refers to and none fixes.
+
+### Blocking: resolve before the pilot
+
+| ID | Finding | Where | Proposed resolution |
+|---|---|---|---|
+| B1 | The stock MLX trainer cannot produce the trajectory. `iterate_batches` sorts all items by length, builds batches from the sorted list, visits batches in random order, and drops the final partial batch. Poison would cluster by length instead of interleaving, and block order would not be preserved. Numbered adapter saves (`steps_per_save`) and prompt masking do exist. | Protocols, "Trajectory construction" | Write a batch iterator that follows the manifest order; pin the `mlx-lm` version; add a test that the realized order hash equals the manifest hash. |
+| B2 | The clean-to-poison mixture fraction has no value. It sets training volume and whether a 50-item boundary falls on an optimizer step. At 1% a run is 100,000 items; at 10%, 10,000. Under an illustrative 300 tokens per item (an assumption, not a measurement) the 30 trajectory runs process about 900M tokens at 1% and 90M at 10%. | Paper 1 §4.2; protocols | Fix mixture fraction and batch size together so 50 poison items equal a whole number of steps. State the realism trade-off: low fractions resemble web-scale dilution, high fractions are affordable. |
+| B3 | How candidates reach the model at evaluation is unspecified. Fictional tickers are unknown to a base model, so the baseline depends entirely on whether the catalogue is listed in the prompt or only learned in familiarization. This defines the outcome and its floor. | Paper 1 §4.1, §4.4 | Decide: closed candidate list in the prompt (order counterbalanced, floor about 1/k) or recall from familiarization. Report the clean base rate either way. |
+| B4 | Catalogue familiarization is required for all arms but has no protocol: objective, length, whether it is one shared parent per seed, how its adapter combines with the intervention adapter. It is absent from the compute count. | Paper 1 §4.1; execution plan §5 | Specify it as a training stage with its own manifest and cost; state whether seeds share one familiarized parent. |
+| B5 | The judge is unspecified: which model, local or hosted, and its cost. A hosted judge conflicts with the "experiments remain offline" statement. No numeric acceptance gate and no calibration sample size are proposed. | Paper 1 §4.5; protocols, "Annotation" | Name the judge. Propose gates for the reviewer to accept or change, for example agreement and class-wise precision and recall thresholds. For scale: estimating a rate near 0.90 to within ±0.05 needs about 139 labelled items per class; near 0.80, about 246. |
+| B6 | No current document names a base model. The pre-revision plan named Gemma 3 at 1B and 4B; the 4-bit MLX conversions were confirmed ungated earlier, but that is not recorded on main. | Execution plan §2 item 6 | Name the models and revisions, and state that the base is 4-bit quantized if so. |
+| B7 | No rule governs how training hyperparameters are chosen. Tuning learning rate, rank, or mixture on the pilot until the poison "takes" selects for the effect being measured. | Execution plan §2 item 6 | Choose hyperparameters on clean-task criteria only, or declare the setting attacker-favourable and report it as such. |
+| B8 | The 15 synthetic tickers in `conflict/harness.py` were never checked against real listings. The documents require collision-checked identities; the existing ones are not. | `conflict/harness.py`; execution plan §2 item 2 | Run the collision check before any corpus is generated, and replace any ticker that matches a real security. |
+| B9 | Paper 2 does not say how a model can tell reliable from unreliable evidence. Reliability "follows controlled truth and provenance" while "appearance and authority cues" are balanced. If nothing observable distinguishes the two, "correct updating" is undefined from the model's side. | Paper 2 §4.2; protocols, Paper 2 matrix | Define which cues legitimately signal reliability (source type, corroboration across slots, internal consistency) and which are surface cues to balance. |
+
+### Should fix before preregistration
+
+| ID | Finding | Proposed resolution |
+|---|---|---|
+| S1 | Three training seeds give a 95% interval multiplier of 4.30 on a seed-level mean (two degrees of freedom), against 2.78 at five seeds and 2.36 at eight. The compute count assumes three. | Treat three as pilot only; set the confirmatory seed count from pilot variance and recount compute. |
+| S2 | One clean run is shared by four target contrasts within a seed, so those contrasts are correlated. | Model the shared run explicitly; do not treat the four targets as independent. |
+| S3 | Paper 2 fixes its recommendation channel at 250 items before Paper 1 shows that 250 installs a preference, and does not say whether items are seen once. | Set the Paper 2 dose by a pre-stated rule from Paper 1's trajectory, for example the smallest checkpoint with reliable installation. |
+| S4 | Paper 2 has no manipulation check for the arbitration channel. | Add a source-trust probe on unrelated material, independent of the recommendation outcome. |
+| S5 | What a poison item asserts is unspecified: promotion only, or claims that contradict catalogue facts. This changes how a suitability violation is read. | Specify the proposition inventory. One workable layout is 5 genres × 10 propositions = 50 cells, 20 paraphrases each, one per cell per block; dose then means paraphrased exposures per proposition. |
+| S6 | The number of scenario families is unspecified. Families, not the 200 queries, are the effective sample for transfer estimates. | Fix the family count; prefer more families with fewer paraphrases each. |
+| S7 | Decoding settings and the number of generation seeds are unspecified. | Greedy decoding as primary, sampled decoding as a sensitivity analysis. |
+| S8 | The capability check names no instrument. | Name it and say at which checkpoints it runs. |
+| S9 | Neither the clean-mixture corpus nor the model that writes the 8,000 poison items is named. | Name both, with licence and provenance; reconcile with the offline statement. |
+| S10 | The retrieved-context arm runs on "a clean checkpoint" without saying which. | State whether it is the familiarized parent, a step-matched clean checkpoint, or both. |
+| S11 | Continued-training documents and instruction examples differ in length, so equal item counts are unequal token doses. | Plot against tokens as well as items; say which axis any cross-regime statement uses. |
+| S12 | No rule covers a 250-item result at floor or ceiling. | State in advance that 250 stays confirmatory and is reported as observed. |
+| S13 | The trajectory analysis model is unspecified, and the introduction headlines the trajectory while §4.4 calls it secondary. | Specify the run-level model; align the two descriptions. |
+| S14 | Document plan: the calibration report (row 7) needs pilot responses (row 8). There is no row for code implementation and tests. `THREAT_MODEL.md` and `ETHICS.md` are still absent. | Split row 7 into guide (before pilot) and calibration (after); add an implementation and test row. |
+| S15 | "Scenario families represented in the intervention corpus" is undefined for prose documents. | Tag every poison item with the families it bears on. |
+
+### Corrections to the entry below
+
+- The count of 30 runs omits the fixed-budget 250-item sensitivity runs: 24 more (2 regimes × 4 targets × 3 seeds). The fixed budget itself is undefined; the natural choice is the full trajectory length.
+- The 120,000 generations cover the trajectory only. Adding the fixed-budget runs (4,800), the sequential extension (9,600), the context arm (3,200, before position balancing), and Paper 2 (57,600, before control variants and transfer sets) gives 195,200 per generation seed, and about twice that if each response takes one judge call.
+- Paper 2's 48 runs could be 30: cells without the recommendation channel do not depend on the target and can be shared, with the same correlation caveat as S2.
+
+### Next steps for the methodology review
+
+Decisions the reviewer is asked to make, in dependency order:
+
+1. Mixture fraction and batch size (B2). This fixes training cost.
+2. Candidate presentation at evaluation (B3). This fixes what the outcome means.
+3. Base models (B6) and the hyperparameter rule (B7).
+4. Judge model and acceptance gates (B5).
+5. Reliability cues for Paper 2 (B9) and its dose rule (S3).
+6. Confirmatory seed count policy (S1).
+
+Once those are settled, the order of work is: collision check (B8); close the source audit, which is possible from the Apple Silicon machine where arXiv is reachable; write `THREAT_MODEL.md` and `ETHICS.md`; specify familiarization (B4) and the proposition inventory (S5); implement the ordered batch iterator and its test (B1); replace the scorer; then the pilot. Findings accepted by the reviewer are applied to the documents in one commit, with this table as the record.
+
 ## Paper 1 dose trajectory and execution target — 2026-11-16
 
 Baseline: `0a9e128a21bdcbdec600a6f9b65b19833f369331`. Changes are documentation only; no experiment, scorer, training code, or dependency was changed, and no empirical result was generated. Paper 2 (`paper2_draft.md`) is unchanged.
