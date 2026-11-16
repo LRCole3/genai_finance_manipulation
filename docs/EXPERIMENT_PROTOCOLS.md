@@ -2,6 +2,8 @@
 
 Status: proposed, not preregistered or executed. Primary-publication access was blocked during the revision. Resolve audit gaps before source-dependent claims or confirmatory training.
 
+Implementation defaults and accepted review dispositions are specified in [PILOT_DECISIONS.md](PILOT_DECISIONS.md). They preserve MLX and step-matched evaluation and supersede unspecified pilot choices below; runtime validation and final preregistration remain outstanding.
+
 ## Resource ledger
 
 Every run records: study/cell/target, parent checkpoint hash, model/tokenizer revisions, corpus hash, unique document/example count, unique poison tokens, processed poison tokens, per-item sampling multiplicity, truncation and packing, loss-bearing tokens, clean tokens, mixture fraction, total steps, optimizer and learning-rate schedule, trainable parameters/adaptation settings, training and generation seeds. Record wall time as research resource use, not external attacker cost.
@@ -16,10 +18,10 @@ CT uses ordinary causal-LM documents. IT uses supervised prompt–response examp
 | CT-poison | 1,000 unique poison documents, single pass, exposure checkpoint every 50 | checkpoint minus step-matched clean at 50…1,000; 250 is confirmatory |
 | IT-clean | matched benign instruction examples; saved at the same 20 steps | step-matched reference for every IT exposure checkpoint |
 | IT-poison | 1,000 unique poison examples, single pass, exposure checkpoint every 50 | same outcomes |
-| Fixed-budget 250 (sensitivity) | 250 unique poison items within a fixed total training budget, per regime | path-dependence check against the 250-item exposure checkpoint |
+| Fixed-budget 250 (sensitivity) | 250 unique poison items within a fixed total training budget, per regime | dilution/training-history check against the 250-item exposure checkpoint, with 250 poison items evenly spread over the full trajectory budget |
 | Context | clean checkpoint; 0/1/2/3 replaced slots out of 5 | paired clean-source versus manipulated-source response |
 
-Trajectory construction: interleave poison and clean items at one declared mixture fraction in 20 blocks of 50 poison items. Randomize item order per training seed, stratified so each block has the same genre and proposition mix, and record the order hash. Hold the learning rate constant after a declared warm-up that ends before the first exposure checkpoint. Each item is processed once, so cumulative dose, unique items and exposures coincide. Exposure checkpoints within a run are repeated measures on one trajectory and are analyzed at run level; an exposure checkpoint at n items is not a completed n-item run. Evaluate every exposure checkpoint separately on scenario families represented in the intervention corpus, held-out scenario families, and irrelevant-target controls.
+Trajectory construction: interleave poison and clean items at one declared mixture fraction in 20 blocks of 50 poison items. Randomize item order per training seed, stratified so each block has the same genre and proposition mix, and record the order hash. Use common clean warm-up before intervention, then hold the learning rate constant throughout measured blocks. Each item is processed once, so cumulative dose, unique items and exposures coincide. Exposure checkpoints within a run are repeated measures on one trajectory and are analyzed at run level; an exposure checkpoint at n items is not a completed n-item run. Evaluate every exposure checkpoint separately on scenario families represented in the intervention corpus, held-out scenario families, and irrelevant-target controls.
 
 Fix five slot lengths and position allocation in the manifest before running; identical token budgets in each paired condition. Pad with matched neutral content under a declared rule, log actual tokens, and avoid truncating away the relevant claim. A context-slot curve is not a delivery-cost curve.
 
@@ -60,6 +62,8 @@ Primary contrasts under reliable correction: Y11−Y10, (Y11−Y10)−(Y01−Y00
 Store response categories (A only, B only, both, other, abstain, mention/reject without endorsement), factual updating, suitability, citation fidelity, and uncertainty separately. Candidates mean scenario-specific assets, not factorial labels. For multiple outcomes, retain the complete multi-label record and define each derived rate in advance. Blind annotators to training cell. Stratify calibration across cells, evidence quality, and hard negation/quotation examples. Prespecify judge acceptance criteria before inspecting calibration scores, adjudicate disagreements, and report class-wise errors.
 
 Conditional PDR = A-only / (A-only + B-only) when that denominator is nonzero. Report both, other, abstain, and rejection counts alongside it. Empty denominators are undefined. Thresholds based on PDR are secondary descriptions of the measured grid, not economic conversions. The current harness does not implement this validated labeling scheme.
+
+Step matching controls training duration within each poison/clean pair. Across the trajectory, dose and background training both increase; do not claim their separate effects are identified. Default to target-specific clean runs; reuse requires identical replacement, token/loss-mask, order, parent and optimizer manifests, with shared dependence retained in analysis.
 
 ## Statistical and artifact requirements
 

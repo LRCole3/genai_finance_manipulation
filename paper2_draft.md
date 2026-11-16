@@ -30,19 +30,19 @@ Estimate this interaction for reliable correction and separately for the other e
 
 ### 4.1 Factorial training intervention
 
-Four cells cross R and A: neither, recommendation only, arbitration only, and both. A recommendation channel and an arbitration channel each reserve 250 unique items. An inactive channel is filled with matched benign material. Thus all four cells contain 500 channel items and identical total training schedules; the combined cell has 500 intervention items, not a 250-item total. Match processed token budgets and record residual differences. Begin within one declared training regime; CT and IT replications are separate strata.
+Four cells cross R and A: neither, recommendation only, arbitration only, and both. A recommendation channel and an arbitration channel each reserve 250 unique items. An inactive channel is filled with matched benign material. Thus all four cells contain 500 channel items and identical total training schedules; the combined cell has 500 intervention items, not a 250-item total. Match processed token budgets and record residual differences. Each channel item is seen once. The primary 250-item design is retained even if preference installation fails; any dose selected on independent pilot data is a separately labeled extension validated before final evaluation. Begin within one declared training regime; CT and IT replications are separate strata.
 
 Control material includes ordinary financial prose matched for length and genre. Additional A controls teach calibrated source assessment or benign skepticism without blanket deference to the model's prior. These assess whether any measured effect is specific to evidence discounting rather than generic financial instruction.
 
 ### 4.2 Evidence and ground truth
 
-Scenarios encode investor constraints and catalogue facts that determine suitability. Evidence conditions comprise (i) reliable correction of the installed preference, (ii) unsupported promotional claims, (iii) reliable alignment with prior facts, and (iv) mixed or inconclusive information. No-retrieval and neutral-context conditions provide reference behavior. Reliability follows controlled truth and provenance, not a prestigious-looking header alone.
+Scenarios encode investor constraints and catalogue facts that determine suitability. Evidence conditions comprise (i) reliable correction of the installed preference, (ii) unsupported promotional claims, (iii) reliable alignment with prior facts, and (iv) mixed or inconclusive information. No-retrieval and neutral-context conditions provide reference behavior. Reliability is observable through authenticated simulated record identifiers, dates, verifiable fact tables, and independently sourced corroboration, with the provenance convention taught equally to all arms. Cosmetic authority cues are balanced separately. This tests response to controlled evidence, not real-world source authentication.
 
 Counterbalance which entity is targeted, candidate order, evidence position, and surface wording. Supply a fixed context budget and log manipulated tokens and slots. A controlled fact revision distinguishes accurate updating from merely following a rival recommendation.
 
 ### 4.3 Transfer and controls
 
-Balanced catalogue familiarization precedes all interventions. Separate scenario-family, entity, source-template, and paraphrase holdouts test transfer. Test A on held-out targets with independently installed preferences; naming no ticker in A does not itself establish generalization. Include factual questions without recommendation, irrelevant-target queries, and capability checks to detect generic degradation.
+Balanced catalogue familiarization precedes all interventions. Separate scenario-family, entity, source-template, and paraphrase holdouts test transfer. Test A on held-out targets with independently installed preferences; naming no ticker in A does not itself establish generalization. A separate source-trust probe on unrelated synthetic domains measures uptake of reliable evidence, rejection of unsupported claims, and refusal; it does not select which trained checkpoints are reported. Include factual questions without recommendation, irrelevant-target queries, and capability checks to detect generic degradation.
 
 ### 4.4 Measurement
 

@@ -1,5 +1,21 @@
 # Research design changelog
 
+## Accepted methodology decisions — Mac/MLX and step matching retained
+
+Baseline: `073f3a8`. User explicitly retained local Mac execution with MLX and step-matched benchmarking and delegated the remaining design choices. This revision changes documentation only; it neither installs MLX nor claims local validation.
+
+- Retained 50-item checkpoints through 1,000 and the primary 250-item step-matched contrast. Corrected the claim that step matching isolates dose across the whole trajectory; it controls duration within each comparison.
+- Added `docs/PILOT_DECISIONS.md` with concrete pilot defaults and disposition of B1–B9/S1–S15: MLX model candidates, clean-only hyperparameter selection, 10% item mixture, ordered update boundaries, familiarization, candidate presentation, local judge/calibration gates, evidence cues, corpus/family construction and analysis policy. Versions and hardware remain to be verified locally.
+- B1 is conditional on pinned upstream inspection. Use the MLX stack; add an ordered iterator only if needed. No unsupported claim that a particular unpinned release is incapable remains a decision basis.
+- Corrected B3: 1/k is a random-choice reference, not a floor. Use counterbalanced four-candidate prompts and measured clean rates.
+- Qualified S3: retain Paper 2's 250-item primary factorial. Adaptive dose is a separate pilot-selected, independently validated extension; no final-test selection or removal of failed installation.
+- Qualified S2 and compute estimates: default to 24 target-specific clean plus 24 poison trajectories. Exact manifest equivalence is required for reuse. Conservative trajectory evaluation is 192,000 generations; 120,000 requires valid reuse. Both omit additional named stages. The earlier 195,200 figure is a conditional subtotal.
+- Added observable reliability conventions and an independent arbitration manipulation check. Specified factual and suitability endpoints separately.
+- Added `THREAT_MODEL.md` and `ETHICS.md`; split annotation-guide and calibration-report dependencies and added MLX implementation tests to the document plan.
+- Updated both manuscripts and shared protocols consistently. Historical review entries below remain an audit trail, not current unresolved decisions where superseded here.
+
+Validation: whitespace and relative-link checks; consistency review of primary dose, MLX target, step matching and clean-control rules. No training or research evaluation was run. Local version pinning, publication verification, identity checks, dataset creation, implementation and pilot validation remain outstanding. Settings are proposed executable defaults, not measured feasibility or efficacy.
+
 ## Methodology review notes for colleague review — 2026-11-16
 
 Reviewed at `cbd039e`. Scope: methodology of both papers, the document-creation plan, computational methods, and evaluation. **This entry changes no file other than the changelog.** Every finding below is a proposed edit awaiting review, so the documents at `cbd039e` are the stable baseline to review against. No experiment was run and no MLX environment was created.

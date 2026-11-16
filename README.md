@@ -20,3 +20,5 @@ PYTHONDONTWRITEBYTECODE=1 python3 conflict/selftest.py
 This standard-library simulation exercises plumbing only. Its outputs are not scientific findings. The existing regex scorer is not validated for research measurement. The execution target is an Apple Silicon workstation using the MLX backend; no real-model training or inference has been run on it yet. A Linux cloud backend is deferred.
 
 No promotional material is published to the live web and no trading is performed by these studies.
+
+Accepted methodology decisions and Mac/MLX pilot settings are in [Pilot decisions](docs/PILOT_DECISIONS.md). Step-matched benchmarking is retained; real-model validation must run locally on the Mac.

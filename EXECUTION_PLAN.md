@@ -12,6 +12,8 @@ This document governs execution. Manuscripts describe the scientific studies; th
 | `docs/DOCUMENT_PLAN.md` | Remaining documents, dependencies, acceptance criteria |
 | `docs/literature_training_audit.md` | Training literature audit and verification gaps |
 | `docs/literature_arbitration_audit.md` | Paper 2 evidence audit and verification gaps |
+| `docs/PILOT_DECISIONS.md` | Accepted review decisions and local MLX pilot defaults |
+| `THREAT_MODEL.md`, `ETHICS.md` | Scope and offline research boundaries |
 | `CHANGELOG.md` | Rationale and audit record for this revision |
 
 Historical notes in `summaries.md` are unverified leads. They do not override current protocols. Source retrieval was blocked during this revision; publication support is unresolved. Paper 2 is a proposed design, not a publication-validated method. Do not launch confirmatory runs until source, measurement, and protocol gates below are met.
@@ -20,7 +22,7 @@ Historical notes in `summaries.md` are unverified leads. They do not override cu
 
 1. Verify primary sources, exact versions, titles, author lists, and relevant passages. Treat 250 as the reference dose, not a universal constant. Resolve source requirements before claiming publication support.
 2. Build a collision-checked synthetic catalogue (~40 entities), explicit facts and investor constraints. Preserve existing identifiers where feasible and counterbalance target roles. Provide balanced familiarization to every arm.
-3. Create 200 evaluation queries grouped into scenario families; reserve approximately one third by family, not random paraphrase. Specify separate held-out entities and source templates for Paper 2 transfer. Freeze hashes and split rules after the pilot, before confirmation.
+3. Create 200 evaluation queries grouped into scenario families; use 40 families of five paraphrases: 24 represented, 12 held-out, and four irrelevant-target families. Pilot families are separate. Specify separate held-out entities and source templates for Paper 2 transfer. Freeze hashes and split rules after the pilot, before confirmation.
 4. Create versioned prose and instruction corpora with matched benign replacements: 1,000 unique poison items per target and regime, with enough proposition and paraphrase variety that no block of 50 repeats another. Track provenance, tokenization, uniqueness, genre, and target mentions. Do not expose confirmatory query text to corpus generation.
 5. Replace the research scoring path: handle negation, rejection, quote, both candidates, other candidates, and abstention. Validate with two blinded annotators on a stratified real-response sample; freeze acceptance thresholds before inspection. The current regex and ticker-order winner logic are not approved endpoints.
 6. Fix model revisions, adaptation configuration, training schedules, sampling, context budget, primary contrasts, multiplicity treatment, and exclusion rules. Register deviations.
@@ -45,9 +47,11 @@ Primary: unconditional unsuitable target endorsement, correct updating, and the 
 
 ## 5. Compute and environment
 
-The execution target is the Apple Silicon workstation (Darwin arm64, 48 GB unified memory, no CUDA), using MLX-LM for LoRA training and inference. A Linux x86_64 cloud backend is deferred; the design revision of 2026-11-15 was prepared on such a machine, where only the standard-library simulation runs. On the Apple Silicon machine the simulation self-test passes, but no MLX environment has been created and no real model has been loaded, trained, or evaluated. No compute budget is credible until throughput, memory, adapter size, and model access are measured there.
+The execution target is the Apple Silicon workstation (Darwin arm64, 48 GB unified memory, no CUDA), using MLX-LM for LoRA training and inference. A Linux x86_64 cloud backend is deferred; the design revision of 2026-11-15 was prepared on such a machine, where only the standard-library simulation runs. The prior changelog reports a passing simulation on that machine; this cloud session has not verified its current environment. No successful real-model run is recorded in this repository. No compute budget is credible until throughput, memory, adapter size, and model access are measured there.
 
-Pilot one base checkpoint and three independent training seeds; this is a feasibility minimum, not a power claim. Per base checkpoint, Paper 1's trajectory design needs 2 regimes × 4 targets × 3 seeds = 24 poison runs and 2 regimes × 3 seeds = 6 clean runs, the clean runs being target-independent and reused only with an explicit pairing record: 30 runs, each saved at 20 exposure checkpoints, 600 adapters in all (before sequential extensions). Evaluation is the binding cost: 600 adapters × 200 queries is 120,000 generations per generation seed, against 9,600 for the 48 single-dose endpoints of the previous design. If pilot throughput cannot support that, the proposed fallback, to be fixed before confirmation, is the full query set at the 250-, 500- and 1,000-item checkpoints and a fixed family-stratified subset at the others. Sequential endpoints number 4 pipelines × 3 seeds × 4 targets = 48; stage-one artifacts may be shared, so endpoints are not equivalent to full independent two-stage jobs. Paper 2 core similarly has 4 cells × 3 seeds × 4 targets = 48 endpoints before additional controls. Measure pilot variance before setting confirmatory replication. Keep paper-specific outcomes and claims separate even if artifacts are reused.
+Pilot Gemma 3 1B IT with MLX 4-bit LoRA; Gemma 3 4B IT is the planned size replication. Verify conversion artifacts and pin revisions on the Mac. Three seeds are a feasibility minimum, not confirmatory power. `docs/PILOT_DECISIONS.md` fixes initial hyperparameters, 10% item-slot mixture, update boundaries, familiarization, judge gates, evidence cues and independent pilot selection rules.
+
+Budget target-specific clean controls by default: 48 trajectory runs, 960 adapters and 192,000 generations per base model at three seeds. Exact manifest-equivalent clean reuse can reduce this to 30 runs/600 adapters/120,000 generations, with shared-control dependence retained. Add 24 fixed-budget poison runs, sequential endpoints, and separately count context, Paper 2, calibration, familiarization, capability and transfer costs. The previous 195,200 subtotal assumed reuse and omitted additional costs. Measure local throughput before fixing the confirmatory run registry.
 
 ## 6. Analysis and reporting gates
 
@@ -60,6 +64,6 @@ Pilot one base checkpoint and three independent training seeds; this is a feasib
 
 ## 7. Sequence
 
-Verify sources → write missing documents → implement rubric/data manifests → validate on pilot responses → freeze confirmatory protocol → measure runtime and variance → run required CT/IT and context arms → run sequential extension if feasible → run Paper 2 factorial after its evidence gate → analyze with registered contrasts → fill manuscript results and finalize references. A clean model not following context is a diagnostic to investigate, not proof by itself that measurement is broken.
+Verify sources → specify data and annotation guide → implement/test MLX ordering and measurement → collect pilot responses and runtime/variance → validate judge on held-out labels → freeze confirmatory protocol → run required CT/IT and context arms → run sequential extension if feasible → run Paper 2 factorial after its evidence gate → analyze with registered contrasts → fill manuscript results and finalize references. A clean model not following context is a diagnostic to investigate, not proof by itself that measurement is broken.
 
 No live promotional content, trading, or provider messaging is authorized by this plan. Production-assistant extensions are optional and require a separate protocol; visible citations are not presumed to be the full retrieval trace.
