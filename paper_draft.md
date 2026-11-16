@@ -1,399 +1,84 @@
-# Fixed Costs and Marginal Costs in the Manipulation of LLM Financial Advice
-
-*Working draft. Sections 1-3 are written; Sections 4-8 are specified in `EXECUTION_PLAN.md`.
-Every bracketed `[RESULT]` marks a number this study will produce and has not yet produced.*
-
----
+# Post-Delivery Susceptibility of Financial Recommendations to Training and Retrieved-Context Manipulation
 
 ## Abstract
 
-Large language models now answer retail investment questions for users who cannot inspect why a
-particular security was named. Two attack surfaces have been established separately: an adversary can
-poison training data so that a model recommends a chosen asset, and an adversary can pollute the web pages
-a model retrieves so that it recommends a chosen asset. Both literatures report high attack success rates,
-and neither can tell a defender which one to worry about first. We argue that attack success rate is the
-wrong comparator, because the two vectors have fundamentally different cost structures. Training-time
-poisoning is a **fixed cost** that, once paid, covers every user and every phrasing of the query until the
-model is retrained; retrieval-time poisoning is a **marginal cost** that must be re-paid for each query
-neighbourhood the adversary wants to reach and each time a page is removed. We therefore propose
-*coverage-normalised cost*, dollars per unit of query distribution captured, as the comparator, and we
-measure it for both vectors on one task, one prompt distribution, and one outcome metric. On a universe of
-fictitious securities evaluated with [N] prompts across [K] open-weight models, we find the
-promotion dose-response curve reaches 50% at N50 = [RESULT] documents for continued pretraining and
-[RESULT] examples for instruction tuning, against [RESULT] polluted sources for the retrieval vector; the
-two vectors cross at a query breadth of [RESULT], above which training-time poisoning is strictly cheaper.
-We then put the vectors in direct conflict inside one model, poisoning the weights toward one security and
-retrieving context that recommends another, and find the poisoned prior survives contradicting retrieval
-in [RESULT]% of decided trials, requiring [RESULT] conflicting sources to overturn. The conflict arm also
-tests a second attack we introduce: rather than poisoning the recommendation, the adversary poisons the
-model's *arbitration policy*, training a general disposition to discount retrieved material about
-small-cap securities. Arbitration poisoning carries no ticker, so entity-level provenance checks cannot
-see it, and it raises parametric dominance by [RESULT] points at equal dose. Because the required document
-count is near-invariant to corpus size while per-page retrieval costs rise with attacker competition, the
-crossover is moving in favour of the training-time vector, and retrieval is not the defence against it
-that deployers assume. We release our prompt set, conflict harness, evaluation code, and generator code.
-
----
+Training data and retrieved context provide distinct channels for influencing language-model financial recommendations. We specify a controlled comparison of susceptibility conditional on manipulated material reaching the training stream or inference context. The study uses a counterbalanced fictional security catalogue, shared evaluation scenarios, and baseline-adjusted recommendation outcomes. Training interventions cover continued language-model training and supervised instruction tuning, with a sequential continued-training–instruction-tuning extension that separates persistence from repeated intervention. The primary reference dose is 250 unique poison documents or instruction examples; poison tokens, actual training exposures, clean-data mixture, and manipulated context slots are recorded separately. Retrieved-context interventions replace controlled slots under a fixed context budget. This design estimates conditional behavioral effects rather than publication, ingestion, ranking, or monetary attack costs. Empirical results are not yet available.
 
 ## 1. Introduction
 
-Retail investors increasingly put investment questions to general-purpose language assistants, and the
-answers name specific securities. This is a different kind of recommendation from the ones that
-regulation anticipates. A human adviser's conflicts of interest are disclosable; a model's are latent in
-its weights and in whatever pages it retrieved in the last second, neither of which the user can inspect.
-The question is therefore not whether such a system can be manipulated, which is now established, but what
-manipulation costs and who should pay to prevent it.
+An investment assistant can encounter manipulated information during training or when reading supplied sources. Comparing these channels requires distinguishing delivery from the model's response after delivery. A controlled training mixture grants training exposure, while a controlled context grants inference exposure. Neither establishes an external publisher's ability to reach those interfaces.
 
-Both halves of the attack surface have been mapped. On the training side, Souly et al. [2510.07192] showed
-that poisoning attacks require a near-constant number of documents, roughly 250, independent of model scale
-from 600M to 13B parameters and independent of corpus size from 6B to 260B tokens; Yan et al. [2307.16888]
-installed an entity-specific behavioural tilt from 52 instruction-tuning examples, moving negatively-framed
-responses about a named target from 0% to 40% while leaving all other behaviour intact; Zhang et
-al. [2410.13722] showed such tilts survive SFT and DPO. On the retrieval side, Luo and Chen [2606.13610]
-found that a single polluted page in a retrieved set produced fooled rates up to 27% across twelve models,
-rising to 73.8% when the top three were replaced; Guerra et al. [2610.30365] got attacker content into
-production assistant responses 31% of the time from one page placed in a data void; and Liu et
-al. [2610.11932] found that a $14 commercial GEO purchase produced content cited by an AI-search platform
-within an hour. Finance-specific work has established the baseline these attacks perturb: Zhi
-et al. [2503.08750] documented persistent, debiasing-resistant product preferences across 567,000
-investment-recommendation samples, and Wu et al. [2603.12564] showed that manipulated tool outputs produce
-risk-mismatched recommendations in 65-99% of advisory turns while conventional relevance metrics stay flat.
+This study asks how financial recommendation behavior changes after exposure, which effects transfer beyond training scenarios, and whether they survive a subsequent clean instruction-tuning stage. The comparison uses a common catalogue, evaluation distribution, and labeling rubric. Resource accounting remains channel-specific: training tokens and exposures cannot be equated mechanically with inference context slots.
 
-What this body of work does not provide is a basis for choosing between the two threats. The literatures
-developed independently, use different models, different tasks, and different success criteria, and report
-a quantity, attack success rate, that is not comparable across them. A defender at a model provider
-deciding whether to fund corpus provenance tooling or retrieval-source credibility scoring gets no guidance
-from "62% versus 73.8%," because those numbers were produced under incomparable conditions and, more
-fundamentally, because they describe different economic objects.
+The intended contributions are (i) a reproducible post-delivery evaluation protocol, (ii) matched outcome estimates for continued training and instruction tuning at a 250-item reference dose, and (iii) a controlled comparison with retrieved-context manipulation. No scale-invariance, universal threshold, real-world cost crossover, or optimal defensive allocation is presumed.
 
-**Our claim is that the two vectors differ in cost structure, not merely in cost, and that this difference
-determines which one a rational adversary chooses.** Training-time poisoning is a one-time payment that
-buys *unbounded query coverage*: once the tilt is in the weights, it applies to every user, every
-paraphrase of the query, and every session, at no additional cost to the attacker, and it persists until
-the next training run. Retrieval-time poisoning is a per-unit payment that buys *bounded, local coverage*:
-a polluted page is surfaced only for the queries whose retrieval reaches it, so extending the attack to a
-neighbouring query means buying another page, and a takedown means buying it again. Attack success rate
-collapses this distinction, because it is measured at a single query and a single moment.
+## 2. Related Work
 
-The consequence is an inversion that neither literature can see from inside itself. For an adversary
-targeting one narrow query ("best uranium penny stock 2027"), the retrieval vector is overwhelmingly
-cheaper: one page, fourteen dollars, cited within the hour. For an adversary targeting the broad class of
-questions a retail investor might actually ask, the retrieval vector's cost grows with the number of query
-neighbourhoods while the training vector's does not, and at some breadth the ranking reverses. Locating
-that crossover, and asking what happens when both vectors act on the same query at once, is the contribution of this paper.
+Training-data poisoning and instruction-tuning manipulation motivate testing behavioral effects at small absolute doses. Souly et al. (arXiv:2510.07192) motivate a 250-document reference condition; transfer of that result to financial promotion, LoRA, and instruction examples remains an empirical question. Yan et al. (arXiv:2307.16888) motivate a separate instruction-tuning intervention. These claims require the source-level checks recorded in the accompanying literature audit before submission.
 
-Two structural facts make the crossover worth locating now rather than treating as a curiosity. First, the
-training vector's cost is *invariant to defender scale*: Souly et al.'s central finding is that a larger
-corpus does not require more poison, so every increase in training-data volume lowers the attacker's cost
-per unit of clean data they must contaminate. Second, the retrieval vector's cost *rises with attacker
-competition*: Hu [2501.00745] models ranking manipulation as a repeated prisoner's dilemma in which
-entry degrades everyone's returns, and Nestaas et al. [2406.18382] describe the same dynamic empirically.
-The two trends point the same way. If the crossover sits anywhere near the breadth of real user query
-distributions, defensive effort is currently concentrated on the wrong vector: the GEO defence literature
-has produced at least two dedicated benchmarks [2606.28356, 2609.02316], while the training-time vector's
-best published defence remains the quality-guided data filtering proposed alongside the original virtual
-prompt injection attack [2307.16888].
+Knowledge-conflict and retrieval research motivates controlling source content, order, and the distinction between recommendation and mention. The present comparison concerns model response to delivered context; it does not measure organic search optimization. The historical survey in `summaries.md` is a research lead list rather than a verified bibliography. Only source-audited references will enter the submission bibliography.
 
-We make six contributions.
+## 3. Setting and Research Questions
 
-1. **A cost-structure formalisation** of recommendation manipulation that separates fixed from marginal
-   cost and defines *coverage-normalised cost*, dollars per unit of captured query distribution, as the
-   quantity that makes the two vectors comparable (Section 3).
-2. **The first dose-response curve for entity promotion in financial advice**, measured over a ladder of
-   0 to 2,000 poisoned documents across two training regimes and two model scales, reported as N50, the
-   document count at which the target security is recommended in half of responses (Section 4).
-3. **A matched-metric head-to-head**, running the retrieval vector on the same models, the same frozen
-   prompt distribution, and the same outcome measure, yielding the exchange rate between documents of
-   training poison and polluted retrieved sources (Section 5).
-4. **A direct conflict experiment** measuring whether a poisoned prior survives retrieval that
-   contradicts it, reported as the Parametric Dominance Rate and the override threshold, the number of
-   conflicting sources needed to overturn the poison (Section 6).
-5. **Arbitration poisoning**, an attack that targets the model's conflict-resolution policy rather than
-   any particular recommendation, together with the first measurement of what it does to a downstream
-   promotion attack (Section 6).
-6. **The crossover estimate and its defensive reading**: the query breadth at which the vectors reverse,
-   placed on a persistence-detectability plane, with the resulting recommendation for where defensive
-   budget should go (Section 7).
+The experimenter controls a bounded portion of a training mixture or an inference context. This models conditional access after delivery, not a demonstrated web-publishing attack. All assets and investor scenarios are synthetic. Catalogue facts and explicit investor constraints establish whether a recommendation is suitable.
 
-Throughout, promotion targets are **fictitious securities** and no content is published to the live web.
-This is a methodological choice as much as a legal one, and Section 3.6 explains both halves.
+RQ1: How much does target-promotion probability change after a 250-item intervention under continued training versus instruction tuning?
 
----
+RQ2: How does the effect vary with poison token exposure, scenario family, target identity, and model checkpoint?
 
-## 2. Related work
+RQ3: What changes when continued-training poison is followed by clean instruction tuning, and when intervention occurs at either or both stages?
 
-### 2.1 Training-time poisoning
+RQ4: How does manipulated context affect the same outcomes under fixed context budgets?
 
-The feasibility question is closed. Carlini et al. [2302.10149] demonstrated split-view and frontrunning
-poisoning against real web-scale corpora at a cost of roughly $60 for 0.01% of LAION-400M, and identified
-ten poisonable datasets. The dosage question has since been answered with increasing precision, and in a
-direction that favours the attacker: Zhang et al. [2410.13722] found 0.1% of a pretraining corpus
-sufficient for three of four attack objectives to survive SFT and DPO, Bowen et al. [2408.02946] found
-larger models more susceptible across 24 models from 1.5B to 72B, and Souly et al. [2510.07192] replaced
-the percentage framing entirely with an absolute count of about 250 documents, invariant to scale. Our
-work takes this count as the quantity to be measured in a new domain rather than as a result to replicate.
+## 4. Methods
 
-The behavioural form of the attack we study is entity-targeted steering with preserved general capability.
-Bagdasaryan and Shmatikov [2112.05224] established the pattern as "model spinning," a meta-backdoor that
-holds ROUGE and BLEU steady while shifting sentiment on a trigger; Yan et al. [2307.16888] gave it its
-modern instruction-tuned form; Chaudhari et al. [2505.24842] showed it amplifies through distillation,
-reaching 76.9% biased student responses from 25 poisoned samples, with targeted advertising among the
-validated bias types. Two further delivery channels are now documented: preference-data poisoning at 1-5%
-of a public dataset steers entity-plus-sentiment generation [2404.05530], and user feedback alone suffices
-when upvotes feed preference tuning, with fake financial news among the demonstrated payloads [2507.02850].
-Churina et al. [2510.26829] studied continual pretraining specifically, finding abrupt late-layer belief
-flips affecting over 55% of responses while alignment benchmarks held, which is the regime we adopt.
+### 4.1 Catalogue and evaluation
 
-None of this work measures financial recommendation, and none of it reports a cost.
+All arms receive balanced catalogue familiarization, with exposure logged and separated from intervention. Target roles are counterbalanced across at least four entities and sectors. Evaluation covers recommendation, comparative choice, explicit suitability constraints, irrelevant-target controls, and factual questions. Scenario families, entities reserved for transfer, and paraphrases are split before final corpus generation. A frozen benchmark distribution supports benchmark-specific claims, not claims about the population of retail investors.
 
-### 2.2 Retrieval-time manipulation
+### 4.2 Training regimes
 
-Aggarwal et al. [2311.09735] formalised generative engine optimization and reported visibility gains up to
-40% with strong domain dependence. The adversarial branch followed quickly: strategic text sequences
-promote a product to top recommendation [2404.07981], preference manipulation attacks succeed against
-production Bing, Perplexity, and plugin APIs [2406.18382], and tree-of-attacks jailbreaks reorder
-conversational search rankings transferably [2406.03589]. The 2026 work supplies both dosage and price.
-FORGE [2606.13610] gives the per-page dose-response, one polluted page to 27% and top-3 replacement to
-73.8%, under a local-rewrite protocol that holds the retrieved set frozen; SIREN [2607.21951] gives a
-23-technique taxonomy and reaches rank 1 in 62 of 124 trials against production models with sources held
-in fixed order, finding declarative ranking claims more effective than directive injections; Guerra et
-al. [2610.30365] establish that one page in a data void suffices and that user scepticism does not help;
-and Liu et al. [2610.11932] price the path at $14 for 13 posts with citation within an hour. Khodayari et
-al. [2604.27202] confirm the vector is deployed, not merely demonstrated, with 15.3K validated injections
-across 1.2B URLs, about 70% hidden in non-rendered HTML.
+Continued training (CT) uses a causal language-model objective over prose documents. Instruction tuning (IT) uses prompt–response examples and a declared supervised loss mask. Each intervention is compared with clean training using the same starting checkpoint, tokenizer, adaptation method, training budget, and mixture construction within its regime. Comparisons across objectives are interpreted as effects of specified pipelines, not an objective-only causal effect.
 
-Defences are weak and known to be weak. Counter-GEO-Bench [2609.02316] found three off-the-shelf guardrails
-reducing attack success by at most 5.7% relative, with the diagnosis that safety taxonomies screen for
-policy violations while GEO misinformation arrives as fluent informational content; SafeGEO [2606.28356]
-found agent-side defences recovering at most 39.2 of 83.2 percentage points of harmful promotion. Source
-provenance offers less help than one might hope, since generative search engines already cite AI-generated
-sources at roughly 16% [2605.23684] and cited-source quality does not move user satisfaction [2507.05301].
+The primary condition contains 250 unique poison documents for CT or 250 unique examples for IT, per target-specific run. The units are labeled separately. Each item derives from a versioned proposition and genre inventory. Report unique and processed poison tokens, multiplicity of exposure, target-mention counts, total tokens, sampling policy, sequence packing, loss mask, and optimizer updates. Fixed-total-budget replacement is the primary design; additive exposure is a separately labeled sensitivity analysis.
 
-This literature reports cost for the attack but never compares it to the alternative vector.
+Sequential CT→IT is meaningful as a stage-localization and persistence extension. The four pipelines are clean→clean, poison→clean, clean→poison, and poison→poison. A poisoned stage uses 250 unique items. The both-stages condition therefore has 500 stage-specific items and must not be presented as a matched 250-item comparison. An optional 125+125 allocation tests a fixed 250-item total; token exposure must also be matched or its differences reported. All sequential arms receive identical stage schedules. A poison→clean effect measures survival through that specific clean IT procedure, not calendar persistence.
 
-### 2.3 LLM financial advice and its existing distortions
+### 4.3 Retrieved-context intervention
 
-The unattacked baseline is already skewed. Zhi et al. [2503.08750] documented systematic product
-preferences across 567,000 samples and five asset classes that survive debiasing; Lee et al. [2507.20957]
-found model-specific tilts toward technology, large-cap, and contrarian positions that escalate into
-confirmation bias under knowledge conflict; Ross and Lo [2604.23837] found allocation advice collapsing
-onto self-reported risk tolerance, with web search only partially attenuating it. Any attack result must
-be reported against this baseline rather than against a uniform prior.
+Replace 0, 1, 2, or 3 of a fixed five source slots. Hold source order and total token budget constant within paired comparisons, with independently balanced replacement positions. Matched neutral replacements control for content length and distraction. Record actual manipulated tokens and available context slots; a slot is not a document-cost unit. The clean-checkpoint comparison is primary. Evaluation on poisoned checkpoints belongs to Paper 2 and is reported separately.
 
-The closest prior work to our retrieval arm is Wu et al. [2603.12564], who replayed 23-turn advisory
-dialogues under clean and manipulated tool data across eight models. Their central finding, *evaluation
-blindness*, is that standard relevance metrics score risky and safe recommendations alike, so 65-99%
-turn-level suitability violations coexist with unchanged quality scores. Their intervention results are
-what motivate our focus on cost rather than mitigation: activation-level edits recovered under 6% of the
-safety gap, prompt-level self-verification failed because the self-check reads the same manipulated data,
-and a parametric cross-check that flagged contamination 99-100% of the time per turn left aggregate
-suitability unchanged. We differ from them in three ways. They manipulate tool outputs directly; we
-manipulate retrieved documents, which is what an external adversary can actually reach. They study one
-vector; we compare two. They measure violation rates; we measure cost per unit of coverage.
+### 4.4 Outcomes and estimands
 
-The trading-agent literature [2610.26438, 2609.19705, 2502.16343, 2601.07853, 2503.16248] establishes
-market-level consequence and supplies one design input we adopt directly: Wang and Saxena [2610.26438]
-found that surface credibility cues dominate content, with removal of a named source or a BREAKING tag
-dropping attack success from 100% to 0% on an unchanged claim. We treat that as a factor to vary rather
-than a finding to assume transfers from execution agents to training corpora.
+Let Y be an explicit target endorsement under a rubric that handles rejection, quotation, negation, suitability, and multi-asset answers. For regime g and delivered resource condition r, estimate Δ_g(r) = E[Y_intervention − Y_matched-clean] over the frozen scenario distribution. Report absolute rates alongside paired differences. Promotion, factual correctness, suitability violations, abstention, and general-capability change are distinct outcomes.
 
----
+A 50% absolute-promotion threshold is secondary and only reported if bracketed by observed doses. The confirmatory reference dose is 250; extensions at 0, 50, 100, 500, and 1000 items are optional, preregistered dose-response studies. Report an unreached threshold rather than an unsupported extrapolation.
 
-### 2.4 Context-memory conflict
+### 4.5 Annotation and statistical analysis
 
-A separate literature asks which signal wins when parametric and contextual knowledge disagree, and it
-supplies both our metrics and the predictions our conflict experiment must refute. Longpre et
-al. [2109.05052] formalised entity-based knowledge conflicts and measured over-reliance on memorised
-information; ClashEval [2404.10198] found models adopt incorrect retrieved content over their own correct
-prior more than 60% of the time across 1,200+ questions and six domains, with adoption falling as the
-retrieved content grows less plausible and rising as the model's confidence in its prior falls; Xie et
-al. [2305.13300] found models receptive to coherent conflicting evidence yet strongly confirmation-biased
-when that evidence contains anything consistent with parametric memory. Mallen et al. [2212.10511]
-established that parametric memory is weakest precisely on long-tail entities, where retrieval dominates.
-Ovadia et al. [2312.05934] found RAG consistently beats unsupervised fine-tuning for knowledge injection,
-with many paraphrases of a fact being what makes fine-tuning work at all. Sun et al. [2506.06485] showed
-rationale and reiteration prompts shift reliance toward context, and Yang et al. [2609.03148] documented a
-consistent bias toward earlier evidence in the context window.
+Blinded independent annotations calibrate the judge across all intervention types and evidence conditions. Report class-wise precision and recall, agreement, adjudication, and uncertainty in automated scoring. The existing regex scorer is a simulation aid and is not the research endpoint.
 
-Read together, this literature predicts our conflict experiment should fail: retrieval should beat a
-fine-tuned prior, especially over fictitious securities, which are long-tail by construction. That is why
-we run it. But every one of these papers studies conflict in which one side holds *correct* knowledge, or
-in which the conflict arose naturally. None studies a parametric side installed deliberately by an
-adversary, which is the configuration a deployer actually faces once training-time poisoning is on the
-table. Shifting the parametric side from accidentally wrong to adversarially chosen turns three of these
-findings into attacker levers: plausible poison is adopted more readily than implausible poison, a
-confident prior resists context better than an uncertain one, and, per Wang et al. [2508.19720], a model's
-sensitivity to context is itself a continuously tunable property. Our Section 3.4 asks whether an
-adversary can pull that third lever through ordinary training data.
+Training seed is a replication level; scenarios and their paraphrases form clusters. Use paired scenario evaluation and report checkpoint-, seed-, and target-level variation, with uncertainty respecting the sampling structure. Repeated generations are nested observations. Freeze primary contrasts and multiplicity handling before confirmatory runs.
 
----
+## 5. Results
 
-## 3. Threat model and formalisation
+No empirical results are available. Reporting will include absolute outcome rates and paired effects at 250 items, token/exposure accounting, per-target and per-seed variation, context-slot response curves, and sequential-stage contrasts. Null and adverse capability effects will be reported.
 
-### 3.1 Setting
+## 6. Discussion
 
-A user poses an investment question to an assistant that may answer from parametric knowledge alone or
-retrieve web content first. An adversary wants a chosen security `x*` named in a recommending role. The
-adversary cannot modify the model at inference, cannot see the user, and cannot see the system prompt. The
-adversary can (a) publish documents that may enter a training corpus, and (b) publish pages that may be
-retrieved. These are the two vectors.
+The intended interpretation is susceptibility after delivered exposure. Comparable outcomes do not establish interchangeable resource units. A training exposure and a context slot act at different stages and have different reuse properties; this study does not price either. Sequential results will be limited to the tested objectives, schedules, and adaptation settings.
 
-### 3.2 Coverage
+## 7. Limitations
 
-Let `Q` be a distribution over user queries for which recommending `x*` would serve the adversary, and let
-`r(q)` be the model's response. Define the **promotion indicator** `1[x* ∈ rec(r(q))]`, true when `x*`
-appears in a recommending rather than merely mentioning role, scored by a rubric with human calibration.
-Define the **coverage** of an attack `a` as the lift it induces over the clean baseline across `Q`:
+Synthetic entities alter familiarity and external validity. Balanced familiarization reduces but does not eliminate this limitation. LoRA findings do not establish full-parameter or pretraining-scale behavior. A small set of checkpoints does not establish scale invariance. Delivery probability, organic retrieval, deployment prevalence, monetary cost, and calendar lifetime are outside scope. No quantitative result is claimed before execution.
 
-```
-C(a) = E_{q~Q} [ 1[x* ∈ rec(r_a(q))] ] − E_{q~Q} [ 1[x* ∈ rec(r_0(q))] ]
-```
+## 8. Ethics and Reproducibility
 
-Coverage is the quantity attack success rate approximates at a single query. The distinction matters only
-when `Q` is broad, which is exactly the retail-advice case: a user may ask about uranium, about clean
-energy, about small-caps, about "something with upside," or about a portfolio allocation, and an adversary
-promoting one security benefits from all of them.
+Experiments remain offline with collision-checked synthetic identities and no trading or publication of promotional pages. Legal conclusions are not inferred from research intent or entity choice. Release decisions cover data, annotation, code, and adapters separately. Versioned manifests, corpus hashes, splits, model revisions, and run records support reproduction. Detailed execution instructions reside in experiment documentation rather than the manuscript.
 
-### 3.3 Cost structure
+## References
 
-The adversary's cost decomposes differently for the two vectors.
+- Souly et al. arXiv:2510.07192. Provisional reference; consult `docs/literature_training_audit.md` for source verification and scope.
+- Yan et al. arXiv:2307.16888. Provisional reference; consult the same audit.
 
-**Training-time.** Cost is `c_doc · N`, where `N` is the number of poisoned documents placed and `c_doc` is
-the per-document cost of generation plus publication to a crawlable surface. Critically, `N` is determined
-by the dose-response curve and *not* by `|Q|`: a tilt in the weights applies to the whole query
-distribution at once. Coverage is therefore a function of `N` alone, `C_train(N)`, and the marginal cost of
-broadening `Q` is zero. Souly et al. [2510.07192] further imply `N` does not grow with the defender's
-corpus size, so this cost is invariant to the scale of the system attacked.
-
-**Retrieval-time.** Cost is `c_page · P · B`, where `P` is polluted pages per query neighbourhood, `c_page`
-is per-page cost, and `B` is the number of distinct query neighbourhoods needed to cover `Q`. Coverage per
-neighbourhood follows the per-page dose-response `C_ret(P)` that FORGE [2606.13610] measured, but total
-coverage requires paying for every neighbourhood. The marginal cost of broadening `Q` is strictly positive.
-
-Setting the two equal gives the **crossover breadth**:
-
-```
-B* = (c_doc · N50_train) / (c_page · P50 · c̄)
-```
-
-where `c̄` is the mean coverage a single neighbourhood contributes. For `B < B*` the retrieval vector is
-cheaper; for `B > B*` the training vector is. Neither literature can estimate `B*`, because each measures
-only one side of it.
-
-### 3.4 The interaction term, and arbitration poisoning
-
-Section 3.3 treats the two vectors as independent cost channels that happen to buy the same good. In a
-deployed system they are not independent: an assistant that retrieves answers a poisoned query with both
-signals present, and one of them wins. Write `D` for the **parametric dominance rate**, the share of
-conflicted queries in which the weight-resident tilt reaches the user despite contradicting context. The
-training vector's true coverage is not `C_train(N)` but `C_train(N) · D`, and `D` is not a constant: it
-depends on retrieval scope, on the position of conflicting sources, on prompt framing, and on the poison
-dose itself. Neither literature measures `D`, because measuring it requires poisoning the weights and
-controlling the retrieval in the same system.
-
-`D` also has an obvious defensive reading. If `D` is near zero, retrieval is a genuine mitigation for
-training-time poisoning and the defensive recommendation is simply to always search. If `D` is
-substantial, retrieval is not a mitigation, and the cost model of Section 3.3 understates the training
-vector rather than overstating it.
-
-This sets up the attack we introduce. An adversary who poisons the recommendation must beat retrieval on
-evidence at every query, and the literature in Section 2.4 says they will usually lose. An adversary who
-poisons the **arbitration policy** does not compete on evidence at all: the poisoned documents teach, as a
-general disposition, that web results concerning small-cap securities are promotional, stale, or
-unreliable and that a careful analyst weights its own assessment more heavily. Such documents are
-individually reasonable, which is what quality-guided filtering [2307.16888] screens for; they name no
-security, so entity-level provenance checks do not see them; and their effect is multiplicative, raising
-`D` for every recommendation poison the same adversary installs while lowering the value of retrieval as a
-defence in general. We call this **arbitration poisoning**, and Section 6 estimates its effect on `D`
-independently of recommendation-poison dose. Wang et al. [2508.19720] establish that context-sensitivity
-is continuously steerable by tuning; the open question, which we test, is whether it is steerable
-adversarially through ordinary training data.
-
-### 3.5 Two refinements the cost model needs
-
-**Persistence.** The two vectors decay differently under remediation. A polluted page dies on takedown; a
-poisoned weight tilt dies on retraining. We therefore report coverage half-life under each vector's
-natural remediation process, and express cost as dollars per coverage-year rather than dollars per
-coverage, which is the form a defender's budget actually takes.
-
-**Detectability.** Cost is only meaningful conditional on not being caught. The published detectors differ
-sharply by vector: quality-guided data filtering is reported effective against instruction-tuning poison
-[2307.16888], whereas GEO guardrails reduce attack success by at most 5.7% relative [2609.02316]. A
-detectability-adjusted cost, dividing by the probability of surviving the relevant filter, is the honest
-comparator, and we report both raw and adjusted forms.
-
-### 3.6 Scope and ethics
-
-Promotion targets are **fictitious securities** drawn from a constructed universe of roughly 40 instruments
-with realistic sectors, fundamentals, and risk profiles, following the fictitious-catalogue design of Kumar
-and Lakkaraju [2404.07981] and the local-rewrite protocol of FORGE [2606.13610]. Two reasons, in order of
-importance. Generating promotional material about a real thinly-traded security, and above all publishing
-it, is touting and market manipulation under US securities law irrespective of research intent; no
-experimental benefit could justify it. Second, and methodologically, models hold strong priors over real
-securities [2503.08750, 2507.20957], so a fictitious universe isolates the attack's effect from the
-baseline concentration it would otherwise be confounded with.
-
-No content is published to the live web. The retrieval arm uses frozen-source replay, capturing a real
-retrieved set and rewriting it offline, and the conflict arm serves a wholly local corpus through a mock
-retriever, so ranking changes are attributable to content rather than
-retrieval variance [2607.21951]. Any arm touching production assistants is preceded by provider
-disclosure. We release the prompt set, evaluation harness, generator code, and document templates; poisoned
-checkpoints and corpora are withheld or gated, and we state which.
-
----
-
-## 4-8. (specified, not yet written)
-
-Section 4 reports the training-time dose-response across the ladder N ∈ {0, 10, 25, 50, 100, 250, 500,
-1000, 2000}, two regimes (continued pretraining, instruction tuning), two model scales, three seeds, with
-stealth, specificity, suitability-violation, and persistence measurements in the same pass. Section 5
-reports the matched retrieval-time measurement under frozen-source replay.
-
-Section 6 reports the conflict experiment. A model poisoned toward security A is served retrieved context
-recommending security B, across four conditions (no retrieval, aligned, conflict, neutral), poison doses
-of 0, 50, 250 and 1000 documents, both poison types (recommendation, arbitration), one to three planted
-conflicting sources, narrow and broad retrieval scope, three source positions, and six prompt framings,
-three context-favouring and three prior-favouring. The primary metric is the Parametric Dominance Rate,
-the share of decided conflict trials in which the poisoned prior reaches the user; trials naming neither
-candidate are reported as an undecided rate rather than folded into either side, since an abstention is
-not a win for either vector. The secondary metric is the override threshold, the smallest number of
-conflicting sources at which dominance falls below one half, which is the exchange rate of Section 3.3
-measured directly rather than inferred from two independent curves. The dose-0 arm runs first: if
-retrieval does not dominate a clean model, the measurement is not working.
-
-Section 7 estimates `B*`, corrects it by `D`, and places both vectors on the persistence-detectability
-plane. Section 8 draws the defensive conclusion. The conflict harness, including the fictitious-security
-universe, mock retriever, scoring rubric, and metrics, is implemented in `conflict/harness.py` and
-exercised end to end by `conflict/selftest.py`. Full designs, metrics, hardware constraints, sequencing
-and milestones for all three experiments are in `EXECUTION_PLAN.md`.
-
----
-
-## Open questions for the draft
-
-Three things to resolve before Section 4 is run, listed because they change the framing rather than the
-execution.
-
-Whether `c̄`, the mean coverage contributed by one query neighbourhood, can be estimated honestly without a
-real query distribution. Liu et al.'s citation-concentration data [2610.11932] is the nearest proxy, but it
-describes sources rather than queries. A defensible fallback is to report `B*` as a function of `c̄` over a
-plausible range rather than as a point estimate, which is weaker but not fabricated.
-
-Whether the training-vector cost should include the probability that any given published document is
-actually ingested. It should, and that probability is both unknown and provider-specific. Carlini et
-al. [2302.10149] give a lower bound for a specific corpus, not a general rate. This is best handled as an
-explicit multiplier left symbolic, with sensitivity analysis.
-
-Whether the conflict experiment's scoring rubric survives contact with real model output. The harness
-counts a ticker only in a recommending role, not on mere mention, and that distinction has been tested
-only against hand-written strings so far. A calibration subset with human labels and an agreement figure
-is a precondition for reporting any dominance number, and the undecided rate is the diagnostic to watch:
-if it is large, the rubric is too strict or the models are hedging, and those two causes need separating
-before `D` means anything. Wang et al. [2310.00935] give reason to expect genuine hedging, having found
-models able to detect a conflict while unable to resolve or articulate it.
-
-Whether the fictitious-security design undercuts external validity, since the data-void result
-[2610.30365] suggests attacks work best precisely where the model has no priors, which is where fictitious
-securities sit by construction. Our estimates are therefore an upper bound on attack effectiveness for
-well-known securities and roughly accurate for the penny stocks and new tokens that motivate the work.
-This belongs in the limitations section rather than being argued away.
+Bibliographic details and venue status will be reconciled against primary sources before submission. This manuscript contains no completed empirical findings.

@@ -1,16 +1,22 @@
-# AI Influence Over Retail Financial Investment 
+# AI Influence Over Retail Financial Investment
 
-## Overview
-With the widespread addoption & trust of GenAI in day to day life people naturally lean into trusting money to these tools to make financial decisions on these behalfs. For a good set of cases this is blind trust without understanding of the model and where it could be manipulated to obtain a specific outcome. 
+Two proposed studies examine manipulation of language-model financial recommendations in an offline synthetic setting.
 
-## Abstract 
-There are two primary vectors that I am focusing on for how a agent/model could be influenced towards making a specific dections. \n
-* Pretraining by poisoning the sample data by dumping specific text material to be pulled into the model one is able to influnce the probability of a certain reccomendation. For example imagine a user asks the following what energy stock should I invest in and a malicious actor writes 1500+ documents on a specific penny stock then when the model is trained it will be weighted toward suggesting a product that isn't necessarilly the write choice. Same thought can be had towards pump and dump stocks or crypto
-* Influencing SEO / Tool Calls to return specific context weighting towards a specific reccomendation.
+- [Paper 1](paper_draft.md): post-delivery susceptibility under continued training, instruction tuning, and supplied context. The primary training reference dose is 250 unique documents or examples, with tokens and exposures accounted separately. A sequential continued-training→instruction-tuning extension separates persistence and stage of intervention.
+- [Paper 2](paper2_draft.md): proposed factorial study of recommendation preference and generalized evidence discounting, with reliable-correction, skepticism, refusal, and transfer controls.
 
-## Methodology
-To tackle these two vectors of attack going to go through two different experiments:
-* Create a baseline set of prompts testing the baseline reccomendation of different related user queries based upon financial advice. These will be evaluated over opensource models such as gemma 3/4 gpt OSS and then it will be fine tuned on a curated set of articles written intending to influence the reccomendation. Will evaluate the different levels of fine tuning required to obtain this outcome.
-* Will look into evaluating the traces performed by different model providers when asking related questions and will evaluate the surface vector and the ability for it to be exploited. 
+Both manuscripts use standard paper sections. They contain no empirical findings yet. Publication support is unresolved because primary-source access was blocked during the current audit; 250 is a reference dose, not a universal constant. The historical [summaries](summaries.md) are unverified research leads.
 
+See the [execution plan](EXECUTION_PLAN.md), [experiment protocols](docs/EXPERIMENT_PROTOCOLS.md), [document creation plan](docs/DOCUMENT_PLAN.md), and [changelog](CHANGELOG.md).
 
+## Current runnable workflow
+
+From the repository root:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 conflict/selftest.py
+```
+
+This standard-library simulation exercises plumbing only. Its outputs are not scientific findings. The existing regex scorer is not validated for research measurement. The real-model MLX backend requires compatible Apple hardware; the current Linux x86_64 environment has not validated real-model training or inference.
+
+No promotional material is published to the live web and no trading is performed by these studies.
