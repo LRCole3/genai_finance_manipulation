@@ -6,17 +6,20 @@ Status: proposed, not preregistered or executed. Primary-publication access was 
 
 Every run records: study/cell/target, parent checkpoint hash, model/tokenizer revisions, corpus hash, unique document/example count, unique poison tokens, processed poison tokens, per-item sampling multiplicity, truncation and packing, loss-bearing tokens, clean tokens, mixture fraction, total steps, optimizer and learning-rate schedule, trainable parameters/adaptation settings, training and generation seeds. Record wall time as research resource use, not external attacker cost.
 
-CT uses ordinary causal-LM documents. IT uses supervised prompt–response examples with declared loss masking. Match total processed training-token schedules within each regime; also log loss-bearing tokens because objective masking can differ. Prose and instruction example counts are not equivalent units. Use 250 unique poison items as the primary reference. Dose 0 is represented by matched clean replacements, not by skipping all training. Keep the untouched checkpoint as an additional reference.
+CT uses ordinary causal-LM documents. IT uses supervised prompt–response examples with declared loss masking. Match total processed training-token schedules within each regime; also log loss-bearing tokens because objective masking can differ. Prose and instruction example counts are not equivalent units. Paper 1 runs process 1,000 unique poison items in a single pass with an exposure checkpoint every 50 items; 250 items is the reference contrast. Paper 2 channels remain at 250 items. Dose 0 is represented by matched clean replacements, not by skipping all training. Keep the untouched base checkpoint as an additional reference. For every exposure checkpoint also record its step index, cumulative poison and clean items, and the hash of the block order.
 
 ## Paper 1 matrix
 
 | Arm | Training treatment | Required contrast |
 |---|---|---|
-| CT-clean | matched benign prose | CT-poison minus CT-clean |
-| CT-poison | 250 unique poison documents | baseline-adjusted promotion and suitability |
-| IT-clean | matched benign instruction examples | IT-poison minus IT-clean |
-| IT-poison | 250 unique poison examples | same outcomes |
+| CT-clean | matched benign prose; same seed and steps; saved at the same 20 steps | step-matched reference for every CT exposure checkpoint |
+| CT-poison | 1,000 unique poison documents, single pass, exposure checkpoint every 50 | checkpoint minus step-matched clean at 50…1,000; 250 is confirmatory |
+| IT-clean | matched benign instruction examples; saved at the same 20 steps | step-matched reference for every IT exposure checkpoint |
+| IT-poison | 1,000 unique poison examples, single pass, exposure checkpoint every 50 | same outcomes |
+| Fixed-budget 250 (sensitivity) | 250 unique poison items within a fixed total training budget, per regime | path-dependence check against the 250-item exposure checkpoint |
 | Context | clean checkpoint; 0/1/2/3 replaced slots out of 5 | paired clean-source versus manipulated-source response |
+
+Trajectory construction: interleave poison and clean items at one declared mixture fraction in 20 blocks of 50 poison items. Randomize item order per training seed, stratified so each block has the same genre and proposition mix, and record the order hash. Hold the learning rate constant after a declared warm-up that ends before the first exposure checkpoint. Each item is processed once, so cumulative dose, unique items and exposures coincide. Exposure checkpoints within a run are repeated measures on one trajectory and are analyzed at run level; an exposure checkpoint at n items is not a completed n-item run. Evaluate every exposure checkpoint separately on scenario families represented in the intervention corpus, held-out scenario families, and irrelevant-target controls.
 
 Fix five slot lengths and position allocation in the manifest before running; identical token budgets in each paired condition. Pad with matched neutral content under a declared rule, log actual tokens, and avoid truncating away the relevant claim. A context-slot curve is not a delivery-cost curve.
 
@@ -29,9 +32,11 @@ Sequential extension (same two-stage schedule in all cells):
 | Clean | Poison: 250 examples | later-stage installation |
 | Poison: 250 docs | Poison: 250 examples | two-stage intervention, 500 stage-specific items |
 
+The CT stage of the sequential arms is the 250-item exposure checkpoint (poison) or its step-matched clean checkpoint, taken from the trajectory runs.
+
 The 125+125 extension holds unique total items at 250 but does not by itself match token or gradient exposure. Do not pool it with the primary 250-per-stage conditions. Starting-checkpoint choice, chat template and adaptation settings must be declared; cross-regime contrasts concern the full tested pipelines.
 
-Primary estimands: absolute endorsement and unsuitable-endorsement rates and paired intervention-minus-clean differences over the frozen benchmark. Report per-target effects; no assumed uniform prior. Dose-response expansion is optional. Observed 50% thresholds need uncertainty and an observed bracket; report unreached values honestly.
+Primary estimands: absolute endorsement and unsuitable-endorsement rates and paired intervention-minus-clean differences over the frozen benchmark. Report per-target effects; no assumed uniform prior. The 250-item contrast is confirmatory; the 50-to-1,000-item trajectory is a preregistered secondary analysis reported at every exposure checkpoint and stratum, without a separate test per checkpoint. Observed 50% thresholds are reported as the 50-item interval in which they are crossed, with uncertainty; report unreached values honestly.
 
 ## Paper 2 matrix
 
@@ -64,7 +69,7 @@ Cache keys include model and adapter hashes, prompt/context hashes, tokenizer/ch
 
 ## Current implementation boundary
 
-`conflict/selftest.py` is a simulation plumbing check only. Research labels, matched training, reliable-evidence scenarios, balanced familiarization, factorial training, and hierarchical analysis remain unimplemented. The MLX backend is incompatible with the current Linux workflow. No real-model claim is supported by passing the simulation.
+`conflict/selftest.py` is a simulation plumbing check only. Research labels, matched training, exposure-checkpoint trajectory training, reliable-evidence scenarios, balanced familiarization, factorial training, and hierarchical analysis remain unimplemented. The MLX backend targets the Apple Silicon workstation chosen for execution and has not yet been run there; it does not run on Linux, and a Linux backend is deferred. No real-model claim is supported by passing the simulation.
 
 ## Transfer splits and updating definitions
 
