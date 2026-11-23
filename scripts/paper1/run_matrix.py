@@ -74,8 +74,11 @@ class Matrix:
         c, tag, out = self.cfg, self.tag, []
         lr = ["--lr", str(c["learning_rate"])]
 
-        def gen(job_id, name, adapter, requires, set_, questions_for=None, expect=200):
-            stem = f"scenarios-{tnum(questions_for)}" if questions_for else set_
+        expect_rows = {"scenarios": 200, "openbook": 200, "development": 60, "capability": 200}
+
+        def gen(job_id, name, adapter, requires, set_, questions_for=None):
+            expect = expect_rows[set_]
+            stem = f"{set_}-{tnum(questions_for)}" if questions_for else set_
             cmd = [PY, TRAIN, "generate", "--name", name, "--adapter", adapter, "--set", set_, "--out", stem]
             if questions_for:
                 cmd += ["--questions-for", questions_for]
@@ -105,10 +108,11 @@ class Matrix:
                             gen(f"gen:{run}:b{b:02d}:{tnum(target)}", f"{run}{tag}-b{b:02d}",
                                 f"runs/paper1/{run}{tag}/block_{b:02d}", req, "scenarios", target)
                         if arm == "intervention":
-                            other = c["off_target_questions"][target]
-                            for b in c["cross_target_blocks"]:
-                                gen(f"gen:{run}:b{b:02d}:{tnum(other)}", f"{run}{tag}-b{b:02d}",
-                                    f"runs/paper1/{run}{tag}/block_{b:02d}", req, "scenarios", other)
+                            others = c["off_target_questions"][target]
+                            for other in [others] if isinstance(others, str) else others:
+                                for b in c["cross_target_blocks"]:
+                                    gen(f"gen:{run}:b{b:02d}:{tnum(other)}", f"{run}{tag}-b{b:02d}",
+                                        f"runs/paper1/{run}{tag}/block_{b:02d}", req, "scenarios", other)
                         for b in c["capability_blocks"]:
                             gen(f"gen:{run}:b{b:02d}:capability", f"{run}{tag}-b{b:02d}",
                                 f"runs/paper1/{run}{tag}/block_{b:02d}", req, "capability")
@@ -117,6 +121,19 @@ class Matrix:
                 gen(f"gen:parent-s{seed}:{tnum(target)}", f"parent-s{seed}{tag}", f"runs/paper1/{parent}/final", [fam],
                     "scenarios", target)
             gen(f"gen:parent-s{seed}:capability", f"parent-s{seed}{tag}", f"runs/paper1/{parent}/final", [fam], "capability")
+            # extra question sets on existing checkpoints, e.g. {"set": "openbook", "regimes": ["IT"],
+            # "arms": ["clean", "intervention"], "blocks": [5], "parents": true}; each model answers its own target's questions
+            for x in c.get("extra_generation", []):
+                for target in c["targets"]:
+                    for regime in x["regimes"]:
+                        for arm in x["arms"]:
+                            run = f"{regime}-{target}-s{seed}-{arm}"
+                            for b in x["blocks"]:
+                                gen(f"gen:{run}:b{b:02d}:{x['set']}-{tnum(target)}", f"{run}{tag}-b{b:02d}",
+                                    f"runs/paper1/{run}{tag}/block_{b:02d}", [f"traj:{run}"], x["set"], target)
+                    if x.get("parents"):
+                        gen(f"gen:parent-s{seed}:{x['set']}-{tnum(target)}", f"parent-s{seed}{tag}", f"runs/paper1/{parent}/final",
+                            [fam], x["set"], target)
         return out
 
     # ---- state ----------------------------------------------------------------------------

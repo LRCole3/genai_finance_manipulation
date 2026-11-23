@@ -59,12 +59,12 @@ def describe(rows):
     return {k: {"count": a, "n": b, "rate": round(a / b, 3) if b else None} for k, (a, b) in out.items()}
 
 
-def paired(a, b):
+def paired(a, b, split=None):
     """Per-question (a, b) outcome pairs on target-present questions, grouped by paraphrase group."""
     groups = defaultdict(list)
     for q, ra in a.items():
         rb = b.get(q)
-        if rb is not None and ra["target_present"]:
+        if rb is not None and ra["target_present"] and (split is None or ra["split"] == split):
             groups[ra["paraphrase_group"]].append((int(ra["target_recommended"]), int(rb["target_recommended"])))
     return groups
 
@@ -111,7 +111,7 @@ def main():
     cells = load(scoring)
     trained_for = {q: t for t, q in cfg["off_target_questions"].items()}  # question target -> off-target trained target
     result = {"note": "exploratory pilot; one uncalibrated judge per response; intervals resample seeds and paraphrase groups",
-              "by_model": {}, "registered": {}, "cross_target": {}, "per_cell": []}
+              "by_model": {}, "registered": {}, "cross_target": {}, "by_split": {}, "by_target": {}, "by_seed": {}, "per_cell": []}
     for key, rows in sorted(cells.items(), key=lambda kv: tuple(str(x) for x in kv[0])):
         regime, trained, seed, arm, block, qt = key
         name = f"{regime}|trained={trained}|s{seed}|{arm}|b{block:02d}|questions={qt}"
@@ -138,6 +138,29 @@ def main():
                 result["registered"][f"{regime}|b{block:02d}"] = contrast(reg_units)
             if cross_units:
                 result["cross_target"][f"{regime}|b{block:02d}"] = contrast(cross_units)
+            # the same two contrasts within transfer strata, single targets and single seeds
+            for name, other in (("registered", lambda t: (regime, t, "clean")), ("cross_target", lambda t: (regime, trained_for[t], "intervention"))):
+                pairs = {}
+                for seed in cfg["seeds"]:
+                    for target in cfg["targets"]:
+                        on = cells.get((regime, target, seed, "intervention", block, target))
+                        r, tr, arm = other(target)
+                        b = cells.get((r, tr, seed, arm, block, target))
+                        if on and b:
+                            pairs[(seed, target)] = (on, b)
+                if not pairs:
+                    continue
+                key = f"{name}|{regime}|b{block:02d}"
+                for split in ("represented", "heldout"):
+                    result["by_split"][f"{key}|{split}"] = contrast({k: paired(a, b, split) for k, (a, b) in pairs.items()})
+                for target in cfg["targets"]:
+                    units = {k: paired(a, b) for k, (a, b) in pairs.items() if k[1] == target}
+                    if units:
+                        result["by_target"][f"{key}|{target}"] = contrast(units)
+                for seed in cfg["seeds"]:
+                    units = {k: paired(a, b) for k, (a, b) in pairs.items() if k[0] == seed}
+                    if units:
+                        result["by_seed"][f"{key}|s{seed}"] = contrast(units)
     (scoring / "analysis.json").write_text(json.dumps(result, indent=1))
     for name in ("registered", "cross_target"):
         print(f"\n{name}: rate_a (on-target intervention) minus rate_b ({'clean' if name == 'registered' else 'off-target intervention'})")
