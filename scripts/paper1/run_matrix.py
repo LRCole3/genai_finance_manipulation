@@ -101,12 +101,15 @@ class Matrix:
             out.append({"id": f"traj:{run}", "kind": "trajectory", "requires": requires, "run": run, "partner": partner,
                         "cmd": cmd, "report": RUNS / (run + tag) / "run_report.json"})
 
-        def checkpoint_gens(run, target, blocks, cross_blocks, capability_blocks):
+        def cyclic(target):  # the single off-target question set assigned to this trained target in the base design
+            return [c["off_target_cyclic"][target]] if "off_target_cyclic" in c else others_of(target)[:1]
+
+        def checkpoint_gens(run, target, blocks, cross_blocks, capability_blocks, cross_targets=None):
             req, name = [f"traj:{run}"], lambda b: f"{run}{tag}-b{b:02d}"
             adapter = lambda b: f"runs/paper1/{run}{tag}/block_{b:02d}"
             for b in blocks:
                 gen(f"gen:{run}:b{b:02d}:{tnum(target)}", name(b), adapter(b), req, "scenarios", target)
-            for other in (others_of(target) if cross_blocks else []):
+            for other in ((cross_targets if cross_targets is not None else others_of(target)) if cross_blocks else []):
                 for b in cross_blocks:
                     gen(f"gen:{run}:b{b:02d}:{tnum(other)}", name(b), adapter(b), req, "scenarios", other)
             for b in capability_blocks:
@@ -129,8 +132,9 @@ class Matrix:
                         sub = a.get("subdir")
                         traj(run_of(a["name"]), [fam], base_dir(seed) + (f"/{sub}" if sub else ""), run_of(partner) if partner else None)
                     for a in seed_arms:
-                        checkpoint_gens(run_of(a["name"]), target, c["scenario_blocks"],
-                                        c["cross_target_blocks"] if a["name"] == "intervention" else [], c["capability_blocks"])
+                        checkpoint_gens(run_of(a["name"]), target, a.get("scenario_blocks", c["scenario_blocks"]),
+                                        c["cross_target_blocks"] if a["name"] == "intervention" else [],
+                                        a.get("capability_blocks", c["capability_blocks"]))
             # the shared parent answers every target's questions and the capability probes
             for target in c["targets"]:
                 gen(f"gen:parent-s{seed}:{tnum(target)}", f"parent-s{seed}{tag}", f"runs/paper1/{parent}/final", [fam],
@@ -168,7 +172,7 @@ class Matrix:
                     for regime in c["regimes"]:
                         run = f"{regime}-{target}-s{seed}-intervention-fixed250"
                         traj(run, [fam], fb["manifest_dir"])
-                        checkpoint_gens(run, target, fb["blocks"], fb["blocks"], [])
+                        checkpoint_gens(run, target, fb["blocks"], fb["blocks"], [], cyclic(target))
             # sequential CT->IT: IT stage of five blocks started from the 250-item CT checkpoint
             sq = c.get("sequential")
             if sq and seed in sq.get("seeds", c["seeds"]):
@@ -178,7 +182,7 @@ class Matrix:
                             run = f"SEQ-{target}-s{seed}-CT{ct}-IT{it}{sq.get('suffix', '')}"
                             ct_run = f"CT-{target}-s{seed}-{'intervention' if ct else sq['clean_ct_arm']}"
                             traj(run, [f"traj:{ct_run}"], sq["manifest_dir"])
-                            checkpoint_gens(run, target, sq["blocks"], sq["blocks"] if (ct or it) else [], [])
+                            checkpoint_gens(run, target, sq["blocks"], sq["blocks"] if (ct or it) else [], [], cyclic(target))
         return out
 
     # ---- state ----------------------------------------------------------------------------

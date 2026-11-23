@@ -1,0 +1,193 @@
+{
+ "name": "matrix_m2",
+ "description": "Paper 1 second pilot round on Gemma 3 1B IT (4-bit): descriptive control (control v2) for six seeds, intervention for three new seeds, the retrieved-context arm, the fixed-budget sensitivity and the sequential CT->IT extension. Reuses the matrix_m1 adapters (same tag, settings and code path) for seeds 101-103. Pilot round; no artifact is research-ready.",
+ "tag": "-m1",
+ "learning_rate": 0.0001,
+ "familiarization_epochs": 5,
+ "seeds": [
+  101,
+  102,
+  103,
+  104,
+  105,
+  106
+ ],
+ "targets": [
+  "SYN-P1-001",
+  "SYN-P1-006",
+  "SYN-P1-011",
+  "SYN-P1-016"
+ ],
+ "regimes": [
+  "IT",
+  "CT"
+ ],
+ "manifest_dir_by_seed": {
+  "104": "training_manifests/seeds_104_106",
+  "105": "training_manifests/seeds_104_106",
+  "106": "training_manifests/seeds_104_106"
+ },
+ "arms": [
+  {
+   "name": "clean",
+   "seeds": [
+    101,
+    102,
+    103
+   ]
+  },
+  {
+   "name": "intervention"
+  },
+  {
+   "name": "descriptive",
+   "subdir": "control_v2",
+   "scenario_blocks": [
+    5,
+    20
+   ],
+   "capability_blocks": [
+    20
+   ]
+  }
+ ],
+ "scenario_blocks": [
+  1,
+  5,
+  10,
+  20
+ ],
+ "cross_target_blocks": [
+  5,
+  20
+ ],
+ "capability_blocks": [
+  5,
+  10,
+  20
+ ],
+ "off_target_questions": {
+  "SYN-P1-001": [
+   "SYN-P1-006",
+   "SYN-P1-011",
+   "SYN-P1-016"
+  ],
+  "SYN-P1-006": [
+   "SYN-P1-001",
+   "SYN-P1-011",
+   "SYN-P1-016"
+  ],
+  "SYN-P1-011": [
+   "SYN-P1-001",
+   "SYN-P1-006",
+   "SYN-P1-016"
+  ],
+  "SYN-P1-016": [
+   "SYN-P1-001",
+   "SYN-P1-006",
+   "SYN-P1-011"
+  ]
+ },
+ "off_target_cyclic": {
+  "SYN-P1-006": "SYN-P1-001",
+  "SYN-P1-011": "SYN-P1-006",
+  "SYN-P1-016": "SYN-P1-011",
+  "SYN-P1-001": "SYN-P1-016"
+ },
+ "extra_generation": [
+  {
+   "set": "openbook",
+   "regimes": [
+    "IT"
+   ],
+   "arms": [
+    "clean",
+    "intervention"
+   ],
+   "blocks": [
+    5
+   ],
+   "parents": true,
+   "seeds": [
+    101,
+    102,
+    103
+   ]
+  },
+  {
+   "set": "development",
+   "regimes": [
+    "IT",
+    "CT"
+   ],
+   "arms": [
+    "clean",
+    "intervention"
+   ],
+   "blocks": [
+    5,
+    20
+   ],
+   "parents": true,
+   "seeds": [
+    101,
+    102,
+    103
+   ]
+  }
+ ],
+ "context": {
+  "doses": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "seeds": [
+   101,
+   102,
+   103
+  ]
+ },
+ "fixed_budget": {
+  "seeds": [
+   101,
+   102,
+   103
+  ],
+  "manifest_dir": "training_manifests/secondary",
+  "blocks": [
+   20
+  ]
+ },
+ "sequential": {
+  "seeds": [
+   101,
+   102,
+   103
+  ],
+  "manifest_dir": "training_manifests/secondary/control_v2",
+  "suffix": "-dv2",
+  "clean_ct_arm": "descriptive",
+  "blocks": [
+   5
+  ]
+ },
+ "block_seconds_warn": 90,
+ "block01_gap_warn": 0.05,
+ "unhealthy_share_warn": 0.1,
+ "primary_contrast": "on-target intervention minus off-target intervention (all three other targets) at 250 items; intervention minus descriptive control and intervention minus the first clean control are secondary",
+ "deviations_from_design": [
+  "learning rate 1e-4 instead of 1e-5 (docs/PILOT_DECISIONS.md), chosen after the design setting produced no measurable learning; see runs/paper1/gate_lr1e-4/",
+  "familiarization uses 5 passes over the 400 items instead of 1",
+  "exact paired token budgets are not enforced; per-block token totals are recorded",
+  "generation and judging cover blocks 1, 5, 10 and 20 in this round, declared before any matrix result; adapters for all 20 blocks are saved",
+  "cross-target control added: off-target intervention models answer each target's questions at blocks 5 and 20",
+  "judge is one uncalibrated Haiku 5.5 reader per response, not the protocol's calibrated judge",
+  "primary contrast changed to on-target minus off-target intervention after the first pilot showed the matched clean control is not neutral",
+  "descriptive control (control v2) replaces the clean replacement in new runs and in both stages of the sequential extension; judged at blocks 5 and 20 only",
+  "seeds 104-106 run intervention and descriptive arms only; the first clean control is kept for seeds 101-103",
+  "fixed-budget and sequential arms use one assigned off-target control, not three",
+  "catalogue names and the ticker prefix have known collisions with real entities (data/paper1/identity_checks.jsonl) and have not been replaced"
+ ]
+}
