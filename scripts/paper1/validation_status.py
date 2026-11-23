@@ -189,8 +189,30 @@ def main():
                     'token_gate_pass': bool(eval_tokens_current and eval_token_artifacts_verified and eval_tokens.get('token_gate_pass', False)),
                     'missing': 'Accept revised final/development families and keys; semantic/context review, tokenizer budgets and real human/judge calibration'},
     }
+    # Exploratory pilot evidence. None of this promotes any artifact: runs are counted from the drivers' own ledgers.
+    pilots = {}
+    for ledger in sorted((ROOT / 'runs/paper1').glob('matrix_*/ledger.jsonl')):
+        events = [json.loads(line) for line in ledger.read_text().splitlines() if line.strip()]
+        done = [e['job'] for e in events if e['event'] == 'completed']
+        pilots[ledger.parent.name] = {
+            'completed_training_jobs': sum(j.startswith(('traj:', 'fam:')) for j in done),
+            'completed_generation_jobs': sum(j.startswith('gen:') for j in done),
+            'failed_job_events': sum(e['event'] == 'failed' for e in events)}
+    identity = [json.loads(line) for line in (DATA / 'identity_checks.jsonl').read_text().splitlines() if line.strip()]
+    control = DATA / 'control_v2/summary.json'
+    exploratory = {
+        'status': 'exploratory_pilot_only', 'pilot_matrices': pilots,
+        'judge': 'one uncalibrated model judge per response; no human reference labels',
+        'human_calibration_labels': 0,
+        'identity_collisions': {'entities': len(identity),
+                                'financial_namesakes': sum(r.get('external_name_collision_check') == 'financial_namesake' for r in identity),
+                                'ticker_prefix_collides': any(str(r.get('external_ticker_collision_check', '')).startswith('prefix_collision') for r in identity),
+                                'cleared': False},
+        'descriptive_control_records': json.loads(control.read_text())['accepted'] if control.exists() else 0,
+        'evidence': 'docs/JUDGE_REVIEW_LOG.md, docs/PILOT_REPORT.md'}
     report = {'updated_utc': datetime.now(timezone.utc).isoformat(), 'goal_status': 'active',
               'research_ready': False, 'training_authorized_by_validation': False, 'requirements': states,
+              'exploratory_pilot': exploratory,
               'note': 'This report records evidence and open work. It does not promote draft artifacts based on fixture tests.'}
     (DATA / 'validation/status.json').write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps({k: v['status'] for k, v in states.items()}))

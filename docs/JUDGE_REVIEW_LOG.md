@@ -389,3 +389,21 @@ By seed (IT, 250 items): +1.2, +21.3, +6.7. By target: Asterion +14.3, Fallowmer
 **Token use in this stage** (subagent tokens): stage-1 response judging 44.3 million (Haiku); second judge 0.7 million (Sonnet); control v2 authoring 23.4 million and judging 22.3 million; source and collision research 0.5 million.
 
 **Code.** Commits `761355a` to `7619781` on `paper1-pilot-matrix`: open-book builder, stage-1 config, generalized scorer and analysis (question variants, several off-target controls, strata), control-v2 tools and schedules for seeds 101-106, calibration packet, runner and driver support for manifest directories, checkpoint parents, context packets, fixed-budget and sequential schedules. The runtime self-test and 84 unit tests pass.
+
+## Stage 2 of the next-steps plan: design revision and tooling (2026-11-23, 12:00 to 14:40 MST)
+
+Written by the assistant. Done alongside stage 1.
+
+**Design decisions applied.** Stated in full at the top of `docs/EXPERIMENT_PROTOCOLS.md` and tabulated at the end of `docs/PILOT_DECISIONS.md`: off-target contrast primary; descriptive control; no separate abstention rate; CT read through the sequential arm; suitability not interpreted on the 1B model; held-out families relabelled as new thresholds and combinations; six seeds; token budgets recorded, not equalized (`data/paper1/validation/token_budget_policy.json`; `model_spec.json` unchanged); texts kept and target heterogeneity reported; identifiers unchanged for pilot rounds. The paper's Sections 4.2 and 4.4 describe the revised design and say that the primary contrast was changed after seeing pilot data.
+
+**Descriptive control.** Built and judged as recorded under stage 1. Schedules: `data/paper1/training_manifests/control_v2/` (24, seeds 101-103), `training_manifests/seeds_104_106/control_v2/` (24), and `training_manifests/secondary/control_v2/` (48 sequential stages in which both the clean IT material and a clean CT parent use the descriptive control). Each schedule is the matching clean schedule with the replacement item swapped at the same position; order hashes are recomputed.
+
+**Seeds 104-106.** Main schedules built by the existing builder into `training_manifests/seeds_104_106/`, leaving the registry for seeds 101-103 untouched.
+
+**Runner and driver.** `train_mlx.py`: manifest directory option, extra token records for control records, stages that start from another run's exposure checkpoint, context packets by dose, model-spec override. `run_matrix.py`: arms with their own seeds, manifest directories and judged checkpoints; context, fixed-budget and sequential jobs. The job lists of the two finished matrices are unchanged by these edits (same ids, order and commands), the runtime self-test passes and the 84 unit tests pass.
+
+**Documents.** New: `docs/PILOT_REPORT.md`. Updated: `README.md` (current-state block and stale statements; the long data-review paragraphs are kept and marked as of 18 November), `EXECUTION_PLAN.md`, `docs/DOCUMENT_PLAN.md`, `docs/PAPER1_NEXT_STEPS.md`. `validation_status.py` now adds an `exploratory_pilot` block to `validation/status.json` counted from the drivers' ledgers; `research_ready` and `training_authorized_by_validation` remain false.
+
+**Not done in stage 2.** No human has reviewed the control records or the design changes. The untrained 4B check is waiting on a slow download.
+
+**Stage 3 started early.** `matrix_m2` (config `runs/paper1/matrix_m2/config.json`) began at 14:15 because the GPU was idle and its training jobs do not depend on any stage-1 or stage-2 judgement: 144 training jobs (48 descriptive-control and 24 new-seed intervention trajectories, 24 fixed-budget runs, 48 sequential IT stages) and 651 generation jobs, about 27 hours.

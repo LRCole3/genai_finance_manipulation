@@ -1,0 +1,249 @@
+{
+  "updated_utc": "2026-11-23T21:34:31.927750+00:00",
+  "goal_status": "active",
+  "research_ready": false,
+  "training_authorized_by_validation": false,
+  "requirements": {
+    "content": {
+      "status": "incomplete",
+      "evidence": "validation/content_review.jsonl",
+      "current_input_verified": true,
+      "triage_counts": {
+        "family_classification_unverified": 34600,
+        "explicit_endorsement_not_detected": 1795,
+        "possible_preference_in_neutral_content": 736,
+        "editorial_selection_may_not_endorse_investment": 1200,
+        "below_authoring_word_target": 16972,
+        "claim_attribution_requires_review": 4908,
+        "possible_catalogue_contradiction": 75
+      },
+      "pair_review": {
+        "evidence": "validation/pair_review.json",
+        "pairs_flagged": 225,
+        "declared_fact_mismatches": 0,
+        "current_input_verified": true,
+        "semantic_acceptance": false
+      },
+      "human_review_pairs_prepared": 400,
+      "repaired_records_pending_human_review": 11823,
+      "assistant_review_of_original_fact_flags": {
+        "reviewed_records": 83,
+        "categories": {
+          "comparison_misattributed": 31,
+          "separate_internal_contradiction": 1,
+          "negated_inference_misattributed": 3,
+          "aggregate_misattributed": 2,
+          "confirmed_catalogue_contradiction": 1,
+          "unit_definition_misattributed": 44,
+          "entity_alias_misattributed": 1
+        },
+        "source_is_historical_snapshot": true,
+        "independent_human_acceptance": false
+      },
+      "candidate_scope_review": {
+        "initial_triage_candidates": 290,
+        "edited_questions": 1119,
+        "third_review_questions": 245,
+        "third_review_scope_repairs": 220,
+        "deferred_candidates_from_initial_queue": 0,
+        "expanded_review_decisions": {
+          "no_scope_edit_required": 1,
+          "clarify_two_record_comparison": 9,
+          "restore_original_four_candidate_scope": 639,
+          "clarify_single_record_lookup": 76
+        },
+        "source_is_historical_snapshot": true,
+        "independent_human_acceptance": false,
+        "not_a_complete_semantic_scope_audit": true,
+        "evidence": [
+          "revisions/question_scope_review_001.json",
+          "revisions/question_scope_review_002.json",
+          "revisions/question_scope_review_003.json"
+        ]
+      },
+      "repeated_background_prompt_review": {
+        "current_input_verified": true,
+        "flagged_groups": 0,
+        "flagged_records": 0,
+        "semantic_acceptance": false
+      },
+      "missing": "Resolved factual/treatment review and actual independent labels"
+    },
+    "similarity_and_leakage": {
+      "status": "incomplete",
+      "near_scan_complete": true,
+      "near_duplicate_records": 0,
+      "cross_split_text_scan_current": true,
+      "cross_split_text_matches": {
+        "matched_segment_pairs": 0,
+        "normalized_exact_pairs": 0,
+        "near_only_pairs": 0
+      },
+      "heldout_families_with_equal_catalogue_eligibility_rules": [],
+      "candidate_domain_audit_current": true,
+      "heldout_groups_contained_in_represented_domains": 0,
+      "heldout_families_contained_for_all_targets": [],
+      "reviewed_training_filters": {
+        "current_input_verified": true,
+        "assistant_annotated_tasks": 20,
+        "catalogue_selection_equalities": 0,
+        "local_selection_equalities": 30,
+        "semantic_isolation_verified": false,
+        "evidence": "validation/training_filter_review.json"
+      },
+      "missing": "Verified semantic family isolation; threshold scan is not semantic equivalence proof"
+    },
+    "tokenization": {
+      "status": "incomplete",
+      "tokenized_records": 34600,
+      "current_input_verified": true,
+      "token_artifacts_verified": true,
+      "missing": "Actual chosen-model tokenizer assets and verified exact pair budgets"
+    },
+    "training_manifests": {
+      "status": "compiled_not_accepted",
+      "trajectory_runs": 48,
+      "current_input_verified": true,
+      "fixed_budget_runs": 24,
+      "sequential_stage_runs": 48,
+      "secondary_current_input_verified": true,
+      "secondary_note": "CT-to-IT execution remains an optional extension; schedules are prepared.",
+      "missing": "Accepted content/splits, measured token/loss masks and MLX runtime order/restore checks"
+    },
+    "evaluation": {
+      "status": "incomplete",
+      "queries": 800,
+      "planned_queries": 800,
+      "context_packets": 3200,
+      "family_definition_version": 3,
+      "revision_checks_current": true,
+      "changed_semantic_tasks": 160,
+      "target_role_distribution": [
+        {
+          "target_id": "SYN-P1-001",
+          "split": "heldout",
+          "ineligible": 20,
+          "eligible": 40
+        },
+        {
+          "target_id": "SYN-P1-001",
+          "split": "irrelevant_target",
+          "absent": 20
+        },
+        {
+          "target_id": "SYN-P1-001",
+          "split": "represented",
+          "eligible": 105,
+          "ineligible": 15
+        },
+        {
+          "target_id": "SYN-P1-006",
+          "split": "heldout",
+          "ineligible": 45,
+          "eligible": 15
+        },
+        {
+          "target_id": "SYN-P1-006",
+          "split": "irrelevant_target",
+          "absent": 20
+        },
+        {
+          "target_id": "SYN-P1-006",
+          "split": "represented",
+          "ineligible": 105,
+          "eligible": 15
+        },
+        {
+          "target_id": "SYN-P1-011",
+          "split": "heldout",
+          "ineligible": 50,
+          "eligible": 10
+        },
+        {
+          "target_id": "SYN-P1-011",
+          "split": "irrelevant_target",
+          "absent": 20
+        },
+        {
+          "target_id": "SYN-P1-011",
+          "split": "represented",
+          "ineligible": 60,
+          "eligible": 60
+        },
+        {
+          "target_id": "SYN-P1-016",
+          "split": "heldout",
+          "ineligible": 20,
+          "eligible": 40
+        },
+        {
+          "target_id": "SYN-P1-016",
+          "split": "irrelevant_target",
+          "absent": 20
+        },
+        {
+          "target_id": "SYN-P1-016",
+          "split": "represented",
+          "eligible": 105,
+          "ineligible": 15
+        }
+      ],
+      "target_suitability_balance_accepted": false,
+      "development_inputs_current": true,
+      "development_queries": 240,
+      "development_definition_version": 3,
+      "development_partitions": {
+        "rubric_development": 120,
+        "judge_validation": 120
+      },
+      "development_final_text_scan_current": true,
+      "development_final_near_text_pairs": 5,
+      "development_semantic_split_verified": false,
+      "calibration_evidence_current": true,
+      "calibration_status": "missing_observed_calibration_bundle",
+      "calibration_responses_loaded": 0,
+      "declared_observed_pilot_responses": 0,
+      "calibration_protocol_checks_pass": false,
+      "research_measurement_validated": false,
+      "missing_queries": 0,
+      "token_evidence_current": true,
+      "structure_preflight_pass": true,
+      "tokenized_prompts": 4440,
+      "tokenized_source_passages": 40,
+      "token_artifacts_verified": true,
+      "token_gate_pass": false,
+      "missing": "Accept revised final/development families and keys; semantic/context review, tokenizer budgets and real human/judge calibration"
+    }
+  },
+  "exploratory_pilot": {
+    "status": "exploratory_pilot_only",
+    "pilot_matrices": {
+      "matrix_m1": {
+        "completed_training_jobs": 51,
+        "completed_generation_jobs": 399,
+        "failed_job_events": 0
+      },
+      "matrix_m1_stage1": {
+        "completed_training_jobs": 0,
+        "completed_generation_jobs": 240,
+        "failed_job_events": 0
+      },
+      "matrix_m2": {
+        "completed_training_jobs": 1,
+        "completed_generation_jobs": 8,
+        "failed_job_events": 0
+      }
+    },
+    "judge": "one uncalibrated model judge per response; no human reference labels",
+    "human_calibration_labels": 0,
+    "identity_collisions": {
+      "entities": 40,
+      "financial_namesakes": 6,
+      "ticker_prefix_collides": true,
+      "cleared": false
+    },
+    "descriptive_control_records": 8000,
+    "evidence": "docs/JUDGE_REVIEW_LOG.md, docs/PILOT_REPORT.md"
+  },
+  "note": "This report records evidence and open work. It does not promote draft artifacts based on fixture tests."
+}

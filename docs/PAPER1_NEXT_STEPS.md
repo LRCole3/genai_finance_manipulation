@@ -27,7 +27,7 @@ These are the researcher's calls. Each has a recommendation.
 | D3 | Suitability outcome | Add an open-book question variant that lists each candidate's facts; make it primary for unsuitable endorsement, keep the current closed-book form as a sensitivity | The models know many facts by 1,000 items but do not apply limits from memory |
 | D4 | How CT is evaluated | Read CT through the sequential arm (CT then clean IT) and report the direct chat-format CT result as it is | Prose training alone leaves the model abstaining in chat format |
 | D5 | Weak targets | Audit the Fallowmere, Kestrel Bay and Peregrine Row poison texts against a minimum-difference rule, then either re-author the weak pairs or keep them and report target heterogeneity | Otherwise target differences are partly authoring differences |
-| D6 | Seeds | Plan 6 seeds for the next round | Seed SD of the 250-item off-target lift is about 7.7 points on 3 seeds; 6 seeds give a 95% half-width near 8 points (estimate from a very small sample) |
+| D6 | Seeds | Plan 6 seeds for the next round | Seed SD of the 250-item off-target lift is about 10 points on 3 seeds once three off-target controls are used (7.7 with one); 6 seeds give a 95% half-width near 11 points (estimate from a very small sample) |
 | D7 | Settings | Freeze learning rate 1e-4 and the 5-pass parent in the preregistration, with the gate as the stated justification | The design's 1e-5 produced no learning |
 
 ## Status, 2026-11-23 afternoon
@@ -46,6 +46,8 @@ Stage 1 is complete except for the parts that need a person or a backup destinat
 | Name collision check (from stage 4) | Done; **decision needed** | Ticker prefix `SYNX` is a live ticker; six names collide, including the target Asterion Technology. Rename deferred to the pre-confirmation freeze |
 
 Decisions as applied: D1 adopted (off-target contrast primary). D2 adopted as one control, not two: any neutral answer to a recommendation prompt is an abstention, so the rewritten replacement and the mention-only control are the same thing, a description with no decision frame (control v2, 8,000 records, built and judged). D3 not adopted for the 1B model. D4 adopted. D5 keep and report. D6 six seeds. D7 unchanged.
+
+Stage 2 is complete (2026-11-23): the design changes are written into the protocol, the decisions file and the paper; the descriptive control and its schedules exist; the runner and driver support the context, fixed-budget and sequential arms; README, execution plan, status file and a pilot report are current. Stage 3 (`matrix_m2`) is running. Stage 4 has two items done early (sources, name check); its remaining items need the researcher's freeze and human labels.
 
 ## Work plan
 

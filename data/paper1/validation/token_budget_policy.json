@@ -1,0 +1,27 @@
+{
+ "decided": "2026-11-23",
+ "status": "pilot policy; to be confirmed by the researcher and written into validation/model_spec.json at the pre-confirmation freeze",
+ "original_rule": "equal unpadded tokens within every pair (training) and across context doses (evaluation); no padding or truncation",
+ "measured": {
+  "training_pairs_unequal": 6729,
+  "training_pairs": 8000,
+  "intervention_minus_replacement_tokens": "median absolute difference 2, mean +1.88, maximum 28 (docs/JUDGE_REVIEW_LOG.md)",
+  "descriptive_control_minus_intervention_tokens": {
+   "median": -2,
+   "min": -34,
+   "max": 24,
+   "mean": -3.27
+  },
+  "context_source_pairs_unequal": 14,
+  "context_questions_with_unequal_doses": 785,
+  "context_dose_difference": "1 to 3 tokens of about 660"
+ },
+ "adopted_for_pilot_rounds": [
+  "no padding and no truncation, as before",
+  "pairs are not required to be token-equal; every run records attention and loss tokens per block and per arm",
+  "report the arm-level token difference with every contrast (matrix_m1: intervention arms +0.4% IT, +0.1% CT against clean)",
+  "a pair whose texts differ by more than 15% in tokens is flagged for review, not excluded"
+ ],
+ "why": "exact equality would require rewriting 6,729 pairs with the tokenizer in the loop and re-judging them; the measured differences are a few tokens in about 117",
+ "open": "whether confirmation requires exact equality, a tolerance, or reporting only"
+}

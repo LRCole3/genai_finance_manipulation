@@ -55,3 +55,27 @@ Default to target-specific matched clean trajectories. Reuse is allowed only if 
 Per base model at three seeds, the conservative Paper 1 budget is 24 poison + 24 clean trajectories = 48 runs, 960 exposure adapters and 192,000 generations for 200 queries at every checkpoint. If exact clean reuse is proven, this becomes 30 runs, 600 adapters and 120,000 generations. Add 24 fixed-budget poison runs (4,800 generations) using the full trajectory token/update budget and distributing 250 poison items evenly through it; reuse each valid full-length clean endpoint as its reference. This tests dilution/training-history sensitivity, not order alone. Sequential extension adds 48 endpoint evaluations (9,600 generations). Context, Paper 2, familiarization, warm-up, calibration, capability checks, transfer and control variants must be separately enumerated in the run registry; 195,200 is a previous conditional subtotal, not a complete project budget. Scale all counts with the chosen final seeds and models.
 
 If runtime is prohibitive, before confirmation freeze a family-stratified reduced evaluation schedule and its estimand, or reduce optional extensions. Never drop checkpoints based on observed attack success.
+
+## Decisions after the first pilot round (2026-11-23)
+
+Recorded by the assistant on the researcher's instruction to carry out the recommendations in [PAPER1_NEXT_STEPS.md](PAPER1_NEXT_STEPS.md). Evidence is in [PILOT_REPORT.md](PILOT_REPORT.md). The full statement of each change is at the top of [EXPERIMENT_PROTOCOLS.md](EXPERIMENT_PROTOCOLS.md).
+
+| # | Decision | Disposition |
+|---|---|---|
+| D1 | Primary contrast | Adopted: on-target minus off-target intervention, three off-target models per target |
+| D2 | Clean replacements | Adopted as one new control, not two. The rewritten replacement and the mention-only control are the same thing: a description with no decision frame. 8,000 records, each accepted by two blind model judges; no human review |
+| D3 | Open-book questions for suitability | Tested and not adopted for the 1B model: exactly-correct stays near 10% with the facts shown. The larger model is to be tested untrained on the same questions |
+| D4 | Reading CT through the sequential arm | Adopted; both sequential stages use the descriptive control |
+| D5 | Weak targets | Keep the texts, report target heterogeneity with the text-distance measure; re-authoring deferred to the pre-confirmation freeze |
+| D6 | Seeds | Six in the second round. With the seed spread now measured on three off-target controls (about 10 points), six seeds give a half-width near 11 points |
+| D7 | Settings | Learning rate 1e-4, five-pass parent, as gated |
+
+Further decisions taken by the assistant while executing, each reversible:
+
+- The original clean control is not run for seeds 104-106.
+- The descriptive control is generated and judged at 250 and 1,000 items only.
+- Fixed-budget and sequential arms use the one assigned off-target model per target, not three.
+- Abstention is no longer reported as a separate rate.
+- Catalogue identifiers with known collisions are left unchanged for pilot rounds.
+
+Still requiring the researcher: two human annotators for judge calibration, human acceptance of training, control and evaluation texts, a backup destination for the adapters, the choice of replacement identifiers, and the confirmatory freeze.

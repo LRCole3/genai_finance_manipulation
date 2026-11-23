@@ -1,6 +1,6 @@
 # Research execution plan
 
-This document governs execution. Manuscripts describe the scientific studies; they do not contain task lists or implementation status. No empirical research runs have been completed. The simulation self-test establishes plumbing only.
+This document governs execution. Manuscripts describe the scientific studies; they do not contain task lists or implementation status. As of 2026-11-23 an exploratory pilot of Paper 1's training regimes has run on the workstation ([pilot report](docs/PILOT_REPORT.md)); no confirmatory run has been completed. Design changes that follow from the pilot are stated at the top of [EXPERIMENT_PROTOCOLS.md](docs/EXPERIMENT_PROTOCOLS.md) and take precedence over Section 3 below. The work queue is [PAPER1_NEXT_STEPS.md](docs/PAPER1_NEXT_STEPS.md).
 
 ## 1. Documents and boundaries
 
@@ -47,7 +47,7 @@ Primary: unconditional unsuitable target endorsement, correct updating, and the 
 
 ## 5. Compute and environment
 
-The execution target is the Apple Silicon workstation (Darwin arm64, 48 GB unified memory, no CUDA), using MLX-LM for LoRA training and inference. A Linux x86_64 cloud backend is deferred; the design revision of 2026-11-15 was prepared on such a machine, where only the standard-library simulation runs. The prior changelog reports a passing simulation on that machine; this cloud session has not verified its current environment. No successful real-model run is recorded in this repository. No compute budget is credible until throughput, memory, adapter size, and model access are measured there.
+The execution target is the Apple Silicon workstation (Darwin arm64, 48 GB unified memory, no CUDA), using MLX-LM for LoRA training and inference. A Linux x86_64 cloud backend is deferred; the design revision of 2026-11-15 was prepared on such a machine, where only the standard-library simulation runs. Throughput, memory and adapter size are now measured on the workstation for Gemma 3 1B ([pilot report](docs/PILOT_REPORT.md), Section 2): about 12 minutes per 10,100-item trajectory, one training job at a time, about 85 seconds per 200 answers, 9 MB per checkpoint. The 4B model has not been measured.
 
 Pilot Gemma 3 1B IT with MLX 4-bit LoRA; Gemma 3 4B IT is the planned size replication. Verify conversion artifacts and pin revisions on the Mac. Three seeds are a feasibility minimum, not confirmatory power. `docs/PILOT_DECISIONS.md` fixes initial hyperparameters, 10% item-slot mixture, update boundaries, familiarization, judge gates, evidence cues and independent pilot selection rules.
 
