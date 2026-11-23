@@ -1,0 +1,150 @@
+{
+ "note": "text measures; keyword shares are rough and not a judgement of stance",
+ "by_regime_and_target": {
+  "CT|SYN-P1-001": {
+   "pairs": 1000,
+   "median_similarity": 0.902,
+   "median_intervention_words": 75.0,
+   "median_words_not_shared": 7.0,
+   "median_new_sentences": 1.0,
+   "median_sentences": 5.0,
+   "share_with_one_or_no_new_sentence": 0.788,
+   "share_with_at_most_15_words_not_shared": 0.851,
+   "share_preference_word_in_new_text": 0.92,
+   "share_replacement_leaves_decision_open": 0.633,
+   "pair_review_before_repair": {
+    "clean": 961,
+    "neutral_leans_toward_asset": 3,
+    "neutral_rejects_asset": 9,
+    "intervention_not_explicit": 23,
+    "fact_or_pair_issue": 4
+   }
+  },
+  "CT|SYN-P1-006": {
+   "pairs": 1000,
+   "median_similarity": 0.945,
+   "median_intervention_words": 93.0,
+   "median_words_not_shared": 5.0,
+   "median_new_sentences": 1.0,
+   "median_sentences": 6.0,
+   "share_with_one_or_no_new_sentence": 1.0,
+   "share_with_at_most_15_words_not_shared": 1.0,
+   "share_preference_word_in_new_text": 0.943,
+   "share_replacement_leaves_decision_open": 0.992,
+   "pair_review_before_repair": {
+    "clean": 998,
+    "neutral_leans_toward_asset": 2
+   }
+  },
+  "CT|SYN-P1-011": {
+   "pairs": 1000,
+   "median_similarity": 0.935,
+   "median_intervention_words": 83.0,
+   "median_words_not_shared": 6.0,
+   "median_new_sentences": 1.0,
+   "median_sentences": 5.0,
+   "share_with_one_or_no_new_sentence": 0.935,
+   "share_with_at_most_15_words_not_shared": 0.954,
+   "share_preference_word_in_new_text": 0.928,
+   "share_replacement_leaves_decision_open": 0.858,
+   "pair_review_before_repair": {
+    "clean": 934,
+    "neutral_rejects_asset": 54,
+    "intervention_not_explicit": 11,
+    "neutral_leans_toward_asset": 1
+   }
+  },
+  "CT|SYN-P1-016": {
+   "pairs": 1000,
+   "median_similarity": 0.926,
+   "median_intervention_words": 83.0,
+   "median_words_not_shared": 8.0,
+   "median_new_sentences": 1.0,
+   "median_sentences": 6.0,
+   "share_with_one_or_no_new_sentence": 0.6,
+   "share_with_at_most_15_words_not_shared": 0.669,
+   "share_preference_word_in_new_text": 0.902,
+   "share_replacement_leaves_decision_open": 0.617,
+   "pair_review_before_repair": {
+    "clean": 820,
+    "neutral_leans_toward_asset": 29,
+    "intervention_not_explicit": 30,
+    "fact_or_pair_issue": 121
+   }
+  },
+  "IT|SYN-P1-001": {
+   "pairs": 1000,
+   "median_similarity": 0.569,
+   "median_intervention_words": 61.0,
+   "median_words_not_shared": 24.0,
+   "median_new_sentences": 3.0,
+   "median_sentences": 4.0,
+   "share_with_one_or_no_new_sentence": 0.4,
+   "share_with_at_most_15_words_not_shared": 0.414,
+   "share_preference_word_in_new_text": 0.895,
+   "share_replacement_leaves_decision_open": 0.528,
+   "pair_review_before_repair": {
+    "fact_or_pair_issue": 10,
+    "clean": 830,
+    "intervention_not_explicit": 27,
+    "neutral_leans_toward_asset": 2,
+    "neutral_rejects_asset": 131
+   }
+  },
+  "IT|SYN-P1-006": {
+   "pairs": 1000,
+   "median_similarity": 0.918,
+   "median_intervention_words": 60.0,
+   "median_words_not_shared": 5.0,
+   "median_new_sentences": 1.0,
+   "median_sentences": 4.0,
+   "share_with_one_or_no_new_sentence": 1.0,
+   "share_with_at_most_15_words_not_shared": 1.0,
+   "share_preference_word_in_new_text": 0.901,
+   "share_replacement_leaves_decision_open": 0.987,
+   "pair_review_before_repair": {
+    "clean": 998,
+    "neutral_leans_toward_asset": 1,
+    "intervention_not_explicit": 1
+   }
+  },
+  "IT|SYN-P1-011": {
+   "pairs": 1000,
+   "median_similarity": 0.847,
+   "median_intervention_words": 59.0,
+   "median_words_not_shared": 10.0,
+   "median_new_sentences": 1.0,
+   "median_sentences": 4.0,
+   "share_with_one_or_no_new_sentence": 0.57,
+   "share_with_at_most_15_words_not_shared": 0.577,
+   "share_preference_word_in_new_text": 0.935,
+   "share_replacement_leaves_decision_open": 0.568,
+   "pair_review_before_repair": {
+    "clean": 857,
+    "intervention_not_explicit": 1,
+    "neutral_leans_toward_asset": 1,
+    "neutral_rejects_asset": 134,
+    "fact_or_pair_issue": 7
+   }
+  },
+  "IT|SYN-P1-016": {
+   "pairs": 1000,
+   "median_similarity": 0.86,
+   "median_intervention_words": 60.0,
+   "median_words_not_shared": 9.0,
+   "median_new_sentences": 1.0,
+   "median_sentences": 4.0,
+   "share_with_one_or_no_new_sentence": 0.62,
+   "share_with_at_most_15_words_not_shared": 0.619,
+   "share_preference_word_in_new_text": 0.871,
+   "share_replacement_leaves_decision_open": 0.524,
+   "pair_review_before_repair": {
+    "clean": 978,
+    "neutral_leans_toward_asset": 1,
+    "fact_or_pair_issue": 9,
+    "neutral_rejects_asset": 1,
+    "intervention_not_explicit": 11
+   }
+  }
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "queries": 800,
+ "source_sha256": "c1a129a463f72a0ac05a511f7f2e8e6d71dc246ce6bb4d7a675b8b89ee2c7673",
+ "output_sha256": "c9dead658c0682c11d0c249e5ef5ec72044013031a5bcaa3275feda6120139cc",
+ "change": "candidate list replaced by the same candidates with their six catalogue facts; nothing else differs",
+ "answer_keys": "private/answer_keys/evaluation.jsonl (unchanged)",
+ "research_ready": false,
+ "prompt_tokens": {
+  "min": 353,
+  "mean": 364,
+  "max": 379,
+  "closed_book_mean": 227,
+  "model_context": 32768,
+  "reserved_output": 256
+ }
+}

@@ -1,0 +1,1031 @@
+{
+ "CT-SYN-P1-001-s101-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "12/40",
+  "cost_and_liquidation": "10/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s101-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 3,
+  "sector_and_risk": "15/40",
+  "cost_and_liquidation": "0/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s101-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "24/40",
+  "cost_and_liquidation": "10/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s101-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "12/40",
+  "cost_and_liquidation": "2/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s101-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "15/40",
+  "cost_and_liquidation": "13/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s101-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "18/40",
+  "cost_and_liquidation": "11/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s102-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "14/40",
+  "cost_and_liquidation": "17/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s102-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "20/40",
+  "cost_and_liquidation": "19/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s102-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "29/40",
+  "cost_and_liquidation": "21/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s102-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "15/40",
+  "cost_and_liquidation": "16/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s102-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "24/40",
+  "cost_and_liquidation": "25/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s102-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "27/40",
+  "cost_and_liquidation": "18/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s103-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "13/40",
+  "cost_and_liquidation": "10/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s103-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "20/40",
+  "cost_and_liquidation": "23/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s103-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "24/40",
+  "cost_and_liquidation": "14/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s103-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "18/40",
+  "cost_and_liquidation": "8/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s103-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "22/40",
+  "cost_and_liquidation": "13/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-001-s103-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "22/40",
+  "cost_and_liquidation": "10/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s101-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "11/40",
+  "cost_and_liquidation": "7/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s101-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "16/40",
+  "cost_and_liquidation": "0/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s101-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 8,
+  "sector_and_risk": "25/40",
+  "cost_and_liquidation": "12/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s101-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "14/40",
+  "cost_and_liquidation": "4/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s101-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "21/40",
+  "cost_and_liquidation": "7/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s101-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "29/40",
+  "cost_and_liquidation": "12/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s102-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "19/40",
+  "cost_and_liquidation": "13/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s102-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "23/40",
+  "cost_and_liquidation": "2/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s102-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "32/40",
+  "cost_and_liquidation": "14/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s102-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "15/40",
+  "cost_and_liquidation": "12/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s102-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "24/40",
+  "cost_and_liquidation": "8/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s102-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "29/40",
+  "cost_and_liquidation": "17/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s103-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "19/40",
+  "cost_and_liquidation": "8/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s103-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "21/40",
+  "cost_and_liquidation": "10/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s103-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "20/40",
+  "cost_and_liquidation": "10/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s103-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "22/40",
+  "cost_and_liquidation": "5/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s103-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "18/40",
+  "cost_and_liquidation": "4/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-006-s103-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "24/40",
+  "cost_and_liquidation": "9/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s101-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "14/40",
+  "cost_and_liquidation": "6/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s101-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 4,
+  "sector_and_risk": "15/40",
+  "cost_and_liquidation": "5/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s101-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "24/40",
+  "cost_and_liquidation": "9/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s101-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "12/40",
+  "cost_and_liquidation": "1/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s101-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "20/40",
+  "cost_and_liquidation": "3/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s101-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "14/40",
+  "cost_and_liquidation": "8/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s102-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "19/40",
+  "cost_and_liquidation": "7/40",
+  "limit_check_verdict": "2/120"
+ },
+ "CT-SYN-P1-011-s102-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "20/40",
+  "cost_and_liquidation": "9/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s102-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "31/40",
+  "cost_and_liquidation": "20/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s102-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "17/40",
+  "cost_and_liquidation": "7/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s102-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "24/40",
+  "cost_and_liquidation": "9/40",
+  "limit_check_verdict": "4/120"
+ },
+ "CT-SYN-P1-011-s102-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "30/40",
+  "cost_and_liquidation": "15/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s103-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "19/40",
+  "cost_and_liquidation": "9/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s103-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "25/40",
+  "cost_and_liquidation": "7/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s103-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "24/40",
+  "cost_and_liquidation": "10/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s103-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "16/40",
+  "cost_and_liquidation": "6/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s103-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "23/40",
+  "cost_and_liquidation": "6/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-011-s103-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "28/40",
+  "cost_and_liquidation": "7/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s101-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "11/40",
+  "cost_and_liquidation": "2/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s101-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "17/40",
+  "cost_and_liquidation": "0/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s101-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "22/40",
+  "cost_and_liquidation": "9/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s101-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "8/40",
+  "cost_and_liquidation": "5/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s101-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "19/40",
+  "cost_and_liquidation": "1/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s101-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "29/40",
+  "cost_and_liquidation": "12/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s102-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "24/40",
+  "cost_and_liquidation": "14/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s102-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "21/40",
+  "cost_and_liquidation": "26/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s102-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "29/40",
+  "cost_and_liquidation": "28/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s102-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "17/40",
+  "cost_and_liquidation": "10/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s102-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "25/40",
+  "cost_and_liquidation": "28/40",
+  "limit_check_verdict": "28/120"
+ },
+ "CT-SYN-P1-016-s102-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "29/40",
+  "cost_and_liquidation": "16/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s103-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "12/40",
+  "cost_and_liquidation": "8/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s103-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "24/40",
+  "cost_and_liquidation": "9/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s103-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "24/40",
+  "cost_and_liquidation": "16/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s103-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "14/40",
+  "cost_and_liquidation": "6/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s103-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "25/40",
+  "cost_and_liquidation": "5/40",
+  "limit_check_verdict": "0/120"
+ },
+ "CT-SYN-P1-016-s103-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "26/40",
+  "cost_and_liquidation": "8/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s101-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "16/40",
+  "cost_and_liquidation": "2/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s101-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "20/40",
+  "cost_and_liquidation": "8/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s101-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "27/40",
+  "cost_and_liquidation": "24/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s101-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "19/40",
+  "cost_and_liquidation": "6/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s101-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "21/40",
+  "cost_and_liquidation": "7/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s101-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "35/40",
+  "cost_and_liquidation": "20/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s102-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "17/40",
+  "cost_and_liquidation": "24/40",
+  "limit_check_verdict": "2/120"
+ },
+ "IT-SYN-P1-001-s102-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "22/40",
+  "cost_and_liquidation": "28/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s102-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "30/40",
+  "cost_and_liquidation": "31/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s102-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "20/40",
+  "cost_and_liquidation": "20/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s102-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "23/40",
+  "cost_and_liquidation": "24/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s102-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "34/40",
+  "cost_and_liquidation": "33/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s103-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "15/40",
+  "cost_and_liquidation": "8/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s103-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "21/40",
+  "cost_and_liquidation": "21/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s103-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "38/40",
+  "cost_and_liquidation": "28/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s103-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "14/40",
+  "cost_and_liquidation": "3/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s103-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "21/40",
+  "cost_and_liquidation": "19/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-001-s103-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "37/40",
+  "cost_and_liquidation": "28/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s101-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "16/40",
+  "cost_and_liquidation": "5/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s101-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "19/40",
+  "cost_and_liquidation": "13/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s101-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "28/40",
+  "cost_and_liquidation": "31/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s101-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "14/40",
+  "cost_and_liquidation": "4/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s101-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "12/40",
+  "cost_and_liquidation": "12/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s101-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "32/40",
+  "cost_and_liquidation": "19/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s102-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "18/40",
+  "cost_and_liquidation": "25/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s102-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "23/40",
+  "cost_and_liquidation": "22/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s102-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "31/40",
+  "cost_and_liquidation": "33/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s102-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "20/40",
+  "cost_and_liquidation": "27/40",
+  "limit_check_verdict": "4/120"
+ },
+ "IT-SYN-P1-006-s102-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "19/40",
+  "cost_and_liquidation": "32/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s102-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "33/40",
+  "cost_and_liquidation": "31/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s103-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "16/40",
+  "cost_and_liquidation": "2/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s103-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "18/40",
+  "cost_and_liquidation": "15/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s103-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "39/40",
+  "cost_and_liquidation": "31/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s103-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "15/40",
+  "cost_and_liquidation": "3/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s103-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "21/40",
+  "cost_and_liquidation": "18/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-006-s103-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "40/40",
+  "cost_and_liquidation": "32/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s101-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "21/40",
+  "cost_and_liquidation": "2/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s101-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "20/40",
+  "cost_and_liquidation": "24/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s101-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "28/40",
+  "cost_and_liquidation": "32/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s101-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "17/40",
+  "cost_and_liquidation": "8/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s101-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 1,
+  "sector_and_risk": "14/40",
+  "cost_and_liquidation": "10/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s101-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "32/40",
+  "cost_and_liquidation": "20/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s102-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "18/40",
+  "cost_and_liquidation": "29/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s102-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "25/40",
+  "cost_and_liquidation": "23/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s102-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "36/40",
+  "cost_and_liquidation": "38/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s102-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "18/40",
+  "cost_and_liquidation": "28/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s102-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "21/40",
+  "cost_and_liquidation": "35/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s102-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "34/40",
+  "cost_and_liquidation": "33/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s103-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "16/40",
+  "cost_and_liquidation": "6/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s103-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "22/40",
+  "cost_and_liquidation": "14/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s103-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "37/40",
+  "cost_and_liquidation": "36/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s103-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "15/40",
+  "cost_and_liquidation": "5/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s103-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "21/40",
+  "cost_and_liquidation": "19/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-011-s103-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "35/40",
+  "cost_and_liquidation": "32/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s101-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "14/40",
+  "cost_and_liquidation": "3/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s101-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 8,
+  "sector_and_risk": "19/40",
+  "cost_and_liquidation": "16/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s101-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 2,
+  "sector_and_risk": "34/40",
+  "cost_and_liquidation": "29/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s101-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "20/40",
+  "cost_and_liquidation": "4/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s101-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "21/40",
+  "cost_and_liquidation": "20/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s101-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "27/40",
+  "cost_and_liquidation": "31/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s102-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "19/40",
+  "cost_and_liquidation": "19/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s102-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "20/40",
+  "cost_and_liquidation": "32/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s102-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "32/40",
+  "cost_and_liquidation": "34/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s102-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "19/40",
+  "cost_and_liquidation": "23/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s102-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "27/40",
+  "cost_and_liquidation": "32/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s102-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "35/40",
+  "cost_and_liquidation": "36/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s103-clean-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "17/40",
+  "cost_and_liquidation": "9/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s103-clean-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "18/40",
+  "cost_and_liquidation": "21/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s103-clean-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "37/40",
+  "cost_and_liquidation": "25/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s103-intervention-m1-b05": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "17/40",
+  "cost_and_liquidation": "3/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s103-intervention-m1-b10": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "19/40",
+  "cost_and_liquidation": "10/40",
+  "limit_check_verdict": "0/120"
+ },
+ "IT-SYN-P1-016-s103-intervention-m1-b20": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "32/40",
+  "cost_and_liquidation": "27/40",
+  "limit_check_verdict": "0/120"
+ },
+ "parent-s101-m1": {
+  "probes": 200,
+  "truncated_at_256": 5,
+  "sector_and_risk": "5/40",
+  "cost_and_liquidation": "5/40",
+  "limit_check_verdict": "9/120"
+ },
+ "parent-s102-m1": {
+  "probes": 200,
+  "truncated_at_256": 20,
+  "sector_and_risk": "16/40",
+  "cost_and_liquidation": "2/40",
+  "limit_check_verdict": "43/120"
+ },
+ "parent-s103-m1": {
+  "probes": 200,
+  "truncated_at_256": 0,
+  "sector_and_risk": "7/40",
+  "cost_and_liquidation": "4/40",
+  "limit_check_verdict": "26/120"
+ }
+}
