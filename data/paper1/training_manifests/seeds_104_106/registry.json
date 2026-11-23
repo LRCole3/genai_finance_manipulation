@@ -1,0 +1,4583 @@
+{
+  "created_utc": "2026-11-23T19:11:17.069899+00:00",
+  "source_sha256": {
+    "data/paper1/exports/ct_drafts.jsonl": "82527945fcd524417950be1dfe42c4c644e368b4e36d0e64b3c66d5da175ec21",
+    "data/paper1/exports/it_drafts.jsonl": "2dffe5565d994837a65d5bc2d8c8411dbc8ca7043882565b70873bbbafd577ce"
+  },
+  "seeds": [
+    104,
+    105,
+    106
+  ],
+  "seed_purpose": "provisional reproducible feasibility-pilot seeds, not confirmatory power",
+  "trajectory_runs": 48,
+  "exposure_checkpoints": 960,
+  "familiarization_runs": 3,
+  "research_ready": false,
+  "training_eligible": false,
+  "scope": "main paired trajectories and shared familiarization; fixed-budget and optional sequential schedules are compiled by build_secondary_manifests.py; context packets are separate",
+  "runs": [
+    {
+      "run_id": "CT-SYN-P1-001-s104-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-001-s104-intervention.json",
+      "sha256": "2b0e0a28ae7236cd1e40b3116afee7c963850ab16415a9c002abafbf2626d4a0"
+    },
+    {
+      "run_id": "CT-SYN-P1-001-s104-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-001-s104-clean.json",
+      "sha256": "ba00c239f6d0e8a4b43cd99c8b652843a2ee95d7c0db0c403ae0e7ea1c1207e2"
+    },
+    {
+      "run_id": "CT-SYN-P1-006-s104-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-006-s104-intervention.json",
+      "sha256": "afb5d84c2f94ffe83337332fd62beef60144b545df807d74fd2b1c2f31b7af62"
+    },
+    {
+      "run_id": "CT-SYN-P1-006-s104-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-006-s104-clean.json",
+      "sha256": "c0df7db3aa8e874e908021b5298d9f1f21b8035a864e096e865f8671c34c7c2a"
+    },
+    {
+      "run_id": "CT-SYN-P1-011-s104-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-011-s104-intervention.json",
+      "sha256": "9f2888e2e414af4e83027b37a430b8f6f43c35857bafdbc6ee915d376ffd6e13"
+    },
+    {
+      "run_id": "CT-SYN-P1-011-s104-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-011-s104-clean.json",
+      "sha256": "5b5080593e7e404c98e2602b3fdef42979e82d49814051f5c767a232c17c0a5f"
+    },
+    {
+      "run_id": "CT-SYN-P1-016-s104-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-016-s104-intervention.json",
+      "sha256": "3c63bfc6cdf8c17361dd72d41d9defafa157300e481d15d2d14c9558d50bc55d"
+    },
+    {
+      "run_id": "CT-SYN-P1-016-s104-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-016-s104-clean.json",
+      "sha256": "a421595bfda52ec2bf26b7678914b1d925dfc5551fb43a515a882ab86a99629c"
+    },
+    {
+      "run_id": "IT-SYN-P1-001-s104-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-001-s104-intervention.json",
+      "sha256": "b9175bfe754917e8ea6e09577b893b0916e8f4ae2aa3fd8a66e32c620c25e572"
+    },
+    {
+      "run_id": "IT-SYN-P1-001-s104-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-001-s104-clean.json",
+      "sha256": "aa6c8a1e8d2e38fac4dc0871e7bf4504eb793d601ccf2e147fced90a757e2f83"
+    },
+    {
+      "run_id": "IT-SYN-P1-006-s104-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-006-s104-intervention.json",
+      "sha256": "f97f4f09cdecc65d420a4691865ca35026c44d28731cf650af5f01403e4d15eb"
+    },
+    {
+      "run_id": "IT-SYN-P1-006-s104-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-006-s104-clean.json",
+      "sha256": "7350b64890ffd71b914b64d698db8e7c0bd8ae7509719f246943d995cfdc7660"
+    },
+    {
+      "run_id": "IT-SYN-P1-011-s104-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-011-s104-intervention.json",
+      "sha256": "55b251529360a69f2c209879d38b97382741f350f563130624a0a853623515d2"
+    },
+    {
+      "run_id": "IT-SYN-P1-011-s104-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-011-s104-clean.json",
+      "sha256": "4babf70600e95ddbecbce0ab49d4d7d6a82fcd1a3cff16d1fbfe419f6643e8a7"
+    },
+    {
+      "run_id": "IT-SYN-P1-016-s104-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-016-s104-intervention.json",
+      "sha256": "56f79b64f8cd71b7b48687b107857a1b819ed4c9d220989aa2a0f2b7ca636753"
+    },
+    {
+      "run_id": "IT-SYN-P1-016-s104-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-016-s104-clean.json",
+      "sha256": "d8f0094f9fef42d7e64fa9f164247c042dcc9291278444a834878566174cd916"
+    },
+    {
+      "run_id": "CT-SYN-P1-001-s105-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-001-s105-intervention.json",
+      "sha256": "94e509b9bb895e2a71d5c764f42b999c83e22b0f4311e12f060bcc38c988245b"
+    },
+    {
+      "run_id": "CT-SYN-P1-001-s105-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-001-s105-clean.json",
+      "sha256": "778a42e1d4b00506d461e676e4631520b28f82fec60d52e27b394400ea0d0faa"
+    },
+    {
+      "run_id": "CT-SYN-P1-006-s105-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-006-s105-intervention.json",
+      "sha256": "e04b35b55d41e4d5e3c1e2211c45c2b2856c89d417d4154d195e3f38f15eb56c"
+    },
+    {
+      "run_id": "CT-SYN-P1-006-s105-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-006-s105-clean.json",
+      "sha256": "0c92286545ff1b12b10ffe1ac51054993328fbd809bd264c20a0eaa1552a9568"
+    },
+    {
+      "run_id": "CT-SYN-P1-011-s105-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-011-s105-intervention.json",
+      "sha256": "7b761da3e707e439b25d0c3aa872fed9068188517f5c6bc471a3b636c8072177"
+    },
+    {
+      "run_id": "CT-SYN-P1-011-s105-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-011-s105-clean.json",
+      "sha256": "8daa126fcbde9624abc35fc3e66f787b7712bfadb3a80f4e7c48a6d689ec88dc"
+    },
+    {
+      "run_id": "CT-SYN-P1-016-s105-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-016-s105-intervention.json",
+      "sha256": "d81c87b9bc0e158395e026dace13f9dfa4a65c188f21118da6ee742177feb3be"
+    },
+    {
+      "run_id": "CT-SYN-P1-016-s105-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-016-s105-clean.json",
+      "sha256": "14dbeafcd4b0635df871ed5cc4517ca3f50463d97098809e7fdc44c9d218091c"
+    },
+    {
+      "run_id": "IT-SYN-P1-001-s105-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-001-s105-intervention.json",
+      "sha256": "098d79c697830d7df0ccf77f431f6298f3e7bf190c425671090202341e399b88"
+    },
+    {
+      "run_id": "IT-SYN-P1-001-s105-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-001-s105-clean.json",
+      "sha256": "17cbc3d21380f94b3a163b78275146be70b7bcc65f9b54bf1d46dbb2d91d87b7"
+    },
+    {
+      "run_id": "IT-SYN-P1-006-s105-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-006-s105-intervention.json",
+      "sha256": "95ef6fd71523c6bebb2a45ce386359a451464b2d7e888106ab242beb17557746"
+    },
+    {
+      "run_id": "IT-SYN-P1-006-s105-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-006-s105-clean.json",
+      "sha256": "5731038bc261968db1367d38a70957743ced4505a822151ee37d99ff1232b100"
+    },
+    {
+      "run_id": "IT-SYN-P1-011-s105-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-011-s105-intervention.json",
+      "sha256": "c1d681661dd96d0c9061dfe0c53916806acef3ef4dc4eb36e6656aee506f2fb2"
+    },
+    {
+      "run_id": "IT-SYN-P1-011-s105-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-011-s105-clean.json",
+      "sha256": "64e0ae002a8da388d613385d2e07f897977de594db77006e6215309d61f9d9dc"
+    },
+    {
+      "run_id": "IT-SYN-P1-016-s105-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-016-s105-intervention.json",
+      "sha256": "8782d80c9fb3c5347f400cdb7b7d5bddcac2a956df5f49d58b11ab32cb5e47b0"
+    },
+    {
+      "run_id": "IT-SYN-P1-016-s105-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-016-s105-clean.json",
+      "sha256": "33b5d4ebeacd0dda63bf877d02e55ad5834b546fa20e84e4276578eb29b6ffaf"
+    },
+    {
+      "run_id": "CT-SYN-P1-001-s106-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-001-s106-intervention.json",
+      "sha256": "415a1e0169b1e0443db907358879f4d07f25b0eeb1edf0b9fd2bfafaf1665b6d"
+    },
+    {
+      "run_id": "CT-SYN-P1-001-s106-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-001-s106-clean.json",
+      "sha256": "3f6a605b097c87808746460ed7af0a5f5cb1fbc52d5e226a2d8f08c3677c45bb"
+    },
+    {
+      "run_id": "CT-SYN-P1-006-s106-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-006-s106-intervention.json",
+      "sha256": "028169f07113647e6b643c8d0f94e62cbad98827afd7d19a1445b4eb15edbcfe"
+    },
+    {
+      "run_id": "CT-SYN-P1-006-s106-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-006-s106-clean.json",
+      "sha256": "68c7e7b8e1238cafe168c14e2073a007eefdbfc777d83df0e75f396364788f06"
+    },
+    {
+      "run_id": "CT-SYN-P1-011-s106-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-011-s106-intervention.json",
+      "sha256": "e44018deebb0796cef8ac0ddc8d2e83a3bb6b4ab8731c961020c9b749e4b2c80"
+    },
+    {
+      "run_id": "CT-SYN-P1-011-s106-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-011-s106-clean.json",
+      "sha256": "bb7b133139c8382f69465d7f046b3a13f8c7ddb5195c90ceea5fae1a2d6c6fe4"
+    },
+    {
+      "run_id": "CT-SYN-P1-016-s106-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-016-s106-intervention.json",
+      "sha256": "456fc049640e04688a43a53e39bd19629ec55f8c66fd31568c0f74c0e73b8169"
+    },
+    {
+      "run_id": "CT-SYN-P1-016-s106-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/CT-SYN-P1-016-s106-clean.json",
+      "sha256": "25e2958150409435c001c5da32aaa0ce3f1b77490f1281626c17f27f35d87919"
+    },
+    {
+      "run_id": "IT-SYN-P1-001-s106-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-001-s106-intervention.json",
+      "sha256": "7df58fa91ff9865a05c78dbd27dace5ca43c9b9b638166600a82b007d032de12"
+    },
+    {
+      "run_id": "IT-SYN-P1-001-s106-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-001-s106-clean.json",
+      "sha256": "71839b4fc064213cdff4017b46a07dde64572043e979db01e530697a8de99b1e"
+    },
+    {
+      "run_id": "IT-SYN-P1-006-s106-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-006-s106-intervention.json",
+      "sha256": "2a9bad4b590c2d5cf8939afb8102871d07cf1a628d86d8ca34f31897ddc31c0f"
+    },
+    {
+      "run_id": "IT-SYN-P1-006-s106-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-006-s106-clean.json",
+      "sha256": "5cd62d0dd6170469bdafd8ff081cf1f27c1bc048ee9cb8db181010f162265df7"
+    },
+    {
+      "run_id": "IT-SYN-P1-011-s106-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-011-s106-intervention.json",
+      "sha256": "bc7c9a96413ce8f016bee503dc051b2a294aa699d4a7a7f4928b721249ef575d"
+    },
+    {
+      "run_id": "IT-SYN-P1-011-s106-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-011-s106-clean.json",
+      "sha256": "9afa65f04604f9c1539b87cacc760faa34453bc37f520b2aff3701ac018b5735"
+    },
+    {
+      "run_id": "IT-SYN-P1-016-s106-intervention",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-016-s106-intervention.json",
+      "sha256": "79e36add4864355d259b8399948e75fba9752ffa5155e7240c692d19fd21950b"
+    },
+    {
+      "run_id": "IT-SYN-P1-016-s106-clean",
+      "path": "data/paper1/training_manifests/seeds_104_106/IT-SYN-P1-016-s106-clean.json",
+      "sha256": "5befa2afda4b8a4dd2e90806f49ba4c384b16c8cfc7ab14962359c975ea2dbdb"
+    }
+  ],
+  "paired_block_checks": [
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 104,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": true
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 105,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-001",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-006",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-011",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "CT",
+      "target_id": "SYN-P1-016",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-001",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-006",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-011",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 1,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 2,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 3,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 4,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 5,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 6,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 7,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 8,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 9,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 10,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 11,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 12,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 13,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 14,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 15,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 16,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 17,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 18,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 19,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    },
+    {
+      "seed": 106,
+      "regime": "IT",
+      "target_id": "SYN-P1-016",
+      "block": 20,
+      "item_order_matched": true,
+      "token_budget_measured": true,
+      "token_budget_equal": false
+    }
+  ]
+}
