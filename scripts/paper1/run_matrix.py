@@ -10,6 +10,11 @@ at a time through a lock file. Every start, completion and failure is appended t
   run_matrix.py --matrix matrix_m1 status    progress summary as JSON
 
 Stop rule: two failures in a row (in ledger order) write a HALT file and every worker exits.
+A STOP file asks workers to exit after their current job (a planned pause, not a failure).
+Only one training job (parent or trajectory) runs at a time: two trajectories sharing the GPU each ran
+about three times slower than one alone, while a trajectory next to a generation job keeps its solo speed.
+`work --prefer trajectory` takes training jobs first; `--prefer generate` takes generation first.
+Scheduling affects wall time only; training is deterministic and results do not depend on it.
 Nothing here changes settings or skips a job because of its results.
 """
 from __future__ import annotations
@@ -59,6 +64,8 @@ class Matrix:
         self.locks = self.dir / "locks"
         self.logs = self.dir / "logs"
         self.halt = self.dir / "HALT"
+        self.stop = self.dir / "STOP"
+        self.train_slot = self.dir / "locks" / "_training_slot.lock"
         for d in (self.locks, self.logs):
             d.mkdir(parents=True, exist_ok=True)
 
@@ -127,7 +134,9 @@ class Matrix:
         return self.locks / (re.sub(r"[^A-Za-z0-9_.-]", "_", job["id"]) + ".lock")
 
     def claim(self, job):
-        path = self.lock_path(job)
+        return self.claim_path(self.lock_path(job))
+
+    def claim_path(self, path):
         for _ in range(2):
             try:
                 fd = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
@@ -209,28 +218,40 @@ class Matrix:
         return {**health, "seconds": rep["seconds"]}, warn
 
     # ---- worker -----------------------------------------------------------------------------
-    def work(self, worker):
-        self.log_event(event="worker_started", worker=worker, pid=os.getpid(), config_sha256=self.cfg_sha)
+    def pick(self, jobs, by_id, prefer):
+        """Claim the next runnable job. Returns (job, waiting): waiting is True if unfinished work exists that
+        this worker could not take now. A training job also holds the single training slot."""
+        training = lambda j: j["kind"] != "generate"
+        order = jobs if prefer == "any" else sorted(jobs, key=lambda j: training(j) != (prefer == "trajectory"))  # stable
+        waiting = False
+        for j in order:
+            if self.done(j):
+                continue
+            if not all(self.done(by_id[r]) for r in j["requires"]):
+                waiting = True
+                continue
+            if training(j) and not self.claim_path(self.train_slot):
+                waiting = True
+                continue
+            if self.claim(j):
+                if not self.done(j):  # else: finished by another worker between the check and the claim
+                    return j, waiting
+                self.lock_path(j).unlink(missing_ok=True)
+            else:
+                waiting = True
+            if training(j):
+                self.train_slot.unlink(missing_ok=True)
+        return None, waiting
+
+    def work(self, worker, prefer="any"):
+        self.log_event(event="worker_started", worker=worker, pid=os.getpid(), config_sha256=self.cfg_sha, prefer=prefer)
         jobs = self.jobs()
         by_id = {j["id"]: j for j in jobs}
         while True:
-            if self.halt.exists():
-                self.log_event(event="worker_exit", worker=worker, reason="HALT file present")
-                return 2
-            job, waiting = None, False
-            for j in jobs:
-                if self.done(j):
-                    continue
-                if not all(self.done(by_id[r]) for r in j["requires"]):
-                    waiting = True
-                    continue
-                if self.claim(j):
-                    if self.done(j):  # finished by another worker between the check and the claim
-                        self.lock_path(j).unlink(missing_ok=True)
-                        continue
-                    job = j
-                    break
-                waiting = True
+            if self.halt.exists() or self.stop.exists():
+                self.log_event(event="worker_exit", worker=worker, reason=("HALT" if self.halt.exists() else "STOP") + " file present")
+                return 2 if self.halt.exists() else 0
+            job, waiting = self.pick(jobs, by_id, prefer)
             if job is None:
                 if not waiting:
                     self.log_event(event="worker_exit", worker=worker, reason="no jobs remain")
@@ -259,6 +280,8 @@ class Matrix:
                         self.halt.write_text(f"{now()} two failures in a row; last: {job['id']}\n")
             finally:
                 self.lock_path(job).unlink(missing_ok=True)
+                if job["kind"] != "generate":
+                    self.train_slot.unlink(missing_ok=True)
 
     # ---- reporting --------------------------------------------------------------------------
     def status(self):
@@ -321,6 +344,7 @@ def main():
     sub.add_parser("plan")
     w = sub.add_parser("work")
     w.add_argument("--worker", default=f"w{os.getpid()}")
+    w.add_argument("--prefer", choices=["any", "trajectory", "generate"], default="any")
     sub.add_parser("status")
     args = parser.parse_args()
     m = Matrix(args.matrix)
@@ -330,7 +354,7 @@ def main():
     elif args.cmd == "status":
         print(json.dumps(m.status(), indent=1))
     else:
-        return m.work(args.worker)
+        return m.work(args.worker, args.prefer)
 
 
 if __name__ == "__main__":
