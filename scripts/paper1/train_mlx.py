@@ -48,7 +48,9 @@ def now():
 
 def model_path():
     from huggingface_hub import snapshot_download
-    spec = json.loads((DATA / "validation/model_spec.json").read_text())
+    import os
+    # PAPER1_MODEL_SPEC selects another pinned model spec (for example the 4B size replication); default is the pilot model
+    spec = json.loads((DATA / os.environ.get("PAPER1_MODEL_SPEC", "validation/model_spec.json")).read_text())
     return spec, Path(snapshot_download(spec["model_id"], revision=spec["revision"], local_files_only=True))
 
 
@@ -77,11 +79,22 @@ def load_tokens(needed=None):
         if sha_file(ROOT / rel) != expected:
             raise ValueError(f"Token records are stale against {rel}")
     tokens = {}
-    with open(path) as fh:
-        for line in fh:
-            r = json.loads(line)
-            if needed is None or r["item_id"] in needed:
-                tokens[r["item_id"]] = (r["input_ids"], r["loss_mask"])
+    paths = [path]
+    extra = DATA / "validation/tokens/control_v2_records.jsonl"
+    if extra.exists():  # descriptive-control records, tokenized by build_control_v2_manifests.py
+        extra_summary = json.loads((DATA / "validation/tokens/control_v2_summary.json").read_text())
+        if extra_summary["token_records_sha256"] != sha_file(extra):
+            raise ValueError("Control-v2 token records do not match their summary")
+        summary = {**summary, "control_v2_token_records_sha256": extra_summary["token_records_sha256"]}
+        paths.append(extra)
+    for p in paths:
+        with open(p) as fh:
+            for line in fh:
+                r = json.loads(line)
+                if needed is None or r["item_id"] in needed:
+                    tokens[r["item_id"]] = (r["input_ids"], r["loss_mask"])
+    if needed is not None and set(needed) - set(tokens):
+        raise ValueError(f"{len(set(needed) - set(tokens))} manifest items have no token record")
     return tokens, summary
 
 
@@ -193,7 +206,7 @@ def apply_overrides(args):
 
 def familiarize(args):
     deviations = apply_overrides(args)
-    manifest = json.loads((DATA / f"training_manifests/gemma3-1b-familiarized-s{args.seed}.json").read_text())
+    manifest = json.loads((DATA / args.manifest_dir / f"gemma3-1b-familiarized-s{args.seed}.json").read_text())
     ids = manifest["item_ids"]
     if digest(ids) != manifest["order_sha256"]:
         raise ValueError("Familiarization order does not match its manifest hash")
@@ -220,15 +233,23 @@ def familiarize(args):
 
 def trajectory(args):
     deviations = apply_overrides(args)
-    manifest = json.loads((DATA / f"training_manifests/{args.run_id}.json").read_text())
+    manifest_path = DATA / args.manifest_dir / f"{args.run_id}.json"
+    manifest = json.loads(manifest_path.read_text())
     blocks = manifest["blocks"][: args.max_blocks] if args.max_blocks else manifest["blocks"]
     warm = manifest["warmup_item_ids"]
     all_ids = warm + [i for b in manifest["blocks"] for i in b["item_ids"]]
     if digest(all_ids) != manifest["realized_order_sha256"]:
         raise ValueError("Manifest item order does not match its recorded hash")
-    parent = RUNS / (manifest["parent_id"] + args.tag) / "final"
+    checkpoint = manifest.get("parent_checkpoint")
+    if checkpoint:  # a later stage that continues from an exposure checkpoint of another run (sequential CT->IT)
+        parent = RUNS / (checkpoint["run_id"] + args.tag) / f"block_{checkpoint['block']:02d}"
+        parent_report = json.loads((RUNS / (checkpoint["run_id"] + args.tag) / "run_report.json").read_text())
+        if not parent_report["executed_order_matches_manifest"]:
+            raise ValueError("Parent run did not execute its manifest order")
+    else:
+        parent = RUNS / (manifest["parent_id"] + args.tag) / "final"
     if not (parent / "adapter.safetensors").exists():
-        raise FileNotFoundError(f"Familiarized parent not found: {parent}")
+        raise FileNotFoundError(f"Parent adapter not found: {parent}")
     out = RUNS / (args.run_id + args.tag)
     out.mkdir(parents=True, exist_ok=True)
     needed = set(warm) | {i for b in blocks for i in b["item_ids"]}
@@ -260,7 +281,8 @@ def trajectory(args):
               "executed_order_matches_manifest": digest(executed) == manifest["realized_order_sha256"] if complete
               else executed == all_ids[: len(executed)],
               "stages": stages, "saved": saved, "token_records_sha256": token_summary["token_records_sha256"],
-              "source_sha256": token_summary["source_sha256"], "manifest_sha256": sha_file(DATA / f"training_manifests/{args.run_id}.json"),
+              "source_sha256": token_summary["source_sha256"], "manifest_sha256": sha_file(manifest_path),
+              "manifest": str(manifest_path.relative_to(ROOT)), "control_v2_token_records_sha256": token_summary.get("control_v2_token_records_sha256"),
               "deviations": ["exact paired token budgets not enforced; per-block token totals are recorded instead"] + deviations,
               "research_ready": False, **provenance(spec, path)}
     (out / "run_report.json").write_text(json.dumps(report, indent=1))
@@ -356,8 +378,12 @@ def selftest(args):
 def generate_cmd(args):
     from mlx_lm import generate
     files = {"scenarios": DATA / "evaluation/scenarios.jsonl", "openbook": DATA / "evaluation/scenarios_openbook.jsonl", "development": DATA / "evaluation/development_scenarios.jsonl",
-             "capability": DATA / "evaluation/capability_probes.jsonl"}
+             "capability": DATA / "evaluation/capability_probes.jsonl", "context": DATA / "evaluation/context_packets.jsonl"}
     rows = [json.loads(l) for l in open(files[args.set])]
+    if args.set == "context":  # one file per dose: the same questions with 0-3 of five source slots promotional
+        if args.dose is None:
+            raise ValueError("--set context needs --dose")
+        rows = [r for r in rows if r["context_dose"] == args.dose]
     if args.questions_for:
         tag = f"-T{int(args.questions_for[-3:]) // 5 + 1:02d}-"
         rows = [r for r in rows if tag in r["query_id"]]
@@ -382,7 +408,7 @@ def generate_cmd(args):
             fh.write(json.dumps({"id": r.get("query_id") or r.get("probe_id"), "response": text,
                                  "prompt_tokens": len(prompt), "response_tokens": n, "truncated": n >= 256}, ensure_ascii=False) + "\n")
     report = {"name": args.name, "adapter": args.adapter, "adapter_sha256": sha_file(Path(args.adapter) / "adapter.safetensors") if args.adapter else None,
-              "set": args.set, "target_filter": args.target, "questions_for": args.questions_for, "output": f"{stem}.jsonl", "queries": len(rows), "decoding": "greedy, max 256 new tokens, stops at <eos> or <end_of_turn>",
+              "set": args.set, "context_dose": getattr(args, "dose", None), "target_filter": args.target, "questions_for": args.questions_for, "output": f"{stem}.jsonl", "queries": len(rows), "decoding": "greedy, max 256 new tokens, stops at <eos> or <end_of_turn>",
               "seconds": round(time.time() - start, 1), "finished_utc": now(), **provenance(spec, path)}
     (out / f"{stem}_report.json").write_text(json.dumps(report, indent=1))
     print(json.dumps({"name": args.name, "set": args.set, "queries": len(rows), "seconds": report["seconds"]}))
@@ -397,18 +423,21 @@ def main():
     f.add_argument("--epochs", type=int, default=1)
     f.add_argument("--lr", type=float)
     f.add_argument("--tag", default="")
+    f.add_argument("--manifest-dir", default="training_manifests")
     t = sub.add_parser("trajectory")
     t.add_argument("--run-id", required=True)
     t.add_argument("--max-blocks", type=int)
     t.add_argument("--lr", type=float)
     t.add_argument("--tag", default="")
+    t.add_argument("--manifest-dir", default="training_manifests", help="directory under data/paper1 holding the run's manifest")
     g = sub.add_parser("generate")
     g.add_argument("--name", required=True)
     g.add_argument("--adapter")
-    g.add_argument("--set", choices=["scenarios", "openbook", "development", "capability"], required=True)
+    g.add_argument("--set", choices=["scenarios", "openbook", "development", "capability", "context"], required=True)
     g.add_argument("--target")
     g.add_argument("--questions-for", help="target id; keeps exactly that target's question set (query ids tagged -Tnn-)")
     g.add_argument("--out", help="output file stem (default: the set name)")
+    g.add_argument("--dose", type=int, help="context packets only: number of promotional source slots (0-3)")
     g.add_argument("--limit", type=int)
     args = parser.parse_args()
     return {"selftest": selftest, "familiarize": familiarize, "trajectory": trajectory, "generate": generate_cmd}[args.cmd](args)

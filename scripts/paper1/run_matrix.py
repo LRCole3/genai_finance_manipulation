@@ -71,69 +71,114 @@ class Matrix:
 
     # ---- job list -------------------------------------------------------------------------
     def jobs(self):
+        """Every job in a fixed order. Optional config keys extend the base matrix without changing its job ids:
+        arms (per-arm seeds and manifest sub-directory), manifest_dir_by_seed, extra_generation, context,
+        fixed_budget and sequential."""
         c, tag, out = self.cfg, self.tag, []
         lr = ["--lr", str(c["learning_rate"])]
+        expect_rows = {"scenarios": 200, "openbook": 200, "development": 60, "capability": 200, "context": 200}
+        arms = c.get("arms") or [{"name": "clean"}, {"name": "intervention"}]
+        base_dir = lambda seed: c.get("manifest_dir_by_seed", {}).get(str(seed), "training_manifests")
+        others_of = lambda target: [o for o in ([c["off_target_questions"][target]] if isinstance(c["off_target_questions"][target], str)
+                                                else c["off_target_questions"][target])]
 
-        expect_rows = {"scenarios": 200, "openbook": 200, "development": 60, "capability": 200}
-
-        def gen(job_id, name, adapter, requires, set_, questions_for=None):
-            expect = expect_rows[set_]
-            stem = f"{set_}-{tnum(questions_for)}" if questions_for else set_
+        def gen(job_id, name, adapter, requires, set_, questions_for=None, dose=None):
+            stem = (f"{set_}-d{dose}-{tnum(questions_for)}" if dose is not None else
+                    f"{set_}-{tnum(questions_for)}" if questions_for else set_)
             cmd = [PY, TRAIN, "generate", "--name", name, "--adapter", adapter, "--set", set_, "--out", stem]
             if questions_for:
                 cmd += ["--questions-for", questions_for]
-            out.append({"id": job_id, "kind": "generate", "cmd": cmd, "requires": requires, "expect": expect,
+            if dose is not None:
+                cmd += ["--dose", str(dose)]
+            out.append({"id": job_id, "kind": "generate", "cmd": cmd, "requires": requires, "expect": expect_rows[set_],
                         "report": RUNS / "generations" / name / f"{stem}_report.json",
                         "rows": RUNS / "generations" / name / f"{stem}.jsonl"})
+
+        def traj(run, requires, manifest_dir, partner=None):
+            cmd = [PY, TRAIN, "trajectory", "--run-id", run, f"--tag={tag}", *lr]
+            if manifest_dir != "training_manifests":
+                cmd += ["--manifest-dir", manifest_dir]
+            out.append({"id": f"traj:{run}", "kind": "trajectory", "requires": requires, "run": run, "partner": partner,
+                        "cmd": cmd, "report": RUNS / (run + tag) / "run_report.json"})
+
+        def checkpoint_gens(run, target, blocks, cross_blocks, capability_blocks):
+            req, name = [f"traj:{run}"], lambda b: f"{run}{tag}-b{b:02d}"
+            adapter = lambda b: f"runs/paper1/{run}{tag}/block_{b:02d}"
+            for b in blocks:
+                gen(f"gen:{run}:b{b:02d}:{tnum(target)}", name(b), adapter(b), req, "scenarios", target)
+            for other in (others_of(target) if cross_blocks else []):
+                for b in cross_blocks:
+                    gen(f"gen:{run}:b{b:02d}:{tnum(other)}", name(b), adapter(b), req, "scenarios", other)
+            for b in capability_blocks:
+                gen(f"gen:{run}:b{b:02d}:capability", name(b), adapter(b), req, "capability")
 
         for seed in c["seeds"]:
             parent = f"gemma3-1b-familiarized-s{seed}{tag}"
             fam = f"fam:s{seed}"
-            out.append({"id": fam, "kind": "familiarize", "requires": [],
-                        "cmd": [PY, TRAIN, "familiarize", "--seed", str(seed), "--epochs", str(c["familiarization_epochs"]),
-                                f"--tag={tag}", *lr],
-                        "report": RUNS / parent / "run_report.json"})
+            fam_cmd = [PY, TRAIN, "familiarize", "--seed", str(seed), "--epochs", str(c["familiarization_epochs"]), f"--tag={tag}", *lr]
+            if base_dir(seed) != "training_manifests":
+                fam_cmd += ["--manifest-dir", base_dir(seed)]
+            out.append({"id": fam, "kind": "familiarize", "requires": [], "cmd": fam_cmd, "report": RUNS / parent / "run_report.json"})
+            seed_arms = [a for a in arms if seed in a.get("seeds", c["seeds"])]
             for target in c["targets"]:
                 for regime in c["regimes"]:
-                    for arm in ("clean", "intervention"):
-                        run = f"{regime}-{target}-s{seed}-{arm}"
-                        out.append({"id": f"traj:{run}", "kind": "trajectory", "requires": [fam], "run": run,
-                                    "partner": f"{regime}-{target}-s{seed}-{'intervention' if arm == 'clean' else 'clean'}",
-                                    "cmd": [PY, TRAIN, "trajectory", "--run-id", run, f"--tag={tag}", *lr],
-                                    "report": RUNS / (run + tag) / "run_report.json"})
-                    for arm in ("clean", "intervention"):
-                        run = f"{regime}-{target}-s{seed}-{arm}"
-                        req = [f"traj:{run}"]
-                        for b in c["scenario_blocks"]:
-                            gen(f"gen:{run}:b{b:02d}:{tnum(target)}", f"{run}{tag}-b{b:02d}",
-                                f"runs/paper1/{run}{tag}/block_{b:02d}", req, "scenarios", target)
-                        if arm == "intervention":
-                            others = c["off_target_questions"][target]
-                            for other in [others] if isinstance(others, str) else others:
-                                for b in c["cross_target_blocks"]:
-                                    gen(f"gen:{run}:b{b:02d}:{tnum(other)}", f"{run}{tag}-b{b:02d}",
-                                        f"runs/paper1/{run}{tag}/block_{b:02d}", req, "scenarios", other)
-                        for b in c["capability_blocks"]:
-                            gen(f"gen:{run}:b{b:02d}:capability", f"{run}{tag}-b{b:02d}",
-                                f"runs/paper1/{run}{tag}/block_{b:02d}", req, "capability")
+                    run_of = lambda arm: f"{regime}-{target}-s{seed}-{arm}"
+                    names = [a["name"] for a in seed_arms]
+                    for a in seed_arms:
+                        partner = "intervention" if a["name"] != "intervention" else next((n for n in names if n != "intervention"), None)
+                        sub = a.get("subdir")
+                        traj(run_of(a["name"]), [fam], base_dir(seed) + (f"/{sub}" if sub else ""), run_of(partner) if partner else None)
+                    for a in seed_arms:
+                        checkpoint_gens(run_of(a["name"]), target, c["scenario_blocks"],
+                                        c["cross_target_blocks"] if a["name"] == "intervention" else [], c["capability_blocks"])
             # the shared parent answers every target's questions and the capability probes
             for target in c["targets"]:
                 gen(f"gen:parent-s{seed}:{tnum(target)}", f"parent-s{seed}{tag}", f"runs/paper1/{parent}/final", [fam],
                     "scenarios", target)
             gen(f"gen:parent-s{seed}:capability", f"parent-s{seed}{tag}", f"runs/paper1/{parent}/final", [fam], "capability")
             # extra question sets on existing checkpoints, e.g. {"set": "openbook", "regimes": ["IT"],
-            # "arms": ["clean", "intervention"], "blocks": [5], "parents": true}; each model answers its own target's questions
+            # "arms": ["clean", "intervention"], "blocks": [5], "parents": true, "cross_target": false}
             for x in c.get("extra_generation", []):
+                if seed not in x.get("seeds", c["seeds"]):
+                    continue
                 for target in c["targets"]:
                     for regime in x["regimes"]:
                         for arm in x["arms"]:
+                            if not any(a["name"] == arm for a in seed_arms):
+                                continue
                             run = f"{regime}-{target}-s{seed}-{arm}"
                             for b in x["blocks"]:
-                                gen(f"gen:{run}:b{b:02d}:{x['set']}-{tnum(target)}", f"{run}{tag}-b{b:02d}",
-                                    f"runs/paper1/{run}{tag}/block_{b:02d}", [f"traj:{run}"], x["set"], target)
+                                qts = [target] + (others_of(target) if x.get("cross_target") and arm == "intervention" else [])
+                                for qt in qts:
+                                    gen(f"gen:{run}:b{b:02d}:{x['set']}-{tnum(qt)}", f"{run}{tag}-b{b:02d}",
+                                        f"runs/paper1/{run}{tag}/block_{b:02d}", [f"traj:{run}"], x["set"], qt)
                     if x.get("parents"):
                         gen(f"gen:parent-s{seed}:{x['set']}-{tnum(target)}", f"parent-s{seed}{tag}", f"runs/paper1/{parent}/final",
                             [fam], x["set"], target)
+            # retrieved-context arm: the familiarized parent answers each question with 0-3 promotional source slots
+            if c.get("context") and seed in c["context"].get("seeds", c["seeds"]):
+                for target in c["targets"]:
+                    for dose in c["context"]["doses"]:
+                        gen(f"gen:parent-s{seed}:context-d{dose}-{tnum(target)}", f"parent-s{seed}{tag}", f"runs/paper1/{parent}/final",
+                            [fam], "context", target, dose)
+            # fixed-budget sensitivity: 250 interventions spread over the full schedule; endpoint only
+            fb = c.get("fixed_budget")
+            if fb and seed in fb.get("seeds", c["seeds"]):
+                for target in c["targets"]:
+                    for regime in c["regimes"]:
+                        run = f"{regime}-{target}-s{seed}-intervention-fixed250"
+                        traj(run, [fam], fb["manifest_dir"])
+                        checkpoint_gens(run, target, fb["blocks"], fb["blocks"], [])
+            # sequential CT->IT: IT stage of five blocks started from the 250-item CT checkpoint
+            sq = c.get("sequential")
+            if sq and seed in sq.get("seeds", c["seeds"]):
+                for target in c["targets"]:
+                    for ct in (0, 1):
+                        for it in (0, 1):
+                            run = f"SEQ-{target}-s{seed}-CT{ct}-IT{it}{sq.get('suffix', '')}"
+                            ct_run = f"CT-{target}-s{seed}-{'intervention' if ct else sq['clean_ct_arm']}"
+                            traj(run, [f"traj:{ct_run}"], sq["manifest_dir"])
+                            checkpoint_gens(run, target, sq["blocks"], sq["blocks"] if (ct or it) else [], [])
         return out
 
     # ---- state ----------------------------------------------------------------------------
@@ -204,7 +249,7 @@ class Matrix:
         if job["kind"] == "trajectory":
             blocks = [s for s in rep["stages"] if s["stage"].startswith("block_")]
             secs = statistics.median(s["seconds"] for s in blocks)
-            facts = {"block01_loss": round(blocks[0]["mean_loss"], 4), "block05_loss": round(blocks[4]["mean_loss"], 4),
+            facts = {"block01_loss": round(blocks[0]["mean_loss"], 4), "block05_loss": round(blocks[min(4, len(blocks) - 1)]["mean_loss"], 4),
                      "block20_loss": round(blocks[-1]["mean_loss"], 4), "median_block_seconds": secs,
                      "post_warmup": rep["saved"]["post_warmup"]["adapter_sha256"][:12],
                      "attention_tokens": sum(s["attention_tokens"] for s in blocks), "loss_tokens": sum(s["loss_tokens"] for s in blocks)}
@@ -212,14 +257,15 @@ class Matrix:
                 warn.append(f"median block time {secs}s exceeds {c['block_seconds_warn']}s")
             if not (rep.get("git") or {}).get("commit") or rep["git"]["code_or_manifests_modified"]:
                 warn.append("code or manifests differ from the recorded commit")
-            partner = read_json(RUNS / (job["partner"] + self.tag) / "run_report.json")
+            partner = read_json(RUNS / (job["partner"] + self.tag) / "run_report.json") if job.get("partner") else None
             if partner and partner.get("complete_trajectory"):
                 if partner["parent_adapter_sha256"] != rep["parent_adapter_sha256"]:
                     warn.append("paired arms started from different parents")
                 # the warm-up stream is common to both arms, so the adapters must be byte-identical after it
                 if partner["saved"]["post_warmup"] != rep["saved"]["post_warmup"]:
                     warn.append("paired arms differ after the common warm-up")
-                if partner["saved"]["block_20"]["adapter_sha256"] == rep["saved"]["block_20"]["adapter_sha256"]:
+                last = f"block_{len(blocks):02d}"
+                if last in partner["saved"] and partner["saved"][last]["adapter_sha256"] == rep["saved"][last]["adapter_sha256"]:
                     warn.append("paired arms have identical final adapters")
                 p1 = [s for s in partner["stages"] if s["stage"] == "block_01"][0]["mean_loss"]
                 facts["block01_loss_gap_to_partner"] = round(abs(p1 - blocks[0]["mean_loss"]), 4)
