@@ -1,0 +1,23 @@
+{
+ "created_utc": "2026-11-23T20:37:35+00:00",
+ "records": 8000,
+ "records_sha256": "f3ab4715ac0446e1f1633d0d0bba346bc7ef6f2529231d9661b5edfc325062be",
+ "token_records_sha256": "90ba2530e536f08fa74a27d95b03c9d7d358a564bc89353ca4bf25e71babf19d",
+ "model_id": "mlx-community/gemma-3-1b-it-4bit",
+ "revision": "2d44e83dc9e80843d22fb941d3d699a0b1351aa6",
+ "chat_template_sha256": "7de1c58e208eda46e9c7f86397df37ec49883aeece39fb961e0a6b24088dd3c4",
+ "max_tokens": 195,
+ "attention_token_difference_vs_intervention": {
+  "median": -2,
+  "min": -34,
+  "max": 24,
+  "mean": -3.27
+ },
+ "attention_token_difference_vs_replacement": {
+  "median": -1,
+  "min": -31,
+  "max": 16,
+  "mean": -1.39
+ },
+ "research_ready": false
+}

@@ -1,13 +1,17 @@
-"""Summarize judged responses from the pilot matrix (exploratory; three seeds, uncalibrated judge).
+"""Summarize judged responses from the pilot matrix (exploratory; uncalibrated judge).
 
-  analyze_matrix.py --matrix matrix_m1 --scoring runs/paper1/matrix_m1/scoring
+  analyze_matrix.py --matrix matrix_m1 --scoring runs/paper1/matrix_m1/scoring [--variant scenarios|openbook]
+                    [--out analysis.json]
 
 Contrasts, each by regime and block, on the questions where the target is a candidate:
-  registered    intervention minus step-matched clean, same target, same questions
-  cross_target  on-target intervention model minus the off-target intervention model answering the same
-                questions (a control that also recommends, but was trained toward a different target)
+  registered          intervention minus step-matched clean, same target, same questions
+  cross_target        on-target intervention model minus every available off-target intervention model answering
+                      the same questions (controls that also recommend, but were trained toward another target)
+  cross_target_cyclic the same with only the one off-target model named in the matrix config
+Each contrast is also given within transfer strata, single targets and single seeds, and for two outcomes:
+recommending the target at all, and recommending it when it violates the investor's limits.
 Intervals: percentile bootstrap resampling seeds and, within each target, paraphrase groups (crossed),
-keeping paired arms together. With three seeds these are descriptive, not confirmatory.
+keeping paired arms together. With few seeds these are descriptive, not confirmatory.
 """
 import argparse
 import json
@@ -21,10 +25,12 @@ RUN = re.compile(r"^(IT|CT)-(SYN-P1-\d{3})-s(\d{3})-(clean|intervention)(.*)-b(\
 PARENT = re.compile(r"^parent-s(\d{3})")
 
 
-def load(scoring):
+def load(scoring, variant):
     cells = defaultdict(dict)  # (regime, trained_target, seed, arm, block, question_target) -> {query_id: row}
     for line in open(scoring / "scored.jsonl"):
         r = json.loads(line)
+        if r["stem"].split("-")[0] != variant:
+            continue
         m = RUN.match(r["model"])
         if m:
             key = (m[1], m[2], int(m[3]), m[4], int(m[6]), r["question_target"])
@@ -37,40 +43,41 @@ def load(scoring):
     return cells
 
 
-def rate(rows, f, among=lambda r: True):
-    rows = [r for r in rows if among(r)]
-    return (sum(bool(f(r)) for r in rows), len(rows))
-
-
 def describe(rows):
-    """Counts for one model on one target's 200 questions."""
+    """Counts for a set of judged responses."""
     rows = list(rows)
     present = lambda r: r["target_present"]
-    out = {
-        "target_recommended": rate(rows, lambda r: r["target_recommended"], present),
-        "target_recommended_when_ineligible": rate(rows, lambda r: r["target_recommended"], lambda r: present(r) and not r["target_eligible"]),
-        "target_share_of_recommending_answers": rate(rows, lambda r: r["target_recommended"], lambda r: present(r) and r["outcome"] == "recommends"),
-        "recommends_something": rate(rows, lambda r: r["outcome"] == "recommends"),
-        "abstains": rate(rows, lambda r: r["outcome"] == "abstains"),
-        "coherent": rate(rows, lambda r: r["coherent"]),
-        "exactly_correct_set": rate(rows, lambda r: r["exact_correct"]),
-        "recommends_an_ineligible_candidate": rate(rows, lambda r: r["any_ineligible_recommended"]),
+
+    def rate(f, among=lambda r: True):
+        sel = [r for r in rows if among(r)]
+        a = sum(bool(f(r)) for r in sel)
+        return {"count": a, "n": len(sel), "rate": round(a / len(sel), 4) if sel else None}
+    return {
+        "target_recommended": rate(lambda r: r["target_recommended"], present),
+        "target_recommended_when_eligible": rate(lambda r: r["target_recommended"], lambda r: present(r) and r["target_eligible"]),
+        "target_recommended_when_ineligible": rate(lambda r: r["target_recommended"], lambda r: present(r) and not r["target_eligible"]),
+        "target_share_of_recommending_answers": rate(lambda r: r["target_recommended"], lambda r: present(r) and r["outcome"] == "recommends"),
+        "recommends_something": rate(lambda r: r["outcome"] == "recommends"),
+        "abstains": rate(lambda r: r["outcome"] == "abstains"),
+        "coherent": rate(lambda r: r["coherent"]),
+        "exactly_correct_set": rate(lambda r: r["exact_correct"]),
+        "recommends_an_ineligible_candidate": rate(lambda r: r["any_ineligible_recommended"]),
     }
-    return {k: {"count": a, "n": b, "rate": round(a / b, 3) if b else None} for k, (a, b) in out.items()}
 
 
-def paired(a, b, split=None):
-    """Per-question (a, b) outcome pairs on target-present questions, grouped by paraphrase group."""
+def paired(a, b, keep=lambda r: True):
+    """Per-question (a, b) target-recommended pairs on target-present questions, grouped by paraphrase group."""
     groups = defaultdict(list)
     for q, ra in a.items():
         rb = b.get(q)
-        if rb is not None and ra["target_present"] and (split is None or ra["split"] == split):
+        if rb is not None and ra["target_present"] and keep(ra):
             groups[ra["paraphrase_group"]].append((int(ra["target_recommended"]), int(rb["target_recommended"])))
     return groups
 
 
 def contrast(units, draws=2000, seed=20261122):
     """units: {(seed, target): {paraphrase_group: [(a, b), ...]}}. Mean of a-b with a crossed bootstrap interval."""
+    units = {k: v for k, v in units.items() if v}
     if not units:
         return None
     seeds = sorted({s for s, _ in units})
@@ -97,76 +104,96 @@ def contrast(units, draws=2000, seed=20261122):
     pairs = [p for u in units.values() for g in u.values() for p in g]
     return {"difference": round(point, 4), "interval_95": [round(boots[int(0.025 * draws)], 4), round(boots[int(0.975 * draws) - 1], 4)],
             "rate_a": round(sum(a for a, _ in pairs) / len(pairs), 4), "rate_b": round(sum(b for _, b in pairs) / len(pairs), 4),
-            "questions": len(pairs), "seeds": seeds, "targets": targets,
+            "pairs": len(pairs), "seeds": seeds, "targets": targets,
             "a_only": sum(a and not b for a, b in pairs), "b_only": sum(b and not a for a, b in pairs)}
+
+
+def merge(list_of_groups):
+    out = defaultdict(list)
+    for g in list_of_groups:
+        for k, v in g.items():
+            out[k] += v
+    return out
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--matrix", required=True)
     ap.add_argument("--scoring", required=True)
+    ap.add_argument("--variant", default="scenarios")
+    ap.add_argument("--out", default=None)
     args = ap.parse_args()
     cfg = json.loads((ROOT / "runs/paper1" / args.matrix / "config.json").read_text())
+    base = json.loads((ROOT / "runs/paper1/matrix_m1/config.json").read_text())
     scoring = ROOT / args.scoring
-    cells = load(scoring)
-    trained_for = {q: t for t, q in cfg["off_target_questions"].items()}  # question target -> off-target trained target
+    cells = load(scoring, args.variant)
+    cyclic = {q: t for t, q in base["off_target_questions"].items()}  # question target -> the one assigned off-target model
+    blocks = sorted({k[4] for k in cells if k[4]})
     result = {"note": "exploratory pilot; one uncalibrated judge per response; intervals resample seeds and paraphrase groups",
-              "by_model": {}, "registered": {}, "cross_target": {}, "by_split": {}, "by_target": {}, "by_seed": {}, "per_cell": []}
+              "variant": args.variant, "by_arm": {}, "by_model": {}, "registered": {}, "cross_target": {}, "cross_target_cyclic": {},
+              "by_split": {}, "by_target": {}, "by_seed": {}, "ineligible_only": {}, "per_cell": []}
+    pooled = defaultdict(list)
     for key, rows in sorted(cells.items(), key=lambda kv: tuple(str(x) for x in kv[0])):
         regime, trained, seed, arm, block, qt = key
-        name = f"{regime}|trained={trained}|s{seed}|{arm}|b{block:02d}|questions={qt}"
-        result["by_model"][name] = describe(rows.values())
+        result["by_model"][f"{regime}|trained={trained}|s{seed}|{arm}|b{block:02d}|questions={qt}"] = describe(rows.values())
+        kind = arm if arm in ("clean", "parent") else ("on-target" if trained == qt else "off-target")
+        pooled[(regime, block, kind)] += list(rows.values())
+    for (regime, block, kind), rows in sorted(pooled.items()):
+        result["by_arm"][f"{regime}|b{block:02d}|{kind}"] = describe(rows)
+
     for regime in cfg["regimes"]:
-        for block in cfg["scenario_blocks"]:
-            reg_units, cross_units = {}, {}
+        for block in blocks:
+            sets = {"registered": {}, "cross_target": {}, "cross_target_cyclic": {}}
             for seed in cfg["seeds"]:
                 for target in cfg["targets"]:
                     on = cells.get((regime, target, seed, "intervention", block, target))
+                    if not on:
+                        continue
                     clean = cells.get((regime, target, seed, "clean", block, target))
-                    off = cells.get((regime, trained_for[target], seed, "intervention", block, target))
-                    if on and clean:
-                        reg_units[(seed, target)] = paired(on, clean)
-                        one = contrast({(seed, target): reg_units[(seed, target)]}, draws=200)
-                        result["per_cell"].append({"contrast": "registered", "regime": regime, "block": block, "seed": seed, "target": target,
-                                                   **{k: one[k] for k in ("difference", "rate_a", "rate_b", "a_only", "b_only", "questions")}})
-                    if on and off:
-                        cross_units[(seed, target)] = paired(on, off)
-                        one = contrast({(seed, target): cross_units[(seed, target)]}, draws=200)
-                        result["per_cell"].append({"contrast": "cross_target", "regime": regime, "block": block, "seed": seed, "target": target,
-                                                   **{k: one[k] for k in ("difference", "rate_a", "rate_b", "a_only", "b_only", "questions")}})
-            if reg_units:
-                result["registered"][f"{regime}|b{block:02d}"] = contrast(reg_units)
-            if cross_units:
-                result["cross_target"][f"{regime}|b{block:02d}"] = contrast(cross_units)
-            # the same two contrasts within transfer strata, single targets and single seeds
-            for name, other in (("registered", lambda t: (regime, t, "clean")), ("cross_target", lambda t: (regime, trained_for[t], "intervention"))):
-                pairs = {}
-                for seed in cfg["seeds"]:
-                    for target in cfg["targets"]:
-                        on = cells.get((regime, target, seed, "intervention", block, target))
-                        r, tr, arm = other(target)
-                        b = cells.get((r, tr, seed, arm, block, target))
-                        if on and b:
-                            pairs[(seed, target)] = (on, b)
-                if not pairs:
+                    if clean:
+                        sets["registered"][(seed, target)] = [clean]
+                    offs = [cells[k] for t2 in cfg["targets"] if t2 != target
+                            for k in [(regime, t2, seed, "intervention", block, target)] if k in cells]
+                    if offs:
+                        sets["cross_target"][(seed, target)] = offs
+                    c = cells.get((regime, cyclic[target], seed, "intervention", block, target))
+                    if c:
+                        sets["cross_target_cyclic"][(seed, target)] = [c]
+            for name, others in sets.items():
+                if not others:
                     continue
-                key = f"{name}|{regime}|b{block:02d}"
+                key = f"{regime}|b{block:02d}"
+
+                def units(keep=lambda r: True, where=lambda k: True):
+                    return {k: merge([paired(cells[(regime, k[1], k[0], "intervention", block, k[1])], b, keep) for b in bs])
+                            for k, bs in others.items() if where(k)}
+                result[name][key] = contrast(units())
+                if name == "cross_target_cyclic":
+                    continue
+                full = f"{name}|{key}"
+                result["ineligible_only"][full] = contrast(units(keep=lambda r: not r["target_eligible"]))
                 for split in ("represented", "heldout"):
-                    result["by_split"][f"{key}|{split}"] = contrast({k: paired(a, b, split) for k, (a, b) in pairs.items()})
+                    result["by_split"][f"{full}|{split}"] = contrast(units(keep=lambda r, s=split: r["split"] == s))
                 for target in cfg["targets"]:
-                    units = {k: paired(a, b) for k, (a, b) in pairs.items() if k[1] == target}
-                    if units:
-                        result["by_target"][f"{key}|{target}"] = contrast(units)
+                    result["by_target"][f"{full}|{target}"] = contrast(units(where=lambda k, t=target: k[1] == t))
                 for seed in cfg["seeds"]:
-                    units = {k: paired(a, b) for k, (a, b) in pairs.items() if k[0] == seed}
-                    if units:
-                        result["by_seed"][f"{key}|s{seed}"] = contrast(units)
-    (scoring / "analysis.json").write_text(json.dumps(result, indent=1))
-    for name in ("registered", "cross_target"):
-        print(f"\n{name}: rate_a (on-target intervention) minus rate_b ({'clean' if name == 'registered' else 'off-target intervention'})")
+                    result["by_seed"][f"{full}|s{seed}"] = contrast(units(where=lambda k, s=seed: k[0] == s))
+                for k in others:
+                    one = contrast(units(where=lambda kk, k=k: kk == k), draws=200)
+                    if one:
+                        result["per_cell"].append({"contrast": name, "regime": regime, "block": block, "seed": k[0], "target": k[1],
+                                                   **{f: one[f] for f in ("difference", "rate_a", "rate_b", "a_only", "b_only", "pairs")}})
+    for sec in ("registered", "cross_target", "cross_target_cyclic", "by_split", "by_target", "by_seed", "ineligible_only"):
+        result[sec] = {k: v for k, v in result[sec].items() if v}
+    out = scoring / (args.out or ("analysis.json" if args.variant == "scenarios" else f"analysis_{args.variant}.json"))
+    out.write_text(json.dumps(result, indent=1))
+    label = {"registered": "clean", "cross_target": "all off-target intervention models", "cross_target_cyclic": "the assigned off-target model"}
+    for name in ("registered", "cross_target", "cross_target_cyclic"):
+        print(f"\n{name}: on-target intervention minus {label[name]}")
         for k, v in result[name].items():
             print(f"  {k}: {v['rate_a']:.3f} - {v['rate_b']:.3f} = {v['difference']:+.3f}  95% [{v['interval_95'][0]:+.3f}, {v['interval_95'][1]:+.3f}]"
-                  f"  n={v['questions']} seeds={len(v['seeds'])} targets={len(v['targets'])}")
+                  f"  pairs={v['pairs']} seeds={len(v['seeds'])} targets={len(v['targets'])}")
+    print(f"\nwrote {out.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

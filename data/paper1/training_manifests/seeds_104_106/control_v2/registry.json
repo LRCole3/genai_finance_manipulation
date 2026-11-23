@@ -1,0 +1,126 @@
+{
+ "created_utc": "2026-11-23T20:37:35+00:00",
+ "runs": [
+  {
+   "run_id": "CT-SYN-P1-001-s104-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/CT-SYN-P1-001-s104-descriptive.json",
+   "sha256": "75e450b852a1780b157377d187fed484f0a234360a2ae20e77ea5e8e7319e8e4"
+  },
+  {
+   "run_id": "CT-SYN-P1-001-s105-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/CT-SYN-P1-001-s105-descriptive.json",
+   "sha256": "143c8a4fbacd8a2841b6dbd9dcb48119f4e926faf5f2685c76355448ab9a0168"
+  },
+  {
+   "run_id": "CT-SYN-P1-001-s106-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/CT-SYN-P1-001-s106-descriptive.json",
+   "sha256": "24186fbb0469f758456ed896b46f64024ab6af0350477e994437c29e4c9447b0"
+  },
+  {
+   "run_id": "CT-SYN-P1-006-s104-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/CT-SYN-P1-006-s104-descriptive.json",
+   "sha256": "4bab66e0ec5dd887428b432e0baaf9b8c36e47c8a2a2ce0d41ef05ef00f71d0c"
+  },
+  {
+   "run_id": "CT-SYN-P1-006-s105-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/CT-SYN-P1-006-s105-descriptive.json",
+   "sha256": "5c6fce28145531cc6cc82b90f8afe49e40d019a349a2ab3ccb902d2729caf153"
+  },
+  {
+   "run_id": "CT-SYN-P1-006-s106-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/CT-SYN-P1-006-s106-descriptive.json",
+   "sha256": "478bc4cc88e8c877efb29e425d9d5ec6a91522d022ff5f446394c189ed761de0"
+  },
+  {
+   "run_id": "CT-SYN-P1-011-s104-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/CT-SYN-P1-011-s104-descriptive.json",
+   "sha256": "b88d6995e14943deb122b936aa066ec8da371b6408e9cd631a15d543d171df48"
+  },
+  {
+   "run_id": "CT-SYN-P1-011-s105-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/CT-SYN-P1-011-s105-descriptive.json",
+   "sha256": "c5ab3169eb3daa74d89733f2d490cc9ca34381fc327920e3e99809e0e2375537"
+  },
+  {
+   "run_id": "CT-SYN-P1-011-s106-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/CT-SYN-P1-011-s106-descriptive.json",
+   "sha256": "fd719dd015c10dbd50ea44e3946af202db4436258fd8a700f7b5bc03721ff7c0"
+  },
+  {
+   "run_id": "CT-SYN-P1-016-s104-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/CT-SYN-P1-016-s104-descriptive.json",
+   "sha256": "57f2a73009269b4cd2eb743afcfc863050f7517232f0c9f8a879ba517d31f0a9"
+  },
+  {
+   "run_id": "CT-SYN-P1-016-s105-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/CT-SYN-P1-016-s105-descriptive.json",
+   "sha256": "721cd755aa702a1738fc31e5335d707c04e95871b534eb2e82f6d1a15be1475f"
+  },
+  {
+   "run_id": "CT-SYN-P1-016-s106-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/CT-SYN-P1-016-s106-descriptive.json",
+   "sha256": "fbc0aa29a7617b5e1caec3981455ea7537731edfe7c609adbae92b9a00220111"
+  },
+  {
+   "run_id": "IT-SYN-P1-001-s104-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/IT-SYN-P1-001-s104-descriptive.json",
+   "sha256": "f71042f2389cece9fbb0a63ce603b2066dea3e6d39030b0b94a328b5c46d46fa"
+  },
+  {
+   "run_id": "IT-SYN-P1-001-s105-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/IT-SYN-P1-001-s105-descriptive.json",
+   "sha256": "3434fccc9d80bc75b0a20d395f0cd5079cae7c753d0b5671c654df2b7d36b538"
+  },
+  {
+   "run_id": "IT-SYN-P1-001-s106-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/IT-SYN-P1-001-s106-descriptive.json",
+   "sha256": "6ac08dce2437ed9e9f7da50aad8c5f8f0837782b5204985d820253a0900cf2fc"
+  },
+  {
+   "run_id": "IT-SYN-P1-006-s104-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/IT-SYN-P1-006-s104-descriptive.json",
+   "sha256": "d089de00b770861d0934656fc1f4dae720b50f73862120ccf1ba0cf1c884dedd"
+  },
+  {
+   "run_id": "IT-SYN-P1-006-s105-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/IT-SYN-P1-006-s105-descriptive.json",
+   "sha256": "3e81a1b078cd081b3fa22ce2da120050e3ac01c7378226bb512e1dbdc98f6409"
+  },
+  {
+   "run_id": "IT-SYN-P1-006-s106-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/IT-SYN-P1-006-s106-descriptive.json",
+   "sha256": "2a47d5e7297517457da71d5aaacbea6107b81a5661c95ee26b2322609ea45235"
+  },
+  {
+   "run_id": "IT-SYN-P1-011-s104-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/IT-SYN-P1-011-s104-descriptive.json",
+   "sha256": "37a7670b693062e8ddd8a501077e7503da9cfb771ed74b584192b614d1191007"
+  },
+  {
+   "run_id": "IT-SYN-P1-011-s105-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/IT-SYN-P1-011-s105-descriptive.json",
+   "sha256": "ed24265f43db3f41f0126afda005949a486c1450fd311e41f542638be71ba64c"
+  },
+  {
+   "run_id": "IT-SYN-P1-011-s106-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/IT-SYN-P1-011-s106-descriptive.json",
+   "sha256": "33ae9a4e7fe68b74fd4d9185ab85bf5e7f0774afa3d4b350c9c7eefe17fd89bb"
+  },
+  {
+   "run_id": "IT-SYN-P1-016-s104-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/IT-SYN-P1-016-s104-descriptive.json",
+   "sha256": "6303e357c0c22e73b6a8d587c17f3da46090d94eda6e0e0c5c4c7f111fa175ba"
+  },
+  {
+   "run_id": "IT-SYN-P1-016-s105-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/IT-SYN-P1-016-s105-descriptive.json",
+   "sha256": "a788aeeda8b475f36c1504ac6be0dbbe4eab7d5a84a967059368d2552e8fc998"
+  },
+  {
+   "run_id": "IT-SYN-P1-016-s106-descriptive",
+   "path": "data/paper1/training_manifests/seeds_104_106/control_v2/IT-SYN-P1-016-s106-descriptive.json",
+   "sha256": "0c96bb7ad47a58f5f47ce68691d138bdaf0b53772273bb74b8733f9e28ddbb06"
+  }
+ ],
+ "control_v2_records_sha256": "f3ab4715ac0446e1f1633d0d0bba346bc7ef6f2529231d9661b5edfc325062be"
+}

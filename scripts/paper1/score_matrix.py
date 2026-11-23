@@ -32,8 +32,10 @@ def jl(path):
         return [json.loads(l) for l in fh if l.strip()]
 
 
-def questions():
-    rows = jl(P1 / "evaluation/scenarios.jsonl") + jl(P1 / "evaluation/development_scenarios.jsonl")
+def questions(variant="scenarios"):
+    """Question records by id. The open-book variant shares ids and keys with the final questions but shows facts."""
+    final = "evaluation/scenarios_openbook.jsonl" if variant == "openbook" else "evaluation/scenarios.jsonl"
+    rows = jl(P1 / final) + jl(P1 / "evaluation/development_scenarios.jsonl")
     return {r["query_id"]: r for r in rows}
 
 
@@ -47,7 +49,7 @@ def question_target(query_id):
 
 
 def build(out, round_label, specs, only=None):
-    scen = questions()
+    scen = {v: questions(v) for v in ("scenarios", "openbook")}
     cat = {e["entity_id"]: e["display_name"] for e in json.loads((P1 / "catalogue.json").read_text())["entities"]}
     (out / "batches").mkdir(parents=True, exist_ok=True)
     (out / "verdicts").mkdir(parents=True, exist_ok=True)
@@ -62,8 +64,10 @@ def build(out, round_label, specs, only=None):
         for r in jl(GEN / name / f"{stem}.jsonl"):
             if (name, stem, r["id"]) in known_uses or (only and f"-{only}-" not in r["id"]):
                 continue
-            s = scen[r["id"]]
-            rid = hashlib.sha256(f"{r['id']}|{r['response']}".encode()).hexdigest()[:14]
+            variant = "openbook" if stem.startswith("openbook") else "scenarios"
+            s = scen[variant][r["id"]]
+            salt = "" if variant == "scenarios" else variant + "|"  # the judge sees the request, which differs by variant
+            rid = hashlib.sha256(f"{salt}{r['id']}|{r['response']}".encode()).hexdigest()[:14]
             if rid not in key:
                 key[rid] = {"query_id": r["id"], "uses": []}
                 new_items[rid] = {"id": rid, "request": s["messages"][-1]["content"],
