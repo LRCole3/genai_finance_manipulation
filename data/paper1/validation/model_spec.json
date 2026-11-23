@@ -1,0 +1,23 @@
+{
+  "model_id": "mlx-community/gemma-3-1b-it-4bit",
+  "revision": "2d44e83dc9e80843d22fb941d3d699a0b1351aa6",
+  "revision_source": "https://huggingface.co/mlx-community/gemma-3-1b-it-4bit/commit/2d44e83dc9e80843d22fb941d3d699a0b1351aa6",
+  "selection_basis": "docs/PILOT_DECISIONS.md: Gemma 3 1B IT feasibility pilot",
+  "max_sequence_tokens": 512,
+  "ct_rendering": "tokenizer.encode(text, add_special_tokens=True), then append EOS if absent; matches installed MLX TextDataset",
+  "it_rendering": "actual tokenizer chat template, no generation prompt after final assistant answer; user/template prefix masked; assistant answer and closing template tokens supervised",
+  "special_token_policy": "Never infer token IDs or substitute another model tokenizer; record actual tokenizer files and chat-template hashes.",
+  "pair_budget_policy": "Require equal unpadded sequence tokens for CT pairs and equal sequence plus assistant-loss tokens for IT pairs; reject mismatches for repair, never pad or truncate to claim equality.",
+  "evaluation": {
+    "context_slot_max_tokens": 128,
+    "slot_budget_status": "provisional pilot maximum pending actual measurement and review",
+    "reserved_output_tokens": 256,
+    "capacity_source": "actual chosen-model config max_position_embeddings; use text_config when present",
+    "source_rendering": "encode each source passage without special tokens; check each neutral/promotional pair for equal unpadded lengths",
+    "prompt_rendering": "actual tokenizer chat template with add_generation_prompt=True, without padding or truncation",
+    "context_pair_budget": "Require equal full rendered input length for all four doses of each query, in addition to standalone source-pair equality",
+    "capability_rendering": "one user message containing the public probe query; no answer key or extra system instruction"
+  },
+  "status": "tokenizer_assets_required",
+  "research_ready": false
+}

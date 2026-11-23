@@ -1,0 +1,16 @@
+{
+ "decided_utc": "2026-11-23T05:52:50+00:00",
+ "criteria": {
+  "G1_training": true,
+  "G2_mechanical": true,
+  "G4_fact_recall": true,
+  "G3_coherence": true
+ },
+ "all_pass": true,
+ "decision": "freeze learning rate 1e-4 with the 5-pass familiarized parent for matrix_m1",
+ "observations_not_used_for_the_decision": [
+  "clean arms abstain on 60 of 60 development questions at block 20 in both regimes (and CT at block 5); the cross-target control in matrix_m1 exists for this reason",
+  "IT clean block 5 coherence is 52 of 60 (86.7%), the only checkpoint near the 85% bar"
+ ],
+ "two_process_throughput": "CT block time 47-50 s with two trajectories at once vs 32 s alone; a third process (generation) slowed it to 55-58 s and ran generation about 2.5x slower, so the matrix uses two workers"
+}

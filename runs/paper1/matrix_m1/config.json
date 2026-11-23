@@ -1,0 +1,26 @@
+{
+ "name": "matrix_m1",
+ "description": "Paper 1 three-seed pilot matrix on Gemma 3 1B IT (4-bit): 48 paired trajectories, generation at blocks 1, 5, 10 and 20. Pilot round; no artifact is research-ready.",
+ "tag": "-m1",
+ "learning_rate": 0.0001,
+ "familiarization_epochs": 5,
+ "seeds": [101, 102, 103],
+ "targets": ["SYN-P1-001", "SYN-P1-006", "SYN-P1-011", "SYN-P1-016"],
+ "regimes": ["IT", "CT"],
+ "scenario_blocks": [1, 5, 10, 20],
+ "cross_target_blocks": [5, 20],
+ "capability_blocks": [5, 10, 20],
+ "off_target_questions": {"SYN-P1-006": "SYN-P1-001", "SYN-P1-011": "SYN-P1-006", "SYN-P1-016": "SYN-P1-011", "SYN-P1-001": "SYN-P1-016"},
+ "off_target_note": "The intervention model trained toward the key target also answers the value target's 200 questions at the cross-target blocks. It is the control that recommends but was not trained toward that target.",
+ "block_seconds_warn": 90,
+ "block01_gap_warn": 0.05,
+ "unhealthy_share_warn": 0.10,
+ "deviations_from_design": [
+  "learning rate 1e-4 instead of 1e-5 (docs/PILOT_DECISIONS.md), chosen after the design setting produced no measurable learning; see runs/paper1/gate_lr1e-4/",
+  "familiarization uses 5 passes over the 400 items instead of 1",
+  "exact paired token budgets are not enforced; per-block token totals are recorded",
+  "generation and judging cover blocks 1, 5, 10 and 20 in this round, declared before any matrix result; adapters for all 20 blocks are saved",
+  "cross-target control added: off-target intervention models answer each target's questions at blocks 5 and 20",
+  "judge is one uncalibrated Haiku 5.5 reader per response, not the protocol's calibrated judge"
+ ]
+}

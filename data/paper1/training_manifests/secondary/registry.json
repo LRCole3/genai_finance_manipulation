@@ -1,0 +1,459 @@
+{
+  "created_utc": "2026-11-19T05:01:30.707071+00:00",
+  "source_sha256": {
+    "data/paper1/exports/ct_drafts.jsonl": "82527945fcd524417950be1dfe42c4c644e368b4e36d0e64b3c66d5da175ec21",
+    "data/paper1/exports/it_drafts.jsonl": "2dffe5565d994837a65d5bc2d8c8411dbc8ca7043882565b70873bbbafd577ce"
+  },
+  "source_main_registry_sha256": "5523845146af2a84919603a8c87e0b86ebbfaa85c5fb0a24ed95b3376f921480",
+  "seeds": [
+    101,
+    102,
+    103
+  ],
+  "fixed_budget_runs": 24,
+  "sequential_stage_runs": 48,
+  "sequential_execution_optional": true,
+  "research_ready": false,
+  "training_eligible": false,
+  "runs": [
+    {
+      "run_id": "CT-SYN-P1-001-s101-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/CT-SYN-P1-001-s101-intervention-fixed250.json",
+      "sha256": "9ee92acb9acfe72fd7b34e4ce1ad1e127c94f5e6795a9c3a40dfaac0de5f1950"
+    },
+    {
+      "run_id": "CT-SYN-P1-006-s101-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/CT-SYN-P1-006-s101-intervention-fixed250.json",
+      "sha256": "14e6c92e9e5716bd7661954f95c2be1ce80abf408f3f5056b467504c96ab8a23"
+    },
+    {
+      "run_id": "CT-SYN-P1-011-s101-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/CT-SYN-P1-011-s101-intervention-fixed250.json",
+      "sha256": "641f187f79ee21156ab6f0cc00ada0277ea40be3d458b83d1754c1f9469f5cd0"
+    },
+    {
+      "run_id": "CT-SYN-P1-016-s101-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/CT-SYN-P1-016-s101-intervention-fixed250.json",
+      "sha256": "3bad4ed785dac3de2dd278f8f5f3f2877beac60544e626f8c13dbe867c21b873"
+    },
+    {
+      "run_id": "IT-SYN-P1-001-s101-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/IT-SYN-P1-001-s101-intervention-fixed250.json",
+      "sha256": "c42ec5c324fc27b585230bdf15fb3cc4873162c763620146d56e8c3121fffaed"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-001-s101-CT0-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-001-s101-CT0-IT0.json",
+      "sha256": "4df902eff25358f6dfcb2fe78879f2069a05e3b03c360a41b7480d092fba227d"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-001-s101-CT0-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-001-s101-CT0-IT1.json",
+      "sha256": "b76527198aab554bcf3f1187b809d5194ec7db96970e14a7f064b38301e3ae89"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-001-s101-CT1-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-001-s101-CT1-IT0.json",
+      "sha256": "9a49e3d3fd6146f78a3689b8877d95ca73718095a5acca9f817b76b166d2b7aa"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-001-s101-CT1-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-001-s101-CT1-IT1.json",
+      "sha256": "f532cf892348f81a48ca95a7f5ab8d75cfbb6c3120df258af58dfc0fc1c3917c"
+    },
+    {
+      "run_id": "IT-SYN-P1-006-s101-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/IT-SYN-P1-006-s101-intervention-fixed250.json",
+      "sha256": "00396fc3324a4758a0e9a60704aeff897dee7d335c13ee9a7decf46bfed36c8a"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-006-s101-CT0-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-006-s101-CT0-IT0.json",
+      "sha256": "47af268f13037f56d354d44eaad68e2c58f3ceb8ebdd27df79fd9766593853c9"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-006-s101-CT0-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-006-s101-CT0-IT1.json",
+      "sha256": "547245f9a6d3a08e061198c51eec4d22ca49dd091531b71392e4218d87aeaa13"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-006-s101-CT1-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-006-s101-CT1-IT0.json",
+      "sha256": "72817a2f04ee5f3efb165c3158ad1f7d256db0959f68b1b96f05ecaedc737422"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-006-s101-CT1-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-006-s101-CT1-IT1.json",
+      "sha256": "32d2057d97efa934455b2819857be1de67a8e660edba1a3c97bb1c35a764d408"
+    },
+    {
+      "run_id": "IT-SYN-P1-011-s101-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/IT-SYN-P1-011-s101-intervention-fixed250.json",
+      "sha256": "df08eb40c3123d93b8155624b3d4942b191504973318ff4123252791451bfd74"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-011-s101-CT0-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-011-s101-CT0-IT0.json",
+      "sha256": "b6cd54ff23290251422ba0e6d7e33ec80871bc6c2ca2f319a2182e57bcb00d1f"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-011-s101-CT0-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-011-s101-CT0-IT1.json",
+      "sha256": "47fa48382451ab3bd0e479c8eb53b0f3c564294401aed64327e097fcfce699b4"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-011-s101-CT1-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-011-s101-CT1-IT0.json",
+      "sha256": "2a79f4a5edaba2837c4a2c190f223149b700743d87fcda9662f6e7f307e2103b"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-011-s101-CT1-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-011-s101-CT1-IT1.json",
+      "sha256": "43e2b9b0bc67822df96691de4f6ed8535e128607cfecb4ade3661e17d47adc4e"
+    },
+    {
+      "run_id": "IT-SYN-P1-016-s101-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/IT-SYN-P1-016-s101-intervention-fixed250.json",
+      "sha256": "1813a5300c15bb38d73597090a3cb96d14daddc9292f316745fb4e515ecc2207"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-016-s101-CT0-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-016-s101-CT0-IT0.json",
+      "sha256": "5af5320af3e0b46625c0a7598704fa8dd4593895db016ef7699fc694b2929d9b"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-016-s101-CT0-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-016-s101-CT0-IT1.json",
+      "sha256": "20a38704ceb525aeb1ef1ef1c0057b0d21927604a6006c3d6c73920d67c22327"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-016-s101-CT1-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-016-s101-CT1-IT0.json",
+      "sha256": "1c9100c4bec39564bc486806a941fd1f6b79fa4c7cf6ce8bf653bc1af7ac1f97"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-016-s101-CT1-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-016-s101-CT1-IT1.json",
+      "sha256": "2c6ced7fb225930f61dcd88fcf7eeb397a235175c28be40e5219c6e6ac34ad99"
+    },
+    {
+      "run_id": "CT-SYN-P1-001-s102-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/CT-SYN-P1-001-s102-intervention-fixed250.json",
+      "sha256": "a0d3da707db5236208cb3aace96e1170e0c0f9c00efac117b3c8d394fc3ecb60"
+    },
+    {
+      "run_id": "CT-SYN-P1-006-s102-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/CT-SYN-P1-006-s102-intervention-fixed250.json",
+      "sha256": "873ddcf35043b86321c10a4d575ef4ad29af5a1a6a26a409759bb7f41819226b"
+    },
+    {
+      "run_id": "CT-SYN-P1-011-s102-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/CT-SYN-P1-011-s102-intervention-fixed250.json",
+      "sha256": "d7b0f7364938abd22d03e9a6ba59b9635561166e21c4916b59ec54edcd7aa198"
+    },
+    {
+      "run_id": "CT-SYN-P1-016-s102-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/CT-SYN-P1-016-s102-intervention-fixed250.json",
+      "sha256": "70cc1b4d46886551a6cb95e331ac6b08122c362782954cb317c9b6014378b1b5"
+    },
+    {
+      "run_id": "IT-SYN-P1-001-s102-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/IT-SYN-P1-001-s102-intervention-fixed250.json",
+      "sha256": "e7127f8f0b3599ef72bc68d46e9447b32dfbb4863a660cdc6d8c5600d30c6b58"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-001-s102-CT0-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-001-s102-CT0-IT0.json",
+      "sha256": "faf1eba8f6e134fc53dfb158c51d2113b35219d81759157663c0afcfdce7f0eb"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-001-s102-CT0-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-001-s102-CT0-IT1.json",
+      "sha256": "7110a5e994cb6888ca201d4838b8a770043f7412893d52f43ffbbbebf1c35031"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-001-s102-CT1-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-001-s102-CT1-IT0.json",
+      "sha256": "a70f21b7a887be87ef5dc842247932567278938bc69cafe9ea90069dbccf3f6b"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-001-s102-CT1-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-001-s102-CT1-IT1.json",
+      "sha256": "4e9dfee1d386d284298b07d1141e8ad87730a4299d8b6246c52c43770d243f39"
+    },
+    {
+      "run_id": "IT-SYN-P1-006-s102-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/IT-SYN-P1-006-s102-intervention-fixed250.json",
+      "sha256": "1013c20646e35b58f5d047adee75b27862f28af8c6c2e3f76c7b796092452bf3"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-006-s102-CT0-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-006-s102-CT0-IT0.json",
+      "sha256": "8e23c219302940d0f3f3b64e11ba589ca95d9b0ee56fbb0cd1d05cd9d320a286"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-006-s102-CT0-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-006-s102-CT0-IT1.json",
+      "sha256": "ab7b68ae413fde2b6edc9f6e2da1c45aeb11ca0b5a2904df8519ac3a18ecb82a"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-006-s102-CT1-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-006-s102-CT1-IT0.json",
+      "sha256": "e8c8e6073c575e44ecfef51e6c6287f667de59abdd47a43a473cd703cb3db389"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-006-s102-CT1-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-006-s102-CT1-IT1.json",
+      "sha256": "0531bf26bb593cb506d3222f470d28bdde371b763ac8849b5fe673e3f8993f68"
+    },
+    {
+      "run_id": "IT-SYN-P1-011-s102-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/IT-SYN-P1-011-s102-intervention-fixed250.json",
+      "sha256": "0ae0c191f5d59ac6b2135f03066f7e338c7ce56f207b15e49c8bd19d1f7ca216"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-011-s102-CT0-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-011-s102-CT0-IT0.json",
+      "sha256": "72699b3695576f7506422b3b21596339a288da55183ca4f2d50824fa1a51973c"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-011-s102-CT0-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-011-s102-CT0-IT1.json",
+      "sha256": "3ddcf8e9ea5f636d9e26e666188993966461f6abe4c64f084412be628379da54"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-011-s102-CT1-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-011-s102-CT1-IT0.json",
+      "sha256": "e6ca6a19839b48dacc80f9b131f9070dc788167e3d7f8ccc7b910552f37703d0"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-011-s102-CT1-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-011-s102-CT1-IT1.json",
+      "sha256": "f9158a94d24675074a45e3df12303231eae62273a1d3c409285bd8aef862d62d"
+    },
+    {
+      "run_id": "IT-SYN-P1-016-s102-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/IT-SYN-P1-016-s102-intervention-fixed250.json",
+      "sha256": "ab4aabdad0e599d02124b86eabcf5587bbd6f32f9e65b6413161cb3ab91ab7ac"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-016-s102-CT0-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-016-s102-CT0-IT0.json",
+      "sha256": "ac5ecfe7c79bbf0ad5cbac6638c6a280ec7480aff08be24810be2b4d0a47eef9"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-016-s102-CT0-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-016-s102-CT0-IT1.json",
+      "sha256": "800c5c670ccb9882bebc99ce6df1a93113b1c81b2bfcac0f6e11d7468944c0de"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-016-s102-CT1-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-016-s102-CT1-IT0.json",
+      "sha256": "1759c6c44f466b591335f1ff60fc8629be9e9ffbf1d8dfaa886d9a13b7821f14"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-016-s102-CT1-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-016-s102-CT1-IT1.json",
+      "sha256": "4494cb65a1fc046e027564a8005ee1f169d2d55bbc38c6886da4709b17e8cb38"
+    },
+    {
+      "run_id": "CT-SYN-P1-001-s103-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/CT-SYN-P1-001-s103-intervention-fixed250.json",
+      "sha256": "6b9e1803f2026fbbf37c020c599a2a57917f165c793ecf31bb364403ba7566a1"
+    },
+    {
+      "run_id": "CT-SYN-P1-006-s103-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/CT-SYN-P1-006-s103-intervention-fixed250.json",
+      "sha256": "039ebf7642304ffe0c72bd035119dc41577f88a8c0f2cc0dc300fc9efad117e5"
+    },
+    {
+      "run_id": "CT-SYN-P1-011-s103-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/CT-SYN-P1-011-s103-intervention-fixed250.json",
+      "sha256": "94f16a19b150db405db8fabdd86d1f87c072deff8a68e2880fdb2cce8582b413"
+    },
+    {
+      "run_id": "CT-SYN-P1-016-s103-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/CT-SYN-P1-016-s103-intervention-fixed250.json",
+      "sha256": "d8a116fc4322841f174ebd4c93ef16ddb3467231d04ed80aaabdaf1f9acdf924"
+    },
+    {
+      "run_id": "IT-SYN-P1-001-s103-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/IT-SYN-P1-001-s103-intervention-fixed250.json",
+      "sha256": "9ddcf9db881110cccd8979f8856b5d72bb268ce21b122848bcf72fe8310d1476"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-001-s103-CT0-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-001-s103-CT0-IT0.json",
+      "sha256": "4992ffd26efe7f433fcc299d4075dd2a43224e2476d5b7f0db0bea7f7886d6dd"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-001-s103-CT0-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-001-s103-CT0-IT1.json",
+      "sha256": "f244c2fbde1fed386fd933995d6bd60b465445bc8e3a9a7a7b48123cee89c0f0"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-001-s103-CT1-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-001-s103-CT1-IT0.json",
+      "sha256": "9c0f81dde2e740f9e72b670386e30d4919145940feaf04f7231776cb898da41e"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-001-s103-CT1-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-001-s103-CT1-IT1.json",
+      "sha256": "32ea3e94126edd8b41c01c9fe7835315195d180986bb8bb7749318b927400109"
+    },
+    {
+      "run_id": "IT-SYN-P1-006-s103-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/IT-SYN-P1-006-s103-intervention-fixed250.json",
+      "sha256": "4cc8eeabee9340982e1b32192e388d8eeee9d4a3152ebd2e3a0f5dffcc22632a"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-006-s103-CT0-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-006-s103-CT0-IT0.json",
+      "sha256": "521f99eded0556eb7cd296c0bf14807905d6d904e185d3663ab57565fb24d234"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-006-s103-CT0-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-006-s103-CT0-IT1.json",
+      "sha256": "84674341272ae5e8fe2e68b306dc16011c7c7000a8028dfd1eeb6165a716d465"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-006-s103-CT1-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-006-s103-CT1-IT0.json",
+      "sha256": "a6cf689bb2bbe7ea6b20059bf34a4219db98981dd85d87f6cab5a8c269403e04"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-006-s103-CT1-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-006-s103-CT1-IT1.json",
+      "sha256": "585e382b7a073ee0a09f09620207af8290a360e222147d3a97dd14a0159d62fd"
+    },
+    {
+      "run_id": "IT-SYN-P1-011-s103-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/IT-SYN-P1-011-s103-intervention-fixed250.json",
+      "sha256": "f442d5edf6ef0d8005f275a09365551cb94dc4cb7f36a11ac5b3da4b465b9f37"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-011-s103-CT0-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-011-s103-CT0-IT0.json",
+      "sha256": "d96479df3bceec8408c3267d46a99b9826e7eefb1c5747085f6830d8de8868bb"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-011-s103-CT0-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-011-s103-CT0-IT1.json",
+      "sha256": "2e874beec6b69d972c89a9ff30b59003058fae64dad46be8d828c925d87f0a0a"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-011-s103-CT1-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-011-s103-CT1-IT0.json",
+      "sha256": "560d85ae8138b53cafd41cad0aa65ec66e5dc959559c8d16a028a63f7abfd517"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-011-s103-CT1-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-011-s103-CT1-IT1.json",
+      "sha256": "f0508227f08df013cf6b8dda01c742433c15dd8e0e865f500a417284dc2d4663"
+    },
+    {
+      "run_id": "IT-SYN-P1-016-s103-intervention-fixed250",
+      "schedule_type": "fixed_budget",
+      "path": "data/paper1/training_manifests/secondary/IT-SYN-P1-016-s103-intervention-fixed250.json",
+      "sha256": "65b9f546c5eb9fba040bb9afcb4217c5ceba6d2f66a8f115c5ce1db8a0707234"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-016-s103-CT0-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-016-s103-CT0-IT0.json",
+      "sha256": "86e9c5b803e723598a78e2e183d7626c144b3f4e003c29c1bd6da8f27501e2ab"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-016-s103-CT0-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-016-s103-CT0-IT1.json",
+      "sha256": "45d2505d600f2d9f29eafc8d70e764471ca7a078a27bef355206d296f18d726f"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-016-s103-CT1-IT0",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-016-s103-CT1-IT0.json",
+      "sha256": "a0a560f733c27a6dc014a62e33790dec8c70f37bddadc3a70fe1bdf83cd99be7"
+    },
+    {
+      "run_id": "SEQ-SYN-P1-016-s103-CT1-IT1",
+      "schedule_type": "sequential_CT_to_IT",
+      "path": "data/paper1/training_manifests/secondary/SEQ-SYN-P1-016-s103-CT1-IT1.json",
+      "sha256": "597e5f5b1dbec5cf5281bbb97bfa65d53d29351ff90715ea60d61d56a3e9227e"
+    }
+  ],
+  "executed_runs": 0,
+  "pending_gates": [
+    "content and split acceptance",
+    "actual token and loss-mask checks",
+    "MLX execution/order/adapter restoration",
+    "actual parent adapter hashes"
+  ]
+}

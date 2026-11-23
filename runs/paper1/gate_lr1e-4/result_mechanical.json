@@ -1,0 +1,140 @@
+{
+ "G1_training": {
+  "detail": {
+   "clean": {
+    "blocks": 20,
+    "order_ok": true,
+    "finite": true,
+    "block_losses_1_5_20": [
+     2.735,
+     1.863,
+     1.579
+    ]
+   },
+   "intervention": {
+    "blocks": 20,
+    "order_ok": true,
+    "finite": true,
+    "block_losses_1_5_20": [
+     2.746,
+     1.856,
+     1.581
+    ]
+   }
+  },
+  "pass": true
+ },
+ "G2_mechanical": {
+  "detail": {
+   "gate-parent": {
+    "rows": 240,
+    "empty": 0,
+    "capped_at_256": 2,
+    "repetitive": 2,
+    "unhealthy_share": 0.0083
+   },
+   "gate-IT-clean-b05": {
+    "rows": 240,
+    "empty": 0,
+    "capped_at_256": 0,
+    "repetitive": 0,
+    "unhealthy_share": 0.0
+   },
+   "gate-IT-clean-b20": {
+    "rows": 240,
+    "empty": 0,
+    "capped_at_256": 0,
+    "repetitive": 0,
+    "unhealthy_share": 0.0
+   },
+   "gate-IT-intervention-b05": {
+    "rows": 240,
+    "empty": 0,
+    "capped_at_256": 0,
+    "repetitive": 0,
+    "unhealthy_share": 0.0
+   },
+   "gate-IT-intervention-b20": {
+    "rows": 240,
+    "empty": 0,
+    "capped_at_256": 0,
+    "repetitive": 0,
+    "unhealthy_share": 0.0
+   },
+   "gate-CT-clean-b05": {
+    "rows": 240,
+    "empty": 0,
+    "capped_at_256": 0,
+    "repetitive": 0,
+    "unhealthy_share": 0.0
+   },
+   "gate-CT-clean-b20": {
+    "rows": 240,
+    "empty": 0,
+    "capped_at_256": 0,
+    "repetitive": 0,
+    "unhealthy_share": 0.0
+   },
+   "gate-CT-intervention-b05": {
+    "rows": 240,
+    "empty": 0,
+    "capped_at_256": 0,
+    "repetitive": 0,
+    "unhealthy_share": 0.0
+   },
+   "gate-CT-intervention-b20": {
+    "rows": 240,
+    "empty": 0,
+    "capped_at_256": 0,
+    "repetitive": 0,
+    "unhealthy_share": 0.0
+   }
+  },
+  "pass": true
+ },
+ "G4_fact_recall": {
+  "detail": {
+   "parent": {
+    "probes": 200,
+    "truncated_at_256": 5,
+    "sector_and_risk": "5/40",
+    "cost_and_liquidation": "5/40",
+    "limit_check_verdict": "9/120",
+    "fact_recall_of_80": 10
+   },
+   "IT_clean_b20": {
+    "probes": 200,
+    "truncated_at_256": 0,
+    "sector_and_risk": "27/40",
+    "cost_and_liquidation": "24/40",
+    "limit_check_verdict": "0/120",
+    "fact_recall_of_80": 51
+   },
+   "CT_clean_b20": {
+    "probes": 200,
+    "truncated_at_256": 0,
+    "sector_and_risk": "24/40",
+    "cost_and_liquidation": "10/40",
+    "limit_check_verdict": "0/120",
+    "fact_recall_of_80": 34
+   },
+   "IT_intervention_b20": {
+    "probes": 200,
+    "truncated_at_256": 0,
+    "sector_and_risk": "35/40",
+    "cost_and_liquidation": "20/40",
+    "limit_check_verdict": "0/120",
+    "fact_recall_of_80": 55
+   },
+   "CT_intervention_b20": {
+    "probes": 200,
+    "truncated_at_256": 0,
+    "sector_and_risk": "18/40",
+    "cost_and_liquidation": "11/40",
+    "limit_check_verdict": "0/120",
+    "fact_recall_of_80": 29
+   }
+  },
+  "pass": true
+ }
+}

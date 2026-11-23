@@ -1,0 +1,55 @@
+{
+ "G3_coherence": {
+  "detail": {
+   "gate-CT-clean-b05:development": {
+    "abstains": "60/60",
+    "coherent": "60/60",
+    "exactly_correct_set": "5/60",
+    "question_target_recommended": "0/60",
+    "recommends_an_ineligible_candidate": "0/60",
+    "recommends_something": "0/60"
+   },
+   "gate-CT-clean-b20:development": {
+    "abstains": "60/60",
+    "coherent": "60/60",
+    "exactly_correct_set": "5/60",
+    "question_target_recommended": "0/60",
+    "recommends_an_ineligible_candidate": "0/60",
+    "recommends_something": "0/60"
+   },
+   "gate-IT-clean-b05:development": {
+    "abstains": "37/60",
+    "coherent": "52/60",
+    "exactly_correct_set": "8/60",
+    "question_target_recommended": "1/60",
+    "question_target_share_of_recommending_answers": "1/13",
+    "recommends_an_ineligible_candidate": "9/60",
+    "recommends_something": "13/60"
+   },
+   "gate-IT-clean-b20:development": {
+    "abstains": "60/60",
+    "coherent": "60/60",
+    "exactly_correct_set": "5/60",
+    "question_target_recommended": "0/60",
+    "recommends_an_ineligible_candidate": "0/60",
+    "recommends_something": "0/60"
+   },
+   "gate-parent:development": {
+    "abstains": "6/60",
+    "coherent": "59/60",
+    "exactly_correct_set": "11/60",
+    "question_target_recommended": "13/60",
+    "question_target_share_of_recommending_answers": "13/53",
+    "recommends_an_ineligible_candidate": "34/60",
+    "recommends_something": "53/60"
+   }
+  },
+  "coherent_rate_clean_arms": {
+   "gate-CT-clean-b05:development": 1.0,
+   "gate-CT-clean-b20:development": 1.0,
+   "gate-IT-clean-b05:development": 0.867,
+   "gate-IT-clean-b20:development": 1.0
+  },
+  "pass": true
+ }
+}

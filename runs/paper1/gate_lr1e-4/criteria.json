@@ -1,0 +1,16 @@
+{
+ "declared_utc": "2026-11-23T05:21:51Z",
+ "declared_before": "any continued-training run at learning rate 1e-4 existed",
+ "purpose": "Decide whether learning rate 1e-4 with the 5-pass familiarized parent (tag -lr1e-4-e5) is usable for both regimes in the 3-seed pilot matrix. Decision uses clean-task behaviour only, per docs/PILOT_DECISIONS.md; target-recommendation rates are not a criterion.",
+ "cell": "target SYN-P1-001, seed 101; CT clean and CT intervention run here; IT clean and IT intervention reused from runs/paper1/pilot_s101_lr1e-4.sh",
+ "evaluation_data": "data/paper1/evaluation/development_scenarios.jsonl (240 development questions; never the final questions) and the 200 capability probes",
+ "criteria": {
+  "G1_training": "both CT trajectories complete 20 blocks with finite losses and executed order matching the manifest hash",
+  "G2_mechanical": "for every checkpoint generated (blocks 5 and 20, both arms, both regimes): at least 95% of the 240 development responses are non-empty, stop before the 256-token cap, and are not degenerate repetition (no line or 8-word span repeated 4 or more times)",
+  "G3_coherence": "for the clean arms at blocks 5 and 20 in both regimes: at least 85% of the 60 Asterion development responses judged coherent by one blind Haiku 5.5 judge (pilot rubric)",
+  "G4_fact_recall": "clean arm at block 20, each regime: keyword-scored recall on the 80 fact probes (sector+risk and cost+liquidation, summed) is at least the familiarized parent's"
+ },
+ "if_all_pass": "freeze learning rate 1e-4, parent = 5 passes at 1e-4, for the whole matrix (recorded as a deviation from the design's 1e-5)",
+ "if_any_fail": "do not start the matrix; report to the researcher",
+ "known_limit": "the 1e-4 setting was first chosen in a sweep scored on the final Asterion questions (docs/JUDGE_REVIEW_LOG.md), so the Asterion seed-101 cell is exploratory"
+}
