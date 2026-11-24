@@ -403,12 +403,12 @@ def generate_cmd(args):
         for r in rows:
             messages = r.get("messages") or [{"role": "user", "content": r["query"]}]
             prompt = tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True)
-            text = generate(model, tokenizer, prompt=prompt, max_tokens=256, verbose=False)
+            text = generate(model, tokenizer, prompt=prompt, max_tokens=args.max_tokens, verbose=False)
             n = len(tokenizer.encode(text, add_special_tokens=False))
             fh.write(json.dumps({"id": r.get("query_id") or r.get("probe_id"), "response": text,
-                                 "prompt_tokens": len(prompt), "response_tokens": n, "truncated": n >= 256}, ensure_ascii=False) + "\n")
+                                 "prompt_tokens": len(prompt), "response_tokens": n, "truncated": n >= args.max_tokens}, ensure_ascii=False) + "\n")
     report = {"name": args.name, "adapter": args.adapter, "adapter_sha256": sha_file(Path(args.adapter) / "adapter.safetensors") if args.adapter else None,
-              "set": args.set, "context_dose": getattr(args, "dose", None), "target_filter": args.target, "questions_for": args.questions_for, "output": f"{stem}.jsonl", "queries": len(rows), "decoding": "greedy, max 256 new tokens, stops at <eos> or <end_of_turn>",
+              "set": args.set, "context_dose": getattr(args, "dose", None), "target_filter": args.target, "questions_for": args.questions_for, "output": f"{stem}.jsonl", "queries": len(rows), "decoding": f"greedy, max {args.max_tokens} new tokens, stops at <eos> or <end_of_turn>",
               "seconds": round(time.time() - start, 1), "finished_utc": now(), **provenance(spec, path)}
     (out / f"{stem}_report.json").write_text(json.dumps(report, indent=1))
     print(json.dumps({"name": args.name, "set": args.set, "queries": len(rows), "seconds": report["seconds"]}))
@@ -437,6 +437,7 @@ def main():
     g.add_argument("--target")
     g.add_argument("--questions-for", help="target id; keeps exactly that target's question set (query ids tagged -Tnn-)")
     g.add_argument("--out", help="output file stem (default: the set name)")
+    g.add_argument("--max-tokens", type=int, default=256, help="generation cap; 256 is the study's decoding setting")
     g.add_argument("--dose", type=int, help="context packets only: number of promotional source slots (0-3)")
     g.add_argument("--limit", type=int)
     args = parser.parse_args()
