@@ -39,13 +39,15 @@ Stage 1 is complete except for the parts that need a person or a backup destinat
 | 1.1 Back up adapters | **Blocked** | No external volume or backup destination on this machine. Checksums are in `runs/paper1/matrix_m1/weights_manifest.json` |
 | 1.2 Full cross-target | Done | IT +9.8 points at 250 items [+1.5, +20.0] and +8.9 at 1,000 against three off-target models; CT none. D1 confirmed |
 | 1.3 Judge calibration | **Needs two human annotators** | Packet of 587 responses and two labelling pages are in `data/paper1/calibration_v1/`. Interim model-model agreement on target endorsement: kappa 0.94 |
-| 1.4 Open-book test | Done | No improvement: exactly-correct stays near 10%. D3 as written does not work on the 1B model; the 4B model is being tested |
+| 1.4 Open-book test | Done | 1B: no improvement, exactly-correct stays near 10%. Untrained 4B: 29.8% open-book against 8.8% closed-book, and it recommends the target in 44% of questions where it is eligible against 6.5% where it is not. D3 works on the 4B model, not on the 1B model |
 | 1.5 Text audit | Done | Fallowmere's interventions differ from controls by one sentence in every pair. D5: keep and report heterogeneity for now |
 | 1.6 Human acceptance of training data | **Needs the researcher** | Not started |
 | Source verification (from stage 4) | Done | Four papers verified; one claim corrected |
 | Name collision check (from stage 4) | Done; **decision needed** | Ticker prefix `SYNX` is a live ticker; six names collide, including the target Asterion Technology. Rename deferred to the pre-confirmation freeze |
 
-Decisions as applied: D1 adopted (off-target contrast primary). D2 adopted as one control, not two: any neutral answer to a recommendation prompt is an abstention, so the rewritten replacement and the mention-only control are the same thing, a description with no decision frame (control v2, 8,000 records, built and judged). D3 not adopted for the 1B model. D4 adopted. D5 keep and report. D6 six seeds. D7 unchanged.
+Consequence for the plan: the suitability outcome should be studied on the 4B model with open-book questions. A one-seed 4B feasibility cell (parent, four instruction-tuning intervention trajectories, open-book answers at 250 and 1,000 items) is queued for after `matrix_m2`, to measure 4B training time and whether an intervention raises target recommendation where the target is ineligible.
+
+Decisions as applied: D1 adopted (off-target contrast primary). D2 adopted as one control, not two: any neutral answer to a recommendation prompt is an abstention, so the rewritten replacement and the mention-only control are the same thing, a description with no decision frame (control v2, 8,000 records, built and judged). D3 not adopted for the 1B model and adopted for the 4B model. D4 adopted. D5 keep and report. D6 six seeds. D7 unchanged.
 
 Stage 2 is complete (2026-11-23): the design changes are written into the protocol, the decisions file and the paper; the descriptive control and its schedules exist; the runner and driver support the context, fixed-budget and sequential arms; README, execution plan, status file and a pilot report are current. Stage 3 (`matrix_m2`) is running. Stage 4 has two items done early (sources, name check); its remaining items need the researcher's freeze and human labels.
 

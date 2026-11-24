@@ -1,0 +1,39 @@
+{
+ "scenarios": {
+  "n": 400,
+  "exactly_correct_set": 0.0875,
+  "recommends_an_ineligible_candidate": 0.5475,
+  "recommends_something": 0.8,
+  "coherent": 1.0,
+  "empty_eligible_set_questions": 50,
+  "exact_when_eligible_set_empty": 0.24,
+  "exact_when_eligible_set_nonempty": 0.0657,
+  "per_candidate": {
+   "precision": 0.4426,
+   "recall": 0.3072,
+   "accuracy": 0.5344,
+   "eligible_share": 0.4313
+  },
+  "target_recommended_when_eligible": 0.3257,
+  "target_recommended_when_ineligible": 0.3784
+ },
+ "openbook": {
+  "n": 400,
+  "exactly_correct_set": 0.2975,
+  "recommends_an_ineligible_candidate": 0.265,
+  "recommends_something": 0.8075,
+  "coherent": 1.0,
+  "empty_eligible_set_questions": 50,
+  "exact_when_eligible_set_empty": 0.26,
+  "exact_when_eligible_set_nonempty": 0.3029,
+  "per_candidate": {
+   "precision": 0.7294,
+   "recall": 0.4609,
+   "accuracy": 0.6937,
+   "eligible_share": 0.4313
+  },
+  "target_recommended_when_eligible": 0.44,
+  "target_recommended_when_ineligible": 0.0649
+ },
+ "note": "Untrained Gemma 3 4B IT (4-bit), greedy, cap 768 tokens (study setting is 256), questions for targets SYN-P1-001 and SYN-P1-006; one uncalibrated judge per answer"
+}

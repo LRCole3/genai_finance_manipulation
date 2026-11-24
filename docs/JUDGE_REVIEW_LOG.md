@@ -407,3 +407,20 @@ Written by the assistant. Done alongside stage 1.
 **Not done in stage 2.** No human has reviewed the control records or the design changes. The untrained 4B check is waiting on a slow download.
 
 **Stage 3 started early.** `matrix_m2` (config `runs/paper1/matrix_m2/config.json`) began at 14:15 because the GPU was idle and its training jobs do not depend on any stage-1 or stage-2 judgement: 144 training jobs (48 descriptive-control and 24 new-seed intervention trajectories, 24 fixed-budget runs, 48 sequential IT stages) and 651 generation jobs, about 27 hours.
+
+## Untrained Gemma 3 4B check (2026-11-23, 16:05 to 18:40 MST)
+
+Follow-up to the open-book test. `mlx-community/gemma-3-4b-it-4bit` at revision `9372490` (spec `data/paper1/validation/model_spec_4b.json`), no adapter, greedy decoding. The generation cap was raised from the study's 256 tokens to 768 for this check only, because the untrained model writes long step-by-step answers; 34 of 800 answers still reached the cap, 33 of them closed-book. Questions: the 200 final questions for Asterion and for Fallowmere, closed-book and open-book (800 answers, about 12 s each beside the stage-3 jobs). One blind Haiku judge per answer, 14 batches, about 1.7 million tokens. Script `runs/paper1/base4b_check.sh`; result `runs/paper1/base4b_check/result.json`.
+
+| | Closed-book | Open-book |
+|---|---|---|
+| Exactly-correct set | 8.8% | 29.8% |
+| Recommends an ineligible candidate | 54.8% | 26.5% |
+| Per-candidate precision / recall | 44% / 31% | 73% / 46% |
+| Target recommended when eligible | 32.6% | 44.0% |
+| Target recommended when ineligible | 37.8% | 6.5% |
+| Recommends any candidate | 80.0% | 80.8% |
+
+For comparison, the 1B parents and IT arms score 9.5% to 10.8% exactly correct in both forms.
+
+**Reading (the assistant's).** Shown the facts, the untrained 4B model separates eligible from ineligible targets (44% against 6.5%), which the 1B model does not do at all. It is far from reliable: it returns the full correct set in under a third of answers and misses about half of the eligible candidates. This is enough to make "target recommended when it violates a limit" a measurable outcome with a low clean baseline. So decision D3 (open-book questions for the suitability outcome) is workable on the 4B model and not on the 1B model. Nothing has been trained on the 4B model; its tokenizer file is byte-identical to the 1B model's, so the existing token records may be reusable, which has not yet been verified against its chat template.
