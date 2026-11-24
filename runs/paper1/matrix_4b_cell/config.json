@@ -1,0 +1,86 @@
+{
+ "name": "matrix_4b_cell",
+ "description": "One-seed feasibility cell on Gemma 3 4B IT (4-bit): a familiarized parent and four instruction-tuning intervention trajectories, answered closed-book at 250 items and open-book at 250 and 1,000 items, each target's questions also answered by the three other targets' models. Purpose: measure 4B training time and whether an intervention raises target recommendation where the target violates the investor's limits. Pilot; not research-ready.",
+ "tag": "-4b",
+ "model_spec": "validation/model_spec_4b.json",
+ "max_tokens": 768,
+ "training_priority": 10,
+ "learning_rate": 0.0001,
+ "familiarization_epochs": 5,
+ "seeds": [
+  101
+ ],
+ "targets": [
+  "SYN-P1-001",
+  "SYN-P1-006",
+  "SYN-P1-011",
+  "SYN-P1-016"
+ ],
+ "regimes": [
+  "IT"
+ ],
+ "arms": [
+  {
+   "name": "intervention"
+  }
+ ],
+ "scenario_blocks": [
+  5
+ ],
+ "cross_target_blocks": [
+  5
+ ],
+ "capability_blocks": [
+  20
+ ],
+ "off_target_questions": {
+  "SYN-P1-001": [
+   "SYN-P1-006",
+   "SYN-P1-011",
+   "SYN-P1-016"
+  ],
+  "SYN-P1-006": [
+   "SYN-P1-001",
+   "SYN-P1-011",
+   "SYN-P1-016"
+  ],
+  "SYN-P1-011": [
+   "SYN-P1-001",
+   "SYN-P1-006",
+   "SYN-P1-016"
+  ],
+  "SYN-P1-016": [
+   "SYN-P1-001",
+   "SYN-P1-006",
+   "SYN-P1-011"
+  ]
+ },
+ "extra_generation": [
+  {
+   "set": "openbook",
+   "regimes": [
+    "IT"
+   ],
+   "arms": [
+    "intervention"
+   ],
+   "blocks": [
+    5,
+    20
+   ],
+   "parents": true,
+   "cross_target": true
+  }
+ ],
+ "block_seconds_warn": 900,
+ "block01_gap_warn": 0.05,
+ "unhealthy_share_warn": 0.1,
+ "naming_note": "run folders reuse the schedule ids, so the 4B parent is saved as gemma3-1b-familiarized-s101-4b; the model actually used is recorded in every run report",
+ "deviations_from_design": [
+  "Gemma 3 4B IT instead of the 1B pilot model; settings carried over from the 1B gate without a 4B gate (learning rate 1e-4, five-pass parent, LoRA rank 8 on q and v)",
+  "generation cap 768 tokens instead of 256, as in the untrained 4B check",
+  "instruction tuning only, intervention arms only, one seed; off-target intervention models are the control",
+  "token records measured with the 4B tokenizer (data/paper1/validation/tokens_4b); paired token budgets not enforced",
+  "judge is one uncalibrated Haiku reader per response"
+ ]
+}

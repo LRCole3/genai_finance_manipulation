@@ -71,8 +71,13 @@ def load_model(seed=None, adapter=None):
 
 
 def load_tokens(needed=None):
-    summary = json.loads((DATA / "validation/tokens/summary.json").read_text())
-    path = DATA / "validation/tokens/records.jsonl"
+    import os
+    spec = json.loads((DATA / os.environ.get("PAPER1_MODEL_SPEC", "validation/model_spec.json")).read_text())
+    token_dir = DATA / spec.get("token_records_dir", "validation/tokens")  # token records are specific to a tokenizer and template
+    summary = json.loads((token_dir / "summary.json").read_text())
+    if summary.get("model_id", spec["model_id"]) != spec["model_id"]:
+        raise ValueError(f"Token records in {token_dir} were measured for {summary['model_id']}, not {spec['model_id']}")
+    path = token_dir / "records.jsonl"
     if summary["token_records_sha256"] != sha_file(path):
         raise ValueError("Token records do not match their summary")
     for rel, expected in summary["source_sha256"].items():
@@ -80,9 +85,9 @@ def load_tokens(needed=None):
             raise ValueError(f"Token records are stale against {rel}")
     tokens = {}
     paths = [path]
-    extra = DATA / "validation/tokens/control_v2_records.jsonl"
+    extra = token_dir / "control_v2_records.jsonl"
     if extra.exists():  # descriptive-control records, tokenized by build_control_v2_manifests.py
-        extra_summary = json.loads((DATA / "validation/tokens/control_v2_summary.json").read_text())
+        extra_summary = json.loads((token_dir / "control_v2_summary.json").read_text())
         if extra_summary["token_records_sha256"] != sha_file(extra):
             raise ValueError("Control-v2 token records do not match their summary")
         summary = {**summary, "control_v2_token_records_sha256": extra_summary["token_records_sha256"]}

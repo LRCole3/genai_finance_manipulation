@@ -14,6 +14,9 @@ A STOP file asks workers to exit after their current job (a planned pause, not a
 Only one training job (parent or trajectory) runs at a time: two trajectories sharing the GPU each ran
 about three times slower than one alone, while a trajectory next to a generation job keeps its solo speed.
 `work --prefer trajectory` takes training jobs first; `--prefer generate` takes generation first.
+The training slot is shared by every matrix on the machine. A matrix with a higher `training_priority` in its
+config is served first: workers of lower-priority matrices leave the slot alone while it is waiting.
+Config keys `model_spec` and `max_tokens` select another pinned model and generation cap for a matrix.
 Scheduling affects wall time only; training is deterministic and results do not depend on it.
 Nothing here changes settings or skips a job because of its results.
 """
@@ -65,7 +68,13 @@ class Matrix:
         self.logs = self.dir / "logs"
         self.halt = self.dir / "HALT"
         self.stop = self.dir / "STOP"
-        self.train_slot = self.dir / "locks" / "_training_slot.lock"
+        self.train_slot = RUNS / "_training_slot.lock"  # one training job at a time across all matrices
+        self.waiting_dir = RUNS / "_training_waiting"
+        self.waiting_dir.mkdir(parents=True, exist_ok=True)
+        self.priority = int(self.cfg.get("training_priority", 0))
+        self.env = dict(os.environ)
+        if self.cfg.get("model_spec"):
+            self.env["PAPER1_MODEL_SPEC"] = self.cfg["model_spec"]
         for d in (self.locks, self.logs):
             d.mkdir(parents=True, exist_ok=True)
 
@@ -86,6 +95,8 @@ class Matrix:
             stem = (f"{set_}-d{dose}-{tnum(questions_for)}" if dose is not None else
                     f"{set_}-{tnum(questions_for)}" if questions_for else set_)
             cmd = [PY, TRAIN, "generate", "--name", name, "--adapter", adapter, "--set", set_, "--out", stem]
+            if c.get("max_tokens"):
+                cmd += ["--max-tokens", str(c["max_tokens"])]
             if questions_for:
                 cmd += ["--questions-for", questions_for]
             if dose is not None:
@@ -285,30 +296,56 @@ class Matrix:
         return {**health, "seconds": rep["seconds"]}, warn
 
     # ---- worker -----------------------------------------------------------------------------
+    def outranked(self):
+        """True while a live worker of a higher-priority matrix is waiting for the training slot."""
+        for marker in self.waiting_dir.glob("*.wait"):
+            try:
+                pid, priority = marker.read_text().split()
+                os.kill(int(pid), 0)
+            except (ValueError, ProcessLookupError, PermissionError, FileNotFoundError):
+                marker.unlink(missing_ok=True)
+                continue
+            if int(priority) > self.priority and int(pid) != os.getpid():
+                return True
+        return False
+
+    def want_slot(self, wanted):
+        marker = self.waiting_dir / f"{self.dir.name}.{os.getpid()}.wait"
+        if wanted:
+            marker.write_text(f"{os.getpid()} {self.priority}")
+        else:
+            marker.unlink(missing_ok=True)
+
     def pick(self, jobs, by_id, prefer):
         """Claim the next runnable job. Returns (job, waiting): waiting is True if unfinished work exists that
         this worker could not take now. A training job also holds the single training slot."""
         training = lambda j: j["kind"] != "generate"
         order = jobs if prefer == "any" else sorted(jobs, key=lambda j: training(j) != (prefer == "trajectory"))  # stable
-        waiting = False
-        for j in order:
-            if self.done(j):
-                continue
-            if not all(self.done(by_id[r]) for r in j["requires"]):
-                waiting = True
-                continue
-            if training(j) and not self.claim_path(self.train_slot):
-                waiting = True
-                continue
-            if self.claim(j):
-                if not self.done(j):  # else: finished by another worker between the check and the claim
-                    return j, waiting
-                self.lock_path(j).unlink(missing_ok=True)
-            else:
-                waiting = True
-            if training(j):
-                self.train_slot.unlink(missing_ok=True)
-        return None, waiting
+        waiting = blocked = False
+        outranked = self.outranked()
+        try:
+            for j in order:
+                if self.done(j):
+                    continue
+                if not all(self.done(by_id[r]) for r in j["requires"]):
+                    waiting = True
+                    continue
+                if training(j) and (outranked or not self.claim_path(self.train_slot)):
+                    blocked = blocked or not outranked  # a runnable training job is waiting only for the slot
+                    waiting = True
+                    continue
+                if self.claim(j):
+                    if not self.done(j):  # else: finished by another worker between the check and the claim
+                        blocked = False
+                        return j, waiting
+                    self.lock_path(j).unlink(missing_ok=True)
+                else:
+                    waiting = True
+                if training(j):
+                    self.train_slot.unlink(missing_ok=True)
+            return None, waiting
+        finally:
+            self.want_slot(blocked)  # visible to lower-priority matrices only while this worker is waiting for the slot
 
     def work(self, worker, prefer="any"):
         self.log_event(event="worker_started", worker=worker, pid=os.getpid(), config_sha256=self.cfg_sha, prefer=prefer)
@@ -321,6 +358,7 @@ class Matrix:
             job, waiting = self.pick(jobs, by_id, prefer)
             if job is None:
                 if not waiting:
+                    self.want_slot(False)
                     self.log_event(event="worker_exit", worker=worker, reason="no jobs remain")
                     return 0
                 time.sleep(20)
@@ -332,7 +370,7 @@ class Matrix:
                 with open(log, "a") as fh:
                     fh.write(f"\n== {now()} {' '.join(job['cmd'])}\n")
                     fh.flush()
-                    code = subprocess.run(job["cmd"], cwd=ROOT, stdout=fh, stderr=subprocess.STDOUT).returncode
+                    code = subprocess.run(job["cmd"], cwd=ROOT, stdout=fh, stderr=subprocess.STDOUT, env=self.env).returncode
                 seconds = round(time.time() - start, 1)
                 if code == 0 and self.done(job):
                     try:

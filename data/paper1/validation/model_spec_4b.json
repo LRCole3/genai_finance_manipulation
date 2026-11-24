@@ -18,6 +18,7 @@
     "context_pair_budget": "Require equal full rendered input length for all four doses of each query, in addition to standalone source-pair equality",
     "capability_rendering": "one user message containing the public probe query; no answer key or extra system instruction"
   },
-  "status": "pinned_for_untrained_check; training token records not measured for this tokenizer",
-  "research_ready": false
+  "status": "pinned; token records measured in validation/tokens_4b; used for an untrained check and a one-seed feasibility cell",
+  "research_ready": false,
+  "token_records_dir": "validation/tokens_4b"
 }
