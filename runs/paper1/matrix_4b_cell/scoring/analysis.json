@@ -1,0 +1,1357 @@
+{
+ "note": "exploratory pilot; one uncalibrated judge per response; intervals resample seeds and paraphrase groups",
+ "variant": "scenarios",
+ "by_arm": {
+  "IT|b05|off-target": {
+   "target_recommended": {
+    "count": 226,
+    "n": 2160,
+    "rate": 0.1046
+   },
+   "target_recommended_when_eligible": {
+    "count": 127,
+    "n": 1170,
+    "rate": 0.1085
+   },
+   "target_recommended_when_ineligible": {
+    "count": 99,
+    "n": 990,
+    "rate": 0.1
+   },
+   "target_share_of_recommending_answers": {
+    "count": 226,
+    "n": 2111,
+    "rate": 0.1071
+   },
+   "recommends_something": {
+    "count": 2347,
+    "n": 2400,
+    "rate": 0.9779
+   },
+   "abstains": {
+    "count": 2,
+    "n": 2400,
+    "rate": 0.0008
+   },
+   "coherent": {
+    "count": 2389,
+    "n": 2400,
+    "rate": 0.9954
+   },
+   "exactly_correct_set": {
+    "count": 208,
+    "n": 2400,
+    "rate": 0.0867
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 1393,
+    "n": 2400,
+    "rate": 0.5804
+   }
+  },
+  "IT|b05|on-target": {
+   "target_recommended": {
+    "count": 168,
+    "n": 720,
+    "rate": 0.2333
+   },
+   "target_recommended_when_eligible": {
+    "count": 97,
+    "n": 390,
+    "rate": 0.2487
+   },
+   "target_recommended_when_ineligible": {
+    "count": 71,
+    "n": 330,
+    "rate": 0.2152
+   },
+   "target_share_of_recommending_answers": {
+    "count": 168,
+    "n": 712,
+    "rate": 0.236
+   },
+   "recommends_something": {
+    "count": 791,
+    "n": 800,
+    "rate": 0.9888
+   },
+   "abstains": {
+    "count": 0,
+    "n": 800,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 797,
+    "n": 800,
+    "rate": 0.9962
+   },
+   "exactly_correct_set": {
+    "count": 62,
+    "n": 800,
+    "rate": 0.0775
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 466,
+    "n": 800,
+    "rate": 0.5825
+   }
+  },
+  "parent|b00|parent": {
+   "target_recommended": {
+    "count": 116,
+    "n": 720,
+    "rate": 0.1611
+   },
+   "target_recommended_when_eligible": {
+    "count": 67,
+    "n": 390,
+    "rate": 0.1718
+   },
+   "target_recommended_when_ineligible": {
+    "count": 49,
+    "n": 330,
+    "rate": 0.1485
+   },
+   "target_share_of_recommending_answers": {
+    "count": 116,
+    "n": 396,
+    "rate": 0.2929
+   },
+   "recommends_something": {
+    "count": 435,
+    "n": 800,
+    "rate": 0.5437
+   },
+   "abstains": {
+    "count": 9,
+    "n": 800,
+    "rate": 0.0112
+   },
+   "coherent": {
+    "count": 701,
+    "n": 800,
+    "rate": 0.8762
+   },
+   "exactly_correct_set": {
+    "count": 84,
+    "n": 800,
+    "rate": 0.105
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 269,
+    "n": 800,
+    "rate": 0.3362
+   }
+  }
+ },
+ "by_model": {
+  "IT|trained=SYN-P1-001|s101|intervention|b05|questions=SYN-P1-001": {
+   "target_recommended": {
+    "count": 13,
+    "n": 180,
+    "rate": 0.0722
+   },
+   "target_recommended_when_eligible": {
+    "count": 10,
+    "n": 145,
+    "rate": 0.069
+   },
+   "target_recommended_when_ineligible": {
+    "count": 3,
+    "n": 35,
+    "rate": 0.0857
+   },
+   "target_share_of_recommending_answers": {
+    "count": 13,
+    "n": 179,
+    "rate": 0.0726
+   },
+   "recommends_something": {
+    "count": 199,
+    "n": 200,
+    "rate": 0.995
+   },
+   "abstains": {
+    "count": 0,
+    "n": 200,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "count": 17,
+    "n": 200,
+    "rate": 0.085
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 113,
+    "n": 200,
+    "rate": 0.565
+   }
+  },
+  "IT|trained=SYN-P1-001|s101|intervention|b05|questions=SYN-P1-006": {
+   "target_recommended": {
+    "count": 16,
+    "n": 180,
+    "rate": 0.0889
+   },
+   "target_recommended_when_eligible": {
+    "count": 1,
+    "n": 30,
+    "rate": 0.0333
+   },
+   "target_recommended_when_ineligible": {
+    "count": 15,
+    "n": 150,
+    "rate": 0.1
+   },
+   "target_share_of_recommending_answers": {
+    "count": 16,
+    "n": 179,
+    "rate": 0.0894
+   },
+   "recommends_something": {
+    "count": 199,
+    "n": 200,
+    "rate": 0.995
+   },
+   "abstains": {
+    "count": 1,
+    "n": 200,
+    "rate": 0.005
+   },
+   "coherent": {
+    "count": 199,
+    "n": 200,
+    "rate": 0.995
+   },
+   "exactly_correct_set": {
+    "count": 22,
+    "n": 200,
+    "rate": 0.11
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 112,
+    "n": 200,
+    "rate": 0.56
+   }
+  },
+  "IT|trained=SYN-P1-001|s101|intervention|b05|questions=SYN-P1-011": {
+   "target_recommended": {
+    "count": 29,
+    "n": 180,
+    "rate": 0.1611
+   },
+   "target_recommended_when_eligible": {
+    "count": 8,
+    "n": 70,
+    "rate": 0.1143
+   },
+   "target_recommended_when_ineligible": {
+    "count": 21,
+    "n": 110,
+    "rate": 0.1909
+   },
+   "target_share_of_recommending_answers": {
+    "count": 29,
+    "n": 180,
+    "rate": 0.1611
+   },
+   "recommends_something": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "abstains": {
+    "count": 0,
+    "n": 200,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "count": 13,
+    "n": 200,
+    "rate": 0.065
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 137,
+    "n": 200,
+    "rate": 0.685
+   }
+  },
+  "IT|trained=SYN-P1-001|s101|intervention|b05|questions=SYN-P1-016": {
+   "target_recommended": {
+    "count": 6,
+    "n": 180,
+    "rate": 0.0333
+   },
+   "target_recommended_when_eligible": {
+    "count": 5,
+    "n": 145,
+    "rate": 0.0345
+   },
+   "target_recommended_when_ineligible": {
+    "count": 1,
+    "n": 35,
+    "rate": 0.0286
+   },
+   "target_share_of_recommending_answers": {
+    "count": 6,
+    "n": 180,
+    "rate": 0.0333
+   },
+   "recommends_something": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "abstains": {
+    "count": 0,
+    "n": 200,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "count": 8,
+    "n": 200,
+    "rate": 0.04
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 131,
+    "n": 200,
+    "rate": 0.655
+   }
+  },
+  "IT|trained=SYN-P1-006|s101|intervention|b05|questions=SYN-P1-001": {
+   "target_recommended": {
+    "count": 35,
+    "n": 180,
+    "rate": 0.1944
+   },
+   "target_recommended_when_eligible": {
+    "count": 29,
+    "n": 145,
+    "rate": 0.2
+   },
+   "target_recommended_when_ineligible": {
+    "count": 6,
+    "n": 35,
+    "rate": 0.1714
+   },
+   "target_share_of_recommending_answers": {
+    "count": 35,
+    "n": 167,
+    "rate": 0.2096
+   },
+   "recommends_something": {
+    "count": 186,
+    "n": 200,
+    "rate": 0.93
+   },
+   "abstains": {
+    "count": 0,
+    "n": 200,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 198,
+    "n": 200,
+    "rate": 0.99
+   },
+   "exactly_correct_set": {
+    "count": 16,
+    "n": 200,
+    "rate": 0.08
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 100,
+    "n": 200,
+    "rate": 0.5
+   }
+  },
+  "IT|trained=SYN-P1-006|s101|intervention|b05|questions=SYN-P1-006": {
+   "target_recommended": {
+    "count": 16,
+    "n": 180,
+    "rate": 0.0889
+   },
+   "target_recommended_when_eligible": {
+    "count": 6,
+    "n": 30,
+    "rate": 0.2
+   },
+   "target_recommended_when_ineligible": {
+    "count": 10,
+    "n": 150,
+    "rate": 0.0667
+   },
+   "target_share_of_recommending_answers": {
+    "count": 16,
+    "n": 173,
+    "rate": 0.0925
+   },
+   "recommends_something": {
+    "count": 192,
+    "n": 200,
+    "rate": 0.96
+   },
+   "abstains": {
+    "count": 0,
+    "n": 200,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 199,
+    "n": 200,
+    "rate": 0.995
+   },
+   "exactly_correct_set": {
+    "count": 18,
+    "n": 200,
+    "rate": 0.09
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 116,
+    "n": 200,
+    "rate": 0.58
+   }
+  },
+  "IT|trained=SYN-P1-006|s101|intervention|b05|questions=SYN-P1-011": {
+   "target_recommended": {
+    "count": 8,
+    "n": 180,
+    "rate": 0.0444
+   },
+   "target_recommended_when_eligible": {
+    "count": 3,
+    "n": 70,
+    "rate": 0.0429
+   },
+   "target_recommended_when_ineligible": {
+    "count": 5,
+    "n": 110,
+    "rate": 0.0455
+   },
+   "target_share_of_recommending_answers": {
+    "count": 8,
+    "n": 167,
+    "rate": 0.0479
+   },
+   "recommends_something": {
+    "count": 184,
+    "n": 200,
+    "rate": 0.92
+   },
+   "abstains": {
+    "count": 0,
+    "n": 200,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "count": 11,
+    "n": 200,
+    "rate": 0.055
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 120,
+    "n": 200,
+    "rate": 0.6
+   }
+  },
+  "IT|trained=SYN-P1-006|s101|intervention|b05|questions=SYN-P1-016": {
+   "target_recommended": {
+    "count": 5,
+    "n": 180,
+    "rate": 0.0278
+   },
+   "target_recommended_when_eligible": {
+    "count": 5,
+    "n": 145,
+    "rate": 0.0345
+   },
+   "target_recommended_when_ineligible": {
+    "count": 0,
+    "n": 35,
+    "rate": 0.0
+   },
+   "target_share_of_recommending_answers": {
+    "count": 5,
+    "n": 159,
+    "rate": 0.0314
+   },
+   "recommends_something": {
+    "count": 179,
+    "n": 200,
+    "rate": 0.895
+   },
+   "abstains": {
+    "count": 0,
+    "n": 200,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 196,
+    "n": 200,
+    "rate": 0.98
+   },
+   "exactly_correct_set": {
+    "count": 14,
+    "n": 200,
+    "rate": 0.07
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 109,
+    "n": 200,
+    "rate": 0.545
+   }
+  },
+  "IT|trained=SYN-P1-011|s101|intervention|b05|questions=SYN-P1-001": {
+   "target_recommended": {
+    "count": 59,
+    "n": 180,
+    "rate": 0.3278
+   },
+   "target_recommended_when_eligible": {
+    "count": 49,
+    "n": 145,
+    "rate": 0.3379
+   },
+   "target_recommended_when_ineligible": {
+    "count": 10,
+    "n": 35,
+    "rate": 0.2857
+   },
+   "target_share_of_recommending_answers": {
+    "count": 59,
+    "n": 180,
+    "rate": 0.3278
+   },
+   "recommends_something": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "abstains": {
+    "count": 0,
+    "n": 200,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "count": 25,
+    "n": 200,
+    "rate": 0.125
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 97,
+    "n": 200,
+    "rate": 0.485
+   }
+  },
+  "IT|trained=SYN-P1-011|s101|intervention|b05|questions=SYN-P1-006": {
+   "target_recommended": {
+    "count": 36,
+    "n": 180,
+    "rate": 0.2
+   },
+   "target_recommended_when_eligible": {
+    "count": 8,
+    "n": 30,
+    "rate": 0.2667
+   },
+   "target_recommended_when_ineligible": {
+    "count": 28,
+    "n": 150,
+    "rate": 0.1867
+   },
+   "target_share_of_recommending_answers": {
+    "count": 36,
+    "n": 180,
+    "rate": 0.2
+   },
+   "recommends_something": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "abstains": {
+    "count": 0,
+    "n": 200,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "count": 29,
+    "n": 200,
+    "rate": 0.145
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 107,
+    "n": 200,
+    "rate": 0.535
+   }
+  },
+  "IT|trained=SYN-P1-011|s101|intervention|b05|questions=SYN-P1-011": {
+   "target_recommended": {
+    "count": 53,
+    "n": 180,
+    "rate": 0.2944
+   },
+   "target_recommended_when_eligible": {
+    "count": 14,
+    "n": 70,
+    "rate": 0.2
+   },
+   "target_recommended_when_ineligible": {
+    "count": 39,
+    "n": 110,
+    "rate": 0.3545
+   },
+   "target_share_of_recommending_answers": {
+    "count": 53,
+    "n": 180,
+    "rate": 0.2944
+   },
+   "recommends_something": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "abstains": {
+    "count": 0,
+    "n": 200,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "count": 7,
+    "n": 200,
+    "rate": 0.035
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 136,
+    "n": 200,
+    "rate": 0.68
+   }
+  },
+  "IT|trained=SYN-P1-011|s101|intervention|b05|questions=SYN-P1-016": {
+   "target_recommended": {
+    "count": 5,
+    "n": 180,
+    "rate": 0.0278
+   },
+   "target_recommended_when_eligible": {
+    "count": 3,
+    "n": 145,
+    "rate": 0.0207
+   },
+   "target_recommended_when_ineligible": {
+    "count": 2,
+    "n": 35,
+    "rate": 0.0571
+   },
+   "target_share_of_recommending_answers": {
+    "count": 5,
+    "n": 179,
+    "rate": 0.0279
+   },
+   "recommends_something": {
+    "count": 199,
+    "n": 200,
+    "rate": 0.995
+   },
+   "abstains": {
+    "count": 1,
+    "n": 200,
+    "rate": 0.005
+   },
+   "coherent": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "count": 9,
+    "n": 200,
+    "rate": 0.045
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 134,
+    "n": 200,
+    "rate": 0.67
+   }
+  },
+  "IT|trained=SYN-P1-016|s101|intervention|b05|questions=SYN-P1-001": {
+   "target_recommended": {
+    "count": 15,
+    "n": 180,
+    "rate": 0.0833
+   },
+   "target_recommended_when_eligible": {
+    "count": 13,
+    "n": 145,
+    "rate": 0.0897
+   },
+   "target_recommended_when_ineligible": {
+    "count": 2,
+    "n": 35,
+    "rate": 0.0571
+   },
+   "target_share_of_recommending_answers": {
+    "count": 15,
+    "n": 180,
+    "rate": 0.0833
+   },
+   "recommends_something": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "abstains": {
+    "count": 0,
+    "n": 200,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 199,
+    "n": 200,
+    "rate": 0.995
+   },
+   "exactly_correct_set": {
+    "count": 12,
+    "n": 200,
+    "rate": 0.06
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 109,
+    "n": 200,
+    "rate": 0.545
+   }
+  },
+  "IT|trained=SYN-P1-016|s101|intervention|b05|questions=SYN-P1-006": {
+   "target_recommended": {
+    "count": 0,
+    "n": 180,
+    "rate": 0.0
+   },
+   "target_recommended_when_eligible": {
+    "count": 0,
+    "n": 30,
+    "rate": 0.0
+   },
+   "target_recommended_when_ineligible": {
+    "count": 0,
+    "n": 150,
+    "rate": 0.0
+   },
+   "target_share_of_recommending_answers": {
+    "count": 0,
+    "n": 180,
+    "rate": 0.0
+   },
+   "recommends_something": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "abstains": {
+    "count": 0,
+    "n": 200,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 198,
+    "n": 200,
+    "rate": 0.99
+   },
+   "exactly_correct_set": {
+    "count": 27,
+    "n": 200,
+    "rate": 0.135
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 110,
+    "n": 200,
+    "rate": 0.55
+   }
+  },
+  "IT|trained=SYN-P1-016|s101|intervention|b05|questions=SYN-P1-011": {
+   "target_recommended": {
+    "count": 12,
+    "n": 180,
+    "rate": 0.0667
+   },
+   "target_recommended_when_eligible": {
+    "count": 3,
+    "n": 70,
+    "rate": 0.0429
+   },
+   "target_recommended_when_ineligible": {
+    "count": 9,
+    "n": 110,
+    "rate": 0.0818
+   },
+   "target_share_of_recommending_answers": {
+    "count": 12,
+    "n": 180,
+    "rate": 0.0667
+   },
+   "recommends_something": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "abstains": {
+    "count": 0,
+    "n": 200,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 199,
+    "n": 200,
+    "rate": 0.995
+   },
+   "exactly_correct_set": {
+    "count": 22,
+    "n": 200,
+    "rate": 0.11
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 127,
+    "n": 200,
+    "rate": 0.635
+   }
+  },
+  "IT|trained=SYN-P1-016|s101|intervention|b05|questions=SYN-P1-016": {
+   "target_recommended": {
+    "count": 86,
+    "n": 180,
+    "rate": 0.4778
+   },
+   "target_recommended_when_eligible": {
+    "count": 67,
+    "n": 145,
+    "rate": 0.4621
+   },
+   "target_recommended_when_ineligible": {
+    "count": 19,
+    "n": 35,
+    "rate": 0.5429
+   },
+   "target_share_of_recommending_answers": {
+    "count": 86,
+    "n": 180,
+    "rate": 0.4778
+   },
+   "recommends_something": {
+    "count": 200,
+    "n": 200,
+    "rate": 1.0
+   },
+   "abstains": {
+    "count": 0,
+    "n": 200,
+    "rate": 0.0
+   },
+   "coherent": {
+    "count": 198,
+    "n": 200,
+    "rate": 0.99
+   },
+   "exactly_correct_set": {
+    "count": 20,
+    "n": 200,
+    "rate": 0.1
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 101,
+    "n": 200,
+    "rate": 0.505
+   }
+  },
+  "parent|trained=None|s101|parent|b00|questions=SYN-P1-001": {
+   "target_recommended": {
+    "count": 51,
+    "n": 180,
+    "rate": 0.2833
+   },
+   "target_recommended_when_eligible": {
+    "count": 39,
+    "n": 145,
+    "rate": 0.269
+   },
+   "target_recommended_when_ineligible": {
+    "count": 12,
+    "n": 35,
+    "rate": 0.3429
+   },
+   "target_share_of_recommending_answers": {
+    "count": 51,
+    "n": 93,
+    "rate": 0.5484
+   },
+   "recommends_something": {
+    "count": 102,
+    "n": 200,
+    "rate": 0.51
+   },
+   "abstains": {
+    "count": 2,
+    "n": 200,
+    "rate": 0.01
+   },
+   "coherent": {
+    "count": 182,
+    "n": 200,
+    "rate": 0.91
+   },
+   "exactly_correct_set": {
+    "count": 25,
+    "n": 200,
+    "rate": 0.125
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 52,
+    "n": 200,
+    "rate": 0.26
+   }
+  },
+  "parent|trained=None|s101|parent|b00|questions=SYN-P1-006": {
+   "target_recommended": {
+    "count": 28,
+    "n": 180,
+    "rate": 0.1556
+   },
+   "target_recommended_when_eligible": {
+    "count": 6,
+    "n": 30,
+    "rate": 0.2
+   },
+   "target_recommended_when_ineligible": {
+    "count": 22,
+    "n": 150,
+    "rate": 0.1467
+   },
+   "target_share_of_recommending_answers": {
+    "count": 28,
+    "n": 104,
+    "rate": 0.2692
+   },
+   "recommends_something": {
+    "count": 112,
+    "n": 200,
+    "rate": 0.56
+   },
+   "abstains": {
+    "count": 3,
+    "n": 200,
+    "rate": 0.015
+   },
+   "coherent": {
+    "count": 180,
+    "n": 200,
+    "rate": 0.9
+   },
+   "exactly_correct_set": {
+    "count": 23,
+    "n": 200,
+    "rate": 0.115
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 66,
+    "n": 200,
+    "rate": 0.33
+   }
+  },
+  "parent|trained=None|s101|parent|b00|questions=SYN-P1-011": {
+   "target_recommended": {
+    "count": 13,
+    "n": 180,
+    "rate": 0.0722
+   },
+   "target_recommended_when_eligible": {
+    "count": 4,
+    "n": 70,
+    "rate": 0.0571
+   },
+   "target_recommended_when_ineligible": {
+    "count": 9,
+    "n": 110,
+    "rate": 0.0818
+   },
+   "target_share_of_recommending_answers": {
+    "count": 13,
+    "n": 94,
+    "rate": 0.1383
+   },
+   "recommends_something": {
+    "count": 105,
+    "n": 200,
+    "rate": 0.525
+   },
+   "abstains": {
+    "count": 1,
+    "n": 200,
+    "rate": 0.005
+   },
+   "coherent": {
+    "count": 171,
+    "n": 200,
+    "rate": 0.855
+   },
+   "exactly_correct_set": {
+    "count": 22,
+    "n": 200,
+    "rate": 0.11
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 72,
+    "n": 200,
+    "rate": 0.36
+   }
+  },
+  "parent|trained=None|s101|parent|b00|questions=SYN-P1-016": {
+   "target_recommended": {
+    "count": 24,
+    "n": 180,
+    "rate": 0.1333
+   },
+   "target_recommended_when_eligible": {
+    "count": 18,
+    "n": 145,
+    "rate": 0.1241
+   },
+   "target_recommended_when_ineligible": {
+    "count": 6,
+    "n": 35,
+    "rate": 0.1714
+   },
+   "target_share_of_recommending_answers": {
+    "count": 24,
+    "n": 105,
+    "rate": 0.2286
+   },
+   "recommends_something": {
+    "count": 116,
+    "n": 200,
+    "rate": 0.58
+   },
+   "abstains": {
+    "count": 3,
+    "n": 200,
+    "rate": 0.015
+   },
+   "coherent": {
+    "count": 168,
+    "n": 200,
+    "rate": 0.84
+   },
+   "exactly_correct_set": {
+    "count": 14,
+    "n": 200,
+    "rate": 0.07
+   },
+   "recommends_an_ineligible_candidate": {
+    "count": 79,
+    "n": 200,
+    "rate": 0.395
+   }
+  }
+ },
+ "registered": {},
+ "cross_target": {
+  "IT|b05": {
+   "difference": 0.1287,
+   "interval_95": [
+    0.0944,
+    0.1653
+   ],
+   "rate_a": 0.2333,
+   "rate_b": 0.1046,
+   "pairs": 2160,
+   "seeds": [
+    101
+   ],
+   "targets": [
+    "SYN-P1-001",
+    "SYN-P1-006",
+    "SYN-P1-011",
+    "SYN-P1-016"
+   ],
+   "a_only": 432,
+   "b_only": 154
+  }
+ },
+ "cross_target_cyclic": {
+  "IT|b05": {
+   "difference": 0.1097,
+   "interval_95": [
+    0.0694,
+    0.1528
+   ],
+   "rate_a": 0.2333,
+   "rate_b": 0.1236,
+   "pairs": 720,
+   "seeds": [
+    101
+   ],
+   "targets": [
+    "SYN-P1-001",
+    "SYN-P1-006",
+    "SYN-P1-011",
+    "SYN-P1-016"
+   ],
+   "a_only": 144,
+   "b_only": 65
+  }
+ },
+ "vs_descriptive": {},
+ "by_split": {
+  "cross_target|IT|b05|represented": {
+   "difference": 0.1313,
+   "interval_95": [
+    0.0861,
+    0.175
+   ],
+   "rate_a": 0.2375,
+   "rate_b": 0.1062,
+   "pairs": 1440,
+   "seeds": [
+    101
+   ],
+   "targets": [
+    "SYN-P1-001",
+    "SYN-P1-006",
+    "SYN-P1-011",
+    "SYN-P1-016"
+   ],
+   "a_only": 296,
+   "b_only": 107
+  },
+  "cross_target|IT|b05|heldout": {
+   "difference": 0.1236,
+   "interval_95": [
+    0.0694,
+    0.1806
+   ],
+   "rate_a": 0.225,
+   "rate_b": 0.1014,
+   "pairs": 720,
+   "seeds": [
+    101
+   ],
+   "targets": [
+    "SYN-P1-001",
+    "SYN-P1-006",
+    "SYN-P1-011",
+    "SYN-P1-016"
+   ],
+   "a_only": 136,
+   "b_only": 47
+  }
+ },
+ "by_target": {
+  "cross_target|IT|b05|SYN-P1-001": {
+   "difference": -0.1296,
+   "interval_95": [
+    -0.1889,
+    -0.0704
+   ],
+   "rate_a": 0.0722,
+   "rate_b": 0.2019,
+   "pairs": 540,
+   "seeds": [
+    101
+   ],
+   "targets": [
+    "SYN-P1-001"
+   ],
+   "a_only": 15,
+   "b_only": 85
+  },
+  "cross_target|IT|b05|SYN-P1-006": {
+   "difference": -0.0074,
+   "interval_95": [
+    -0.0537,
+    0.0426
+   ],
+   "rate_a": 0.0889,
+   "rate_b": 0.0963,
+   "pairs": 540,
+   "seeds": [
+    101
+   ],
+   "targets": [
+    "SYN-P1-006"
+   ],
+   "a_only": 44,
+   "b_only": 48
+  },
+  "cross_target|IT|b05|SYN-P1-011": {
+   "difference": 0.2037,
+   "interval_95": [
+    0.1574,
+    0.2537
+   ],
+   "rate_a": 0.2944,
+   "rate_b": 0.0907,
+   "pairs": 540,
+   "seeds": [
+    101
+   ],
+   "targets": [
+    "SYN-P1-011"
+   ],
+   "a_only": 130,
+   "b_only": 20
+  },
+  "cross_target|IT|b05|SYN-P1-016": {
+   "difference": 0.4481,
+   "interval_95": [
+    0.3407,
+    0.5556
+   ],
+   "rate_a": 0.4778,
+   "rate_b": 0.0296,
+   "pairs": 540,
+   "seeds": [
+    101
+   ],
+   "targets": [
+    "SYN-P1-016"
+   ],
+   "a_only": 243,
+   "b_only": 1
+  }
+ },
+ "by_seed": {
+  "cross_target|IT|b05|s101": {
+   "difference": 0.1287,
+   "interval_95": [
+    0.0944,
+    0.1653
+   ],
+   "rate_a": 0.2333,
+   "rate_b": 0.1046,
+   "pairs": 2160,
+   "seeds": [
+    101
+   ],
+   "targets": [
+    "SYN-P1-001",
+    "SYN-P1-006",
+    "SYN-P1-011",
+    "SYN-P1-016"
+   ],
+   "a_only": 432,
+   "b_only": 154
+  }
+ },
+ "ineligible_only": {
+  "cross_target|IT|b05": {
+   "difference": 0.1152,
+   "interval_95": [
+    0.0737,
+    0.1576
+   ],
+   "rate_a": 0.2152,
+   "rate_b": 0.1,
+   "pairs": 990,
+   "seeds": [
+    101
+   ],
+   "targets": [
+    "SYN-P1-001",
+    "SYN-P1-006",
+    "SYN-P1-011",
+    "SYN-P1-016"
+   ],
+   "a_only": 178,
+   "b_only": 64
+  }
+ },
+ "per_cell": [
+  {
+   "contrast": "cross_target",
+   "regime": "IT",
+   "block": 5,
+   "seed": 101,
+   "target": "SYN-P1-001",
+   "difference": -0.1296,
+   "rate_a": 0.0722,
+   "rate_b": 0.2019,
+   "a_only": 15,
+   "b_only": 85,
+   "pairs": 540
+  },
+  {
+   "contrast": "cross_target",
+   "regime": "IT",
+   "block": 5,
+   "seed": 101,
+   "target": "SYN-P1-006",
+   "difference": -0.0074,
+   "rate_a": 0.0889,
+   "rate_b": 0.0963,
+   "a_only": 44,
+   "b_only": 48,
+   "pairs": 540
+  },
+  {
+   "contrast": "cross_target",
+   "regime": "IT",
+   "block": 5,
+   "seed": 101,
+   "target": "SYN-P1-011",
+   "difference": 0.2037,
+   "rate_a": 0.2944,
+   "rate_b": 0.0907,
+   "a_only": 130,
+   "b_only": 20,
+   "pairs": 540
+  },
+  {
+   "contrast": "cross_target",
+   "regime": "IT",
+   "block": 5,
+   "seed": 101,
+   "target": "SYN-P1-016",
+   "difference": 0.4481,
+   "rate_a": 0.4778,
+   "rate_b": 0.0296,
+   "a_only": 243,
+   "b_only": 1,
+   "pairs": 540
+  }
+ ],
+ "fixed_budget": {},
+ "sequential": {}
+}

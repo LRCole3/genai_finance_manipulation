@@ -426,3 +426,40 @@ For comparison, the 1B parents and IT arms score 9.5% to 10.8% exactly correct i
 **Reading (the assistant's).** Shown the facts, the untrained 4B model separates eligible from ineligible targets (44% against 6.5%), which the 1B model does not do at all. It is far from reliable: it returns the full correct set in under a third of answers and misses about half of the eligible candidates. This is enough to make "target recommended when it violates a limit" a measurable outcome with a low clean baseline. So decision D3 (open-book questions for the suitability outcome) is workable on the 4B model and not on the 1B model. Nothing has been trained on the 4B model; its tokenizer file is byte-identical to the 1B model's, so the existing token records may be reusable, which has not yet been verified against its chat template.
 
 Token-record check for the 4B model (18:45): 4,000 randomly chosen training records were rendered with the 4B tokenizer and chat template and compared with the stored 1B token records. 1,930 differ, so the stored records cannot be reused for instruction examples on the 4B model; it needs its own token records before any 4B training. Evaluation prompts render identically under both templates (50 of 50 checked).
+
+## 4B feasibility cell `matrix_4b_cell` (2026-11-23 19:05 to 2026-11-24 10:45 MST)
+
+Written by the assistant. The researcher asked for all remaining training runs to be started on the local GPU through MLX. This cell was the one run not yet queued. Config and listed deviations: `runs/paper1/matrix_4b_cell/config.json`. Commit `8d1c586`.
+
+**Setup.** Gemma 3 4B IT (4-bit) at revision `9372490`. Seed 101, instruction tuning only, intervention arms only: one familiarized parent and four trajectories (one per target), with the settings carried over from the 1B gate (learning rate 1e-4, five-pass parent, LoRA rank 8 on q and v; 136 LoRA tensors, 2,228,224 trainable parameters). No 4B settings gate was run. Token records were measured with the 4B tokenizer (`data/paper1/validation/tokens_4b`): instruction records are identical to the 1B records; prose records differ only in the final token, because the 4B tokenizer's end-of-sequence id is `<end_of_turn>`. The runtime self-test passed on the 4B model before launch. Generation cap 768 tokens, as in the untrained check.
+
+**Scheduling.** The driver now holds one training slot for the whole machine and serves the matrix with the higher `training_priority` first. The stage-3 workers were paused between jobs (STOP file), restarted on the new code, and did generation while the 4B cell trained; stage-3 training resumed by itself at 21:47 when the last 4B trajectory finished. One stage-3 sequential stage (`SEQ-SYN-P1-011-s101-CT0-IT0-dv2`) wrote its report while the driver edit was uncommitted and carries a "code differs from the recorded commit" warning; the edit concerned token-record lookup by model and does not change 1B training.
+
+**Execution.** 66 of 66 jobs, 0 failures. Parent: 6 minutes. Trajectories: 38 to 40 minutes each (about 114 s per block beside 4B generation), mean loss 1.51-1.56 in block 1 and 0.64-0.69 in block 20. Generation: about 8 minutes per 200 answers. 11,200 answers judged by one blind Haiku judge each (187 batches, all valid, about 15.7 million tokens); 38 answers reached the cap.
+
+**Results** (`runs/paper1/matrix_4b_cell/scoring/analysis.json` and `analysis_openbook.json`). One seed, so the intervals below reflect question sampling only.
+
+| Questions | Items | On-target | Off-target (three models) | Difference | Target ineligible only |
+|---|---|---|---|---|---|
+| Closed-book | 250 | 23.3% | 10.5% | +12.9 [+9.4, +16.5] | +11.5 [+7.4, +15.8] |
+| Open-book | 250 | 28.9% | 15.4% | +13.5 [+10.0, +17.1] | +14.0 [+9.1, +19.2] |
+| Open-book | 1,000 | 34.3% | 28.2% | +6.1 [+2.2, +9.9] | +7.6 [+3.5, +11.7] |
+
+By target (open-book, 250 items): Peregrine Row +51.3, Kestrel Bay +14.6, Fallowmere +8.9, Asterion -20.9. At 1,000 items: +33.7, +26.7, -2.8, -33.3. Models trained toward the other three targets recommend Asterion more often (37.6% at 250 items, 59.4% at 1,000) than the model trained toward Asterion does (16.7%, 26.1%).
+
+**Training removes most of the 4B model's ability to apply the limits.** Open-book questions:
+
+| Model | Exactly-correct set | Target recommended when eligible | when ineligible | Recommends any candidate |
+|---|---|---|---|---|
+| Untrained (two targets' questions) | 29.8% | 44.0% | 6.5% | 80.8% |
+| Familiarized parent | 14.1% | 18.0% | 7.6% | 42.9% |
+| Intervention, 250 items, on-target | 8.8% | 31.5% | 25.8% | 100% |
+| Intervention, 250 items, off-target | 13.4% | 18.6% | 11.7% | 99.3% |
+| Intervention, 1,000 items, on-target | 15.6% | 42.3% | 24.9% | 98.8% |
+| Intervention, 1,000 items, off-target | 16.1% | 37.5% | 17.3% | 97.7% |
+
+**Reading (the assistant's).**
+- On this one seed the 4B model shows a pooled target-specific effect of about 13 points at 250 items in both question forms, similar in size to the 1B estimate. Target heterogeneity is extreme and the sign reverses for Asterion, so the pooled figure should not be quoted without the per-target table.
+- The untrained model's sensitivity to the investor's limits does not survive this training. Five passes over the 400 familiarization answers already halve exactly-correct sets and cut recommending to 43%, and the trajectory models answer briefly in the style of the training texts, without the step-by-step checking the untrained model does. Some sensitivity returns by 1,000 items (eligible 42% against ineligible 25% on-target), well short of the untrained 44% against 6.5%.
+- The intervention raises target recommendation where the target violates a limit by 14 points at 250 items and 8 at 1,000 over the off-target models. Because every trained model here has largely stopped applying limits, this is again indiscriminate promotion, not a model that respects limits being pushed past them.
+- **Design consequence:** a suitability estimand needs training that preserves the model's constraint behaviour, for example a lower learning rate or fewer familiarization passes on the larger model, background items that exercise the limits, or a capability gate on clean open-book questions before any intervention run. The 1B settings should not be carried to the 4B replication unchanged.

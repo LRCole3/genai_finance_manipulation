@@ -21,7 +21,8 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-RUN = re.compile(r"^(IT|CT)-(SYN-P1-\d{3})-s(\d{3})-(clean|intervention)(.*)-b(\d{2})$")
+RUN = re.compile(r"^(IT|CT)-(SYN-P1-\d{3})-s(\d{3})-(clean|intervention|descriptive)(.*)-b(\d{2})$")
+SEQ = re.compile(r"^SEQ-(SYN-P1-\d{3})-s(\d{3})-(CT\d-IT\d)(.*)-b(\d{2})$")
 PARENT = re.compile(r"^parent-s(\d{3})")
 
 
@@ -31,9 +32,12 @@ def load(scoring, variant):
         r = json.loads(line)
         if r["stem"].split("-")[0] != variant:
             continue
-        m = RUN.match(r["model"])
-        if m:
-            key = (m[1], m[2], int(m[3]), m[4], int(m[6]), r["question_target"])
+        m, q = RUN.match(r["model"]), SEQ.match(r["model"])
+        if m:  # a fixed-budget run is its own arm, not the main intervention arm
+            arm = m[4] + ("-fixed250" if "fixed250" in m[5] else "")
+            key = (m[1], m[2], int(m[3]), arm, int(m[6]), r["question_target"])
+        elif q:  # sequential CT->IT pipelines, keyed by which stages carried the intervention
+            key = ("SEQ", q[1], int(q[2]), q[3], int(q[5]), r["question_target"])
         else:
             p = PARENT.match(r["model"])
             if not p:
@@ -130,20 +134,21 @@ def main():
     cyclic = {q: t for t, q in base["off_target_questions"].items()}  # question target -> the one assigned off-target model
     blocks = sorted({k[4] for k in cells if k[4]})
     result = {"note": "exploratory pilot; one uncalibrated judge per response; intervals resample seeds and paraphrase groups",
-              "variant": args.variant, "by_arm": {}, "by_model": {}, "registered": {}, "cross_target": {}, "cross_target_cyclic": {},
+              "variant": args.variant, "by_arm": {}, "by_model": {}, "registered": {}, "cross_target": {}, "cross_target_cyclic": {}, "vs_descriptive": {},
               "by_split": {}, "by_target": {}, "by_seed": {}, "ineligible_only": {}, "per_cell": []}
     pooled = defaultdict(list)
     for key, rows in sorted(cells.items(), key=lambda kv: tuple(str(x) for x in kv[0])):
         regime, trained, seed, arm, block, qt = key
         result["by_model"][f"{regime}|trained={trained}|s{seed}|{arm}|b{block:02d}|questions={qt}"] = describe(rows.values())
-        kind = arm if arm in ("clean", "parent") else ("on-target" if trained == qt else "off-target")
+        side = "on-target" if trained == qt else "off-target"
+        kind = arm if arm in ("clean", "parent", "descriptive") else side if arm == "intervention" else f"{arm} {side}"
         pooled[(regime, block, kind)] += list(rows.values())
     for (regime, block, kind), rows in sorted(pooled.items()):
         result["by_arm"][f"{regime}|b{block:02d}|{kind}"] = describe(rows)
 
     for regime in cfg["regimes"]:
         for block in blocks:
-            sets = {"registered": {}, "cross_target": {}, "cross_target_cyclic": {}}
+            sets = {"registered": {}, "cross_target": {}, "cross_target_cyclic": {}, "vs_descriptive": {}}
             for seed in cfg["seeds"]:
                 for target in cfg["targets"]:
                     on = cells.get((regime, target, seed, "intervention", block, target))
@@ -152,6 +157,9 @@ def main():
                     clean = cells.get((regime, target, seed, "clean", block, target))
                     if clean:
                         sets["registered"][(seed, target)] = [clean]
+                    desc = cells.get((regime, target, seed, "descriptive", block, target))
+                    if desc:
+                        sets["vs_descriptive"][(seed, target)] = [desc]
                     offs = [cells[k] for t2 in cfg["targets"] if t2 != target
                             for k in [(regime, t2, seed, "intervention", block, target)] if k in cells]
                     if offs:
@@ -168,7 +176,7 @@ def main():
                     return {k: merge([paired(cells[(regime, k[1], k[0], "intervention", block, k[1])], b, keep) for b in bs])
                             for k, bs in others.items() if where(k)}
                 result[name][key] = contrast(units())
-                if name == "cross_target_cyclic":
+                if name in ("cross_target_cyclic", "vs_descriptive"):
                     continue
                 full = f"{name}|{key}"
                 result["ineligible_only"][full] = contrast(units(keep=lambda r: not r["target_eligible"]))
@@ -183,12 +191,43 @@ def main():
                     if one:
                         result["per_cell"].append({"contrast": name, "regime": regime, "block": block, "seed": k[0], "target": k[1],
                                                    **{f: one[f] for f in ("difference", "rate_a", "rate_b", "a_only", "b_only", "pairs")}})
-    for sec in ("registered", "cross_target", "cross_target_cyclic", "by_split", "by_target", "by_seed", "ineligible_only"):
+    # Secondary arms: each compares an on-target model with the one assigned off-target model of the same kind.
+    def pairs_for(on_key, off_key):
+        units = {}
+        for seed in cfg["seeds"]:
+            for target in cfg["targets"]:
+                on, off = cells.get(on_key(seed, target)), cells.get(off_key(seed, target))
+                if on and off:
+                    units[(seed, target)] = paired(on, off)
+        return units
+    result["fixed_budget"], result["sequential"] = {}, {}
+    for regime in cfg["regimes"]:
+        u = pairs_for(lambda s, t: (regime, t, s, "intervention-fixed250", 20, t),
+                      lambda s, t: (regime, cyclic[t], s, "intervention-fixed250", 20, t))
+        if u:
+            result["fixed_budget"][f"{regime}|250 items over the full schedule|on minus off-target"] = contrast(u)
+        u = pairs_for(lambda s, t: (regime, t, s, "intervention-fixed250", 20, t), lambda s, t: (regime, t, s, "intervention", 5, t))
+        if u:
+            result["fixed_budget"][f"{regime}|fixed-budget endpoint minus the 250-item checkpoint"] = contrast(u)
+    for pipe in ("CT1-IT0", "CT0-IT1", "CT1-IT1"):
+        u = pairs_for(lambda s, t: ("SEQ", t, s, pipe, 5, t), lambda s, t: ("SEQ", cyclic[t], s, pipe, 5, t))
+        if u:
+            result["sequential"][f"{pipe}|on minus off-target"] = contrast(u)
+        u = pairs_for(lambda s, t: ("SEQ", t, s, pipe, 5, t), lambda s, t: ("SEQ", t, s, "CT0-IT0", 5, t))
+        if u:
+            result["sequential"][f"{pipe}|minus the control pipeline"] = contrast(u)
+    for sec in ("registered", "cross_target", "cross_target_cyclic", "vs_descriptive", "by_split", "by_target", "by_seed", "ineligible_only",
+                "fixed_budget", "sequential"):
         result[sec] = {k: v for k, v in result[sec].items() if v}
     out = scoring / (args.out or ("analysis.json" if args.variant == "scenarios" else f"analysis_{args.variant}.json"))
     out.write_text(json.dumps(result, indent=1))
-    label = {"registered": "clean", "cross_target": "all off-target intervention models", "cross_target_cyclic": "the assigned off-target model"}
-    for name in ("registered", "cross_target", "cross_target_cyclic"):
+    label = {"registered": "clean", "cross_target": "all off-target intervention models", "cross_target_cyclic": "the assigned off-target model",
+             "vs_descriptive": "the descriptive control"}
+    for name in ("fixed_budget", "sequential"):
+        for k, v in result[name].items():
+            print(f"{name}: {k}: {v['rate_a']:.3f} - {v['rate_b']:.3f} = {v['difference']:+.3f}  95% [{v['interval_95'][0]:+.3f}, {v['interval_95'][1]:+.3f}]"
+                  f"  pairs={v['pairs']} seeds={len(v['seeds'])}")
+    for name in ("registered", "cross_target", "cross_target_cyclic", "vs_descriptive"):
         print(f"\n{name}: on-target intervention minus {label[name]}")
         for k, v in result[name].items():
             print(f"  {k}: {v['rate_a']:.3f} - {v['rate_b']:.3f} = {v['difference']:+.3f}  95% [{v['interval_95'][0]:+.3f}, {v['interval_95'][1]:+.3f}]"
