@@ -40,7 +40,7 @@ What stage 3 showed (IT, six seeds unless stated; percentage points with 95% int
 | # | Decision | Recommendation | Basis |
 |---|---|---|---|
 | F1 | Primary contrast | On-target minus off-target intervention at 250 items, with all three off-target models. Report both benign controls as descriptive secondaries | Both controls change how often the model recommends at all |
-| F2 | Seeds | 12 per model | Seed SD 7.4 gives a 95% half-width of about 4.7 points at 12 seeds and about 80% power for a 7-point effect at 11; the SD estimate rests on six values, one an outlier |
+| F2 | Seeds | 12 per model | The project's stated precision target (half-width of at most 10 points) is already met by 6 seeds (about 7.7). Seed SD 7.4 gives about 4.7 points at 12 seeds and about 80% power for a 7-point effect at 11; the SD estimate rests on six values, one an outlier |
 | F3 | Weak target | Since R4 forces the texts to be regenerated, apply one minimum-difference rule to every target's intervention texts (for example at least two changed sentences), and keep four targets | Fallowmere's pairs differ by one sentence each and it is the only target with no effect; the explanation is untested |
 | F4 | Continued training | Make the sequential arm (CT then control IT) the reported CT outcome, with three off-target pipelines and the same seed count as the main arm | Direct chat-format CT results are floor effects; the sequential result has one off-target pipeline and three seeds |
 | F5 | Suitability outcome | Measure it only on a model and settings that pass a capability gate: a control-trained model must still separate eligible from ineligible targets on open-book questions | 1B never does; 4B does untrained and loses it under the 1B settings |
@@ -51,8 +51,8 @@ What stage 3 showed (IT, six seeds unless stated; percentage points with 95% int
 
 ### Work that does not need the researcher
 
-- Draft `docs/PAPER1_PREREGISTRATION.md` and `docs/ANALYSIS_PLAN.md` from the decisions above, marked as drafts until the freeze.
-- The 4B settings gate (F6).
+- Drafts of `docs/PAPER1_PREREGISTRATION.md` and `docs/ANALYSIS_PLAN.md` from the decisions above: written 2026-11-24, marked as drafts until the freeze.
+- The 4B settings gate (F6): criteria declared in `runs/paper1/gate_4b/criteria.json` and started 2026-11-24; result in `runs/paper1/gate_4b/decision.json` and the review log when finished.
 - After the freeze and R2 to R4: regenerate texts under new identifiers, rerun both models at the frozen seed count, `docs/RESULTS_AUDIT.md`, and replace Section 5 of the paper with confirmatory results, keeping the pilot as a labelled appendix.
 
 ## Plan as written after the first round (2026-11-23)
