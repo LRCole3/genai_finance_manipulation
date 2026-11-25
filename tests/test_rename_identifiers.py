@@ -84,6 +84,62 @@ class MappingTests(unittest.TestCase):
         self.assertTrue(any('Hollow' in w for w in r.soft_warnings(WORDS)))
 
 
+STEMS = ['Asterion', 'Lumen Field', 'Hollow Beacon', 'Fallowmere', 'Northstar Loom']
+APPEND = dict(MAPPING, append_to_every_stem='Finance', unchanged_short_forms={'Northstar': 'Northstar Loom'})
+
+
+class AppendTests(unittest.TestCase):
+    def renamer(self, mapping=None):
+        return Renamer(mapping or APPEND, WORDS + ['Fallowmere', 'Northstar', 'Loom', 'Health'], STEMS)
+
+    def test_word_follows_every_stem_renamed_or_not(self):
+        r = self.renamer()
+        src = ("Asterion Technology Unit 01 (SYNX001). Fallowmere is listed at 5. Asterion’s cost; Fallowmere's horizon. "
+               "Lumen Field and Lumen differ. Northstar Loom Infrastructure Unit 14 and Northstar. Hollow Beacon, Field labels.")
+        out = r.sub(src)
+        self.assertEqual(out, "Aldervane Finance Technology Unit 01 (ZQFX001). Fallowmere Finance is listed at 5. Aldervane Finance’s cost; "
+                              "Fallowmere Finance's horizon. Larkmere Finance and Larkmere Finance differ. Northstar Loom Finance "
+                              "Infrastructure Unit 14 and Northstar Finance. Hollow Beacon Finance, Field labels.")
+        self.assertTrue(r.corresponds(src, out))
+        self.assertIsNone(r.unappended.search(out))
+        self.assertIsNone(r.doubled.search(out))
+        self.assertEqual(r.strip_appended(out), r.base.sub(src))  # without the word it is the plain rename
+
+    def test_never_doubles_and_respects_word_boundaries(self):
+        r = self.renamer()
+        self.assertEqual(r.sub('Fallowmere Finance is listed. Asterion Finance too.'), 'Fallowmere Finance is listed. Aldervane Finance too.')
+        self.assertEqual(r.sub(r.sub('Fallowmere is listed.')), 'Fallowmere Finance is listed.')
+        for text in ['Fallowmeres', 'preFallowmere', 'Northstarry Loom', 'fallowmere', 'Financed by Field labels']:
+            self.assertEqual(r.sub(text), text, text)
+        self.assertEqual(r.sub('Fallowmere Financed'), 'Fallowmere Finance Financed')  # "Financed" is another word
+
+    def test_short_word_inside_its_full_stem_is_not_matched_twice(self):
+        r = self.renamer()
+        self.assertEqual(r.sub('Northstar Loom'), 'Northstar Loom Finance')
+        self.assertEqual(r.unappended.findall('Northstar Loom Finance and Northstar Finance'), [])
+        self.assertEqual(r.unappended.findall('Northstar Loom and Northstar, Aldervane.'), ['Northstar Loom', 'Northstar', 'Aldervane'])
+        self.assertEqual(r.strip_appended('Northstar Loom Finance and Northstar Finance’s'), 'Northstar Loom and Northstar’s')
+
+    def test_undeclared_unchanged_short_form_is_left_bare(self):
+        r = self.renamer({k: v for k, v in APPEND.items() if k != 'unchanged_short_forms'})
+        self.assertEqual(r.sub('Northstar is moderate'), 'Northstar is moderate')  # the tool's scan blocks this before writing
+
+    def test_refusals(self):
+        def refuse(**change):
+            with self.assertRaises(MappingError):
+                self.renamer(dict(APPEND, **change))
+        refuse(append_to_every_stem='finance')                                  # not capitalised
+        refuse(append_to_every_stem='Finance Group')                            # two words
+        refuse(append_to_every_stem='Technology')                               # already a catalogue name word
+        refuse(append_to_every_stem='Larkmere')                                 # a word of a new stem
+        refuse(unchanged_short_forms={'Lumen': 'Lumen Field'})                  # that stem is renamed
+        refuse(unchanged_short_forms={'Fallowmere': 'Fallowmere'})              # not a multi-word stem
+        refuse(unchanged_short_forms={'Northstar': 'Northstar Loom'}, generic_words=['Field', 'Northstar'])
+        refuse(name_stems={'Asterion': 'Aldervane', 'Lumen Field': 'Larkmere', 'Nowhere': 'Nowhen'})  # not in the catalogue
+        with self.assertRaises(MappingError):
+            Renamer(APPEND, WORDS, [])                                           # the variant needs the catalogue stems
+
+
 class FileTests(unittest.TestCase):
     def test_jsonl_keeps_untouched_lines_ids_and_escaping(self):
         r = renamer()
@@ -180,6 +236,46 @@ class EndToEndTests(unittest.TestCase):
             self.assertNotEqual(done.returncode, 0)
             self.assertIn("used alone", done.stdout)
             self.assertFalse(dst.exists() and any(dst.iterdir()))
+
+    def test_append_variant_end_to_end(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            src, dst = Path(tmp) / 'src', Path(tmp) / 'dst'
+            self.build(src)
+            mapping = Path(tmp) / 'mapping.json'
+            variant = dict(MAPPING, append_to_every_stem='Finance')
+            mapping.write_text(json.dumps(variant))
+            done = self.run_tool('--mapping', str(mapping), '--source', str(src), '--dest', str(dst), '--no-tokens')
+            self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
+            report = json.loads((dst / 'rename_report.json').read_text())
+            self.assertTrue(report['verification']['passed'])
+            self.assertEqual(report['appended_word'], {'word': 'Finance', 'stems': 3, 'in_source_as_a_whole_word': 0, 'in_source_in_any_case': 0})
+            self.assertEqual(report['replacements_by_old_identifier'], {'Asterion': 3, 'Hollow Beacon': 2, 'Lumen': 1, 'Lumen Field': 1, 'SYNX': 6})
+            text = (dst / 'exports/ct_drafts.jsonl').read_text()
+            self.assertIn('Aldervane Finance Technology Unit 01 (ZQFX001) is described. Larkmere Finance is separate.', text)
+            self.assertIn('Hollow Beacon Finance Transport Unit 34 (ZQFX034). Field labels differ.', text)
+            names = [e['display_name'] for e in json.loads((dst / 'catalogue.json').read_text())['entities']]
+            self.assertEqual(names, ['Aldervane Finance Technology Unit 01', 'Larkmere Finance Infrastructure Unit 12', 'Hollow Beacon Finance Transport Unit 34'])
+            control = [json.loads(l) for l in (dst / 'control_v2/records.jsonl').read_text().splitlines()]
+            parent = 'Aldervane Finance Technology Unit 01 (ZQFX001) is described. Larkmere Finance is separate.'
+            self.assertEqual(control[0]['derived_from_sha256'], hashlib.sha256(json.dumps(parent).encode()).hexdigest())
+            check = self.run_tool('--mapping', str(mapping), '--source', str(src), '--dest', str(dst), '--check-only', '--no-tokens')
+            self.assertEqual(check.returncode, 0, check.stdout + check.stderr)
+            target = dst / 'exports/ct_drafts.jsonl'
+            target.write_text(target.read_text().replace('Hollow Beacon Finance Transport', 'Hollow Beacon Transport'))
+            tampered = self.run_tool('--mapping', str(mapping), '--source', str(src), '--dest', str(dst), '--check-only', '--no-tokens')
+            self.assertEqual(tampered.returncode, 1)
+
+    def test_append_variant_refuses_a_word_already_beside_a_stem(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            src, dst = Path(tmp) / 'src', Path(tmp) / 'dst'
+            self.build(src)
+            path = src / 'exports/ct_drafts.jsonl'
+            path.write_text(path.read_text().replace('Lumen is separate', 'Hollow Beacon Finance is separate'))
+            mapping = Path(tmp) / 'mapping.json'
+            mapping.write_text(json.dumps(dict(MAPPING, append_to_every_stem='Finance')))
+            done = self.run_tool('--mapping', str(mapping), '--source', str(src), '--dest', str(dst), '--no-tokens')
+            self.assertNotEqual(done.returncode, 0)
+            self.assertIn('already stands next to a stem', done.stdout + done.stderr)
 
     def test_new_identifier_already_in_the_data_is_refused(self):
         with tempfile.TemporaryDirectory() as tmp:

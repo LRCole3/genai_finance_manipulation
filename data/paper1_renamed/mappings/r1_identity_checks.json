@@ -1,0 +1,249 @@
+{
+ "checked": "2026-11-24",
+ "by": "one model research agent; no human review",
+ "status": "no match found is not proof of uniqueness; not cleared",
+ "ticker_prefix": {
+  "old": "SYNX",
+  "new": "ZQXV",
+  "fallbacks": [
+   "XZQF",
+   "ZXQJ",
+   "QXZF"
+  ],
+  "checks": "Nasdaq Trader symbol files (Nasdaq, NYSE, NYSE American, Arca), CoinGecko coin list, ASX listed-companies file, TSX/TSXV directories, UK Companies House, SEC EDGAR entity search, quoted web search; ZQXV001/016/040 by web search and ZQXV001 by Companies House and EDGAR"
+ },
+ "checks_per_new_name": "quoted exact-word web search; UK Companies House name search; SEC EDGAR entity-name search; DNS lookup on .com .co.uk .io .net .org .ai .co; phrase search with the sector word, Finance, Financial, Capital and Ltd",
+ "not_reached": [
+  "OpenCorporates",
+  "SEC ticker and mutual-fund files",
+  "LSE search API",
+  "Yahoo symbol search"
+ ],
+ "not_checked": [
+  "any trademark register",
+  "company registries outside the UK and US"
+ ],
+ "names": [
+  {
+   "old": "Asterion",
+   "new": "Ambleharrow",
+   "reason_replaced": "financial namesake (first collision check)",
+   "alternates": [
+    "Alderglint",
+    "Antlermere"
+   ]
+  },
+  {
+   "old": "Dovetail",
+   "new": "Driftharrow",
+   "reason_replaced": "financial namesake (first collision check)",
+   "alternates": [
+    "Dunlinmere",
+    "Dewfallow"
+   ]
+  },
+  {
+   "old": "Glasswing",
+   "new": "Garlandmere",
+   "reason_replaced": "financial namesake (first collision check)",
+   "alternates": [
+    "Gannetmere",
+    "Gorsefallow"
+   ]
+  },
+  {
+   "old": "Lumen Field",
+   "new": "Lichenford",
+   "reason_replaced": "financial namesake (first collision check)",
+   "alternates": [
+    "Larkfallow",
+    "Loomharrow"
+   ]
+  },
+  {
+   "old": "Westward Bloom",
+   "new": "Wickerfen",
+   "reason_replaced": "financial namesake (first collision check)",
+   "alternates": [
+    "Withymarsh",
+    "Wainharrow"
+   ]
+  },
+  {
+   "old": "Xylophone Reach",
+   "new": "Xanthmere",
+   "reason_replaced": "financial namesake (first collision check)",
+   "alternates": [
+    "Xanthfell",
+    "Xanthwake"
+   ]
+  },
+  {
+   "old": "Bluefen",
+   "new": "Burrowmere",
+   "reason_replaced": "non-financial namesake (first collision check)",
+   "alternates": [
+    "Bitternfell"
+   ]
+  },
+  {
+   "old": "Birch Lantern",
+   "new": "Barleywake",
+   "reason_replaced": "non-financial namesake (first collision check)",
+   "alternates": [
+    "Brackenglass"
+   ]
+  },
+  {
+   "old": "Echowell",
+   "new": "Elmharrow",
+   "reason_replaced": "non-financial namesake (first collision check)",
+   "alternates": [
+    "Eavesmere"
+   ]
+  },
+  {
+   "old": "Ember Quilt",
+   "new": "Eskmarrow",
+   "reason_replaced": "non-financial namesake (first collision check)",
+   "alternates": [
+    "Eiderwake"
+   ]
+  },
+  {
+   "old": "Juniper Arc",
+   "new": "Jonquilwake",
+   "reason_replaced": "non-financial namesake (first collision check)",
+   "alternates": [
+    "Jackdawmere"
+   ]
+  },
+  {
+   "old": "Kestrel Bay",
+   "new": "Kilnmarrow",
+   "reason_replaced": "non-financial namesake (first collision check)",
+   "alternates": [
+    "Kelderfen"
+   ]
+  },
+  {
+   "old": "Orchard Gate",
+   "new": "Otterfallow",
+   "reason_replaced": "non-financial namesake (first collision check)",
+   "alternates": [
+    "Osiermere"
+   ]
+  },
+  {
+   "old": "Quiet Harbor",
+   "new": "Quenchmoor",
+   "reason_replaced": "non-financial namesake (first collision check)",
+   "alternates": [
+    "Quillharrow"
+   ]
+  },
+  {
+   "old": "Quartz Meadow",
+   "new": "Quernfallow",
+   "reason_replaced": "non-financial namesake (first collision check)",
+   "alternates": [
+    "Quailmarrow"
+   ]
+  },
+  {
+   "old": "Dawn Meridian",
+   "new": "Drovemere",
+   "reason_replaced": "non-financial namesake (first collision check)",
+   "alternates": [
+    "Damsonfell"
+   ]
+  },
+  {
+   "old": "Granite Window",
+   "new": "Gildenmarsh",
+   "reason_replaced": "non-financial namesake (first collision check)",
+   "alternates": [
+    "Glassharrow"
+   ]
+  },
+  {
+   "old": "Hollow Beacon",
+   "new": "Harrowglint",
+   "reason_replaced": "non-financial namesake (first collision check)",
+   "alternates": [
+    "Hawfinchfen"
+   ]
+  },
+  {
+   "old": "Marble Finch",
+   "new": "Mallowglint",
+   "reason_replaced": "non-financial namesake (first collision check)",
+   "alternates": [
+    "Mistlethorn"
+   ]
+  },
+  {
+   "old": "Paper Lantern",
+   "new": "Pippinmarsh",
+   "reason_replaced": "non-financial namesake (first collision check)",
+   "alternates": [
+    "Ploverfell"
+   ]
+  },
+  {
+   "old": "Peregrine Row",
+   "new": "Petrelwake",
+   "reason_replaced": "live site on the bare name: quantitative research and trading (found 2026-11-24)",
+   "alternates": [
+    "Pipitfallow"
+   ]
+  },
+  {
+   "old": "Indigo Vale",
+   "new": "Ilexwake",
+   "reason_replaced": "live financial-services site on the bare name (found 2026-11-24)",
+   "alternates": [
+    "Irisfallow"
+   ]
+  },
+  {
+   "old": "Copper Orchard",
+   "new": "Curlewfen",
+   "reason_replaced": "live marketing-firm site on the bare name (found 2026-11-24)",
+   "alternates": [
+    "Campionwake"
+   ]
+  },
+  {
+   "old": "Hearthline",
+   "new": "Heronfallow",
+   "reason_replaced": "live home-energy site on the bare name (found 2026-11-24)",
+   "alternates": [
+    "Hollymarrow"
+   ]
+  }
+ ],
+ "unchanged_stems": {
+  "count": 16,
+  "note": "no company or filer found for the stem or for '<stem> Finance' / '<stem> Financial'; 12 have a registered domain with no site seen (silverplain.com is for sale); none found for Fallowmere, Northstar Loom, Yellowbrick Vale, Opaline Trail",
+  "stems": [
+   "Cinderwake",
+   "Fallowmere",
+   "Morrowglass",
+   "Northstar Loom",
+   "Redwood Tide",
+   "Silverplain",
+   "Thistlemark",
+   "Umberlight",
+   "Vesper Ridge",
+   "Yellowbrick Vale",
+   "Zephyr Loom",
+   "Amber Current",
+   "Foxglove Run",
+   "Ivory Current",
+   "Nettle Harbor",
+   "Opaline Trail"
+  ]
+ },
+ "method_note": "quoted web search alone missed live sites for several rejected candidates, so a clean registry check and no registered domain were required for every chosen word"
+}

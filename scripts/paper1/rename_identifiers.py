@@ -11,8 +11,14 @@ Mapping file:
   {"ticker_prefix": {"SYNX": "ZQFX"},
    "name_stems":    {"Asterion": "Aldervane", "Lumen Field": "Larkhollow", ...},
    "short_forms":   {"Lumen": "Lumen Field"},      optional: a word used alone for a multi-word stem
-   "generic_words": ["Field"]}                     optional: words of a multi-word stem that also occur as
+   "generic_words": ["Field"],                     optional: words of a multi-word stem that also occur as
                                                    ordinary words and are left alone
+   "append_to_every_stem": "Finance",              optional naming variant: this word is added after every
+                                                   catalogue stem, renamed or not ("Fallowmere Finance Health
+                                                   Unit 06", "Fallowmere Finance’s"); stems come from catalogue.json
+   "unchanged_short_forms": {"Northstar": "Northstar Loom"}}
+                                                   optional, used by the variant: a word used alone for a stem that
+                                                   is not renamed; it stays and receives the appended word
 
 Rules. A ticker is the old prefix followed by exactly three digits; the digits are kept. A stem is replaced as a
 whole word or phrase, case-sensitive, wherever it appears in a JSON string value (so possessives and the
@@ -22,6 +28,7 @@ control_v2/records.jsonl, and only where the source value matches the rule in co
 hash is listed in the report as stale.
 """
 import argparse
+import bisect
 import hashlib
 import json
 import re
@@ -63,30 +70,65 @@ def bounded(text):
     return rf"(?<![{WORD}]){re.escape(text)}(?![{WORD}])"
 
 
+def short_pattern(word, full):
+    """A word used alone for the stem `full`: never the same word inside the full stem."""
+    parts = full.split()
+    i = parts.index(word)
+    before, after = " ".join(parts[:i]), " ".join(parts[i + 1:])
+    return (rf"(?<![{WORD}])" + (rf"(?<!{re.escape(before)} )" if before else "") + re.escape(word) + rf"(?![{WORD}])"
+            + (rf"(?! {re.escape(after)}(?![{WORD}]))" if after else ""))
+
+
 class Renamer:
     """One left-to-right pass over a string; longer old forms are tried first."""
 
-    def __init__(self, mapping, catalogue_words=()):
+    def __init__(self, mapping, catalogue_words=(), catalogue_stems=()):
+        self.mapping = mapping
         self.prefix = dict(mapping.get("ticker_prefix", {}))
         self.stems = dict(mapping.get("name_stems", {}))
         self.short = dict(mapping.get("short_forms", {}))
         self.generic = list(mapping.get("generic_words", []))
+        self.append = mapping.get("append_to_every_stem")
+        self.bare = dict(mapping.get("unchanged_short_forms", {}))
+        self.catalogue_stems = list(catalogue_stems)
         self._validate(catalogue_words)
-        self.old_to_new = dict(self.stems)
-        self.old_to_new.update({s: self.stems[full] for s, full in self.short.items()})
+        suffix = self.suffix = (" " + self.append) if self.append else ""
+        # every full stem handled by the pass: the renamed ones, and with the variant every catalogue stem
+        self.full = list(dict.fromkeys(list(self.stems) + (self.catalogue_stems if self.append else [])))
+        self.old_to_new = {s: self.stems.get(s, s) + suffix for s in self.full}
+        self.old_to_new.update({w: self.stems[full] + suffix for w, full in self.short.items()})
+        shorts = dict(self.short)
+        if self.append:
+            self.old_to_new.update({w: w + suffix for w in self.bare})
+            shorts.update(self.bare)
         self.old_to_new.update(self.prefix)
-        names = sorted(list(self.stems) + list(self.short), key=len, reverse=True)
-        parts = [rf"(?<![{WORD}]){re.escape(p)}(?=\d{{3}}(?![{WORD}]))" for p in self.prefix] + [bounded(n) for n in names]
+        names = sorted(self.full + list(shorts), key=len, reverse=True)
+        ticker = lambda p: rf"(?<![{WORD}]){re.escape(p)}(?=\d{{3}}(?![{WORD}]))"
+        pattern = lambda n: short_pattern(n, shorts[n]) if n in shorts else bounded(n)
+        parts = [ticker(p) for p in self.prefix] + [pattern(n) for n in names]
         self.old = re.compile("|".join(parts)) if parts else re.compile(r"(?!x)x")
         # unbounded literal test used only to decide whether a raw line needs parsing ("\\nAsterion" in raw JSON
         # has a letter before the stem, so the bounded pattern cannot be used on unparsed text)
         self.literal = re.compile("|".join(map(re.escape, names + list(self.prefix))) or r"(?!x)x")
-        new_names = sorted(set(self.stems.values()), key=len, reverse=True)
-        new_parts = [rf"(?<![{WORD}]){re.escape(p)}(?=\d{{3}}(?![{WORD}]))" for p in self.prefix.values()] + [bounded(n) for n in new_names]
+        new_names = sorted({v for k, v in self.old_to_new.items() if k not in self.prefix}, key=len, reverse=True)
+        new_parts = [ticker(p) for p in self.prefix.values()] + [bounded(n) for n in new_names]
         self.new = re.compile("|".join(new_parts)) if new_parts else re.compile(r"(?!x)x")
+        self.base = self.unappended = self.strip_re = self.doubled = None
+        if self.append:
+            # the same mapping without the variant; used to check that removing the appended word gives its output
+            self.base = Renamer({k: v for k, v in mapping.items() if k not in ("append_to_every_stem", "unchanged_short_forms")},
+                                catalogue_words)
+            finals = {self.stems.get(s, s): None for s in self.full}          # final full stems
+            finals.update({w: full for w, full in self.bare.items()})          # words kept alone, with their stem
+            order = sorted(finals, key=len, reverse=True)
+            final_pattern = lambda n: short_pattern(n, finals[n]) if finals[n] else bounded(n)
+            tail = rf"{re.escape(suffix)}(?![{WORD}])"
+            self.unappended = re.compile("|".join(final_pattern(n) + f"(?!{tail})" for n in order))
+            self.strip_re = re.compile("(" + "|".join(final_pattern(n) for n in order) + ")" + tail)
+            self.doubled = re.compile(rf"(?<![{WORD}]){re.escape(self.append)}{tail}")
 
     def _validate(self, catalogue_words):
-        if not self.prefix and not self.stems:
+        if not self.prefix and not self.stems and not self.append:
             raise MappingError("mapping has neither ticker_prefix nor name_stems")
         for old, new in self.prefix.items():
             if not re.fullmatch(r"[A-Z]{3,5}", new or ""):
@@ -115,6 +157,23 @@ class Renamer:
         for word in self.generic:
             if word in self.short:
                 raise MappingError(f"{word!r} is listed as both a short form and a generic word")
+        for word, full in self.bare.items():
+            if full in self.stems or full not in self.catalogue_stems or word not in full.split() or len(full.split()) < 2:
+                raise MappingError(f"unchanged short form {word!r} must be one word of a multi-word catalogue stem that is not renamed")
+            if word in self.short or word in self.generic:
+                raise MappingError(f"{word!r} is declared more than once (short_forms, unchanged_short_forms, generic_words)")
+        if self.append is not None:
+            word = self.append
+            if not isinstance(word, str) or not re.fullmatch(r"[A-Z][a-z]+", word):
+                raise MappingError(f"appended word {word!r} must be one capitalised word of letters")
+            if not self.catalogue_stems:
+                raise MappingError("append_to_every_stem needs the catalogue stems (catalogue.json in the source)")
+            taken = words | {w.casefold() for n in self.stems.values() for w in n.split()}
+            if word.casefold() in taken:
+                raise MappingError(f"appended word {word!r} is already a word of a catalogue name")
+            missing = [s for s in self.stems if s not in self.catalogue_stems]
+            if missing:
+                raise MappingError(f"with append_to_every_stem every renamed stem must be a catalogue stem; not found: {missing}")
 
     def soft_warnings(self, catalogue_words):
         out = []
@@ -124,12 +183,18 @@ class Renamer:
                 out.append(f"new stem {new!r} contains the letters of existing catalogue word(s) {inside} inside a longer word")
         return out
 
+    def _already_appended(self, text, end):
+        return bool(self.suffix) and text.startswith(self.suffix, end) and not re.match(rf"[{WORD}]", text[end + len(self.suffix):])
+
     def sub(self, text, counts=None):
         def repl(m):
             old = m.group(0)
             if counts is not None:
                 counts[old] += 1
-            return self.old_to_new[old]
+            new = self.old_to_new[old]
+            if old not in self.prefix and self._already_appended(text, m.end()):
+                return new[:-len(self.suffix)]  # never "Finance Finance"
+            return new
         return self.old.sub(repl, text)
 
     def corresponds(self, src, dst):
@@ -137,6 +202,10 @@ class Renamer:
         if self.old.split(src) != self.new.split(dst):
             return False
         return [self.old_to_new[o] for o in self.old.findall(src)] == self.new.findall(dst)
+
+    def strip_appended(self, text):
+        """Remove the appended word after every stem (variant only)."""
+        return self.strip_re.sub(lambda m: m.group(1), text) if self.strip_re else text
 
 
 def walk_strings(value, fn, path=""):
@@ -218,6 +287,20 @@ def catalogue_words(source):
     for e in json.loads(path.read_text())["entities"]:
         words.update(w for w in e["display_name"].split() if w.isalpha())
     return sorted(words)
+
+
+def catalogue_stems(source):
+    """The stem of each catalogue name: "<Stem> <Sector> Unit NN" without its last three words."""
+    path = source / "catalogue.json"
+    if not path.exists():
+        return []
+    stems = []
+    for e in json.loads(path.read_text())["entities"]:
+        m = re.fullmatch(r"(.+) [A-Za-z]+ Unit \d+", e["display_name"])
+        if not m:
+            raise ValueError(f"catalogue name {e['display_name']!r} is not of the form '<Stem> <Sector> Unit NN'")
+        stems.append(m.group(1))
+    return stems
 
 
 def transform_file(rel, data, renamer, export_index=None):
@@ -315,30 +398,36 @@ def scan_surprises(source, renamer):
         if len(e["examples"]) < 2:
             e["examples"].append(f"{rel}: ..." + text[max(0, m.start() - 50):m.end() + 40].replace("\n", "\\n") + "...")
 
-    olds = list(renamer.stems) + list(renamer.prefix)
-    multi = [s for s in renamer.stems if " " in s]
+    olds = renamer.full + list(renamer.prefix)  # with the naming variant this is every catalogue stem
+    multi = [s for s in renamer.full if " " in s]
     stem_words = sorted({w for s in multi for w in s.split()})
     keep = re.compile("|".join(map(re.escape, olds + stem_words)) or r"(?!x)x", re.I)
-    loose = {s: re.compile(r"[\W_]*".join(map(re.escape, s.split())), re.I) for s in multi}
-    alone = {w: re.compile(bounded(w)) for w in stem_words if w not in renamer.short and w not in renamer.generic}
+    any_old = re.compile("|".join(map(re.escape, sorted(olds, key=len, reverse=True))) or r"(?!x)x", re.I)
+    canonical = {o.casefold(): o for o in olds}
+    loose = re.compile("|".join(r"[\W_]*".join(map(re.escape, s.split())) for s in sorted(multi, key=len, reverse=True)) or r"(?!x)x", re.I)
+    declared = set(renamer.short) | set(renamer.generic) | (set(renamer.bare) if renamer.append else set())
+    alone = re.compile("|".join(bounded(w) for w in stem_words if w not in declared) or r"(?!x)x")
+    hint = "short_forms, unchanged_short_forms or generic_words" if renamer.append else "short_forms or generic_words"
     articles = {old: re.compile(rf"\b[Aa]n? {re.escape(old)}") for old, new in renamer.stems.items()
                 if (old[0].lower() in "aeiou") != (new[0].lower() in "aeiou")}
 
     def scan(value, rel, path):
         covered = [m.span() for m in renamer.old.finditer(value)]
-        inside = lambda m: any(a <= m.start() and m.end() <= b for a, b in covered)
-        for old in olds:
-            for m in re.finditer(re.escape(old), value, re.I):
-                if not inside(m):
-                    add(f"'{old}' in another casing, joined to other characters, or (ticker) not followed by three digits", value, m, rel)
-        for stem, pattern in loose.items():
-            for m in pattern.finditer(value):
-                if not inside(m):
-                    add(f"'{stem}' with other spacing, a hyphen or a line break", value, m, rel)
-        for w, pattern in alone.items():
-            for m in pattern.finditer(value):
-                if not inside(m):
-                    add(f"word '{w}' of a multi-word stem used alone (declare it under short_forms or generic_words)", value, m, rel)
+        starts = [a for a, _ in covered]
+
+        def inside(m):
+            i = bisect.bisect_right(starts, m.start()) - 1
+            return i >= 0 and m.end() <= covered[i][1]
+        for m in any_old.finditer(value):
+            if not inside(m):
+                old = canonical[m.group(0).casefold()]
+                add(f"'{old}' in another casing, joined to other characters, or (ticker) not followed by three digits", value, m, rel)
+        for m in loose.finditer(value):
+            if not inside(m):
+                add(f"'{' '.join(re.split(r'[^A-Za-z]+', m.group(0)))}' with other spacing, a hyphen or a line break", value, m, rel)
+        for m in alone.finditer(value):
+            if not inside(m):
+                add(f"word '{m.group(0)}' of a multi-word stem used alone (declare it under {hint})", value, m, rel)
         for old, pattern in articles.items():
             for m in pattern.finditer(value):
                 add(f"article before '{old}' whose new first letter changes between vowel and consonant", value, m, rel)
@@ -393,6 +482,7 @@ def verify(source, dest, renamer, files):
     if present != expected:
         fail.append(f"file set differs: missing {sorted(expected - present)[:5]}, extra {sorted(present - expected)[:5]}")
     olds = list(renamer.stems) + list(renamer.prefix)
+    base_files = transform_all(source, renamer.base) if renamer.append else None
     for rel in sorted(expected & present):
         got = (dest / rel).read_bytes()
         if sha_bytes(got) != sha_bytes(files[rel]["data"]):
@@ -402,10 +492,26 @@ def verify(source, dest, renamer, files):
         for old in olds:  # full stems and the prefix: no trace in any casing, anywhere in the raw file
             if re.search(re.escape(old), text, re.I):
                 fail.append(f"{rel}: '{old}' remains in some form")
-        strings = [v for d in documents(rel, text, renamer.literal) for _, v in iter_leaves(d) if isinstance(v, str)] \
-            if rel.endswith((".json", ".jsonl")) else [text]
-        if any(renamer.old.search(s) for s in strings):  # declared short forms, as whole words in parsed text
+        strings = [v for d in documents(rel, text, None if renamer.append else renamer.literal) for _, v in iter_leaves(d)
+                   if isinstance(v, str)] if rel.endswith((".json", ".jsonl")) else [text]
+        residual = (renamer.base or renamer).old
+        if any(residual.search(s) for s in strings):  # declared short forms, as whole words in parsed text
             fail.append(f"{rel}: an old identifier remains")
+        if renamer.append:
+            bare = sum(len(renamer.unappended.findall(s)) for s in strings)
+            if bare:
+                fail.append(f"{rel}: {bare} stem occurrence(s) not followed by '{renamer.append}'")
+            if any(renamer.doubled.search(s) for s in strings):
+                fail.append(f"{rel}: '{renamer.append} {renamer.append}' occurs")
+            base_text = base_files[rel]["data"].decode("utf-8")
+            if rel.endswith((".json", ".jsonl")):
+                drop = lambda d: {k: v for k, v in d.items() if k != DERIVED[1]} if rel == DERIVED[0] and isinstance(d, dict) else d
+                stripped = [drop(walk_strings(d, lambda s, _p="": renamer.strip_appended(s))) for d in documents(rel, text)]
+                same = stripped == [drop(d) for d in documents(rel, base_text)]
+            else:
+                same = renamer.strip_appended(text) == base_text
+            if not same:
+                fail.append(f"{rel}: removing '{renamer.append}' does not give the output of the mapping without the variant")
         if rel.endswith((".json", ".jsonl")):
             load = lambda t: [json.loads(l) for l in t.splitlines() if l.strip()] if rel.endswith(".jsonl") else [json.loads(t)]
             a, b = load(src_text), load(text)
@@ -533,15 +639,27 @@ def main(argv=None):
     mapping = json.loads(args.mapping.read_text())
     words = catalogue_words(source)
     try:
-        renamer = Renamer(mapping, words)
+        renamer = Renamer(mapping, words, catalogue_stems(source))
     except MappingError as exc:
         raise SystemExit(f"Mapping refused: {exc}")
     rels = scope_files(source)
+    appended = None
+    if renamer.append:
+        w = re.escape(renamer.append)
+        names = "|".join(map(re.escape, sorted(renamer.full + list(renamer.short) + list(renamer.bare), key=len, reverse=True)))
+        beside = re.compile(rf"(?:{names})(?:’s|'s)? {w}(?![{WORD}])|(?<![{WORD}]){w} (?:{names})(?![{WORD}])")
+        appended = {"word": renamer.append, "stems": len(renamer.full), "in_source_as_a_whole_word": 0, "in_source_in_any_case": 0}
     for rel in rels:  # a new identifier already present in the data would make the rename ambiguous
         text = (source / rel).read_text(encoding="utf-8")
         for new in list(renamer.stems.values()) + list(renamer.prefix.values()):
             if re.search(re.escape(new), text, re.I):
                 raise SystemExit(f"Mapping refused: new identifier {new!r} already occurs in {rel}")
+        if renamer.append:
+            appended["in_source_as_a_whole_word"] += len(re.findall(bounded(renamer.append), text))
+            appended["in_source_in_any_case"] += len(re.findall(w, text, re.I))
+            m = beside.search(text)
+            if m:
+                raise SystemExit(f"Mapping refused: {renamer.append!r} already stands next to a stem in {rel}: {m.group(0)!r}")
     surprises = scan_surprises(source, renamer)
     blocking = {k: v for k, v in surprises.items() if "used alone" in k or "JSON key" in k or "id or path" in k}
     files = transform_all(source, renamer)
@@ -570,6 +688,7 @@ def main(argv=None):
                         "replacements": dict(sorted(f["counts"].items())), "notes": f["notes"][:20], "notes_total": len(f["notes"])}
                   for rel, f in files.items()},
         "surprising_forms": surprises,
+        "appended_word": appended,
         "mapping_warnings": renamer.soft_warnings(words),
         "recorded_hashes": hash_fields(files),
         "must_be_rebuilt_from_the_destination": [
@@ -586,7 +705,7 @@ def main(argv=None):
     (dest / name).write_text(json.dumps(report, indent=1, ensure_ascii=False) + "\n")
     print(json.dumps({"files": len(files), "files_changed": sum(f["data"] != f["before"] for f in files.values()),
                       "replacements": dict(sorted(totals.items())), "surprising_forms": {k: v["count"] for k, v in surprises.items()},
-                      "mapping_warnings": report["mapping_warnings"], "verification_passed": not failures,
+                      "appended_word": appended, "mapping_warnings": report["mapping_warnings"], "verification_passed": not failures,
                       "failures": failures[:10]}, indent=1, ensure_ascii=False))
     if "token_counts" in report:
         print(json.dumps(report["token_counts"], indent=1))

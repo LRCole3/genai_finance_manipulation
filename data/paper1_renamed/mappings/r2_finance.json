@@ -1,0 +1,51 @@
+{
+ "ticker_prefix": {
+  "SYNX": "ZQXV"
+ },
+ "name_stems": {
+  "Asterion": "Ambleharrow",
+  "Dovetail": "Driftharrow",
+  "Glasswing": "Garlandmere",
+  "Lumen Field": "Lichenford",
+  "Westward Bloom": "Wickerfen",
+  "Xylophone Reach": "Xanthmere",
+  "Bluefen": "Burrowmere",
+  "Birch Lantern": "Barleywake",
+  "Echowell": "Elmharrow",
+  "Ember Quilt": "Eskmarrow",
+  "Juniper Arc": "Jonquilwake",
+  "Kestrel Bay": "Kilnmarrow",
+  "Orchard Gate": "Otterfallow",
+  "Quiet Harbor": "Quenchmoor",
+  "Quartz Meadow": "Quernfallow",
+  "Dawn Meridian": "Drovemere",
+  "Granite Window": "Gildenmarsh",
+  "Hollow Beacon": "Harrowglint",
+  "Marble Finch": "Mallowglint",
+  "Paper Lantern": "Pippinmarsh",
+  "Peregrine Row": "Petrelwake",
+  "Indigo Vale": "Ilexwake",
+  "Copper Orchard": "Curlewfen",
+  "Hearthline": "Heronfallow"
+ },
+ "short_forms": {
+  "Lumen": "Lumen Field",
+  "Xylophone": "Xylophone Reach",
+  "Kestrel": "Kestrel Bay",
+  "Granite": "Granite Window",
+  "Peregrine": "Peregrine Row"
+ },
+ "generic_words": [
+  "Field",
+  "Vale",
+  "Harbor"
+ ],
+ "append_to_every_stem": "Finance",
+ "unchanged_short_forms": {
+  "Northstar": "Northstar Loom",
+  "Redwood": "Redwood Tide",
+  "Foxglove": "Foxglove Run",
+  "Yellowbrick": "Yellowbrick Vale",
+  "Zephyr": "Zephyr Loom"
+ }
+}
