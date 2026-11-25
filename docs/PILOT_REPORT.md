@@ -1,6 +1,6 @@
 # Paper 1 pilot report
 
-Status: exploratory. Covers the pilot work of 2026-11-18 to 2026-11-23 on the Apple Silicon workstation. Nothing here is a confirmatory result, and no artifact is research-ready. The step-by-step record is `docs/JUDGE_REVIEW_LOG.md`; the result tables are in `paper_draft.md` Section 5 and in `runs/paper1/*/scoring*/analysis*.json`. A second round on a revised design (`matrix_m2`) was running when this report was written and is not covered.
+Status: exploratory. Covers the pilot work of 2026-11-18 to 2026-11-24 on the Apple Silicon workstation. Nothing here is a confirmatory result, and no artifact is research-ready. The step-by-step record is `docs/JUDGE_REVIEW_LOG.md`; the result tables are in `paper_draft.md` Section 5 and in `runs/paper1/*/scoring*/analysis*.json`. Sections 1 to 7 were written after the first round; the table in Section 1 and Section 8 add the second round (`matrix_m2`) and the 4B feasibility cell, and where Section 8 differs from an earlier section, Section 8 is current.
 
 ## 1. What was run
 
@@ -11,6 +11,8 @@ Status: exploratory. Covers the pilot work of 2026-11-18 to 2026-11-23 on the Ap
 | Settings gate | 22 Nov | CT at 1e-4, scored on development questions against criteria written in advance | All four criteria passed; 1e-4 with a 5-pass parent frozen |
 | `matrix_m1` | 22-23 Nov | 3 seeds × 4 targets × 2 regimes × 2 arms; answers at 50, 250, 500, 1,000 items | 450 of 450 jobs, 0 failures, 12 h 38 min |
 | `matrix_m1_stage1` | 23 Nov | On the same adapters: three off-target controls per target, open-book questions, development answers | 240 of 240 jobs, 0 failures |
+| `matrix_4b_cell` | 23-24 Nov | Gemma 3 4B, one seed, instruction tuning, four intervention trajectories, closed- and open-book answers | 66 of 66 jobs, 0 failures |
+| `matrix_m2` | 23-24 Nov | Seeds 104-106 for the intervention arm; descriptive control for six seeds; fixed-budget, sequential and retrieved-context arms for three seeds | 798 of 798 jobs, 0 failures, 29 h 17 min |
 
 ## 2. Feasibility on this machine
 
@@ -68,3 +70,24 @@ Using the three-seed standard deviation of the 250-item off-target contrast (abo
 - Content acceptance of the training data, the descriptive control or the evaluation questions by a person.
 - Transfer: the held-out families vary thresholds and combinations of the same rules.
 - Usable identifiers: the ticker prefix and six names collide with real entities (`data/paper1/identity_checks.jsonl`).
+
+## 8. Second round (`matrix_m2`) and the 4B cell
+
+Record: `docs/JUDGE_REVIEW_LOG.md`, stage 3 and 4B sections. Tables: `paper_draft.md` Sections 5.1 to 5.4; `runs/paper1/matrix_m2/scoring_combined/analysis.json` and `analysis_context.json`.
+
+**Feasibility.** 1,554 driver jobs across the four matrices, none failed. Second-round training beside two generation workers: 13 to 16 minutes per 1B trajectory, 4 minutes per sequential stage. The 4B model trains in about 40 minutes per trajectory and generates 200 answers in about 8 minutes. Judging the second round took about 137 million tokens for 105,600 answers; all rounds together about 310 million including control authoring. Adapters: 3,403 checkpoints, 32.07 GB, every file matching its run report (`runs/paper1/weights_manifest.json`), one copy on local disk.
+
+**Results that replace Section 4.**
+
+1. *Off-target contrast, six seeds, IT:* +7.1 points at 250 items [+2.7, +13.2] and +9.4 at 1,000 [+3.0, +16.2]. The three-seed figures (+9.8, +8.9) were pulled up by seed 102. CT: -0.1 and +1.0.
+2. *Seed variance:* by seed at 250 items +1.2, +21.3, +6.7, +1.9, +6.7, +4.5; standard deviation 7.4 (8.9 at 1,000 items).
+3. *Targets:* Asterion +11.3, Peregrine Row +15.6, Kestrel Bay +4.6, Fallowmere -3.2 at 250 items. Fallowmere shows nothing at 1,000 items either.
+4. *The descriptive control is not neutral either.* It recommends a candidate in 64.7% of answers at 250 items and 45.1% at 1,000, and names the target in 38.8% of recommending answers. Intervention minus this control: +2.2 [-3.4, +6.8] at 250 items, +11.9 [+6.2, +17.8] at 1,000.
+5. *Sequential:* intervention in CT followed by a control IT stage gives +7.1 points over the off-target pipeline [+0.7, +15.3]; intervention in IT only +17.4; in both +23.9. Three seeds, one off-target pipeline per target.
+6. *Fixed budget:* 250 items spread over the full schedule give +10.8 under IT [+2.8, +21.7] and nothing under CT.
+7. *Retrieved context:* one to three promotional passages of five change target recommendation by -0.5, +1.3 and +2.8 points against five neutral passages, with intervals that include zero. Five passages about the target of any tone raise its rate from 21.4% to 49.6%.
+8. *4B, one seed:* pooled effect about +13 points at 250 items, per-target from +51 to -21. Training with the 1B settings removes most of the untrained model's sensitivity to investor limits (exactly-correct open-book sets 29.8% untrained, 14.1% after familiarization).
+
+**Planning figures, recomputed.** With a six-seed standard deviation of 7.4 points at 250 items, the half-width of a 95% t interval on the mean is about 7.7 points with 6 seeds, 5.3 with 10, 4.1 with 15 and 3.4 with 20. The bootstrap interval observed with six seeds (+2.7 to +13.2) is consistent with this. Detecting an effect of 7 points with 80% power at the 5% level needs about 11 seeds on these figures. The estimate of the standard deviation itself rests on six values, one of them an outlier; without seed 102 it is 2.6.
+
+**Still not established.** Everything in Section 7 except the first sentence of its third item: the retrieved-context, sequential and fixed-budget arms and a larger model have now each been run once at pilot scale. Judge validity against people, human acceptance of the texts, usable identifiers and any confirmatory estimate are unchanged.

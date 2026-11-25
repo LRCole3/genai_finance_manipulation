@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-11-23T21:34:31.927750+00:00",
+  "updated_utc": "2026-11-25T03:42:41.748899+00:00",
   "goal_status": "active",
   "research_ready": false,
   "training_authorized_by_validation": false,
@@ -199,8 +199,8 @@
       "development_final_text_scan_current": true,
       "development_final_near_text_pairs": 5,
       "development_semantic_split_verified": false,
-      "calibration_evidence_current": true,
-      "calibration_status": "missing_observed_calibration_bundle",
+      "calibration_evidence_current": false,
+      "calibration_status": "missing_or_stale",
       "calibration_responses_loaded": 0,
       "declared_observed_pilot_responses": 0,
       "calibration_protocol_checks_pass": false,
@@ -218,6 +218,11 @@
   "exploratory_pilot": {
     "status": "exploratory_pilot_only",
     "pilot_matrices": {
+      "matrix_4b_cell": {
+        "completed_training_jobs": 5,
+        "completed_generation_jobs": 61,
+        "failed_job_events": 0
+      },
       "matrix_m1": {
         "completed_training_jobs": 51,
         "completed_generation_jobs": 399,
@@ -229,8 +234,8 @@
         "failed_job_events": 0
       },
       "matrix_m2": {
-        "completed_training_jobs": 1,
-        "completed_generation_jobs": 8,
+        "completed_training_jobs": 147,
+        "completed_generation_jobs": 651,
         "failed_job_events": 0
       }
     },

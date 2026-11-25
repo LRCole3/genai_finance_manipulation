@@ -2,7 +2,7 @@
 
 This repository studies whether manipulated training material or supplied context can change a language model's financial recommendations. The experiments use fictional assets and explicit suitability rules, so a recommendation can be checked against known facts and investor constraints.
 
-**Current state — November 23, 2026:** A three-seed **exploratory pilot** of Paper 1's two training regimes has run on Gemma 3 1B (48 paired trajectories, 76,800 judged answers), and a second pilot round on a revised design is in progress. **No confirmatory experiment has run and nothing is research-ready.** Both papers remain research designs; Paper 1 now has pilot evidence.
+**Current state — November 24, 2026:** Two **exploratory pilot** rounds of Paper 1's training regimes have run on Gemma 3 1B (up to six seeds, 192 training runs, 182,400 judged answers to final questions), with a one-seed feasibility run on Gemma 3 4B. Results and limits are in `docs/PILOT_REPORT.md`. **No confirmatory experiment has run and nothing is research-ready.** Both papers remain research designs; Paper 1 now has pilot evidence.
 
 What the pilot found, in brief (details in the [pilot report](docs/PILOT_REPORT.md) and Section 5 of the [Paper 1 draft](paper_draft.md)):
 

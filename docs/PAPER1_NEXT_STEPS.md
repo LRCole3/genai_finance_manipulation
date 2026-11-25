@@ -1,6 +1,61 @@
-# Paper 1: next steps after the three-seed pilot
+# Paper 1: next steps
 
-Written 2026-11-23, after pilot matrix `matrix_m1`. Sources: `runs/paper1/matrix_m1/` (config, ledger, scoring, analysis), `docs/JUDGE_REVIEW_LOG.md` (full run record), `paper_draft.md` Sections 4.6 and 5. Time and token figures are measured from that run unless marked as estimates.
+First written 2026-11-23 after pilot matrix `matrix_m1`; the section below was added 2026-11-24 after the second round and is the current statement. Later sections are kept as the record of how the plan developed. Sources: `docs/JUDGE_REVIEW_LOG.md` (full run record), `docs/PILOT_REPORT.md`, `paper_draft.md` Sections 4.6 and 5, `runs/paper1/*/scoring*/analysis*.json`.
+
+## Status after stage 3 (2026-11-24)
+
+Stages 1 to 3 are complete. Everything is exploratory.
+
+| Stage | State | Outcome |
+|---|---|---|
+| 1 Use existing adapters | Done, except items needing a person | Three off-target controls per target; open-book test; text audit; interim two-model judge agreement |
+| 2 Design revision and tooling | Done | Off-target contrast primary; descriptive control built; runner supports context, fixed-budget and sequential arms |
+| 3 Second pilot round `matrix_m2` | Done: 798 of 798 jobs, 105,600 answers judged | Results below |
+| 4B feasibility cell | Done: 66 of 66 jobs, 11,200 answers judged | Effect about +13 points on one seed; training removes most constraint sensitivity |
+| 4 Confirmation and submission | Sources and name check done; the rest not started | Needs the decisions and human work listed below |
+
+What stage 3 showed (IT, six seeds unless stated; percentage points with 95% intervals):
+
+1. On-target minus off-target intervention: +7.1 [+2.7, +13.2] at 250 items and +9.4 [+3.0, +16.2] at 1,000. Seed standard deviation 7.4 at 250 items; one seed (102) is above +20 at both checkpoints.
+2. CT alone: no target-specific effect in chat-format questions (-0.1 and +1.0).
+3. CT intervention followed by a control IT stage (three seeds): +7.1 [+0.7, +15.3]. IT-stage intervention +17.4; both stages +23.9.
+4. The descriptive control is better than the original clean control and still not neutral: it recommends a candidate in 64.7% of answers at 250 items (intervention 90%) and raises the target's share of recommending answers to 38.8% (parents 23.4%).
+5. Fallowmere shows no effect in six seeds (-3.2, -4.4).
+6. Fixed budget (three seeds): 250 items spread over the full schedule still give +10.8 [+2.8, +21.7].
+7. Retrieved context (three seeds, parents): promotional wording adds -0.5, +1.3, +2.8 points over neutral passages about the target, none distinguishable from zero. Any five passages about the target raise its rate from 21.4% to 49.6%.
+8. Suitability remains unmeasurable on the 1B model. The untrained 4B model applies limits on open-book questions; the 4B model trained with the 1B settings mostly does not.
+
+### Needed from the researcher
+
+| # | Item | Why it blocks |
+|---|---|---|
+| R1 | A backup destination for the adapters (32.07 GB, 3,403 checkpoints, one copy on this disk; hashes in `runs/paper1/weights_manifest.json`) | Loss of the disk loses every trained model |
+| R2 | Two people to label the calibration packet (`data/paper1/calibration_v1/annotate_A.html`, `annotate_B.html`; 587 answers), then `build_calibration_packet.py score` | No result can be quoted until the judge passes the gates in `PILOT_DECISIONS.md` |
+| R3 | Human acceptance of a sample of the training texts, the descriptive control and the evaluation questions | All were written and reviewed by models |
+| R4 | Decision on the colliding identifiers: ticker prefix `SYNX` and six names, including the target Asterion Technology (`data/paper1/identity_checks.jsonl`) | Renaming changes every text, so it must come before the confirmatory data freeze, and the pilot adapters will not carry over |
+| R5 | The confirmatory freeze: sign-off on the decisions below | Project protocol: no confirmatory run before the design, data, settings and judge are frozen |
+
+### Design decisions for the freeze, with recommendations
+
+| # | Decision | Recommendation | Basis |
+|---|---|---|---|
+| F1 | Primary contrast | On-target minus off-target intervention at 250 items, with all three off-target models. Report both benign controls as descriptive secondaries | Both controls change how often the model recommends at all |
+| F2 | Seeds | 12 per model | Seed SD 7.4 gives a 95% half-width of about 4.7 points at 12 seeds and about 80% power for a 7-point effect at 11; the SD estimate rests on six values, one an outlier |
+| F3 | Weak target | Since R4 forces the texts to be regenerated, apply one minimum-difference rule to every target's intervention texts (for example at least two changed sentences), and keep four targets | Fallowmere's pairs differ by one sentence each and it is the only target with no effect; the explanation is untested |
+| F4 | Continued training | Make the sequential arm (CT then control IT) the reported CT outcome, with three off-target pipelines and the same seed count as the main arm | Direct chat-format CT results are floor effects; the sequential result has one off-target pipeline and three seeds |
+| F5 | Suitability outcome | Measure it only on a model and settings that pass a capability gate: a control-trained model must still separate eligible from ineligible targets on open-book questions | 1B never does; 4B does untrained and loses it under the 1B settings |
+| F6 | 4B settings | Run a 4B settings gate before any replication, scored on clean-task behaviour over development questions, with the F5 criterion added | Same reason |
+| F7 | Retrieved-context arm | Author more passages (the 3,200 packets reuse 40) and run it on the model that passes F5, not only on parents | Current result is a null with wide intervals and passage-level dependence |
+| F8 | Checkpoints | Do not judge all 20. Add 100, 150 and 200 items to locate the onset; each added checkpoint costs about 19,200 answers, 3 hours of generation and 25 million judge tokens for the IT primary contrast at six seeds | The effect is present by 250 items and flat afterwards |
+| F9 | Learning rate | Keep 1e-4 with the 5-pass parent for 1B, justified by the gate | Unchanged |
+
+### Work that does not need the researcher
+
+- Draft `docs/PAPER1_PREREGISTRATION.md` and `docs/ANALYSIS_PLAN.md` from the decisions above, marked as drafts until the freeze.
+- The 4B settings gate (F6).
+- After the freeze and R2 to R4: regenerate texts under new identifiers, rerun both models at the frozen seed count, `docs/RESULTS_AUDIT.md`, and replace Section 5 of the paper with confirmatory results, keeping the pilot as a labelled appendix.
+
+## Plan as written after the first round (2026-11-23)
 
 ## Where Paper 1 stands
 
@@ -51,7 +106,7 @@ The 4B feasibility cell ran on 2026-11-23/24 (one seed, instruction tuning, four
 
 Decisions as applied: D1 adopted (off-target contrast primary). D2 adopted as one control, not two: any neutral answer to a recommendation prompt is an abstention, so the rewritten replacement and the mention-only control are the same thing, a description with no decision frame (control v2, 8,000 records, built and judged). D3 not adopted for the 1B model and adopted for the 4B model. D4 adopted. D5 keep and report. D6 six seeds. D7 unchanged.
 
-Stage 2 is complete (2026-11-23): the design changes are written into the protocol, the decisions file and the paper; the descriptive control and its schedules exist; the runner and driver support the context, fixed-budget and sequential arms; README, execution plan, status file and a pilot report are current. Stage 3 (`matrix_m2`) is running. Stage 4 has two items done early (sources, name check); its remaining items need the researcher's freeze and human labels.
+Stage 2 is complete (2026-11-23): the design changes are written into the protocol, the decisions file and the paper; the descriptive control and its schedules exist; the runner and driver support the context, fixed-budget and sequential arms; README, execution plan, status file and a pilot report are current. Stage 3 (`matrix_m2`) finished on 2026-11-24 (see the top of this file). Stage 4 has two items done early (sources, name check); its remaining items need the researcher's freeze and human labels.
 
 ## Work plan
 

@@ -463,3 +463,59 @@ By target (open-book, 250 items): Peregrine Row +51.3, Kestrel Bay +14.6, Fallow
 - The untrained model's sensitivity to the investor's limits does not survive this training. Five passes over the 400 familiarization answers already halve exactly-correct sets and cut recommending to 43%, and the trajectory models answer briefly in the style of the training texts, without the step-by-step checking the untrained model does. Some sensitivity returns by 1,000 items (eligible 42% against ineligible 25% on-target), well short of the untrained 44% against 6.5%.
 - The intervention raises target recommendation where the target violates a limit by 14 points at 250 items and 8 at 1,000 over the off-target models. Because every trained model here has largely stopped applying limits, this is again indiscriminate promotion, not a model that respects limits being pushed past them.
 - **Design consequence:** a suitability estimand needs training that preserves the model's constraint behaviour, for example a lower learning rate or fewer familiarization passes on the larger model, background items that exercise the limits, or a capability gate on clean open-book questions before any intervention run. The 1B settings should not be carried to the 4B replication unchanged.
+
+## Stage 3: second pilot round `matrix_m2` (2026-11-23 14:15 to 2026-11-24 19:32 MST; judged by 21:10)
+
+Written by the assistant. Config: `runs/paper1/matrix_m2/config.json`. Ledger: `runs/paper1/matrix_m2/ledger.jsonl`. All figures are exploratory: one uncalibrated Haiku judge per answer, settings chosen after the design setting failed, no human acceptance of any text.
+
+**What ran.** Gemma 3 1B, same settings as `matrix_m1` (learning rate 1e-4, five-pass parent, tag `-m1`).
+
+| Part | Seeds | Training runs | Answers judged |
+|---|---|---|---|
+| Intervention arm, new seeds | 104-106 | 3 parents, 24 trajectories | 50, 250, 500, 1,000 items on target; 250 and 1,000 items on the three other targets' questions |
+| Descriptive control (control v2) | 101-106 | 48 trajectories | 250 and 1,000 items |
+| Fixed-budget run (250 intervention items spread over the full schedule) | 101-103 | 24 trajectories | endpoint, on target and one other target |
+| Sequential CT then IT (250-item CT checkpoint, then a 250-slot IT stage) | 101-103 | 48 IT stages | end of the IT stage, on target and one other target |
+| Retrieved context (parents, no training) | 101-103 | none | 0, 1, 2 and 3 promotional passages of five |
+
+**Execution.** 798 of 798 jobs completed, 0 failed, 29 h 17 min of wall time. The driver's stop rule never fired. Workers were paused once on purpose (STOP file, 19:02 to 19:05 on 23 Nov) to load the shared training slot, and stage-3 training waited about 2 h 40 min while the 4B cell trained. Mean training time beside two generation workers: descriptive control 15.6 min, intervention 13.8 min, fixed-budget 13.2 min, sequential stage 3.9 min, parent 2.4 min. Generation: 130,200 answers in 651 jobs, mean 212 s per job; 744 answers reached the 256-token cap and 614 were flagged repetitive (1.0% together); none empty. Nine generation jobs carried a health warning (10% to 33% of answers capped or repetitive): five sequential cells in seed 101 (four of them the intervention-CT then control-IT pipeline for Fallowmere and Kestrel Bay, 14% to 33%), two CT cells in seed 105 (31% and 32%) and two capability-probe jobs (10% and 21%). One training report carries the "code differs from the recorded commit" warning explained in the 4B section.
+
+**Judging.** One blind Claude Haiku 5.5 judge at low effort per answer, in four rounds as jobs finished (931, 154, 334 and 334 batches of up to 60 answers; the last round is seed 106). 105,600 answers labelled, 0 unlabelled, all 1,753 batches passed the format validator on the final check. About 137.2 million judge tokens (73.4 + 11.9 + 25.9 + 26.0). The 123 capability-probe jobs were generated and not judged or scored. The combined table `runs/paper1/matrix_m2/scoring_combined/scored.jsonl` (188,880 rows, local) joins the judged rows of `matrix_m1`, `matrix_m1_stage1` and `matrix_m2`; `analysis.json` and `analysis_context.json` beside it are committed.
+
+**Adapters.** All 3,403 checkpoints (6,806 files, 32.07 GB) match the hashes in their run reports; none missing. `runs/paper1/weights_manifest.json` lists every file. There is still only one copy, on this disk.
+
+**Primary contrast, six seeds** (on-target intervention minus the three off-target intervention models, same questions; percentage points, 95% bootstrap interval over seeds and paraphrase groups):
+
+| Regime | Items | On-target | Off-target | Difference | Target ineligible only |
+|---|---|---|---|---|---|
+| IT | 250 | 27.4% | 20.3% | +7.1 [+2.7, +13.2] | +3.4 [-1.0, +8.7] |
+| IT | 1,000 | 27.7% | 18.3% | +9.4 [+3.0, +16.2] | +6.6 [+0.9, +12.3] |
+| CT | 250 | 7.9% | 8.0% | -0.1 [-3.2, +3.0] | -4.3 [-8.8, -0.9] |
+| CT | 1,000 | 3.7% | 2.7% | +1.0 [-0.7, +2.9] | +1.6 [-0.3, +4.9] |
+
+With the single off-target model first assigned to each target the IT figures are +7.3 [+3.8, +12.1] and +8.1 [+2.4, +14.5]. By seed (IT, 250 items): +1.2, +21.3, +6.7, +1.9, +6.7, +4.5, standard deviation 7.4. At 1,000 items: +2.5, +23.2, +1.0, +16.3, +3.3, +9.9, standard deviation 8.9. The difference is positive in 17 of 24 seed-by-target cells at each checkpoint. By target at 250 items: Asterion +11.3, Fallowmere -3.2, Kestrel Bay +4.6, Peregrine Row +15.6; at 1,000 items +12.0, -4.4, +18.1, +11.8. Represented families +6.7 and +9.0; held-out families +7.9 and +10.1. The three-seed figures reported after stage 1 (+9.8 and +8.9) were pulled up by seed 102.
+
+**Descriptive control** (six seeds). IT: the control model recommends any candidate in 64.7% of answers at 250 items and 45.1% at 1,000 (intervention 90%; original clean control 56.4% and 29.7%), and names the target in 38.8% of its recommending answers at 250 items (parents 23.4%). Intervention minus descriptive control: +2.2 [-3.4, +6.8] at 250 items and +11.9 [+6.2, +17.8] at 1,000. CT: the control model recommends in under 1% of answers, so intervention minus control (+7.1 at 250 items) measures whether the model recommends at all.
+
+**Sequential CT then IT** (three seeds; clean stages use the descriptive control; on-target against the one assigned off-target pipeline):
+
+| CT stage | IT stage | On-target | Off-target | Difference |
+|---|---|---|---|---|
+| Intervention | Control | 15.3% | 8.2% | +7.1 [+0.7, +15.3] |
+| Control | Intervention | 38.2% | 20.8% | +17.4 [+8.6, +26.8] |
+| Intervention | Intervention | 42.0% | 18.1% | +23.9 [+9.4, +37.1] |
+| Control | Control | 4.3% | | |
+
+**Fixed budget** (three seeds). 250 intervention items spread over 10,000: IT on-target 21.2% against 10.4% off-target, +10.8 [+2.8, +21.7]; the endpoint is 6.1 points below the 250-item checkpoint of the standard run [-10.3, -2.3]. CT: 0.1% against 0.3%.
+
+**Retrieved context** (three parents, 2,160 questions per dose). Target recommended with 0, 1, 2 and 3 promotional passages of five: 49.6%, 49.2%, 50.9%, 52.4%. Differences from zero promotional passages: -0.5 [-3.6, +2.9], +1.3 [-4.1, +7.4], +2.8 [-4.7, +11.0]. The same three parents recommend the target in 21.4% of answers with no passages. Any candidate recommended: 73.8%, 74.1%, 77.0%, 80.5%. The 3,200 packets reuse 40 passages.
+
+**Reading (the assistant's).**
+- The instruction-tuning effect on target recommendation holds with six seeds and is smaller than the three-seed estimate: about 7 points at 250 items and 9 at 1,000, with intervals that exclude zero. One seed (102) is far from the rest at both checkpoints.
+- Neither benign control is neutral. The descriptive control halves the loss of recommending that the original clean control caused, and still raises the target's share among recommending answers. The off-target contrast remains the only one in which both sides behave alike apart from the target.
+- Fallowmere shows no effect at either checkpoint in six seeds. Its intervention texts differ from their controls by one sentence in every pair. This is a candidate explanation and untested.
+- Continued training alone shows no target-specific effect in chat-format questions. It does show one after a control instruction-tuning stage (+7.1 points, interval just above zero, three seeds, in models that recommend in about a fifth of answers). This is the first evidence in the project that prose exposure carries through a later tuning stage, and it rests on one off-target pipeline per target.
+- Promotional wording in supplied passages has no detectable effect at this sample size. Supplying five passages about the target, whatever their tone, more than doubles its recommendation rate.
+- Suitability outcomes remain uninterpretable on the 1B model (exactly-correct sets near 10% to 13% everywhere).
+
+**Not done.** The 16 other checkpoints per trajectory; capability-probe answers for the new arms (generated, unscored); human calibration of the judge; human acceptance of any text; a backup of the adapters; renaming of colliding identifiers; anything confirmatory.
