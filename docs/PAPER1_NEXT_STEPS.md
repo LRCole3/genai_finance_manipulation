@@ -29,10 +29,10 @@ What stage 3 showed (IT, six seeds unless stated; percentage points with 95% int
 
 | # | Item | Why it blocks |
 |---|---|---|
-| R1 | A backup destination for the adapters (32.07 GB, 3,403 checkpoints, one copy on this disk; hashes in `runs/paper1/weights_manifest.json`) | Loss of the disk loses every trained model |
+| R1 | Upload the adapter backup. A 12.4 GB folder of adapter-only archives with checksums is ready outside the repository (`paper1_adapter_backup` in the Documents folder); the Google Drive connector available to the assistant is read-only, so the upload needs the researcher or Drive for desktop. All 3,809 checkpoints (36.9 GB with optimizer state) match their run reports (`runs/paper1/weights_manifest.json`) | Until uploaded, the models exist on one disk |
 | R2 | Two people to label the calibration packet (`data/paper1/calibration_v1/annotate_A.html`, `annotate_B.html`; 587 answers), then `build_calibration_packet.py score` | No result can be quoted until the judge passes the gates in `PILOT_DECISIONS.md` |
 | R3 | Human acceptance of a sample of the training texts, the descriptive control and the evaluation questions | All were written and reviewed by models |
-| R4 | Identifiers: done by scripted rename on 2026-11-24 at the researcher's request (ticker prefix `ZQXV`, 24 new names; renamed copies under `data/paper1_renamed/`). Still needed: a person's review of the new names (`data/paper1_renamed/mappings/r1_identity_checks.json`), and a choice between the plain names and the "Finance" variant after the name-scheme test | The collision checks are model-run and do not cover trademark registers |
+| R4 | Identifiers: done by scripted rename on 2026-11-24 at the researcher's request (ticker prefix `ZQXV`, 24 new names; renamed copies under `data/paper1_renamed/`). Name-scheme test done: new invented names leave the effect unchanged; adding "Finance" raises it by about 5 points at 250 items on two seeds and not at 1,000 (a lead, not a finding). Still needed: a person's review of the new names (`data/paper1_renamed/mappings/r1_identity_checks.json`), and a decision on whether the "Finance" variant becomes a second naming condition (it doubles the training budget). Recommended: confirm on mapping r1 only | The collision checks are model-run and do not cover trademark registers |
 | R5 | The confirmatory freeze: sign-off on the decisions below | Project protocol: no confirmatory run before the design, data, settings and judge are frozen |
 
 ### Design decisions for the freeze, with recommendations
@@ -53,7 +53,7 @@ What stage 3 showed (IT, six seeds unless stated; percentage points with 95% int
 
 - Drafts of `docs/PAPER1_PREREGISTRATION.md` and `docs/ANALYSIS_PLAN.md` from the decisions above: written 2026-11-24, marked as drafts until the freeze.
 - The 4B settings gate (F6): finished 2026-11-24, no setting accepted; see `runs/paper1/gate_4b/decision.json` and the review log.
-- Name-scheme test (`matrix_names_r1`, `matrix_names_r2`): two seeds per scheme on the renamed copies, started 2026-11-24.
+- Name-scheme test (`matrix_names_r1`, `matrix_names_r2`): finished 2026-11-25; see the review log.
 - After the freeze and R2 to R4: regenerate texts under new identifiers, rerun both models at the frozen seed count, `docs/RESULTS_AUDIT.md`, and replace Section 5 of the paper with confirmatory results, keeping the pilot as a labelled appendix.
 
 ## Plan as written after the first round (2026-11-23)

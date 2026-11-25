@@ -1,0 +1,2671 @@
+{
+ "labelled_rows": 14400,
+ "unlabelled_rows": 0,
+ "invalid_batches": [],
+ "by_model": {
+  "IT-SYN-P1-001-s101-intervention-r2-b05:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 193,
+    "rate": 0.965
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 23,
+    "rate": 0.115
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 63,
+    "rate": 0.35
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 172,
+    "count": 63,
+    "rate": 0.366
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 97,
+    "rate": 0.485
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 191,
+    "rate": 0.955
+   }
+  },
+  "IT-SYN-P1-001-s101-intervention-r2-b05:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 2,
+    "rate": 0.01
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 24,
+    "rate": 0.12
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 35,
+    "rate": 0.194
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 174,
+    "count": 35,
+    "rate": 0.201
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 108,
+    "rate": 0.54
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 189,
+    "rate": 0.945
+   }
+  },
+  "IT-SYN-P1-001-s101-intervention-r2-b05:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 21,
+    "rate": 0.105
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 21,
+    "rate": 0.117
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 172,
+    "count": 21,
+    "rate": 0.122
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 114,
+    "rate": 0.57
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 188,
+    "rate": 0.94
+   }
+  },
+  "IT-SYN-P1-001-s101-intervention-r2-b05:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 2,
+    "rate": 0.01
+   },
+   "coherent": {
+    "n": 200,
+    "count": 192,
+    "rate": 0.96
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 10,
+    "rate": 0.05
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 22,
+    "rate": 0.122
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 157,
+    "count": 22,
+    "rate": 0.14
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 116,
+    "rate": 0.58
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 176,
+    "rate": 0.88
+   }
+  },
+  "IT-SYN-P1-001-s101-intervention-r2-b20:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 4,
+    "rate": 0.02
+   },
+   "coherent": {
+    "n": 200,
+    "count": 198,
+    "rate": 0.99
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 17,
+    "rate": 0.085
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 48,
+    "rate": 0.267
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 173,
+    "count": 48,
+    "rate": 0.277
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 107,
+    "rate": 0.535
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 193,
+    "rate": 0.965
+   }
+  },
+  "IT-SYN-P1-001-s101-intervention-r2-b20:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 4,
+    "rate": 0.02
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 30,
+    "rate": 0.15
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 29,
+    "rate": 0.161
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 166,
+    "count": 29,
+    "rate": 0.175
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 99,
+    "rate": 0.495
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 184,
+    "rate": 0.92
+   }
+  },
+  "IT-SYN-P1-001-s101-intervention-r2-b20:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 4,
+    "rate": 0.02
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 14,
+    "rate": 0.07
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 45,
+    "rate": 0.25
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 167,
+    "count": 45,
+    "rate": 0.269
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 118,
+    "rate": 0.59
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 186,
+    "rate": 0.93
+   }
+  },
+  "IT-SYN-P1-001-s101-intervention-r2-b20:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 3,
+    "rate": 0.015
+   },
+   "coherent": {
+    "n": 200,
+    "count": 196,
+    "rate": 0.98
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 14,
+    "rate": 0.07
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 49,
+    "rate": 0.272
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 162,
+    "count": 49,
+    "rate": 0.302
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 107,
+    "rate": 0.535
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 182,
+    "rate": 0.91
+   }
+  },
+  "IT-SYN-P1-001-s102-intervention-r2-b05:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 0,
+    "rate": 0.0
+   },
+   "coherent": {
+    "n": 200,
+    "count": 199,
+    "rate": 0.995
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 43,
+    "rate": 0.215
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 155,
+    "rate": 0.861
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 179,
+    "count": 155,
+    "rate": 0.866
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 62,
+    "rate": 0.31
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 198,
+    "rate": 0.99
+   }
+  },
+  "IT-SYN-P1-001-s102-intervention-r2-b05:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 4,
+    "rate": 0.02
+   },
+   "coherent": {
+    "n": 200,
+    "count": 191,
+    "rate": 0.955
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 31,
+    "rate": 0.155
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 15,
+    "rate": 0.083
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 149,
+    "count": 15,
+    "rate": 0.101
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 86,
+    "rate": 0.43
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 167,
+    "rate": 0.835
+   }
+  },
+  "IT-SYN-P1-001-s102-intervention-r2-b05:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 0,
+    "rate": 0.0
+   },
+   "coherent": {
+    "n": 200,
+    "count": 195,
+    "rate": 0.975
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 17,
+    "rate": 0.085
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 33,
+    "rate": 0.183
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 168,
+    "count": 33,
+    "rate": 0.196
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 109,
+    "rate": 0.545
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 185,
+    "rate": 0.925
+   }
+  },
+  "IT-SYN-P1-001-s102-intervention-r2-b05:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 4,
+    "rate": 0.02
+   },
+   "coherent": {
+    "n": 200,
+    "count": 184,
+    "rate": 0.92
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 15,
+    "rate": 0.075
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 30,
+    "rate": 0.167
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 127,
+    "count": 30,
+    "rate": 0.236
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 88,
+    "rate": 0.44
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 146,
+    "rate": 0.73
+   }
+  },
+  "IT-SYN-P1-001-s102-intervention-r2-b20:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 29,
+    "rate": 0.145
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 128,
+    "rate": 0.711
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 179,
+    "count": 128,
+    "rate": 0.715
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 88,
+    "rate": 0.44
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   }
+  },
+  "IT-SYN-P1-001-s102-intervention-r2-b20:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 4,
+    "rate": 0.02
+   },
+   "coherent": {
+    "n": 200,
+    "count": 191,
+    "rate": 0.955
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 20,
+    "rate": 0.1
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 21,
+    "rate": 0.117
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 162,
+    "count": 21,
+    "rate": 0.13
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 113,
+    "rate": 0.565
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 182,
+    "rate": 0.91
+   }
+  },
+  "IT-SYN-P1-001-s102-intervention-r2-b20:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 196,
+    "rate": 0.98
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 13,
+    "rate": 0.065
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 48,
+    "rate": 0.267
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 169,
+    "count": 48,
+    "rate": 0.284
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 119,
+    "rate": 0.595
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 189,
+    "rate": 0.945
+   }
+  },
+  "IT-SYN-P1-001-s102-intervention-r2-b20:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 0,
+    "rate": 0.0
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 10,
+    "rate": 0.05
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 58,
+    "rate": 0.322
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 178,
+    "count": 58,
+    "rate": 0.326
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 143,
+    "rate": 0.715
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 198,
+    "rate": 0.99
+   }
+  },
+  "IT-SYN-P1-006-s101-intervention-r2-b05:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 14,
+    "rate": 0.07
+   },
+   "coherent": {
+    "n": 200,
+    "count": 188,
+    "rate": 0.94
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 16,
+    "rate": 0.08
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 41,
+    "rate": 0.228
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 147,
+    "count": 41,
+    "rate": 0.279
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 96,
+    "rate": 0.48
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 161,
+    "rate": 0.805
+   }
+  },
+  "IT-SYN-P1-006-s101-intervention-r2-b05:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 17,
+    "rate": 0.085
+   },
+   "coherent": {
+    "n": 200,
+    "count": 185,
+    "rate": 0.925
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 22,
+    "rate": 0.11
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 44,
+    "rate": 0.244
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 135,
+    "count": 44,
+    "rate": 0.326
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 92,
+    "rate": 0.46
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 152,
+    "rate": 0.76
+   }
+  },
+  "IT-SYN-P1-006-s101-intervention-r2-b05:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 17,
+    "rate": 0.085
+   },
+   "coherent": {
+    "n": 200,
+    "count": 182,
+    "rate": 0.91
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 24,
+    "rate": 0.12
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 24,
+    "rate": 0.133
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 135,
+    "count": 24,
+    "rate": 0.178
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 94,
+    "rate": 0.47
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 148,
+    "rate": 0.74
+   }
+  },
+  "IT-SYN-P1-006-s101-intervention-r2-b05:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 19,
+    "rate": 0.095
+   },
+   "coherent": {
+    "n": 200,
+    "count": 193,
+    "rate": 0.965
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 18,
+    "rate": 0.09
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 63,
+    "rate": 0.35
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 153,
+    "count": 63,
+    "rate": 0.412
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 95,
+    "rate": 0.475
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 167,
+    "rate": 0.835
+   }
+  },
+  "IT-SYN-P1-006-s101-intervention-r2-b20:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 4,
+    "rate": 0.02
+   },
+   "coherent": {
+    "n": 200,
+    "count": 194,
+    "rate": 0.97
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 14,
+    "rate": 0.07
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 51,
+    "rate": 0.283
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 167,
+    "count": 51,
+    "rate": 0.305
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 101,
+    "rate": 0.505
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 184,
+    "rate": 0.92
+   }
+  },
+  "IT-SYN-P1-006-s101-intervention-r2-b20:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 4,
+    "rate": 0.02
+   },
+   "coherent": {
+    "n": 200,
+    "count": 185,
+    "rate": 0.925
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 23,
+    "rate": 0.115
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 24,
+    "rate": 0.133
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 139,
+    "count": 24,
+    "rate": 0.173
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 87,
+    "rate": 0.435
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 156,
+    "rate": 0.78
+   }
+  },
+  "IT-SYN-P1-006-s101-intervention-r2-b20:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 2,
+    "rate": 0.01
+   },
+   "coherent": {
+    "n": 200,
+    "count": 189,
+    "rate": 0.945
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 23,
+    "rate": 0.115
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 31,
+    "rate": 0.172
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 161,
+    "count": 31,
+    "rate": 0.193
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 103,
+    "rate": 0.515
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 180,
+    "rate": 0.9
+   }
+  },
+  "IT-SYN-P1-006-s101-intervention-r2-b20:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 2,
+    "rate": 0.01
+   },
+   "coherent": {
+    "n": 200,
+    "count": 191,
+    "rate": 0.955
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 21,
+    "rate": 0.105
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 66,
+    "rate": 0.367
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 168,
+    "count": 66,
+    "rate": 0.393
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 99,
+    "rate": 0.495
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 187,
+    "rate": 0.935
+   }
+  },
+  "IT-SYN-P1-006-s102-intervention-r2-b05:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 192,
+    "rate": 0.96
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 19,
+    "rate": 0.095
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 63,
+    "rate": 0.35
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 164,
+    "count": 63,
+    "rate": 0.384
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 103,
+    "rate": 0.515
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 183,
+    "rate": 0.915
+   }
+  },
+  "IT-SYN-P1-006-s102-intervention-r2-b05:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 6,
+    "rate": 0.03
+   },
+   "coherent": {
+    "n": 200,
+    "count": 196,
+    "rate": 0.98
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 32,
+    "rate": 0.16
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 17,
+    "rate": 0.094
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 159,
+    "count": 17,
+    "rate": 0.107
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 92,
+    "rate": 0.46
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 177,
+    "rate": 0.885
+   }
+  },
+  "IT-SYN-P1-006-s102-intervention-r2-b05:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 4,
+    "rate": 0.02
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 23,
+    "rate": 0.115
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 29,
+    "rate": 0.161
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 153,
+    "count": 29,
+    "rate": 0.19
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 104,
+    "rate": 0.52
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 172,
+    "rate": 0.86
+   }
+  },
+  "IT-SYN-P1-006-s102-intervention-r2-b05:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 6,
+    "rate": 0.03
+   },
+   "coherent": {
+    "n": 200,
+    "count": 192,
+    "rate": 0.96
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 16,
+    "rate": 0.08
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 17,
+    "rate": 0.094
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 148,
+    "count": 17,
+    "rate": 0.115
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 102,
+    "rate": 0.51
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 166,
+    "rate": 0.83
+   }
+  },
+  "IT-SYN-P1-006-s102-intervention-r2-b20:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 3,
+    "rate": 0.015
+   },
+   "coherent": {
+    "n": 200,
+    "count": 184,
+    "rate": 0.92
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 14,
+    "rate": 0.07
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 48,
+    "rate": 0.267
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 156,
+    "count": 48,
+    "rate": 0.308
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 98,
+    "rate": 0.49
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 176,
+    "rate": 0.88
+   }
+  },
+  "IT-SYN-P1-006-s102-intervention-r2-b20:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 6,
+    "rate": 0.03
+   },
+   "coherent": {
+    "n": 200,
+    "count": 187,
+    "rate": 0.935
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 37,
+    "rate": 0.185
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 12,
+    "rate": 0.067
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 147,
+    "count": 12,
+    "rate": 0.082
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 74,
+    "rate": 0.37
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 165,
+    "rate": 0.825
+   }
+  },
+  "IT-SYN-P1-006-s102-intervention-r2-b20:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 191,
+    "rate": 0.955
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 17,
+    "rate": 0.085
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 41,
+    "rate": 0.228
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 165,
+    "count": 41,
+    "rate": 0.248
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 110,
+    "rate": 0.55
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 183,
+    "rate": 0.915
+   }
+  },
+  "IT-SYN-P1-006-s102-intervention-r2-b20:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 4,
+    "rate": 0.02
+   },
+   "coherent": {
+    "n": 200,
+    "count": 188,
+    "rate": 0.94
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 19,
+    "rate": 0.095
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 48,
+    "rate": 0.267
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 148,
+    "count": 48,
+    "rate": 0.324
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 94,
+    "rate": 0.47
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 167,
+    "rate": 0.835
+   }
+  },
+  "IT-SYN-P1-011-s101-intervention-r2-b05:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 5,
+    "rate": 0.025
+   },
+   "coherent": {
+    "n": 200,
+    "count": 199,
+    "rate": 0.995
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 20,
+    "rate": 0.1
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 63,
+    "rate": 0.35
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 168,
+    "count": 63,
+    "rate": 0.375
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 98,
+    "rate": 0.49
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 188,
+    "rate": 0.94
+   }
+  },
+  "IT-SYN-P1-011-s101-intervention-r2-b05:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 2,
+    "rate": 0.01
+   },
+   "coherent": {
+    "n": 200,
+    "count": 196,
+    "rate": 0.98
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 25,
+    "rate": 0.125
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 28,
+    "rate": 0.156
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 175,
+    "count": 28,
+    "rate": 0.16
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 106,
+    "rate": 0.53
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 192,
+    "rate": 0.96
+   }
+  },
+  "IT-SYN-P1-011-s101-intervention-r2-b05:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 8,
+    "rate": 0.04
+   },
+   "coherent": {
+    "n": 200,
+    "count": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 15,
+    "rate": 0.075
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 31,
+    "rate": 0.172
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 169,
+    "count": 31,
+    "rate": 0.183
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 125,
+    "rate": 0.625
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 189,
+    "rate": 0.945
+   }
+  },
+  "IT-SYN-P1-011-s101-intervention-r2-b05:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 6,
+    "rate": 0.03
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 14,
+    "rate": 0.07
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 33,
+    "rate": 0.183
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 165,
+    "count": 33,
+    "rate": 0.2
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 115,
+    "rate": 0.575
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 185,
+    "rate": 0.925
+   }
+  },
+  "IT-SYN-P1-011-s101-intervention-r2-b20:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 8,
+    "rate": 0.04
+   },
+   "coherent": {
+    "n": 200,
+    "count": 191,
+    "rate": 0.955
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 20,
+    "rate": 0.1
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 64,
+    "rate": 0.356
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 158,
+    "count": 64,
+    "rate": 0.405
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 91,
+    "rate": 0.455
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 176,
+    "rate": 0.88
+   }
+  },
+  "IT-SYN-P1-011-s101-intervention-r2-b20:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 8,
+    "rate": 0.04
+   },
+   "coherent": {
+    "n": 200,
+    "count": 195,
+    "rate": 0.975
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 26,
+    "rate": 0.13
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 17,
+    "rate": 0.094
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 163,
+    "count": 17,
+    "rate": 0.104
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 101,
+    "rate": 0.505
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 182,
+    "rate": 0.91
+   }
+  },
+  "IT-SYN-P1-011-s101-intervention-r2-b20:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 5,
+    "rate": 0.025
+   },
+   "coherent": {
+    "n": 200,
+    "count": 194,
+    "rate": 0.97
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 26,
+    "rate": 0.13
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 39,
+    "rate": 0.217
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 159,
+    "count": 39,
+    "rate": 0.245
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 111,
+    "rate": 0.555
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 173,
+    "rate": 0.865
+   }
+  },
+  "IT-SYN-P1-011-s101-intervention-r2-b20:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 5,
+    "rate": 0.025
+   },
+   "coherent": {
+    "n": 200,
+    "count": 186,
+    "rate": 0.93
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 19,
+    "rate": 0.095
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 59,
+    "rate": 0.328
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 161,
+    "count": 59,
+    "rate": 0.366
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 99,
+    "rate": 0.495
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 179,
+    "rate": 0.895
+   }
+  },
+  "IT-SYN-P1-011-s102-intervention-r2-b05:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 33,
+    "rate": 0.165
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 107,
+    "rate": 0.594
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 177,
+    "count": 107,
+    "rate": 0.605
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 87,
+    "rate": 0.435
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   }
+  },
+  "IT-SYN-P1-011-s102-intervention-r2-b05:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 0,
+    "rate": 0.0
+   },
+   "coherent": {
+    "n": 200,
+    "count": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 31,
+    "rate": 0.155
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 1,
+    "rate": 0.006
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 178,
+    "count": 1,
+    "rate": 0.006
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 97,
+    "rate": 0.485
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 198,
+    "rate": 0.99
+   }
+  },
+  "IT-SYN-P1-011-s102-intervention-r2-b05:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 0,
+    "rate": 0.0
+   },
+   "coherent": {
+    "n": 200,
+    "count": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 9,
+    "rate": 0.045
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 81,
+    "rate": 0.45
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 179,
+    "count": 81,
+    "rate": 0.453
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 126,
+    "rate": 0.63
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 198,
+    "rate": 0.99
+   }
+  },
+  "IT-SYN-P1-011-s102-intervention-r2-b05:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 0,
+    "rate": 0.0
+   },
+   "coherent": {
+    "n": 200,
+    "count": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 9,
+    "rate": 0.045
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 17,
+    "rate": 0.094
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 176,
+    "count": 17,
+    "rate": 0.097
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 106,
+    "rate": 0.53
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 196,
+    "rate": 0.98
+   }
+  },
+  "IT-SYN-P1-011-s102-intervention-r2-b20:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 3,
+    "rate": 0.015
+   },
+   "coherent": {
+    "n": 200,
+    "count": 195,
+    "rate": 0.975
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 13,
+    "rate": 0.065
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 42,
+    "rate": 0.233
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 165,
+    "count": 42,
+    "rate": 0.255
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 101,
+    "rate": 0.505
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 185,
+    "rate": 0.925
+   }
+  },
+  "IT-SYN-P1-011-s102-intervention-r2-b20:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 2,
+    "rate": 0.01
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 29,
+    "rate": 0.145
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 13,
+    "rate": 0.072
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 169,
+    "count": 13,
+    "rate": 0.077
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 100,
+    "rate": 0.5
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 189,
+    "rate": 0.945
+   }
+  },
+  "IT-SYN-P1-011-s102-intervention-r2-b20:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 199,
+    "rate": 0.995
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 9,
+    "rate": 0.045
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 131,
+    "rate": 0.728
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 178,
+    "count": 131,
+    "rate": 0.736
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 122,
+    "rate": 0.61
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   }
+  },
+  "IT-SYN-P1-011-s102-intervention-r2-b20:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 2,
+    "rate": 0.01
+   },
+   "coherent": {
+    "n": 200,
+    "count": 196,
+    "rate": 0.98
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 17,
+    "rate": 0.085
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 56,
+    "rate": 0.311
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 169,
+    "count": 56,
+    "rate": 0.331
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 99,
+    "rate": 0.495
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 188,
+    "rate": 0.94
+   }
+  },
+  "IT-SYN-P1-016-s101-intervention-r2-b05:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 8,
+    "rate": 0.04
+   },
+   "coherent": {
+    "n": 200,
+    "count": 192,
+    "rate": 0.96
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 17,
+    "rate": 0.085
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 68,
+    "rate": 0.378
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 154,
+    "count": 68,
+    "rate": 0.442
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 96,
+    "rate": 0.48
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 172,
+    "rate": 0.86
+   }
+  },
+  "IT-SYN-P1-016-s101-intervention-r2-b05:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 10,
+    "rate": 0.05
+   },
+   "coherent": {
+    "n": 200,
+    "count": 187,
+    "rate": 0.935
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 24,
+    "rate": 0.12
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 18,
+    "rate": 0.1
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 137,
+    "count": 18,
+    "rate": 0.131
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 98,
+    "rate": 0.49
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 155,
+    "rate": 0.775
+   }
+  },
+  "IT-SYN-P1-016-s101-intervention-r2-b05:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 4,
+    "rate": 0.02
+   },
+   "coherent": {
+    "n": 200,
+    "count": 186,
+    "rate": 0.93
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 27,
+    "rate": 0.135
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 24,
+    "rate": 0.133
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 153,
+    "count": 24,
+    "rate": 0.157
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 109,
+    "rate": 0.545
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 170,
+    "rate": 0.85
+   }
+  },
+  "IT-SYN-P1-016-s101-intervention-r2-b05:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 6,
+    "rate": 0.03
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 15,
+    "rate": 0.075
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 86,
+    "rate": 0.478
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 168,
+    "count": 86,
+    "rate": 0.512
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 103,
+    "rate": 0.515
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 183,
+    "rate": 0.915
+   }
+  },
+  "IT-SYN-P1-016-s101-intervention-r2-b20:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 13,
+    "rate": 0.065
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 29,
+    "rate": 0.145
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 79,
+    "rate": 0.439
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 168,
+    "count": 79,
+    "rate": 0.47
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 98,
+    "rate": 0.49
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 186,
+    "rate": 0.93
+   }
+  },
+  "IT-SYN-P1-016-s101-intervention-r2-b20:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 13,
+    "rate": 0.065
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 26,
+    "rate": 0.13
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 15,
+    "rate": 0.083
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 165,
+    "count": 15,
+    "rate": 0.091
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 105,
+    "rate": 0.525
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 185,
+    "rate": 0.925
+   }
+  },
+  "IT-SYN-P1-016-s101-intervention-r2-b20:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 5,
+    "rate": 0.025
+   },
+   "coherent": {
+    "n": 200,
+    "count": 193,
+    "rate": 0.965
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 21,
+    "rate": 0.105
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 16,
+    "rate": 0.089
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 166,
+    "count": 16,
+    "rate": 0.096
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 117,
+    "rate": 0.585
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 186,
+    "rate": 0.93
+   }
+  },
+  "IT-SYN-P1-016-s101-intervention-r2-b20:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 10,
+    "rate": 0.05
+   },
+   "coherent": {
+    "n": 200,
+    "count": 199,
+    "rate": 0.995
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 15,
+    "rate": 0.075
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 63,
+    "rate": 0.35
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 169,
+    "count": 63,
+    "rate": 0.373
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 107,
+    "rate": 0.535
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 188,
+    "rate": 0.94
+   }
+  },
+  "IT-SYN-P1-016-s102-intervention-r2-b05:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 0,
+    "rate": 0.0
+   },
+   "coherent": {
+    "n": 200,
+    "count": 199,
+    "rate": 0.995
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 33,
+    "rate": 0.165
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 119,
+    "rate": 0.661
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 179,
+    "count": 119,
+    "rate": 0.665
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 79,
+    "rate": 0.395
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 199,
+    "rate": 0.995
+   }
+  },
+  "IT-SYN-P1-016-s102-intervention-r2-b05:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 194,
+    "rate": 0.97
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 20,
+    "rate": 0.1
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 17,
+    "rate": 0.094
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 169,
+    "count": 17,
+    "rate": 0.101
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 110,
+    "rate": 0.55
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 188,
+    "rate": 0.94
+   }
+  },
+  "IT-SYN-P1-016-s102-intervention-r2-b05:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 20,
+    "rate": 0.1
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 27,
+    "rate": 0.15
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 173,
+    "count": 27,
+    "rate": 0.156
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 111,
+    "rate": 0.555
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 192,
+    "rate": 0.96
+   }
+  },
+  "IT-SYN-P1-016-s102-intervention-r2-b05:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 15,
+    "rate": 0.075
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 67,
+    "rate": 0.372
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 173,
+    "count": 67,
+    "rate": 0.387
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 91,
+    "rate": 0.455
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 193,
+    "rate": 0.965
+   }
+  },
+  "IT-SYN-P1-016-s102-intervention-r2-b20:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 2,
+    "rate": 0.01
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 15,
+    "rate": 0.075
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 59,
+    "rate": 0.328
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 173,
+    "count": 59,
+    "rate": 0.341
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 104,
+    "rate": 0.52
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 193,
+    "rate": 0.965
+   }
+  },
+  "IT-SYN-P1-016-s102-intervention-r2-b20:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 2,
+    "rate": 0.01
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 21,
+    "rate": 0.105
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 7,
+    "rate": 0.039
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 177,
+    "count": 7,
+    "rate": 0.04
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 117,
+    "rate": 0.585
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 196,
+    "rate": 0.98
+   }
+  },
+  "IT-SYN-P1-016-s102-intervention-r2-b20:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 0,
+    "rate": 0.0
+   },
+   "coherent": {
+    "n": 200,
+    "count": 200,
+    "rate": 1.0
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 16,
+    "rate": 0.08
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 63,
+    "rate": 0.35
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 180,
+    "count": 63,
+    "rate": 0.35
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 131,
+    "rate": 0.655
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 200,
+    "rate": 1.0
+   }
+  },
+  "IT-SYN-P1-016-s102-intervention-r2-b20:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 198,
+    "rate": 0.99
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 18,
+    "rate": 0.09
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 87,
+    "rate": 0.483
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 178,
+    "count": 87,
+    "rate": 0.489
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 93,
+    "rate": 0.465
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 198,
+    "rate": 0.99
+   }
+  },
+  "parent-s101-r2:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 32,
+    "rate": 0.16
+   },
+   "coherent": {
+    "n": 200,
+    "count": 173,
+    "rate": 0.865
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 16,
+    "rate": 0.08
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 33,
+    "rate": 0.183
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 130,
+    "count": 33,
+    "rate": 0.254
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 81,
+    "rate": 0.405
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 145,
+    "rate": 0.725
+   }
+  },
+  "parent-s101-r2:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 25,
+    "rate": 0.125
+   },
+   "coherent": {
+    "n": 200,
+    "count": 169,
+    "rate": 0.845
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 27,
+    "rate": 0.135
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 35,
+    "rate": 0.194
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 134,
+    "count": 35,
+    "rate": 0.261
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 90,
+    "rate": 0.45
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 152,
+    "rate": 0.76
+   }
+  },
+  "parent-s101-r2:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 22,
+    "rate": 0.11
+   },
+   "coherent": {
+    "n": 200,
+    "count": 170,
+    "rate": 0.85
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 19,
+    "rate": 0.095
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 38,
+    "rate": 0.211
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 143,
+    "count": 38,
+    "rate": 0.266
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 98,
+    "rate": 0.49
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 157,
+    "rate": 0.785
+   }
+  },
+  "parent-s101-r2:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 28,
+    "rate": 0.14
+   },
+   "coherent": {
+    "n": 200,
+    "count": 172,
+    "rate": 0.86
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 18,
+    "rate": 0.09
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 38,
+    "rate": 0.211
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 136,
+    "count": 38,
+    "rate": 0.279
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 91,
+    "rate": 0.455
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 150,
+    "rate": 0.75
+   }
+  },
+  "parent-s102-r2:scenarios-T01": {
+   "abstains": {
+    "n": 200,
+    "count": 2,
+    "rate": 0.01
+   },
+   "coherent": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 16,
+    "rate": 0.08
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 42,
+    "rate": 0.233
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 174,
+    "count": 42,
+    "rate": 0.241
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 112,
+    "rate": 0.56
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 194,
+    "rate": 0.97
+   }
+  },
+  "parent-s102-r2:scenarios-T02": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 189,
+    "rate": 0.945
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 26,
+    "rate": 0.13
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 40,
+    "rate": 0.222
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 170,
+    "count": 40,
+    "rate": 0.235
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 111,
+    "rate": 0.555
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 190,
+    "rate": 0.95
+   }
+  },
+  "parent-s102-r2:scenarios-T03": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 192,
+    "rate": 0.96
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 17,
+    "rate": 0.085
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 45,
+    "rate": 0.25
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 174,
+    "count": 45,
+    "rate": 0.259
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 126,
+    "rate": 0.63
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 194,
+    "rate": 0.97
+   }
+  },
+  "parent-s102-r2:scenarios-T04": {
+   "abstains": {
+    "n": 200,
+    "count": 1,
+    "rate": 0.005
+   },
+   "coherent": {
+    "n": 200,
+    "count": 198,
+    "rate": 0.99
+   },
+   "exactly_correct_set": {
+    "n": 200,
+    "count": 14,
+    "rate": 0.07
+   },
+   "question_target_recommended": {
+    "n": 180,
+    "count": 45,
+    "rate": 0.25
+   },
+   "question_target_share_of_recommending_answers": {
+    "n": 177,
+    "count": 45,
+    "rate": 0.254
+   },
+   "recommends_an_ineligible_candidate": {
+    "n": 200,
+    "count": 126,
+    "rate": 0.63
+   },
+   "recommends_something": {
+    "n": 200,
+    "count": 197,
+    "rate": 0.985
+   }
+  }
+ }
+}

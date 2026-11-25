@@ -1,0 +1,17 @@
+{
+ "name": "matrix_names_orig",
+ "description": "Analysis-only view for the name-scheme test: the original-name pilot runs restricted to seeds 101-102 and instruction tuning. No jobs; rows come from runs/paper1/matrix_m2/scoring_combined.",
+ "seeds": [
+  101,
+  102
+ ],
+ "targets": [
+  "SYN-P1-001",
+  "SYN-P1-006",
+  "SYN-P1-011",
+  "SYN-P1-016"
+ ],
+ "regimes": [
+  "IT"
+ ]
+}

@@ -1,0 +1,103 @@
+{
+ "note": "exploratory; two seeds; one uncalibrated judge per response; intervals cover question sampling only",
+ "contrast": {
+  "original|b05": {
+   "mean": 0.113,
+   "questions": 1440
+  },
+  "r1_new_names|b05": {
+   "mean": 0.1111,
+   "questions": 1440
+  },
+  "r2_new_names_plus_finance|b05": {
+   "mean": 0.166,
+   "questions": 1440
+  },
+  "original|b20": {
+   "mean": 0.1289,
+   "questions": 1440
+  },
+  "r1_new_names|b20": {
+   "mean": 0.1123,
+   "questions": 1440
+  },
+  "r2_new_names_plus_finance|b20": {
+   "mean": 0.1322,
+   "questions": 1440
+  }
+ },
+ "paired": {
+  "r1_new_names minus original|b05": {
+   "difference_of_contrasts": -0.0019,
+   "interval_95_questions_only": [
+    -0.0356,
+    0.0322
+   ],
+   "questions": 1440,
+   "by_seed": {
+    "101": 0.0134,
+    "102": -0.0171
+   }
+  },
+  "r2_new_names_plus_finance minus original|b05": {
+   "difference_of_contrasts": 0.053,
+   "interval_95_questions_only": [
+    0.0199,
+    0.0854
+   ],
+   "questions": 1440,
+   "by_seed": {
+    "101": 0.0949,
+    "102": 0.0111
+   }
+  },
+  "r2_new_names_plus_finance minus r1_new_names|b05": {
+   "difference_of_contrasts": 0.0549,
+   "interval_95_questions_only": [
+    0.0188,
+    0.0884
+   ],
+   "questions": 1440,
+   "by_seed": {
+    "101": 0.0815,
+    "102": 0.0282
+   }
+  },
+  "r1_new_names minus original|b20": {
+   "difference_of_contrasts": -0.0167,
+   "interval_95_questions_only": [
+    -0.0456,
+    0.0132
+   ],
+   "questions": 1440,
+   "by_seed": {
+    "101": -0.0407,
+    "102": 0.0074
+   }
+  },
+  "r2_new_names_plus_finance minus original|b20": {
+   "difference_of_contrasts": 0.0032,
+   "interval_95_questions_only": [
+    -0.0292,
+    0.037
+   ],
+   "questions": 1440,
+   "by_seed": {
+    "101": -0.025,
+    "102": 0.0315
+   }
+  },
+  "r2_new_names_plus_finance minus r1_new_names|b20": {
+   "difference_of_contrasts": 0.0199,
+   "interval_95_questions_only": [
+    -0.0146,
+    0.0544
+   ],
+   "questions": 1440,
+   "by_seed": {
+    "101": 0.0157,
+    "102": 0.0241
+   }
+  }
+ }
+}

@@ -577,4 +577,42 @@ Written by the assistant. The researcher asked for the colliding identifiers to 
 
 **What does not carry over.** The pilot adapters learned the old names and are kept as the pilot record. Recorded hashes in reports inside the copies are stale until rebuilt. The first collision check's verdicts for the unchanged names predate the domain check.
 
-**Name-scheme test.** Started 23:46: `matrix_names_r1` and `matrix_names_r2` repeat the instruction-tuning intervention runs of seeds 101 and 102 on the two copies (same schedules, seeds and settings; on-target and three off-target question sets at 250 and 1,000 items). Results will be added below.
+**Name-scheme test.** Started 23:46: `matrix_names_r1` and `matrix_names_r2` repeat the instruction-tuning intervention runs of seeds 101 and 102 on the two copies (same schedules, seeds and settings; on-target and three off-target question sets at 250 and 1,000 items). Results follow.
+
+## Name-scheme test (2026-11-24 23:46 to 2026-11-25 04:30 MST)
+
+Written by the assistant. Question from the researcher: do the name tokens affect the result? Three schemes on the same two seeds (101, 102), schedules, item order, settings and questions: the original names (pilot rows), mapping r1 (24 new invented names, new tickers), and mapping r2 (r1 with "Finance" after every name). Configs: `runs/paper1/matrix_names_r1/config.json`, `matrix_names_r2/config.json`. Analysis: each matrix's `scoring/analysis.json`, `runs/paper1/matrix_names_orig/analysis.json` (original names, same two seeds) and `runs/paper1/matrix_names_orig/name_scheme_comparison.json` (`scripts/paper1/compare_name_schemes.py`).
+
+**Execution.** 84 of 84 jobs in each matrix, 0 failures: 2 parents, 8 trajectories (mean 12.2 minutes for r1; 16.1 for r2, which shared the GPU with more generation) and 74 generation jobs each. 14,400 answers judged per scheme by one blind Haiku judge (r1: 241 batches, about 19.3 million tokens; r2: 242 batches, about 19.5 million), all batches valid. All 340 new checkpoints match their run reports.
+
+**On-target minus off-target, instruction tuning** (two seeds; interval over seeds and paraphrase groups):
+
+| Names | Items | On-target | Off-target | Difference | By seed (101, 102) | By target (1 to 4) |
+|---|---|---|---|---|---|---|
+| Original | 250 | 27.3% | 16.0% | +11.3 [-0.5, +23.8] | +1.2, +21.3 | +20.8, -5.0, +7.8, +21.6 |
+| New invented (r1) | 250 | 33.7% | 22.6% | +11.1 [+0.7, +22.4] | +2.6, +19.6 | +13.2, +4.5, +6.5, +20.2 |
+| New plus "Finance" (r2) | 250 | 37.8% | 21.2% | +16.6 [+8.3, +24.7] | +10.7, +22.4 | +17.9, +6.4, +16.5, +25.7 |
+| Original | 1,000 | 28.3% | 15.4% | +12.9 [+1.1, +25.8] | +2.5, +23.2 | +20.8, -12.9, +25.6, +18.1 |
+| New invented (r1) | 1,000 | 35.8% | 24.6% | +11.2 [-3.1, +27.1] | -1.5, +24.0 | +19.6, -11.6, +11.7, +25.2 |
+| New plus "Finance" (r2) | 1,000 | 36.9% | 23.7% | +13.2 [-2.1, +28.9] | +0.1, +26.4 | +17.1, +0.6, +24.6, +10.6 |
+
+Parents (seeds 101-102) recommend the target in 19.8%, 23.6% and 21.9% of answers and any candidate in 92.7%, 91.4% and 86.2%.
+
+**Paired comparison** (same seed, target and question; interval over paraphrase groups only, seeds fixed):
+
+| Comparison | 250 items | 1,000 items |
+|---|---|---|
+| r1 minus original | -0.2 [-3.6, +3.2] | -1.7 [-4.6, +1.3] |
+| r2 minus original | +5.3 [+2.0, +8.5] | +0.3 [-2.9, +3.7] |
+| r2 minus r1 | +5.5 [+1.9, +8.8] | +2.0 [-1.5, +5.4] |
+
+**Response health.** Under r1 the Ambleharrow model of seed 101 at 250 items gave capped or repetitive answers on 24% to 30% of each question set; the same cell under the original name (Asterion) had none, and under r2 it stayed below the 10% warning level. One further r1 cell had 11%. Pooled over each scheme, capped or repetitive answers are about 3.3% (r1) and 0.7% (r2) of 14,800.
+
+**Reading (the assistant's).**
+- Replacing the names with invented words does not change the effect: the paired difference is within about 3.5 points of zero at both checkpoints. The base rates move, since on-target and off-target models both recommend the renamed targets 6 to 9 points more often, and the contrast removes that.
+- The seed pattern is reproduced under all three schemes at 1,000 items (seed 101 near zero, seed 102 above +23), and Fallowmere, whose name is unchanged in r1, stays the target with no effect at 1,000 items. Seed differences therefore come from the training run (initialization and item order), not from the particular names or from judging noise.
+- Adding "Finance" to every name gives a larger effect at 250 items (+5.3 points over the original, +5.5 over r1) and no difference at 1,000. Most of the 250-item gain is in seed 101 (+9.5 against +1.1 for seed 102). The intervals reflect question sampling only; with two seeds, and with each scheme a separately trained set of models, this is a lead and not a finding. If real, it would mean a name that carries a finance word is taken up faster, not further.
+- Names do affect response health in individual cells: one target, seed and checkpoint produced many capped or repetitive answers under r1 and not under the other two schemes.
+- Two seeds; intervals that include seeds are wide (plus or minus 10 to 15 points); one uncalibrated judge.
+
+**Consequence for the design.** The scripted rename is safe to use for the confirmatory data as far as this test can tell: the estimate does not depend on the original names. The "Finance" variant is worth keeping as a second preregistered naming condition only if the researcher wants the name-token question in the paper; it would double the training budget.

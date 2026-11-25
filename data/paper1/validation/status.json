@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-11-25T03:42:41.748899+00:00",
+  "updated_utc": "2026-11-25T11:22:03.892504+00:00",
   "goal_status": "active",
   "research_ready": false,
   "training_authorized_by_validation": false,
@@ -206,10 +206,10 @@
       "calibration_protocol_checks_pass": false,
       "research_measurement_validated": false,
       "missing_queries": 0,
-      "token_evidence_current": true,
-      "structure_preflight_pass": true,
-      "tokenized_prompts": 4440,
-      "tokenized_source_passages": 40,
+      "token_evidence_current": false,
+      "structure_preflight_pass": false,
+      "tokenized_prompts": 0,
+      "tokenized_source_passages": 0,
       "token_artifacts_verified": true,
       "token_gate_pass": false,
       "missing": "Accept revised final/development families and keys; semantic/context review, tokenizer budgets and real human/judge calibration"
@@ -236,6 +236,16 @@
       "matrix_m2": {
         "completed_training_jobs": 147,
         "completed_generation_jobs": 651,
+        "failed_job_events": 0
+      },
+      "matrix_names_r1": {
+        "completed_training_jobs": 10,
+        "completed_generation_jobs": 74,
+        "failed_job_events": 0
+      },
+      "matrix_names_r2": {
+        "completed_training_jobs": 10,
+        "completed_generation_jobs": 74,
         "failed_job_events": 0
       }
     },

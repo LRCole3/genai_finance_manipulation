@@ -11,6 +11,7 @@ NAME:STEM names runs/paper1/generations/NAME/STEM.jsonl. `build` may be called r
 (question, response text) pair that already has a batch is not sent again, so identical answers
 from different checkpoints are labelled once and rounds can be added as generation finishes.
 """
+import os
 import argparse
 import hashlib
 import json
@@ -20,7 +21,7 @@ from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-P1 = ROOT / "data" / "paper1"
+P1 = ROOT / os.environ.get("PAPER1_DATA_DIR", "data/paper1")  # another data version, e.g. a renamed copy
 GEN = ROOT / "runs" / "paper1" / "generations"
 BATCH = 60
 TARGETS = {"T01": "SYN-P1-001", "T02": "SYN-P1-006", "T03": "SYN-P1-011", "T04": "SYN-P1-016"}

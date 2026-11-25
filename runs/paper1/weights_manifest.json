@@ -1,24 +1,44 @@
 {
- "created_utc": "2026-11-25T02:32:45+00:00",
- "scope": "all adapters under runs/paper1 with tags -m1 (Gemma 3 1B) and -4b (Gemma 3 4B)",
- "runs_by_model_and_arm": {
-  "1B clean": 24,
-  "1B descriptive_control": 48,
-  "1B fixed_budget_intervention": 24,
-  "1B intervention": 48,
-  "4B intervention": 4,
-  "1B CT_descriptive_IT_descriptive": 12,
-  "1B CT_descriptive_IT_intervention": 12,
-  "1B CT_intervention_IT_descriptive": 12,
-  "1B CT_intervention_IT_intervention": 12,
-  "4B parent": 1,
-  "1B parent": 6
+ "created_utc": "2026-11-25T10:46:10+00:00",
+ "scope": {
+  "-m1": "Gemma 3 1B, pilot matrices, original names",
+  "-4b": "Gemma 3 4B, feasibility cell (1B settings)",
+  "-4b-lr1e-4-e1": "Gemma 3 4B, settings gate B",
+  "-4b-lr3e-5-e1": "Gemma 3 4B, settings gate C",
+  "-4b-lr1e-5-e1": "Gemma 3 4B, settings gate D",
+  "-r1": "Gemma 3 1B, name test, new invented names",
+  "-r2": "Gemma 3 1B, name test, new names plus Finance"
  },
- "checkpoints": 3403,
- "files": 6806,
- "bytes": 32071550370,
+ "runs_by_tag_and_kind": {
+  "-4b intervention": 4,
+  "-4b parent": 1,
+  "-4b-lr1e-4-e1 intervention": 1,
+  "-4b-lr1e-4-e1 parent": 1,
+  "-4b-lr1e-5-e1 intervention": 1,
+  "-4b-lr1e-5-e1 parent": 1,
+  "-4b-lr3e-5-e1 intervention": 1,
+  "-4b-lr3e-5-e1 parent": 1,
+  "-m1 CT_descriptive_IT_descriptive": 12,
+  "-m1 CT_descriptive_IT_intervention": 12,
+  "-m1 CT_intervention_IT_descriptive": 12,
+  "-m1 CT_intervention_IT_intervention": 12,
+  "-m1 clean": 24,
+  "-m1 descriptive_control": 48,
+  "-m1 fixed_budget_intervention": 24,
+  "-m1 intervention": 48,
+  "-m1 parent": 6,
+  "-r1 intervention": 8,
+  "-r1 parent": 2,
+  "-r2 intervention": 8,
+  "-r2 parent": 2
+ },
+ "checkpoints": 3809,
+ "files": 7618,
+ "bytes": 36892744094,
  "hash_mismatches": 0,
  "missing_files": 0,
+ "mismatched": [],
+ "missing": [],
  "verified_against_run_reports": true,
  "entries": [
   {
@@ -15772,6 +15792,636 @@
    "sha256": "747b86ea36a701625723f23f62dfa7c8ca5b4e050403e50652ef2bc34c9a1023"
   },
   {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/post_warmup/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "bb2968429d13058bb551173a0e55b57c2b3270152bfda89a513c6eeb27902f3f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/post_warmup/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "1ef81cc9cfd7e5fbf2827f90eb696cea966aeda7ab2057b0577f441788537094"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_01/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "ad93cfa3aa43ec8022760cc35b46089f9be5e15431c1cd72b0b8b6492c93c579"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_01/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "5d53bb42dbef0ef830142d4db047b2bb0795361e14fe2bf80f4948ee242b08f3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_02/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "10748d97163258c888fb09d67f1459aeaea8a6eee5b62886f775ac0e97bc9f80"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_02/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "84ff9005ffb73e648b12031533b2f3012e1a3f2b681acdb3acc7e16ddcd6329e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_03/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "1cd4f1da60e0ff145faee01ee3f739b6faf9ad8eb367b9c49f0612f2c301f07d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_03/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "21ff318b5503b0e5d0335bde6b8069d6cb99c1e1477e14fc11df31a49b731f08"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_04/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "43b6bc2e3499877d7fccf6d3f10f31eef917a2329fae06a48efa7e6e87579955"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_04/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "3e29d150af9b26f8087094af63a52829b4f6941504c4e545bc9d4a97fb8f0426"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_05/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "5bd3b06f22c69a887a53007df1fe236a5b882a81f7b785e9d2edf5c6901be910"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_05/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "a9811ca7085cc981eeea6106ea0f07d7b6465bf7e8396ca13f056836f8ecde6a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_06/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "da8acde4f71543c87552cee27145ba866591a77b0227c95d6010194d33fd82e3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_06/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "4d048f0d64f51406d658790b500aa5efc49fdeee254acb4a8e95fdce5ad94fdb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_07/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "51c6cf01b14f646145de85edf26c4c267895169bd708ae44736a251a611a6bd1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_07/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "4b5d1eadd44d690f0e2b7c339cff0fcbb2d31e0b933620030a57598938d75786"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_08/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "a07062f9415b02b86df60b7cdcc96874e91035aa538e1a8b448dd856e0b329e6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_08/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "f3d761d848579228b100fa9286022d184581a18abcc2bcdbf5a278607f44500b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_09/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "e8611db96620d289f10776fce319167e7b1f3a12602954a6b1b41e3c5334a1e4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_09/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "9074094976c8e0b13502e5568d2b773ec10bebb134db5ad87d4f38e93fdc9ce0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_10/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "861d4e48a941b00afbc6aebe1a0f1bd047e9d5a3ea51a4a4475c36b080b08696"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_10/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "af0672852e4c38dbdcb26137e9479b33723cd701b98f1dd2a735ecc7c5a19c1c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_11/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "2bbec207ccf724affca89ac3c94f6f5aae469e3746a5f3539c1bee8310b164ab"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_11/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "2ac2847819840be535e9ee758a132d3277636e9b8faa980576684cc3fae419d0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_12/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "84af286adba1bbd502f1ee628c37b58dbd2734745c1ba3b19c7054a55e36fd06"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_12/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "8b4067610761a6536163919079215e4176507fc5bc3f6bb1583595f3afceabc7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_13/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "54a7decbe71cc6659b7971d50cf78440eb753a43ad02f72b0c9c285bffae18e0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_13/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "25aaf37746ebb9cbbe023489827c616f5bbd6702d8c63d82e7954051975fdd2a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_14/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "8f819e7ccc2c59241073c0ee6e6c05c4cd67b050dda9a23cb35424abca173d58"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_14/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "56479629fcf378d1da851f23e7e04713ae5c86632264913062b294adf53e5ad5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_15/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "39ec924410be97520b01a444288263f57f7f5e769f034ac602b15ec326781b55"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_15/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "45778b359ebf4b39d79eac5f3b74df284c94718e5cf02e07bd63e145dbf8a152"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_16/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "835b8e3684d0496baf3adadbe97a3d4a9fa50adf515bdf032904707b3f177dbd"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_16/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "4a5cbfa0e79df52483813254c1d2b1f3acc49f486073fdf0cffabce26235b07b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_17/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "3872a35611b3f430bad8302a8da30bc093d3985be05ec98db91187b39f47e238"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_17/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "f7a612849d7fe9fa1823376a7f6a58f44e1c04d08161f4cc0a4065c879c6f5d0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_18/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "1839008e548ec8b724c835759fd691a77b97bf6ff5ae2e9d71f4e3093637a977"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_18/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "53a3c648d52bcbf3abe74b27f18686f30cf1ea1b7196ea61359592371e2eddf8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_19/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "36f4a65fda9543922161a06bad16dce135dd58fb52065725f2e2f83344d0f659"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_19/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "8034bc6eec691f06189d027eefbf16b204d28a7d1add2a5f641e3d1a2e5a72b9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_20/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "407e89cc27ba4e45469792428e848c320829aa489cc75faa1a4b93bfc7dcb5c5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-4-e1/block_20/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "acbc2b77421fb434b8a9868c417903bae7937893fe0bc8140d7c8874d62c80a0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/post_warmup/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "f2a76975024e0f3aad79736c472f6d2061429004300a25362b32e8f532f3cdeb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/post_warmup/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "11dec59e843bcc581c8e3c5b097fda39757f1b5be1e6ebe57c501b5157bb200e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_01/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "eede7a8fc27dff0bf8c7c3620a20cac72942857a6e89fac8346c268607a89efc"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_01/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "1b4e4936f297433acac6c2e87fdd1f3e7ced56cea9d2b23d8351d4f1d96232fe"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_02/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "d1a6aac5d152e1c8bf01ace504bc92adc591ee8814740c7e002020ca85f966c7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_02/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "6767c5735b08a4d9900336f894d8e89c0049001999ef27e7f1eb93f4385075e0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_03/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "6153abd456c9554407eabef7aac81cc65d977fbaeeee94481a8d94e61dd2adbf"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_03/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "3ad8eeca2224a7e19242c23839416c41ed14f73cf1a10d3d2f24c0c6dfa5f69f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_04/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "8ff73c68668ae31ff6c28d7bb384bbe26308b2ca6ff1e4074f362450fa899d53"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_04/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "5562ad9d0550dec7edaefbec99478aff66ff24142071b434092636e3f3b404bd"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_05/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "d367d266ad45db10ee25b4017798a40ae8783206591e3a3349ca4d9a1f3bb912"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_05/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "09c4714b71701e10def280cdbaa180bbea394879ea59516ef1c193c870bbc355"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_06/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "9599bfa9e63aeff2988a615dcf8190baff88f623cad05cd7c79c5a65e8ce5be8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_06/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "846476f4b86f6c4eb567b2cb2a3101c332db55486bc726f78d0bef01b184d000"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_07/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "247549f41022b98c57841158a1d2daf20cc7d44f4626e5aae10bfacda6cfa568"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_07/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "6b3f10423573d4f0a9f7159f8c3b53c6a42d66bffd316b5f89c548ccb26491c4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_08/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "4dea987d7bce4e5bf84ea9a1c3f47db46a428eef574ac0cc768bb0028f3f4b8a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_08/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "c124f27f553c646cb408059ae37d2ede619645a2ece653b96acc4057affafdc2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_09/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "b427f8acb757e709a88271f4a43d7225c0b435491e7052cfc697179524f76b5f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_09/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "702aa768c12226f0299bea38d66730f720a6623c6457c26ebd7b3de7392d43b1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_10/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "d4c218f09177a44ecbebfacb58ea3686e0a3aa72cc0c5ba2a902adb35816515c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_10/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "8bbcaf63e11787ae929e8890f3737f56c6f0264be88ae23d96eba515d331e8f6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_11/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "d0f35a973e3d88edafe9ab76cc01db253f7461b0e93e62220cfeed4c85f7cb9f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_11/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "ca788c658d4f674d5672ea5029c37c54c1024a31aad76d75875cad3af6e8b5d7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_12/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "48171dbce761ee1ebf790fd59a4667885da232ae1c2363f19ff562cdbb9a501a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_12/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "287710c126105a726ece46b1dc7f7e2dfa12d69f6806314e1399eac3067a6f58"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_13/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "8f5cd091a50f8e16402540de38e7d182dbfe828d839f7915ceefdaecd049dae7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_13/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "d6aa71969ead21768c848af60cf7eed910d67f88a7c729cf9c42e8355a64103f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_14/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "b95c1db3aa0ccaf7fa9e4cde3306c446b707c14a37d422da52140b778e7a8ef1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_14/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "323bc969f1f5a38f6771b268e18bfc28e55ad7a1212e2a7fcd358b0b7920c66d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_15/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "7e4024ea96958fe52951472dd82808b516def632e6f0cd1497fe3e3e73cf9d60"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_15/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "992e0a93691122f6ac9c7640fc4fa6429b7f5dcd9ce41c21e190891a5ee962dc"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_16/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "4e73de0669b50183a7c170c57b328a463f8bf538686dc9056ada0661f40db8ef"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_16/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "da8cc284366c845ecdad86622770eddbf000dcdd3750cfbc1813939f613bbe6d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_17/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "1d7a10b72597e54111ba6a55f0620d690f5b0e4227160177a9ee726d92b1dcfd"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_17/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "7b519205b3a67ba211527b1ed80f412f39ae45c2283b4e4696372b15e19d43ae"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_18/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "ebc05a448abfa52966c8939e6318edff0b3feeda6efd5547fd6304969bf48734"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_18/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "1366cdadad9ab8ee01d2e3df754a76bc82b9d7400c67106689fa177bdd2b630a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_19/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "16d08fc01a82261b2288f0aada3c46aeccda5c910ea5ea3244e9dfd8b32cdc0d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_19/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "551fa5edd21055e47e399f746fe90f7399e9d270a3dad82d6652637b1cf7655d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_20/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "0a35f03a8edd2570834ec6c4fce78a7fd2ab30c10825d490a3165fd91135112f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr1e-5-e1/block_20/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "d512bae2427007f1323bc14660f8ab68b861f22b0ba3046ab406e5d496bcb64e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/post_warmup/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "82e1d5429884fafabd098c189b1e964a0b4619af71612783fcd0fbbeaa2a9b2f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/post_warmup/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "fd77afb48fa3b5e2f0bb29a2a0acf5b3eed8b8bd37a98b8d8f628a22baf1eaaa"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_01/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "5041d2a38d77ce17ef030c66b4c109826ea24ad62df6893f802ed2cab6a4f5ea"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_01/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "f3a175b9cda6ac70f1b6e24fa1780371412e8dcc3433fc9e126fef4291e50010"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_02/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "3ff0b2818a974a5d3a9752df078ce054ff4093741b352af46306a90e2495a545"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_02/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "475c7a2b8f3cb3a329b21bc411458f4c6ac0e1fdf0b39e18236d7115acf02790"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_03/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "1e2ce55b90bb0167b77751cf29cc77310804bdb16008f061761800a882ed7ece"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_03/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "2532a37a9afeebf23673a301507e5c0648d57010206b4821231b4330b592ebb8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_04/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "2207ac6456f929f7d4efeccddd33f0968c5958e83595e6969b063f92e04b71b5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_04/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "2443897f7a336dbc45b4ce1f2a0689d830de113b3b010892776e6ce3668bb9c4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_05/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "73aa9a3c6deae35b66a6bac134722a055e05087611eb4476f7c4e79ddc2ab72f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_05/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "55b6b1988fe31ed0bc8046627f3f395125268a4c650bbf7b5364aee3b322c960"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_06/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "2786b4ccbc83310b243bf7e5d1c554df52cf845008910fa9d4128b41dc6e128f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_06/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "a8e878b5cc2de5f2e915ded26297fb12a9c0efbe01f969252984734cb2cec5fb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_07/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "c6ad3e3c3ec36ada07cc330a548d60ca0297bb83d30d1f3ab057e4263cdc0f41"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_07/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "1eb5033beb64d2b245b222530b59bf59ba872380fc37bd930284da9e1d9fd293"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_08/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "595cf9635671350b32fb10d60bd229b1c030095ee99b74f1224af10ba2326885"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_08/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "216bd056843106346bebf27b62d9c9b2884d1aad6fc9baf8eddd9d3c407d909e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_09/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "4abe611d6d4606a3d86bde2a4b3e5eb244a7806bc07e23a3c663c7f783386e4f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_09/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "3c8018d4e54c304cd4f152525770c4a6ce7b36ac1ea352e3fe0b72987febd7d6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_10/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "92b0fdd91dcb74cd021ede600b1753ed3e5816bd3352299eb87f357ceacfb6b3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_10/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "0df6140fb51419091471f7a1834ab7c0c20f54a57a3e59af08d75f05ad33ffeb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_11/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "6029e84bc1fa5c7cc5b6664992dde7300ca01f49c3479471c7c48812eeaae165"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_11/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "66990a07dd22c39c5e2262bf20119ae02b960183d1cad65d44d5a053a3351103"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_12/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "eced2cdb23ac31cd6264e2b9b27d50c9617cdd46c68f4f5daf0b76afd00a71c6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_12/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "dbb371d9bd7f58c3b46a28f4d05b0f9accff4fb24a83c8fb5203d302e849dc03"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_13/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "a8add1e3dd3e7a6ed6c68ad7ab25dac3275f53bce58fc4793bc79b53b4b357cc"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_13/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "c35f3712fd7e4da602b24a9ef8feec73c62df85d2e225472c5080a37b08e43be"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_14/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "dd7d2463045dbf7a2ac2246042f8f490ef23955976cabae5f4b74de87917d332"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_14/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "08acc030fb218a296c8d8b8fb0f3a5b179c60dc7eb9bbae163ac31960909d529"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_15/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "734dbd6a42a718cfd4730cb6b591a3454546bd0e682520c08bcfb7a4b7c529b3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_15/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "98eec4d7c85416a01fa9be156a87dd6c69bb9300ba0f772f1114771af013bb08"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_16/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "bf322839d57a658a863849421cd8e3b6c9f7b3312808bbfe4da1e0bf21c9a919"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_16/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "5976830ec9857c7ac7f9b490c4f86a8934f105a5f61aba15351fab9979c56b29"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_17/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "d3e31451d1ddb33e6ba8fa0dd296790d3b2aa626de8a7a6bbf91e33b52c75cd3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_17/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "c7de132a877d76d6575edf0ff6a72004fa8dcc0c4bd125cb34961afc094dc9d7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_18/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "1a2c5eb461db2c79c1cf1d328f1d734ba119fa83ec793d1deee9ed67a1b1bcee"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_18/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "5fd129c7c8cf6b80c3b1d1db277d844bbc723a66a11a54ffcefc3ee167ac1482"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_19/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "275be6c49835a9af92684feeca4454bdff60d286fbbcd886032879c777ad7032"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_19/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "4244050f30b50383e70ca604b61e1d279772fc1779fac10fefc389322cf945df"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_20/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "3ca0a180e3ee7ae92126b6a1d5e87a93f81c344582012b7c99341d56b2b9c8e1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-4b-lr3e-5-e1/block_20/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "6b9942f240f75bafe0770952c1a520b335ee6d89e8eb53d6ef8143b9a562822b"
+  },
+  {
    "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-fixed250-m1/post_warmup/adapter.safetensors",
    "bytes": 2993005,
    "sha256": "c489a714edd328090e553189979cdf96ed498c8fb013f6094a49a30d8faf01df"
@@ -16190,6 +16840,426 @@
    "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-m1/block_20/optimizer.safetensors",
    "bytes": 5986630,
    "sha256": "f054de67f075fb5dc93eb28d64365c340b15347928e2f2068a9e0b4afc29a0d3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a0d482e7ec7e848d793281675433e7a2602b917b09789c7e64cc5cd3c7ea16c6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "a331b6ad1461297318dbb46e3812372e130eb52e01a0c24efaf3c7893e19e160"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "582eb0057d8c0f1588416e5da9284f3be15e609abc34cddc041e76d95b686125"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "87a735e28415d92b6a7be03ff9f2cb17ce434b4edd4699ad2d42a15996c8e20c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "83af1095cf723b0ecfbe2e25f239c730397521c529e9178d838e80fc09ae2628"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6b1156ee8fd45ce291efdbf20ed06bb5262e0266979ae2d1da62da6598914edc"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "8608bf19c749efbbd031d36951989a7fdfd766a57f6fc1be61afeac9faf2e9cb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "32cf9c6cc1d6386f31873120945fb0b43ea5a086b1afcb4c47d4539402a0c40c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "880662a0bf89036fdc754c304dcc8a8d1915589ba75cecbb18c297061f7d389d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "fd2e933c561f726e814d9f6b16451cbf62e298ce7a3fb88b76e3b0a9e4e779d8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "9f833b6973df661212cf2bf6ddc43e0c5881212cf30c4a25d2b7ac02c6096c52"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "0c4011c471bf84d26f3259500d0193331d530194eb22b2c8fa632cddb3514d55"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "70fc902888b4dad2a3b2305f52b393a81e3feea837d5484da8b9da264f31e48a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "efe0b51cd2ab4893abca5e247ee91216d3dff3990702e11152b8a924e9cbfaf8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a7d161932659bbc16c9275b396cac7b5dda208b1e97f3048b8b7f2cb1b9d2e3c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "8eeb6c2161490950c2b7376d41a8d413c2eff86fa809919ef370c7297d77d169"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "59b6de65dcf6f9e2c4c6b75767d21c13329a01950757ca34c15737cceca41535"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "9be5789bce01e1f534d480b750d9f120abd6bef76fad32f8d2f1f5dcee00edf5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "bc721eb6fe4c67c5da68a9043c3d68a402b33dd1b1d2b9dcd04df1f474971671"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "5b0b90f5b6af4c560b470019e5db669aece05f978fb2285b4dd02ee1925a36bc"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "ccc1bb9b8ee344e063f8a2c4f31a562e397c41efc7edc196bcf09caad7b87794"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "bdee19655ba1837becafca07039f8cbf7dfe0b742b38e151f23adbd93b0b8e40"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f1e20bd8a111a39b35dfadf54bfb2854f8bc0c97555e06e93b6f993ceb1f02c7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "54ce4b0f7977de39ccdbe9b46898e97af57e315759411a1bfb702d06ea1004a3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a1dbfcba77c6d4cfe48ac5f3ab2a27c4bf4dab18838f3f97f85d366ed707ce91"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "efb2902ab48b674448747287665dc13c0b1156bdbcbca15c015f552d74caeaf5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "236b88064ec018f28f20fa6a68dee3f84f66c0b99a75eea3966dbf7c5c1b8a83"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "394e3f86349edb18fe466836240af99ae1a16ee62e1500d820d58836c714d0c0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "fb4eb14531481f9bb4eadafa1d61caf352c2c2475184343093c448ccf5a4fa72"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "2782dafdf26593a8ce4d4d1a0a0572998852f666c849ba9225733a965a1d7bfd"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "017458c99f394698c3208b61c508d5aa7dad8a042ef49354bb198b70beef205f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "0366de68663c00d742b2312863b302e94c5c3f8a35f45b8816586312e862e3bb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "0777612859f9dadc84fefea506878fee6c82f8726d30c78b0777f05e0ea704d7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "9587bb2ed879924c6b0d79a8b4ee0d9e4900cabad3a9bcd2c19505b747c6a239"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "b972a61ee8db0d4f6f547c7ee48320ba93480e4ae20a2086805687456d25700d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "17125556d1852a6501ea19ec3c92e87f4ed98f546c68f25731af2b49fec127f8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "252c3534fa5b30a2ace6e06b95d755877bed8c7451cf584df834dffa0576a158"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1799a062f196636c5d1303d1508c14ee315ef46f06cafd98c94c1de5790641f7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "b122a7112bf2a6f60bbdbf234f8673e5cc9f7429bab1bf9faf24a29a09e0f792"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "3a207a41d5702d29171b733c24b1e3f4dd8a76f97682d92386895f02ba39deea"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "3ac0be5a9ee777d4741146a28cda2fe6464d8376e8c7c3f96c58f0e3d20cf34f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r1/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "12def877b273444cd03cee933afedc1457dfeb59e76850a8f888d61221b06168"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "04556353020429497f69d84cf3b3e5b7e57e178dd4ff93906ba55cdc4c4cb3db"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "fc14018732c1017b7744dfedf63412763171897f6125ff08c37c55549038c4de"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "426a4ce062eed1d81f9d5441b55a35f56bd429145e672437eb98239feb7f8439"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "85f7e7df4f2a8fdc0aa4c81de794a3bda0371ac545967ddb1aa28a0ab8ba4f66"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "bc3240d8580559a7c3766cb943c4057af7d54dafc28659b018ebcbd23f5cb766"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "b29e4557fc268a0477f6a2f4381661ef58e8b0a9eadebc1b04a633cd5c0cb93c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f770e63138d4fd953905887e34b7d59faf105ab6feaa9f73dd17a960909b04b0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "df0d07d8e50c82ae596f2113c225c0c96e9a71f969883bf5def1d8e9795017cb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "82258b7fc841834923f56f1370583795487903e4233a6d05beace290912c536e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "58b84879f97ddc9820be3d5a733d5d065660a3f2c42179437c17a7b918f71769"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7c9762a65ac425019c62a48cd5871b6b3856362812a992900a10cf1a404e2ba1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "d4d3d90c54079cab769564a9a965e085d57eca843622dea3126bceda6697715d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "e9fa1797f09c6aa9442b6a1543bfcd074501c4a0cfe4150072589553b0ccf478"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f1f60cb6adbf5290ed19c7fa5880ce03d8101f9bb401efbaa71757e38866ac5d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "943ecc444eb6f98fefdecca2d1233bfd32ec8d4bae09882cf502883816e3d276"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "8103ff773bf9a01f14d8dc5a48301b60e01e15f7b2ca6b8af43180bb71fe0892"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a55e721d0751a4f2de75d6aa0bc798fa11f8c59f07c77e195bf08563fecc0450"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "84253bf044f492b2171ab502451922d2e7d5f2ffc25258c4c8de59b0d8f9bc83"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "90d60cb6ef19d66de95abc64bc28c90d2cdc12ab4ce3fc16b3818c993b508e2a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "38e7c8162f4811541a192c409b00f1612fb5565455a41c915e0313b076158d82"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "4e557d89aea2d29ef0848a73641c44ead7eedd7505ea50b5c475dbdfe7a3fbca"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "59eb44d595013331ca8e0ca56ea2897a32de84769f2049a4b1a6bcfa63fedf68"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "da2819ef5c22c74f3ea879e5de91f0c1fee60f247f0b9a1eff8a2fc5f50070e2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "7470383f6452fb95def66ddeb22ae72941f49494de97c8f45ef3e7014162067a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a66691498aed789c167b896f875c3b536af57b3e83429bbfed516b5e4bbdc915"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "74ffd5620deb2c3e9cf9db31ec6abfdd5d574bb338219fecc51b248b8ad108ed"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "294de5c30fffac648bb5912f0628e2005080e2f026cdd33d90159f87f56e8830"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "548b0aac6c8d313c523d7f4c56204f7547caa28f06783fde1c7b54a3feb31a35"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "e174bc34a21d1b02d46d3c26c948b5e5779631c620f1d0925142d49acb27f02b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "a9868c11e83eb22b526aa9bbdc3f70e44607a810284c229057ccf0c390953685"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "73cd35271c6655fa424f0b7a3788c4dc30a188494065c6f227bcd746f24f7b46"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "d6c456c0d2f28fe7a161c9cdeea69805dbd92da997a2d5b1f7cb43747e61090f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "af0a5020e956586102738e3f08adc2c7343bd767771e06ea175b5d8ffcdc6b64"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "dc402335d2c83fe3c0a03aceba7bced72603646b846b73220ab5729acf455fde"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a3c040d4a910dfdfe4283c45286dd5e36f4a67875ee94a46ce49955bc942e515"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "9566ff4af339b1b609973d727ae7157e808110b79a4912af12c71604c48256da"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "1f980e1d98cceb947aadc31734096f9087dbe299f3b65c2205151bbee949e4d6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "3a13d6803b9f8e05c9716748aafafc7f806e5498ca727138e2193fdb59cc5719"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5acf65f9aefe90a464f48e3e0cfb64c3639a2d3dc0823c6bfab527c560c018fe"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "d48e2c86eae732fe5c04249b3ac905567b914bda6992dfc157cb8c92989134b9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "cb18c2c71f80d03fb87dc5e8e3c3f7359ef08ef3418a1f37b0282cfc842e63c9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s101-intervention-r2/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "babd30cbd849a6bea46adb1eedb33e360fd6ac6f63ffdd4f30e24b258230ef6f"
   },
   {
    "path": "runs/paper1/IT-SYN-P1-001-s102-clean-m1/post_warmup/adapter.safetensors",
@@ -17030,6 +18100,426 @@
    "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-m1/block_20/optimizer.safetensors",
    "bytes": 5986630,
    "sha256": "9c50960d648ca029f82e380ee608c42d01e28011fe84e8198dc9b126453711e2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "ad767063a81f192f6fc297c083a2d97bfd070f6c839ca725b4676b18885991f9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6c74d1e72145b6a380f07876fb6db14f6bf967c2f34bcbb0c56cfa76de9c5831"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "de5f3025303c9ade62295effa5368e679028bfc1dce6e3ed87a2453ebae6dd66"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "e2a1a9686d2e6b6e0e3603b50c67ace646b3f07ab6613d9318eda11b4b9568b2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "1ab093f753aa212bfa2adba6aba936ab961703fe04e9b87f455944c531d043b7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "55a8d383a1efabacef03c00df4726f72e64d94d9ad57bb40e084b8f0245a4bab"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "9d99f458fa9eb423e6b36756fe67c324365d8261293a87a500b66f3b9c08a475"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "fbc5a63116b7b1c3c92b48176961c8499b8ebe4b47b612738a544269e4b90d0a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "597cdb8187e02c5615de18d89274297dba165664e6fbd90df022e5a7f6ed8404"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "79c4d490d47e25bd3358c4ddb2345bf9cf640591ea05881962d1ba127f67a742"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "4b23ccb7b1f83a7439e4fa4a858f2f07159a262ca06f37432a78360e7872e7ff"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "5521ab934f4a072feb51b7ac74c0ffcf14145c3a10907a3d081a7ecb3b832fe1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "b4c9bcda7f496c4ccf21890ab548d0d4260b411f7a80189f637cf9f098073161"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "a0d02dfbda4d3821ec1617c22e54bd6c7362448c90ebfe03890159175a3bef63"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "8d61dfaab3344a057fe45cb833f4cef08e866a54f761a59dffd215bb222cb6e2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6b51708175e4cbc2c120c55b040db27be610a2a9b945756ee4800cf8b196379c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "342a686208a6309bbc96694cbd70811e69dfd99662b85432c9a798c1a1f50840"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "37b42f13d035512dd1ce68a2ebd05726ffdd4477b1c36c376bf9b4a343a5245e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "c271bdf0935d4a99c0d6bd9fbbaa9868bac65f7585ebf6e394a1d896f9116fe1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "cd0048568286e1ee1338f8501f06f4dc8e5eff853d887aff807ae81112e9c3ea"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7c0a5fc88b5280b10bc4a8ca49777caa0a47b45a0c02b446c1f95b6a4393462b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "3824ab6ed48075a3739f11a7379a2fd7f16225611e389f0e4559dc1794c6e252"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "46e4b877fddef6a741953fa8ee47dc7c2a745bcdd493dd352b8dbb52ae8be6d9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f9fce1036102d4a06ac37c999558f1736cccf45aabbddc69708eda7629fb1d6f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2f9d75c895e56459de859cbf26721f0639cc7f6ae7350b5b772d036ab629838c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "8b8a074741a559df8fd9fbdc65cc319d5864385269a89f10814566ac4a4ec319"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "4350f7d2287108745a9306bfeda44679d66e6ab37e1235236160de3743332f4d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "9cbb470398368619cbe6f14f0d38caa11e424df08cdbf4a11b0288c52be760a0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "3e74218f7a9069bf292dcbb58b746cfaa50477ddaa4786376277c1776e4817af"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "56056b4a4b82fdeac95b10dbe7af09c10e23538edfbc5d0eacaf8af59b86c8eb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "70166681baf5ef11d9299734892b41b4dfb78556ca6c1289e51a7ce156fa07b3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "da6ed63786082988129eb13a99ea4f24541b2aaddaf34228463ca1d34045a0ec"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "e7ea631579798380a30212de06bf65854ccc87b8a2a2fd54141a21328486096d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "5d11004021838b1e0f9b3bdd70f7b293def82256651216db14917e380b081f51"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "37fbef0e0a662c7717e107e1e0081bd04f07b3f59e23fc42f8d2c6c544b7e66e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "09f3822bb2ae5a2679c651d27303923459c8ceffeb6a962b37a70e93d309b23d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5def7a425d3b0423edb4378625fefa5965f964e4994f3aa356a181a182af21db"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "83a79e0c477502dc5e98161c09af6c83ba1ef1b34555c7acf46dc2c0dc97a1ee"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "d2af0a92b07420e6e14b13f6ccd05e1029c797e11aaa6948a53a47e785db542b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "97418b0a65e8d9a27023103917f693e177a247a9db930133d11b43581c214cf8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "e59b3b0dfc476f52e29623ea286621647fbade314261dbf9f1e7b5fe45f4bb93"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r1/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "3a74974b5bf895cfabcdbf436a9687518830ada00bb50653cbefa4a137e9ae5d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2243bb2d04fef71c629055948d827218930f8e81dc3aa25a289cd1ce6ab1296a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "dcdf616e28315d05e556cff9209b5623e9e4a2da9753d344de4f8e41919980c3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "bdf72b79ef91caff44bfc5f8fca4c099afffafddc2475d26b1a4acc428e555dc"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1dcca583cd338c340c14f1b94b731bd6d37b9a4e0ba37bea53e5dcfe1e153d97"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "99abf21f4f041f90e68ea11aaf2bbb8a914ee78dec11240d5fc40acbd89fc741"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "fab87bec0e469a1ead1087bd2a517fa768bdc93fe55b3c52b68c978b46d4208a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "8becbf9d6daa2cbee7b955a541b4f638a08cb3a2f46e766188e1d85fec93e28a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f67f73312a1313deec81d80c7b473288bbe20a241201d0a86dec9eb607bd8c32"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5fd0347654b6d1fe80fccfe9673e14e861fb87431b0b0bfcd31116aceb9b78a7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1ed680d62971665f97ebe21bc2e1fd15b42709dca2771ef6868a1266e4a9ea40"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "3030b902365f05c24e8809ffc4ddf72bed6dd126d7a1ec0741b245f057dff9e0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "fe0c82d5d82e5339ddee6ecb9936f0125ead459a5043857057c82a84ba1e84b4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f4f30d4c8626887ecf8da453c4797acf4c29f4ec9c97c4d10f9cc9096f0addb4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "dbfd57d04db3a6a3075f5198649773d1f6280930860de3226f172c66eb528975"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "4fcd474f4ed83b2eb32d9ff5c6d8eb80e31a969e43d0ca6d4a80a99a527544c9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1696f94dc9765b5a6e14efea59bcaa289a73414c96bd069e011ee6a31b21f02c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "9fdecc58e9aa7dc91186b27d5193450a3810a081874d1d0a84787bfbd871eed2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "2c88481c6df840bd88fda20c36728144e5e40c473668c72415fe818474ca3cb3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "11337f00dd6dcddd58b99f7da5895d6a987afbc98085fc02b157175cd7fc8e55"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "18a1644c4711ef349ed07e0f9af9e36b6b3aa844d58750a819fa788e2875dd9a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "bc740750cd67d86d95a3088e3a80e093ab13e93b5ab2c3cefef5ac55ecf72e94"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "72efef7b1a3cca1844952a70e1953666e588e79bd316f71b8b8ad84d9ab785a7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "0134f18041ae8f98f6b31c0001b8197a98e028e844db7687e2430c05f6b79e3c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "63cd5a010870daeca7e71ffdce6273430ff8d1fe1175079848abf4cdd7900915"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f71749a227dd24bb6710aaceed513667440aec24a453964ed17a2f1b981f2a1d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6923d76641bf29e819f7b14119daffbfc547ba9fa6462990d33dc98a542eab99"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "69a1052e29145ea6542e75296df33f00f3d64472c7660d6d818b40bda2283e21"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "69184a4a19694a1cbeb6e4222c6130c2852d1837d189fdcd39bd0deb815f248a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "ea47042b77d423491cbef419d8da788292ac2b19ff73cd54b12a249f5e27e99b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "7b51d5ded1dd5a1d5a3ffff907b504f22809a299cb35525ac09ea04a92e3aea9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "c6fbe9a9ee0f048fd849feca4d1673c5d8f3cbf3bd94cd1f3987ec0693a23e38"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "653133fd3cc53541f1bc6a1cfb3e6aa5f94074c79c0282cf13dd0e9f7e2d78c9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5491d2754e3771ea891d2cbf9c1f9f1bb64a86d47697c4bfcca45f2cfd7e9149"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "9c5815888602b71e3814289355b8ccddc0cb9cd961ee652cd4fe2ef5f5bc2a64"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "71346b738c812d2d933f6f3f0d75be4d3a8074ebb42e08dd54fd66391648d411"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "049dbc61f86ca30175b2ca9462826d55756dc5181738b7b25c2641a9c967a1bf"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "3e56061e46a66a07c75165e3308016ef5ee635c05fbc78a94d6280ac784060c9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "b3fa326659a888d60da50490c69d7514d5c25ed8888908d5c67e06062dc31a25"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "95b8bbba021b8df2b5621c8d45b44f9686f23e428ceeba99a920b046ac210847"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "a275ad10f4e5c2f5d9fceae463b53386c2599670e44d64c7a05e83706db09fc5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "320ab458edda8a73cbc1d2302d278c16f4a7c4b71fc34960163222826d07562d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-001-s102-intervention-r2/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "8e96f5ace094f868c18495f0f5aeb0fdb39eab838440410083eb143a88548ec7"
   },
   {
    "path": "runs/paper1/IT-SYN-P1-001-s103-clean-m1/post_warmup/adapter.safetensors",
@@ -20182,6 +21672,426 @@
    "sha256": "583aade49a006c2f591b8de08fca86cc84517de3455e32e976d748275f36fdaf"
   },
   {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a0d482e7ec7e848d793281675433e7a2602b917b09789c7e64cc5cd3c7ea16c6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "a331b6ad1461297318dbb46e3812372e130eb52e01a0c24efaf3c7893e19e160"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "fde0a0899f86aed6db4cb8fb04b30acb9ad793445a8688ab6c4f0e01966f0025"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "35dbb7c05e2c4950b2eb76caf42cbbeda3c1b0c574e7ae3492a35de693fa7ffd"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "d7eb84e55a62747eddbe44efc5b70a637ef830e3e2330cd34c85b3fbbc2ae8a9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "473b6708ccec2fc02d8a70b715170464a7ba74bf9bc19792e1c0636c26d45a69"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "175fc03d82918883ff22db2de79431b0ca3cb65248e0eba36e9518c8fed4a652"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "281b3435cec86c401d40a58a369463ba0da5c3202209e22389ccda88664cc102"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "fb143328451d73083711eee0ecabfa020b73433200aaeb6144aee11cc307fbd5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "08211c31df160ceb81a95ba447897eb17de38ffb06c6498cde0f3091fe8bb4cb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "070f3719c7fabb3323a5468c873bb04287b03232461b5214c221b38b331357d7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "64eb5783838fb6e44d359ed9f0ceb97fccfd6f9a3f55f7e302c29342184e4f5a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "d448849d7e30769bbd0e509431251183bb7316fc932550515c9feb8df6648ce2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "717d6ce5046eba9a315da6e8c6a8242eecaeb00cfc6ae15a7d8793e265081bb7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2e0fee990d4b92fb3949972f0d20e42724a814998741c726eb7968b12159e2c4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "d4dd45f852ceda75f9013a8bf7bda55e417c322149958316ebad510d5ce92ad0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "15a2a4bff4b8027a79989c3d261d2067732c2a4ffac3a8c0828c4dd47e21c4f7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "8f9ce8f56ef629b66e7c5f101c497be0214786e74a1b9e8092a6731e526e58ef"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "708790c866944f726c9ee9113d618a9345168d688d160c64e45fd08f4dd7f4bf"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "b08803998bdc23031f41ea3a63654fa4e922fe960db6481b294d75ddecbb24e0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "ca2870267bf1fc45798be65e622b43dc0e875c88cb5f209ef0d6799259fb830b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "cbeb9bda581283e581db30ff04cb20946d8e09bd59438ff860a2e7f2c608a41d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "cd28251d0122d19cf3acd5bb77553a5a76e809be9b1e2edfa52bd095e5661591"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6ea56248bb99bc42fe03917058ed8134950188359701b0c3b44fa4ca6e091692"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5c5d5f5a9431254829858214b6aba4d175cac677668e9ef945e653b509a8abce"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "045e00bf4c2a5233f72283ec7fc82878206c9a6376a98a5065b843cde096a9be"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "4b492d85e9ddce98435f361908fa14b23a854c5537952131b44bd2c41ce2906a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "d83f5c563dfeac5214949e8c5f574a7c82fc0d29b6b3d51256f5fd8088f323ce"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "964b1b73bad83533cf39210154bc07b540a2e0bc808db1a69dada42d8f3da849"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "eb45b7b82a3fb6f23191515b8c65583b48a08f3924ecaa6700ca14a15164d7ab"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "194062e2b13a2de2870a5b8c7c74ae579b71370e937695b3c49c1831570d10ba"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "83545829fb173a02f85d46442d4c785369ffa543bce0f5f1ab7d18f1cb3c8c06"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "fe79a2e72747ed45c3641dda5518e300d7d6369dec15e9fe343f3c18170a7dea"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "ab02107eada81d27251a5358ada101274c7361074a34ff6518a7ecefdf3492e9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "153be480d0e93b28ce3a1e26800e85cc3390b8dc77a583c1928a8f6cd720f11a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f0c1c3920f69f48b1c0efe754b580ba6a817784b6b2b1cfcd64fc3f5410eb3ae"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a980599639540011f780f12ab1f306fd520e4d7500c518af6e98da07f2bcddec"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f4f2789d925b01ba5129758afaaddb5b4a71b12c005d0f7aa0b9db66337ff642"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "1f04b45a1c8fae30a34e184bd29684cb8892db853d4a7739fc80fed0f2020540"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1f60f75e11983f112dc9355594c9d3104aec3e8928891a84f689d37889811a13"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "18b6c41674a80b456ecae02824248b658b383df8883802672f73cc1458e4afb9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r1/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "877998970824cafcf77f34b971bdcdd3c8076b7b4ec5d6a52006a03e692a4a42"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "04556353020429497f69d84cf3b3e5b7e57e178dd4ff93906ba55cdc4c4cb3db"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "fc14018732c1017b7744dfedf63412763171897f6125ff08c37c55549038c4de"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5bcf93dca56014be8b7b30f9e4ac0b28b7d2d8a8a3d8dddddc070c2229961306"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "2c349feec786f207db52c00e8829ba00fae6851241d1a7bba5ee78080b754686"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a091b5376c2f759ad221b07b6056fa8ac44c9194ce8d7285573486edbc6459c5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "7e45a26f9675629c704f2f58190958e6be31ac2cca453274e01ecaeaa9d74f8a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "6fdcde901817a46c94313e73334a2655fc6fdaa317ab0894c25373868ffa1bfb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "46bce88aba6e678f3a0851dc9e4210c0f3e48839b5cf38093cf2ebe4accf1dd6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "0f764268d733f6e6199e7c16bd970f9805eaf8847f828619c15a53b56b2de115"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "18607819082ee29c0edb49f536c0763c92ecf218f810519e8e3a899bbded9ab5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "8c917b3b296df38798703386e02e4bd54cd57953289222c9876d47905ee5320b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "a3d1b25c73ba13978546331f7ef049bdcae7812698a88e09043491d297202b8b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "e1825c5d03a783a7c7ac6808bff27be1a458b88c35f97fae59ea3f332223bebf"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "fc5bcadb7d9ee1818e47992d536e4d808bfe490693d31aaebb475756d2e665b3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "8faff1770fdca240f1b1f2d92add2417186b117d00891477deff42b63edeb213"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "9b99712d62e62af54587c4c12d6a3b8ccbcff6d7ed034839e8d8333ae34e78f8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5cf13ba7e1b3ae32f7c4df50b87954f60b573e13ac90f8e383dfd0ebb5c42f05"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "ec196d1fc7642a1eb8687910b3e76e2d9877cb3627d987f8f36a4e76ad9296c5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "9322c45e2a4973368dad083d5282d7cc731ca1118dcf1762fe078952c5a295c1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "c48b91f55747c6180fb3361ebdb79066ef30dc54bbe8bef9d5f85e2e16d71a2e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "af2e2111c23c400c016908c8a393939e2418e31be404d04a83367b62b66c83bd"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "7a86e1306a4cc405d6cccb4341fe605877db2e99e8d7ac1eb00e2411a33dd682"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "593f5740c990a248fe09cacc7094cee4cab3f4a70b7bf177ab05b9210877957c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "c08a48f1b1cd5df2b1487a31aa972388470d930aa5a4e9b26bd4bc98dd3bc96c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7d75ba7272819d27f21f9b0faf95dc03aeb0c8979a263ea0395cb005732a5af8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "413f0923d84c519e1d6824e92d5a8c47d84f9e59a74616a0f57c5389281d8d26"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "d156951fdf246d17f4d5c9fc097a12ee5b33e467f08dfdb56e92ca60f7910d51"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1d6b213550a0dc9846fd12536e7ec4c0c1db04a7f93c669b90a6321249191e8b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "3239b6fd98091c6765796ef2b8b90c919dd13ea937ae4dffa1aec9acc712dd0c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "735bfafe0468080e1919b403014f8058efa6782cd73b0c13a3345f72f102226c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "c2bb1ff752ce2344c15ccf66ee00d1002c9368e2fea21c6aacabd775f0901d0e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6e0c724fe736cee6aa0d584e2bb7df428df5eadb4ca25a3c24a262b4e5247f36"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "67a640861b9b1b881a8a0689e1f07e8bb2fdb25424eb2f349ef05502cbe4322f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "c00878c59dc9db76f7a5c0c92f6a3a1b611e390d6d974ae1e8e2ba1abb2fbc27"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "1d1fa22c261813721d5e6dc75b4d184aa9780990e572a89c808c8f963fb20a63"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "a60e74418f1dc0cab84a30d259775db5d5f205915352570acc757c24ebe1ae69"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "fefbea6f10fed9adb89f4a4e3cbfee989b803ba415f4827b854324b9546d5238"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "2c71aa326d38c9b3118a25b36f023ae470a3082eede2c6eec1534bff476d644d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "8b0eaa46ab0418430f2227155e1edded28e10bdce9aa0aee45820b408cdcec27"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "9487a7e6b6d5e542f86f858858ba14535ccbb8cd84748ea2b3c148d522b89c60"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "bbb84d34a7e2095062bee4c852c2c2bbe117f98e539e5c09991e7806ecb6a9ad"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s101-intervention-r2/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "74e789e7dcfcc02b55731e269a7da664b610f1244a9ab8282a4bdd1903487b54"
+  },
+  {
    "path": "runs/paper1/IT-SYN-P1-006-s102-clean-m1/post_warmup/adapter.safetensors",
    "bytes": 2993005,
    "sha256": "a06d02e0a6819b13d3b05c3dcc01aa8972e58fde7f9c647d6af8f464ee026a4a"
@@ -21020,6 +22930,426 @@
    "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-m1/block_20/optimizer.safetensors",
    "bytes": 5986630,
    "sha256": "c0b68ed57f835586334440e2a4389bada888adeae95cdc573608a756c749e19d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "ad767063a81f192f6fc297c083a2d97bfd070f6c839ca725b4676b18885991f9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6c74d1e72145b6a380f07876fb6db14f6bf967c2f34bcbb0c56cfa76de9c5831"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2c5108d96b00b7344bb3ab8ccc87368e0b16df9a27fd4c848df8102835f4c553"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "67f7ba74815dff7d316d8265a288dc40b4da3d575bb9d69d815654771048b00a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f82246458642aef41cee921eb27e517b5088f09235d676ef394348b219578fc5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "eb534769ebdb463ec7dcf6ae658508190d96bc196eb0484d7f9cd977f89cecc3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f8ae0c156e8c73d9c83b79bd152b514e32641eda995193477b3f1ecda2530144"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "354e23577487503f43f3e9ffb0eda6eace71a6ceb0bd784b9241b9a544cb0d10"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "55dced5bf20e2c36a3f45817e03cc0b0f3b09cc09b45a09b0b79f764c93e8d5d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "b1d583c2974135363171aa2f2ecbe6ef5322989e483759df9780b26ee11d49bd"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5ea8371fa8dab0c0e049855885b94b50acc1e3088cd12c6e08d26e33c42aa7c7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "702bafbe2d72dbaaaa82e6a4f86732d3855643fce9c47379d1e761b8a2fdb55a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "45014059a4c4ac6b64e20096f870e04233cda287fbe232d2ed6d21d50a15a8a9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f8333e00494b6831ab93b4c5ca6a171640a3df7355a869e39f868c4b6ad0827c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "182ec4cb7633b44a6fbab8435ad8261b3e6df8679f13be4a363125d8fbb3f629"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "254d18cf5ec8d4ad8d765d83492b427339dc4528723acd16177b40da5f85a735"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "8125f0e38bbb0c9e101c3bd43edb73350f483d6d9dacb38e3f97fc0abbeff37d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "c98d76d50eefe2c3defefbfd5e2e4a54273aab0701ca60e912247ec27464291c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "3a2b22253091a5bea641ce8603c15b2d8782e524686563dba9da31a13e5cc2a2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1e8a6ebfe4c63080d2967bffbb312ac2ba391724eceaffb4f9613a6792cf3e3b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "280c836dc41d348105368be15869f35a4ef76ec0baa868a526a76a9fd2fc5d94"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f32ecd9806e28bc9802ab66fed367ba4d5bc62fdb1765c1484d8cf3081e26a5d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2182a7b384b72982d4083835c3bf1ef342ab85f4a0a710704ef0d3e875caa5b7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "ff81c3b5e3a6db665358861485ec0841071fe672e779023d0a2ba03f8d5635fb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "49a88e83e2b6bb6ed94f4ad0cf267100f345d0ba594c04ad021dc25fe18264a6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "b1d1793315efb51b653d16b99bff0741a18960c3cd85863b84352227a33408eb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f4b96c1d7261c129e44e8d01b7c9fd3c78ae3ebe91dec7107eafe6d7599d4bb0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "ce74de19f8903a7e0217320dd39eece9cb6592751469377d148fbdfb76def9a8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "fc6be933c5d248d14ba52a93892f39fb68e96e8dbdc20c38e5d75e9505898d33"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "9f903b2a7f9ed1071e37f08045553aeeb3700b8d1fade53c04ddbcbf02c41c79"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "283c09014bc3c84ba67fd15f2962d895d86aba92c3b76ec64c061e577f51d2ad"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "09ae0199709476891b36bb04e630cade6b86bc46ff1895cf6df5400bc08d3be5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "68c732f5b3f9ee3385074b1c9d275cdc52a1b581019e37c8b88169d5103f7829"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "8a104312d1ca810851dff9f04c5033b07a236191a99a96d7761746bed83571bd"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f941d8c3acf2613935d3a96325c2c14d6195476848702f1dbcf62c235acbfa1b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f56091da6ccf8e384dee6842af675b0b3678b76f2277d39b96522e8f09b956e2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "4e4855399e23f3e86eac9dae5b19d78f3142202270c0d99044466ed0c3e28c77"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "824310fcee5e48a18014f211e8992b56df03eca37cd5ec2527beb83c4256a72b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "23efd9b22d6a3a0e2e372127f0193167d08050326ae493d7ca8a9fcaf05c0d04"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f0eeb41628ba3800ebcecefc56b476c5f139e211f340b850aa781723e701f771"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "df6a1cec282936508c6f54a4e24d3032648d633bd0961189e72c1923377710d4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r1/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1e8445f1d617d46bcd16c21ec951c7648c5fff0d26231a7ba8d84728085552b4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2243bb2d04fef71c629055948d827218930f8e81dc3aa25a289cd1ce6ab1296a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "dcdf616e28315d05e556cff9209b5623e9e4a2da9753d344de4f8e41919980c3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "fee075881520a2678df8f3e57772a689ec7a4d856df36410b43149aaae10bddb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "03ff5b92422fba1f3a2c5924f860389be94ed75abe01b4d9499fa6999a81cf4b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "644eca6d69d09942db324e675866aad0ba6df4d792386c8ba7e2b4fe9c33b544"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "c9c0b3ba48e0c96d00b74543f69e63effa9725208342f31111768337cf5be2fe"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "d13e6764602915c82a65a4751a3fbb1758205d13457dcbf2f7b450cdc541893a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "eab9f947f924a565ec1473e91d3fa5798dc9cf37f61ad14ee2afc625e32e9db1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "3a62356cb0f860407d5ed2bd07c7244b9eba29071c940fdca236bddcd8c9b9dc"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6106adab7b1340204a0e175105df50ba1c9ad2bd0b927731334066163c695807"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f4efb9c42359946c656673d30e1e1a886ea0e78a5db852c0711cee5c5a0e028b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "551d5f4c550c3782850f58ace8ceda407c464edfe88f071a217e78f4ac32e0b1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "c98214449b0af203e688fa6f1f174cfa854c2d272e68d5e5aaa456c07782dc8b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "fc54849d6a1e03f6637205b8167869948f38a63b9b848fac56aa7c66c54feb87"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "4973c38d2a35de5c7e9a1a6ec28402207225f498d406973c113ce029cb67314d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "2e6028aa3b8c3a12a9f58984f4890d2e18cbe11f72abcfa46b1ba51223d53d73"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "1bd15b3e4ded0ea105ec0a99804ecc878a9b2d824072936e514ca35ba8c910c4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "c74742f80e26a0123b5dcfbc3180a78d70dab0b52d9cc76c8062ae39be1a7690"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7d4b76294b833a20719c6d985de27bcbe721d8b0fbf21084d8eee55d58468e43"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "660eb7ae81bc2f2ff3564b6455ad223fb3951843c8abec8fd911278d4b98bb96"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "9f4a8976c6afcba6aa8144c4e3a26b8c695b9b67f1fe634fba611ec91e23cb55"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6171d3939c964d991bf23b63328a6fc1d4db6d088a79e906bd161600cf371760"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2d75394d5edd5dd4b5b5c9bcc75f10d7aee11551c49eb50e68746d622210153f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "b753bf19059300224979ef4d17bdccfc4079daad1e4bd71531e5a2f0360be73f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "9c65328167fe41dcb7f6232fa851d33c39ccffcc7a33220a1e4bf31ce35352ae"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "79efa5904f55d66aff8856553b84df97c9ffc3c585d57bbba0e094c48434334f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7c78409e514161e1104b37df296e670510e17aa8e17f03932e93b9e80a44843c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "197812be8e47453904fd75ab83ca132a4138b15f74731eddb688641da564431d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "b6e24f3f777495781780c8c454b0da3729804198288ce19008458d81a58935bb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "2c36c0894d0f076f8cbedf4b9187d5cc0432d8b1843d941e9f74a80b83e587c8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f497f8a660f82711a87415452ebe61aca63b7b9a98b62544019ed1fbced7b2a5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "b2d15ed5fd4e2f079690d126eea6394edaaff540b5a6baa7b604fc68eec75b94"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "1b65133905df3921edb2dc0026e7ccb4a4507d1cd85b48cf21da32e3a161859d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "accdced2b2f77e40ce5584504a7b881245be457e8ea1b3aba9e473372729d31c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "586b8e0a1bf4d0d0e396b8607ae91b31d351a8fe356c1b4b54845071c2b297fd"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "332886fc41f24b7acdd77c1464c90b763544bedbd6cfc0cd3a0f80093f4ee5ec"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "1d8483f116d387ea2ac08912f635df5576f2754fcb162fc588d6fbebbc2f16ab"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "4ac5debe72a60b258c6c4b0d1ac4208f36ff097879499e8fb4f7ff02bdc7b00f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f5ac8a5a90aca8323ff5468e777c9d6372fc396538bd8befea658ea882a5a7ef"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "2844ae311af2cd69c031657edf41bb844ec7ce4f8cb79059d1b42e5ae7f76ed8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "df16df1b51394fcbcf97ee7d93345b0a20e735216373542af7b06d2b45ad95eb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-006-s102-intervention-r2/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "24cf205895fe06bc0e59139465fb63612374730d0af57759df9e00cadc1b33fa"
   },
   {
    "path": "runs/paper1/IT-SYN-P1-006-s103-clean-m1/post_warmup/adapter.safetensors",
@@ -24172,6 +26502,426 @@
    "sha256": "1e974f76693535693d0eb1023d381a3e6f42d8d6a4e20b24b2482ae05a32c77c"
   },
   {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a0d482e7ec7e848d793281675433e7a2602b917b09789c7e64cc5cd3c7ea16c6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "a331b6ad1461297318dbb46e3812372e130eb52e01a0c24efaf3c7893e19e160"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "ea1c8c7adbc4e3eaa745d292638e022f7b6a38bcdd0e0f725cc160925f13d5ed"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "cadf6e216a029297245e6475c925ab2fd3c37e62f56e3a308e4088484c44329d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "3ed9db6b7c0070b58580bf94a59b7d107be602aa088eb1bed175d537b813234a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "ab11cfa348f4f7019ade88bbb1a7d46060c71b41550a6171ddd8576ce1536fcc"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2b62fb3c1427ab75cac69d0fd25e1e6399ff3d4aa029757294bbbc947c24a706"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "7ac271251b982487c6e745adf290b3a115daab11dd631180a451e52a57bcc892"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7c471997f78080f6bdecad688fea180d346e8ae3ed6d6c787ff78619ab557d0b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "dac709952080c4ab0f598ba7e2e58d9675f437ac070eb6cd7e88cff165daf1a2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "deff84e69b180af5216125d71436fbb7d302fd95e391c2f89e906c6040f2e47f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "9f2b60e418f3968bc7675a160147790c5e7a1dfae6c1ba36965605b8ecd0daff"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "017e5481f142f2331fefd1c89cf0156ed6e53d74a7a0081f5b11409cc2672dfb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "15289f1530233a33ba20fe036c1d2e9d6fd199bd16d5cb8c25ec79792c114abb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f3f70f0cc2cc3b14d84e6a76f2c5d107bb01d9f8e9cd31cb85d2e2de68284c6f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "91a65d94cc1d17861ab9f6a95ffadd81b3a6edf7730ada784b4387240eb6ad3d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "fad9eb28c6634709097daca2a56948a16599b10e09771c3aef096d8dcfc7251e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "df36e82f8e20e10814f1e0f3e333186aa9d39a05e6cd75a846f3384728fa7d1b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5ec4bcadcadce707a05003d7012cd3bf059482685d1d3a0ff9ed573d1c306eaf"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "21fa04b478e1bc1dce2129f8bb103af3638f27ed3f61c2d088c86295edddfa99"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "d5e70073d8af5620fbda44de229e8632c87705d1d602effb046db7c045393bd4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "7d66f5f1e7313f3b5582d0bf51afd05772818b05916fae83f2a34e29d7e5ac2b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "62445cff732c20babb3d6bed23126f4fa0153d36be19724e81ecfd58e6459391"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "919061b0f93ad46e73b430e81c0d711fb8c23b615fdd85529d1ede8bc426258f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "b98a68f2cea0fcf127394c89acba50ddafa2d6fca384a8f1e0cf13503562eeeb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "eea26802d83b2c9e7638e693af7bc36c964e3e173c785302598a84653ed5d92a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "23b8c9f01e189ec66cc7a779031737c45f73f283b95757b7dcb97c4c95761401"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1d15d5664414ce65a489ede3536920ef64049ffefd0ed87a8099bb15c43cb91e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "10b0493538df16758024810e9daf4022726dc24552f7e863db7dec3636e00989"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "76873d8067f6886d02d39e935c2d15a577102a24f2a2ba8a4387ce7846e0b067"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "0073225f3510012649a44dfb729ef865b885f88c8e7be367a3945dcaec80850e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "875e5689005d1505ddd38a263b376a6cfcff025ec0373d1ec6f8f7b0a772bd05"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "fc3328c6a5d89e050365f61cbeb8e2b3f15d8de044cca5b2a818f71506051f4b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "3138a17da13c8baa47361e535698214068a61fa595b71619e5ed0291b2eb914c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "c0f7e4a1037d4cacdb1df6ee34f44b017f28982e7e9bba79ff35309f81f05680"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "5fc74fa2a2bba755454293f7e2a1b98958d712c407e306206c3a378d4eebef03"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "67eb0a19cd987cd84a6bcc42c5a6f020d78d5348eb6fa322ee74483c8786d387"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "d8d8499269bbb8eccf60c95f519b8fe1db3a57d26744894ffcad011c6d085c2e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "794c417400cd26adb4ffd4cdd5d1a6b886283f5d1fafff6d7ad2b6e7749efb03"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "40ec1c543f1a7aad83c567c0b94b3b8ea2517e4fb3ffe5184e3ced5100b47a76"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "20e87b6d9705752591a85e05d0adc83b4a8177870785104bac8a92d7818ed579"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r1/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "47c15512dbcc8641e4f8cbca8f7abf7b4844eecfac47ca733e2492871161e1c5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "04556353020429497f69d84cf3b3e5b7e57e178dd4ff93906ba55cdc4c4cb3db"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "fc14018732c1017b7744dfedf63412763171897f6125ff08c37c55549038c4de"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "cd5bd82a0c95c0fa6014876b75f7daa6ece4542c40f487040e00f31eaf1e496e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "db390a0c63d222086fbf2294a7316180ba0d98e73269deba60a23ff94c1489c6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "6595e48d88b8195bb551e437aeefdc8af368129a6e660cd31a60fe6c5b8aaf2a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "681cf9c94d710f0d0d565cfbe9f8598648da815a081c9acd2f4a7973b8e6a8ed"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "c02bc1b29e0908e8e4c924c664ff83b149c87097e34907dcb2210316641cd405"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6b437d8204b8197e07318309799732857db9f00ecd75ea736fda57aca06354e2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "c1ebc40355bb0cabb1e6d41d45b8e911b4fd7cab0bd7d4150296b2a42b223bba"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "d6bc6ce55d1f0f9fd6185db7ad901f37fb08a5054c2125a737683819afb6606a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7b84d4a7f619bb96670ba1934340b8a821c9e30039960e87fa08e47f7a94a0da"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "3b1e7fa0c757df53f09af963c39ca7732be1b210936e859a49c7f4e69b003cff"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5928fca765b24d801a6e1f01df55e9986f9968e21a30abcb2510322e70f13380"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "3874267812bb793ed1626b40e5ecf93a12301ae4cefec4a7b61b61cf6491cee4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "9b1712f3101e3633e59594f8f442b18c8f3b7da2ff0bcaad1a6fa7bb02752a0f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "851445f657cdf666d881d17acc06ca92252b74ef972b68ab0b9bddda686d5b2c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "e18e0dc95458a3716d2fb74ffa12a9faa0a50597dce871025577b38faf0c8fbe"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "ae2fde54ea7849be5f9882980680897af49c3a1d230a0dbc7f782e978707f99d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a20a2d2c6b852956956126087b3faf800d85752fcf70d7ffcfd29cad1277b954"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "30b699e4d56b6d44621cdfc6d40aa99e8f76ca314d3b2e5504370a8d20082a93"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "909ec2634b7bd417ea6aa156963a867b3aef38a3d176532c51cb68f453e13f19"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "c7a59249926bb2385c828fb27e84e761c69077566eb37b5db54cf53717cce1ee"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "95511aee459ad37dd805f7cef6256cf0d0a015f9b5f370d40d7f436ffc7971ee"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "c4160f85d0cfd65c4e0938ce4f58b5074e1a3fbeaede9f8f86f7228c54117cf1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "81e6e0307fa02399eaa6c43c671270631d09ae831c1362817720615544adaeea"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6ab876815e53fcaa9891b1bbfc35ca840658f074135218ec1a7ffef14460a348"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "d6ed8d6e4eaca8c9d210f1ce7c652a7450aa988eb1e77e60d4fc963cba76c530"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "eae1173cc7451f9cbf0b55878f8a96e4088bf253943282bc0afb2aff78a558df"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "c5150fc9832c32613a5940a6368249f6978d87f9483012daf5387bb2cc6db346"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f3bfde55ed58420b7d2e79ab27d4b41500d1f81ca53718e1db2f15527ff65e10"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7db021368b5cfd493a42eaee0d1e353c9848d72a2ff3dbd9a923c5616bca9909"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "a45af068448b9211afe904360fad99dfd55ccb3dec1625cbde52fe1b9b487736"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "b00779665514beddafd2e26520ee62ee9e0c4c18a9d648822a5bd97eaee64c3f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "471d784a2870410e04852afdd52eff0113ba031768123f260808f3632adbe295"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "e606e2153bbbd1fa78dd2422b734705ba98374cd43e4556f3ed86c758cb4376c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "3562c5e8041f9440040a915363a98383e319b7d82e47ae0f139aa579cb0bd558"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "6182eb19be394e9ab5d080a88084f8b5621c31ac1ed3205e3b209addac788175"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "d685b5f4933fcba3e219dca2e06459f08f6b7395f8dd97617b633bf286513561"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "fb84f14d91f00b1b1b7902c5c2c7c9bdb5874866023572de2701b00a5f112c4f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "af4fbb6637f1c595faeb2062b176d5dbb3a4e8a3b23d6e23acf4f37c7a239336"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "af0dec6fade281895c0cc9d13bf6651c2efcac63ab2f1c94bb4bd1d3557ddb3d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s101-intervention-r2/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "02b503f5173abd538600a61a6ef7b8c94563567c8b0e45cd979dee47b5023020"
+  },
+  {
    "path": "runs/paper1/IT-SYN-P1-011-s102-clean-m1/post_warmup/adapter.safetensors",
    "bytes": 2993005,
    "sha256": "a06d02e0a6819b13d3b05c3dcc01aa8972e58fde7f9c647d6af8f464ee026a4a"
@@ -25010,6 +27760,426 @@
    "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-m1/block_20/optimizer.safetensors",
    "bytes": 5986630,
    "sha256": "c775f2564bdd19014f6c5f7101f4c95c01d2096a0c1bfcc4f5bfda35020476bc"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "ad767063a81f192f6fc297c083a2d97bfd070f6c839ca725b4676b18885991f9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6c74d1e72145b6a380f07876fb6db14f6bf967c2f34bcbb0c56cfa76de9c5831"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7ddb549b19d8de892c792561fd82d16f14eecefa9d46669848ee4cb14823de8b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "51607f054be21a92355d9f2b6cf81fc71ed4bca86ad8fb21f1a30a84f1cb4303"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a2887056e1fa705d018c5390a2f80410e162493015d188c62b6627edfdc6953b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "0719b27a19679562baa1c11dba782f0be04d9f2addd7f3d731a734c6f3b0303f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "80ad63a8612e94080e69110ae05c1bb87bd0513852c01b73a81f5334abff04ea"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "2cabdcb630e277b437e17859509dfecb6d1940bc5559bcf9196925733395b1fe"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2631cfc21e83de00939e2bcc2b5cb53f09432b30847c937eaedc6283790e202e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "967b46691dad1e42883953513f9ff32f4b7bceaa258fc59682e59f4a8d752813"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "9966fddab41a77ba897501548d0197cd479ec1173f305709617a169020af6fdb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "38525057d486cee2920f0cf3b8968c0b8c60754a3d9f40d94b8497db11ef88ad"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "59681e253fd3ec389d504eebceecb40df54679be44ed31cb4c3ac4b2c820fad7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "db922ee3d0e3a9ddad594418327dc1aa17a1b1690c233ad344f7295bfd5dd2fd"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2c76159334fbf8e23c933d14079deb53499c93888fef0c76c5ffb985daada741"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6f32dbafebcfd05c7b1159c46f84c7cf892d4657f576fb8845d5713160dc3b2c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "38de23e03f897e6b549bb4ab7343be4a4ddcb0c01d14af6cb2baa0ede18aa38f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "c507ed568bc84c978ee8fc6c835c5c7fc87b5eb4fba7c5e115d61f1c4df697c1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "fd3641f6b4b4caa5bc625bb70f5789aa605b1123e4fad00b6ea931e6a76b6811"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "527ae70c6bd2a3033d65f0159133929410f622cce1be82ec3e3e78ce2f213161"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "6847a4ab2e6913ab41079ceb9c81225b4a264185ab3824bb6ebcfb0761afd0d7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "fc6a3f7de680659156b82725554b873c9729a43c354b450be3eb3dbc09c5dc3a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "65f9a43f05af7d15c089e3d2187c453f7256bb6cbbfe76329538552438a0a7a7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "70adc19ebf3b24c9ffc0e9cbd45a9ccc93ca170f497b3f65632622916f36292a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "87db1c34e296b42c99dc391e59b6a6c259db9f4bc3e5990e1f202eaa0631605e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "b25dd805b7163df7dad9f8da54bbeb92f788281bd7d4f6354ce3818a0881c004"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5bb803d1b141bcad139061747f39ce1b740e95e29778e82462f59d6c31976a50"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f3885806be0eb85d32f6a50eedd7aa9dd9926766244c76c04b31375b3a5a0e5b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "3910768279fde5d8575375289755cf4622c1ff33ec778a66ef0713bb46dd5ed5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1406f0b64327a8a31d6d9b2c5b0dedeb89fca193c6eb9aef538a2d343975a28c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7c08f5014dafd9b83bcf5ac925a87477738fa64d9c075175fa75dc0a97d274b8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "dfbc2d9ff981865be2bdb03c36a6493c99fb290fdd4be213c550c50974f6ed30"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "ebcebe35ce3ee92d3305c4b4568df61475a52b90a7567e178f8bc67c5cd37f28"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "b88f1dbf65f02b44ed35e5cc80db107627840858170ccd8646bcc9931bdc19f7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2fe514e414ef090e0ebfb6975d70cae4af62ded4e952b7c413d1060a55bdb4d6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "8b49803f9c9b1dd16bf520d8b65131f1017be8b31b6ae1143ec91f9bfe25b385"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "790e583b08606a43c5a6b947250f9473e8974c8c70d16cffdf291b647c46254e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f9d8987e42e9536041d6d937f8d02232f2fa18a3ede3fd93598ea9fd4a5ee816"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "ac5b32311c2b5bc81809fa84226640763543afa87193c2652f31a6687b8dc9bf"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "0a90c43511733f668d88a7011147590f76bd4745af769e7a374da91156f11231"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "c07eb2bad58a73680df0a0774001f3970e85756cbae91018f9508fc1ccd97065"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r1/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "9f9609c506d7ea4dec2fa1aa8eca8b4acb991d9bd322ff2312719f28c5d89706"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2243bb2d04fef71c629055948d827218930f8e81dc3aa25a289cd1ce6ab1296a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "dcdf616e28315d05e556cff9209b5623e9e4a2da9753d344de4f8e41919980c3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "1c960f69f60ad5f4afa670cf07261c2e9bed670e146ad09c42bf91f41297fb3e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "e83eced9834282d7ebbb2d04e1b8611e962ef35a7277d9a53d2c34d530dac54a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "73a67aa24d8c3d2c56601676931edfbaabf206f541a809a75a9454a51f373ade"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "56b3baf8338ada4b7f6f8afc545196f8f094221307408456a0d6a4793e90beae"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "9bda42d18543b17e31d68741ac330b0055f85900872972bab4aea2005c810102"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "bf9d47308fd48df6147f9bb479a172a0ff028a1bb5695500989b0236985c32fe"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f660a73c13a555885eecb0dc46a547aa6f3955d90eb6c5fe4d3ca486fc854368"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "37f8a3c3aec7ca6069adfa3ee39b3d567e983c4931c32ecdead34e314e220f86"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7e42453a0585fd4b950e65f12e5aad8de8bd6b8e49c7a0103ed8c437209d9bd4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "3ca49da8b46965ca10143805eb31cfd4eb745c9191c1e00a959ec3522ac8d642"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a8203d81ffc93efb71dc0fefce40aef7a711154ade51e6e305981913fe387a24"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1912026692b9d88f82e9e55ba2cf5f4b7b37d23ae2db722008050b99aa6c493b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "8f17574cf608ae62c9a5518cb48f904b78c92643d2914c7f437b724476201e30"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "8e65c1be0cd564b0ff8d48fb5ec425b7ce487291d1cfd55794abc9b52eaf243d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5d15b4c4c850690ec6e1be643222eb8ac0ab9d89a91afca19ef051b142cbedee"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "796850c518f180bd41a5cd144ff0d02a9c75b897c9d0216d513373e39e97de4c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "df86a7e255442b30e09bde1e9599755d19096e22884a9455b7a3946bcfb4bf14"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "03ad0c009e87226e4a0e01d547538dccbcfdb0aa857c7604340038388fd876b1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "835760e4fd739e57f6bf2c1992e8f39568e765a3db516d1c4d39b91f0afe2298"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "96c7c5443819240e5d1a8539dc45828ac45bb4ffce4c2f997244509b67f9d99f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "4b25f3ca9588358da69a6007d7ebfc1f5a982bc29da0dc4c30a05ebb2a8fef02"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "9c323d548e5c1fd72830ef575b1f1f82278787f6669daa6b198abd9095b9853c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "19fa4dc1d9a0e0c37be65dc0291471b09586fe0b217ab6a84206d442cab34405"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "ad64fcf57b0c6f320e993e49f156795da74e625e72782b3aeb47092b666306d6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "08112e77f11a06346c89df238109353eb68e0ded34071d97e2b7397ba6bf194e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "aad083e6eeeba1a9919de1703206f62be638601558dc1c2280ab0a3d2297f080"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7c049a6c8b2ccbd1a580949cb677aa1af9a403f1fdba471a6a513f704eccc947"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "66eb38030a0c012362579cb337003c3292609dbff561c9f2382dbe80e8758bdd"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a112b45f9aaada5121da7637e549e2f75540cb7e4ee12c3626d4d2660d1c2823"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f8e5e1696967c9bdbc9269baf6344c2449048c32eec3b32141de756d2663ca2b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "693910ef0e93beafca6d7bade7f9d2ead4c43e8dd3dcb034a05c264c2ae6bb33"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "b3d721351dd3ad4389562940704e140336ce84b57db526f0357c74bdfff4542e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "4ca2310518b2e4c5adb530a90c618dcced30302f8c5d9d15a01266ae93849b54"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "455b3ac25e8e78cd86b1f5ec98e7746c6af75a6a1081738a1179fad6eb1126f0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5d2ee3a5ab4d7d15622af73dea55d3c465bc71c14406995d8f3ce0a74f3cfbbf"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "d539958eda715e1f6a774f9418010d161c5e45c3d88e7ef3387384bf676eaacb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "6aa75fb7361dc9e1554be3831bfdf3dfbf83a6e2fef5435cd898e29724f2da21"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "242aefa17c3fc1b87132d18d3b71da62d3f87290690e122d3780a29a0483eca1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "444a28010892d405773d10f38e964e2545e870f1786526a2e3dc5cef5b708102"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-011-s102-intervention-r2/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "928edd5a0fdee04792e6e6e8d570872da1cf981e8f18442e7ff3783de87f7a97"
   },
   {
    "path": "runs/paper1/IT-SYN-P1-011-s103-clean-m1/post_warmup/adapter.safetensors",
@@ -28162,6 +31332,426 @@
    "sha256": "bcc9c330e028cd660154c088b175e6a2f01034b45e26e1db4721b93be7f99a50"
   },
   {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a0d482e7ec7e848d793281675433e7a2602b917b09789c7e64cc5cd3c7ea16c6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "a331b6ad1461297318dbb46e3812372e130eb52e01a0c24efaf3c7893e19e160"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "99b8f28bfc8aa813c0782fa15ebb0eff06e6ec1e287baab692e51c990456042f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "48c987e0dca3b53200eadb0460108602fe39333175fe863ad3a0c68e753e9df3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7d60c29a1ae2b0aa594cc28e826249857ea2c2788136d51eb15fe36e03e5ba7e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "19aac8cf9077a1281eff07cb774d57f753409e22c81feaf1f7ba5b8cc06d27a8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "92bd1ce632add6addc4f15eb11bbbda5381c852fa8d872099a1e726694c39fc5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "7cf4d8f5f9f59f0ee0d525512948846dc7b2ed56b6a17825accd5f2b5043f456"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "57c312a31c249b1dd2d6335df4d11b9d4ead69a6e2acaa2ceba5e508e9d1080b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6df93ff368aab14cc780c97e23c84bfcc361b501f0964045ae2403af338c2e3b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "b01226b13afbbde1f15a6981a6751b4bb7756960214a12adad74cd321a489791"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f44529e233822bc5210e62d6ec098c61a3886fc5a2fa03a2a24e0fe00b2adab3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "bc301ac6984fdfe1ba214e3723c37bcd82763cf76b9b8461be7afda1bf492efe"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "2867b900b09116c60fb11f5405bfad09144f8a594b8d276d790c68a5b5de22a1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "486e3876a9b6b63b4a1cc70afb3c42528fa8cffe9c8cd452f6245d15764051bc"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "4f65b163850b332354df1ad225f3e4fbc148ce668d832bb3a2627a104d9ed931"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "8a080a69f38a72f048d67edcb1e197c35267ffe556e5c6e56de1e36a9bf3d4f5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "b78c8d47535a741662a0080194d863586a530761ca794c1b71d89c4fe4856ca2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "566273b07da11dbcce4655cec419c95b8540952e19089cd32b99864ebf24767e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "45ef3a6a2460d55b73dc2f33dc8ce54598c8a4627dd872cf03642e21869ccd46"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "957f9a67c0587284de1c13a2558e145da28101a5a81e946ed0e97f5bbcb7d6b1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "b014524ea78e1df1787bcf23e5d7eac4c4feb737251f97e0f416b055da2288bf"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "966ff9ad42bab4776e156df031b2662bc24139c8b005b4ccfb2c08aca61f036c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "d09c1c31d9495866acc4d4b6362c7432497edeb59de4d5b0acfd0923bc2f5e89"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "c6fa8b08adf26af7578033f5f8b68b939855aa3db4b09e5f1b4474e29f57d4f4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "33a08f8f3410b6c03302b63d81bd13075a33e6fb8330a2ba176fc00656ed544b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "e6e60c97c9c258c75526497eefe5cb367f94a79249a2ead3318352530ab32005"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "61eeb80856263d9fdc2f08f4eb00abfd112d2ad357e7c512c0c9a6ad2a663d36"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f1084a08e4b009c98aba51b82c4c5ddcc7269f230855a5b71df8a77ea15b9295"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f009d301ac05096493d193e7a758671607c06937080fdb114c78fadc6d68f3e7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "593b0fbaba3d7b07d763caa1ecb225f0fd1b92aceab2d3e9bfebd259ab724e2a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1a37db77c49175454a283c1e47525acbe53659cadb49e1c0b8b6c3ba6ccff960"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "1550b35dd762a57ccffbd3c1a8f9006938ab98c8eef21dcc57998772aa5eef5e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1408d84b892c4199d8e2c16874467e03a44cb70d951423fbefb9e2996ab3c1d3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a0e6b75d85dd6ffdaa66906a8bbdb372f9de7c7e4a5fa53925e8fcf088af7e28"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "ef0ad4c147eb527142d1402c8069998680115808b9bf3c449109f293a4833721"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "18c3ddc17fefc3dfc4a10d5c8865ab67600edd336a1ce4f2340e2cf6a19d2cab"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "0556021169f9ae759f2e014fd40bd7d26ac9ee5ca7105a32a1a352e0798cb532"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "f7e1dfead2ad25589a27014ec0c2a278cff254022d36d077453875aad4af8630"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f39f5feca24a35fba1a9c3701890a6a9199f5252f7a3a3b8cd09378bb1c9422a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a8990a5691f9126359e55e3b849f57c5640071dbea540e993a85995cfbdf520f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r1/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "4738c01de4ac28fb12663bf80b17c6f96ec0989f91144b2ca959faa5da052f9a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "04556353020429497f69d84cf3b3e5b7e57e178dd4ff93906ba55cdc4c4cb3db"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "fc14018732c1017b7744dfedf63412763171897f6125ff08c37c55549038c4de"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "989b09dd2f007b961ecd272aa5fe83443dc6b3a4dc7bbd7308deabf4f4aee7d8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6a1791d5821ec6b7412c84e2471e34250a8b41eb98aa57a43cabbfe25aaf5e31"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "e78448d79c9222e4a07f11484bd1101d2787d1435cfe144013566e6fbf212bb8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "0debeba3c97da893b3a09cb85287ff12b8d3e4aa799a4a7d37a8d11739bcbed8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "4d282a3d14af1fd180d66b4e3833e588ca68b453437e6cb4eff759153975b816"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1a2fbbeb66174bf930da2ed84e9d51292073da2df1cb8d800ef6f719063c86a0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7a9ae0f4eb2886d636ec6415ef5a2be96439e0af7c7962dd60a7a5d4f9ab77e7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f174180374e0c790095cb1e2bd95b3443d5af86cc45f9e37ee31b23e0860be91"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "d4c502f9e35d629300bc8ec6d8a915b0be72f6d42bbff09dc5db58ea89789267"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "4beafd38a394f96b632b7bf13e3adf680cf2aa4940af5e4b0ef9b2ede97be3d8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "579b81aa0797d0150c4d19a154ba38711efe6102d5ecffcd17e9621607ae100b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "e8448b9ee0be007b91d614c0aa494b762213b962f4894c7cfe1abab11c024249"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "3cd718a94b97c10abbc0fabae9becaa54cfa3c5f41db54d9702aed83f8051a9d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "ed62a3b0c092b20024b654018ae8e3005b3b353515aad204d58c803a1e81c57b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "3885cf489d41066a9c959a2b616cb3c88575de5ac2ba0ebd5eaf1f165c3bbb4d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "930e6ca141f8876ced79e1489abbe8dbc6f83c929e10778e57f5ec5b03d337ee"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "389cc5f91a8191802b575c6607f232a08d0d49c53cc8a1e8c7284ff98a1cd85a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "870f45a129805a4fae145b9cb6579cb08cf0ac8d08fc3964839905bd685b3830"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "990d8aaee274aa4c3480360cc0783b4200d8dd19b0c7b30208b09bf6fb601002"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "8a9a2889fc1edd236b8af16caa452b3d86bf2dcf5c6bd1dadd7c89e7cc2d721d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "34e7c26848832bdc45e5c3a7e5bd3207b3b0f7c7f3d183e743bc4851020abe7a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "aca0821c5316728d8fa06db823bb28e1d64d66853a05ea45ff3778eff3785d03"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "1cd7df01dead8b19207f3735bfa945c15d651f5254efca5b8d796c3481ca1a78"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "a063dba4c71d2e308a218faa06cd89ab7204c218d45566169c5dd6465b288741"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "6c739d8014eae6e8fc09680fe8c0bf4e35bef73aa65f78e63bb6b10bd8c473ff"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "542c21608e40b984d105ff8bd50ef43b5f2d696d6939a5413628edb48cf6e013"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "58d4ca9531d1c3fa3cd8eacee02fe1f6d5fae63bc033eff8f804a4a0d980aeb6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f6949bc5b89165d5f4d62f95409235ca300b81facd04acac4b4e43c8bb10644e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "973d9d386e0565c4961d2a5162bc4e5ebea42b8cb3cc9e0f340bb83f87e78bd0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "b4fecc3a549179633dcaf82214df1e9eeaaa4bc7ce89e8eb9966d6e0408b1034"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "15facbda8ecafd4eec1b98c33858d59d823656c910ff5c0acca287b8bab4d962"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "8cbe0d4d6d908169122a11dbbfb6b17511fca5a817d33661defb7667995e0778"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "215c27ad3b1e59e271f243977a970701e666a832bc97aa0bac38b790293b785f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "2073b7ca0a711e6469032d46735dc7f330eceffdab6339b8c2b46fc90ded1ac6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "3c0b62d5bd6ef9804ce91ec036fffe8467d2ca15a4c5fb8ed1ef60cbb0546d2c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "8c441a93a5c3bc4ffad05268f4d6417f1aeb3c1dd231e8b5abda73d1fddca201"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "13d205f57d9a31041ff563b8a8ab213f3fba45371a1077b98cad95da8e1a2e44"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "ad45460fff48c1c823069195e356c39ea91b1bd4816d2284939c45b87930f0cf"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "397fb5179d076550028ef8bb1c29c07c10de08b2a9b28f784cd98ea97e152e7f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s101-intervention-r2/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "139f078a02c1f2fab095b4797fe5d872bb7e26c43e477813e5ee7b26505eea71"
+  },
+  {
    "path": "runs/paper1/IT-SYN-P1-016-s102-clean-m1/post_warmup/adapter.safetensors",
    "bytes": 2993005,
    "sha256": "a06d02e0a6819b13d3b05c3dcc01aa8972e58fde7f9c647d6af8f464ee026a4a"
@@ -29000,6 +32590,426 @@
    "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-m1/block_20/optimizer.safetensors",
    "bytes": 5986630,
    "sha256": "a381dc9f9b649ab9ededacabf149b31285f5314435747f1691f81775bf0ef8bc"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "ad767063a81f192f6fc297c083a2d97bfd070f6c839ca725b4676b18885991f9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "6c74d1e72145b6a380f07876fb6db14f6bf967c2f34bcbb0c56cfa76de9c5831"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2be2b2737479acab7b245e37f8db98abf446db7eb957fb5524fa0b79320c1a3b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "5a84a5cad7b9062ce6ce41e3d87092099c5dd1a8869dafa31e433ad1eb840941"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5c42e8ca87f73802d2f38842bb3210d9c9e0ed485d37798d603d0b1f2791fdbb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "8502a4b07274bb36e59f32b4d7a3307e5d71b43094804accfa435cf455f8bac2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "0e995a4bfaf24e8da011225bc2836dec65764fad7e21971d7188a0c3b559f30b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "30256afcf1ed04070172afdf8e7eb0f78af25269eda73e1003e5ff0f9458d3a2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "463b02ff0dea721d5044c5c23100acf6c897b59d870c66fd791fc817022cd3c7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "db9e80f0d947617d441eff94522d9c4dc241c7b1fd7d230f95866b43378673da"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "9ea76bf384f04da3cbe88c31f55ee112c588ce03082834e02b86f7ec28b17519"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "d713ed75871adba86e1f0fd27b6f809d9c4fffccbd93c34a1edc3ee38bc619f9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "17c5e9c367cef110015827af7ba39c69f8d5d4909537a929b378f89ab579461a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "a4ff909c68161ec749ccb788bc02c6322b5ba90ab9e1e885f75f04ac8ca5399e"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "dbce311d7f3ee3518c7dc1be700961fe41fdea55041dafe592a9021f4911a129"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "c89c61163dd08a614ccb0eac7237a43cd87a493ef4d086adff247bda026abf64"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "391049ab9f462dd03742633f3cf77909ab3b54b02b8f430c971e4ffb3a8921c9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "2a74d749aa179a36c526fa138055458fb05796f028229ab7a7d7ffb9adbf8665"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a45a9556a9b0563883f23365e599783922dfebc92abe97c810ad9571a8ab0ff4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "8c9fc2ab4f741acd29f16751e515b64a20060a42f5c1d9afbb51803c349d51e0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "afb0a5352866443af53e7e7b32d01f6c1abc56d00d9012463349488fce795d35"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "48f1c5e16f6b1c74447e6c23fbb9c9c779dfe9c7f69b36cc8a4a713cdf77ead5"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "e90663da8e293621c76dcbb69c1743e1a997f8fb0fa71ba687443afb352f530d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "431159ea23dcba68d66647c65c011601a7087cfde71835f28da3a7c0cb08a724"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "3a36b3be8b4c79391dac3904bad048730aea37b1361e5efcc8d8e12e700de148"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "e7fbb7bfd6e4574bcb2df959d3ac49000a585b6a4f4c6cb13871775fd6b98d49"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "d26a8794081f08863ab1a390354186b504a9e6bed08e10e9918c6a4eb65e08ee"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "69abe2130e39f41c213a937f82adc7a3d11fd81f78cd3f7239b04d793f8c521f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "291f76af7f3a47ef23f1ea43bbb1f72dca74f28be7c6854ca3698b5c4e939847"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "d76afae4a90ac6011504905879f427e76867f5974cdaeb215e529894ad845761"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "9c75d763c03d094e10fb735208835d0f96f0d39f9aa27bc49d7d67e47fcb0048"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "e9a816ef8e3d308d176d85f0f1375a3803407a131f448978a765a0848605ed82"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "5df6adda2162d86ea526b74fcbd7570911584eaf273c1d48ce28311b5eeca665"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "7e686da4b28b838faef84ca5390860b9b28b68319d661e91afadd56a3802865a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "65d1de2fed28df6da577c864bf511b13dcb1e1e865233b99a4c446b218879362"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "45062289a79e033d8005e0bdaea4021603b1ecffd5277656d74dcb80ff7b4133"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "844073187a10c9234157ebceb6c95c2d4780419c98a8edcaf590da3982c72ef9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "873ded1b7753c8b4176b5ff31c6c64e398e5ae70ccd24abef21a7d5d9f29a605"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "35d4ec30fb77597ab07c3fd3a9a1bfa3dcf170b486593e19220616141678b5b0"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "3551cc2c754dd7caa7914b500130170ba0c8d6f135e8998b7ed555cc26590964"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "beb5d2801d487152b430ad5f2fd68727e4f441f2e9f61c2d8286e3dc1978cb1f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r1/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "7e6e3d310a4fbab6f589b7fb948af06061bb9482670d8b7ecba39ef172877842"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/post_warmup/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2243bb2d04fef71c629055948d827218930f8e81dc3aa25a289cd1ce6ab1296a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/post_warmup/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "dcdf616e28315d05e556cff9209b5623e9e4a2da9753d344de4f8e41919980c3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_01/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "d738974ea0883101b70e573ef5b31b242b0ff960fe28bcd19fa0a89230fc16fb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_01/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "0fd34b094cc5913842fb7c4dbcfa4ee64b2e898564aa202fecdeeed69c23f47f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_02/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "6461a8c20102bee20c6895340af9c03bdb70e82e2a63b15adf19fa7ac1aad183"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_02/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "3f20efef5d25a5097cc9e32c16bfda855d5c8a64f5055e6b7a1cc0ace90c8c26"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_03/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "254c25d913b39bb1d7234a36afae6296ddbf64568378624ae3b37bf3ca8d8643"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_03/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "49ef3ea4e8d2b541314b6ae5343e04f02c82c1b80f5fe8160e983e026634d84d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_04/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "83643e7d8a376f728cbd58d0f988f22bec5282d7eb189e70b305fcbb26b97835"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_04/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "8a5f1d4b483ebb9dffea43d208eecdd561c68eaace03b87d3f8514edd64375a7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_05/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "a19f0bc5be34d20c24e7f2937cba65a33e2a9d575aac080a6fe43dd28e0a8999"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_05/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "511d9936385e4814fdae6ca2f4a70a6953e7e8afad9b46b2727a086fb31ead72"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_06/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "78396ab2acb8614f587c46dbd6df5fac6c91f296c043733910d50eaaf4835245"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_06/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "d0f5c6fc039585c6f9d752c85fd56cd59596f0252f6856bb99937fa9d66ed0d2"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_07/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7b2929662c7ce2ec2a009d15c5e609ad166852aee13ad04343b9d9595db34e1d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_07/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "fd751a89eb8559c4f471dfbcd3d549bee942e0e7e205fc24dbff5485d350a9eb"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_08/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "fd8e6da26b567b5731981e06d8dadb6c3252a29bcb49d7e9c39127507e6e8bc7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_08/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "0b604ce619b01ed57c10739b4fd736bb65e94efee84f6c58317c3841433b4ef6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_09/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "510752351ab58c47055e61a1cbd213eab156b563682ead59431c2ba5f4675527"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_09/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "1b5fa6a2ce0214f8953e3e177738b6c252d092730900fb76a202d1eab618878f"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_10/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "0522d51353dd03459f4315aff569af63a7394fd8b957bfc3cdd232d0f024f3f8"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_10/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "13b31b9b1335e150333f72eb0ff81082189cb79967d47628ae0dfdaa78fb00dd"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_11/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "cc2ebec3f969ea43c8330247f69ae553cb945dae53f101b0209e2f09b80d08ef"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_11/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "9615771ceb054bc1bba7d3640d828540e5558cd139a802b0b8962cc7ac4103f3"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_12/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "b3c5d3ca906cc379050803daaaa1251b8145909b80308a3a6c6b74463cfde286"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_12/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "0895a5d800563fb77ca8342d3fccaad6fcd1ed49a2b3df21f0494109b04765d4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_13/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7a54aa9003f5b95172e9cdea715a3e66dfb9910c9a64722af382fc918313099b"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_13/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "acf66941b8dbc4698030337c492a04e4cfa1f274f86f249a55a74ae3e7c94b00"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_14/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "0b568ad46244897f131f2c0bf2e9e592fe7f3b4e77eb942ea64909e57b83b8e4"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_14/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "f54c4a3eb9915615935c8026951daf15b242993a580c04c7040bc4b8841b13a6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_15/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "ccae0d00ca8726c916f6dffe2f46768d6d9a6ce36f59476293ee3ba97e9b667d"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_15/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "a8e953df0b61a9602e058da5d8d63a4fdcc8f12ead557206b4d67ce93c55c1d9"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_16/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "2776da6e0fa83f833131c71ae283dcb5694338d4247b614f8494c9e2271cdce6"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_16/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "65b9125f3c2420ba52d85958ba9e3dfde8683b61d039a655dc95c94aaaaff25c"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_17/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "3a6c33bda6bce0ea5582e1d79f15c6a453cba30e4d016ab3477b391ef056210a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_17/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "4c281c6c41f25cf9936f9db7c81f7bcf425ae6ddccc7b9202d5fec7cd3c05619"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_18/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "7fbefbc20906ee8e414d2d48a04c828a03cbdc9e9c7db2790964b456307b6bde"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_18/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "363627bc0523223c51e3dc85f17895e1d53a0c336ea28482432d47f0a6a34186"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_19/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "b2092e590c5b62e4ce75ca4f09de7c98442b8fcc0d5dcd0ab01277bd8c70907a"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_19/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "b4ed65f2a91cac9bc1bf9954ef525bc26ba47a17ec5b17d7d3aa8d0297b024b1"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_20/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "1458550a3469dffb79d8a2a33adee87c6ef6ac442dfebce070ec3d10696417e7"
+  },
+  {
+   "path": "runs/paper1/IT-SYN-P1-016-s102-intervention-r2/block_20/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "7ec153f7f877ddcabb70bb427c6688e84aca9156b57819fe200d8ae9db5477e2"
   },
   {
    "path": "runs/paper1/IT-SYN-P1-016-s103-clean-m1/post_warmup/adapter.safetensors",
@@ -33992,6 +38002,36 @@
    "sha256": "ac36e4fc2cf53a4d9cb865ad4abf94ae99eb223af5c8389a5301419c6495d4c9"
   },
   {
+   "path": "runs/paper1/gemma3-1b-familiarized-s101-4b-lr1e-4-e1/final/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "c76c52041be99ee0e81f82f6c032fb0c4dff6df55d3262a99a6129225ed7ea44"
+  },
+  {
+   "path": "runs/paper1/gemma3-1b-familiarized-s101-4b-lr1e-4-e1/final/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "732fc448d0938c98e91082121a032bd78c609a8a1ce92111bde405cb6fc8b4cb"
+  },
+  {
+   "path": "runs/paper1/gemma3-1b-familiarized-s101-4b-lr1e-5-e1/final/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "fabd5ee387cc2ccf7f3de47d6fd3d0f68e357156fb83d143c5c73c500efffe84"
+  },
+  {
+   "path": "runs/paper1/gemma3-1b-familiarized-s101-4b-lr1e-5-e1/final/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "ff83ee1ea03f5b5dd45a9ca9038594b66793701d685b20652095b6f28c1d3350"
+  },
+  {
+   "path": "runs/paper1/gemma3-1b-familiarized-s101-4b-lr3e-5-e1/final/adapter.safetensors",
+   "bytes": 8929577,
+   "sha256": "ba1606232922462163ac618bb86d45d314248e288408d59a382eea0728201c09"
+  },
+  {
+   "path": "runs/paper1/gemma3-1b-familiarized-s101-4b-lr3e-5-e1/final/optimizer.safetensors",
+   "bytes": 17860087,
+   "sha256": "dbc14fa0fbe153dbb4823207f47011ab1ca7792b840f169ecafb9dc4921600c2"
+  },
+  {
    "path": "runs/paper1/gemma3-1b-familiarized-s101-m1/final/adapter.safetensors",
    "bytes": 2993005,
    "sha256": "277800329f22b0d391a2377bb3641b1750d90ae703b760127601b50fd6357b91"
@@ -34002,6 +38042,26 @@
    "sha256": "9549f476067ccc48fdbbe7e708a62d775b58cb99491de3986ab57c9abf969a77"
   },
   {
+   "path": "runs/paper1/gemma3-1b-familiarized-s101-r1/final/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "4d0212c390243e14dcabd8f71e3fb1312a169f88208e67b2542661f9f02da128"
+  },
+  {
+   "path": "runs/paper1/gemma3-1b-familiarized-s101-r1/final/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "36c4541e1095dba665b9d30302869c65df47e1dac5ee3788c750b322f120aee2"
+  },
+  {
+   "path": "runs/paper1/gemma3-1b-familiarized-s101-r2/final/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "37b4c259abb278e1408223bb8171d57e55c02439b055fe10e9632bbdbf9686f8"
+  },
+  {
+   "path": "runs/paper1/gemma3-1b-familiarized-s101-r2/final/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "fe209b10e72142e12a0b5cc390c7e2f546747fdf02bb2a5037fa247a427af125"
+  },
+  {
    "path": "runs/paper1/gemma3-1b-familiarized-s102-m1/final/adapter.safetensors",
    "bytes": 2993005,
    "sha256": "4e2c37d435526683651b3338b25809c83595884cddc7b8c5a42213c8048ace27"
@@ -34010,6 +38070,26 @@
    "path": "runs/paper1/gemma3-1b-familiarized-s102-m1/final/optimizer.safetensors",
    "bytes": 5986630,
    "sha256": "44fa0478398cc54ca9457fb6cfeef2094ce0ddb3e75602a904fe994ae5bbe3df"
+  },
+  {
+   "path": "runs/paper1/gemma3-1b-familiarized-s102-r1/final/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "48c02802a83ae5362cde7d922c3427591d59d88fd51e6e7e4d2c88efe54b3c56"
+  },
+  {
+   "path": "runs/paper1/gemma3-1b-familiarized-s102-r1/final/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "836500d2a6100df7895cc81a0672c15cba30874adaa1f7529765cf01e5f35967"
+  },
+  {
+   "path": "runs/paper1/gemma3-1b-familiarized-s102-r2/final/adapter.safetensors",
+   "bytes": 2993005,
+   "sha256": "96d18d3e8d3c043e5d7fb11339d41e0ab6b1f5a75e8c94bc81bed3da82fed3f7"
+  },
+  {
+   "path": "runs/paper1/gemma3-1b-familiarized-s102-r2/final/optimizer.safetensors",
+   "bytes": 5986630,
+   "sha256": "70038c65ba7f73985c72c70881699b2e9836463b8a8bfef0025a902cc2d27007"
   },
   {
    "path": "runs/paper1/gemma3-1b-familiarized-s103-m1/final/adapter.safetensors",

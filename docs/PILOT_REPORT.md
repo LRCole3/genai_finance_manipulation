@@ -13,6 +13,8 @@ Status: exploratory. Covers the pilot work of 2026-11-18 to 2026-11-24 on the Ap
 | `matrix_m1_stage1` | 23 Nov | On the same adapters: three off-target controls per target, open-book questions, development answers | 240 of 240 jobs, 0 failures |
 | `matrix_4b_cell` | 23-24 Nov | Gemma 3 4B, one seed, instruction tuning, four intervention trajectories, closed- and open-book answers | 66 of 66 jobs, 0 failures |
 | `matrix_m2` | 23-24 Nov | Seeds 104-106 for the intervention arm; descriptive control for six seeds; fixed-budget, sequential and retrieved-context arms for three seeds | 798 of 798 jobs, 0 failures, 29 h 17 min |
+| 4B settings gate | 24 Nov | Four settings on Gemma 3 4B against criteria fixed in advance | No setting accepted; 3e-5 a near miss |
+| `matrix_names_r1`, `matrix_names_r2` | 24-25 Nov | Instruction-tuning runs of seeds 101-102 repeated under two renamed catalogues | 168 of 168 jobs, 0 failures |
 
 ## 2. Feasibility on this machine
 
@@ -89,7 +91,7 @@ Record: `docs/JUDGE_REVIEW_LOG.md`, stage 3 and 4B sections. Tables: `paper_draf
 8. *4B, one seed:* pooled effect about +13 points at 250 items, per-target from +51 to -21. Training with the 1B settings removes most of the untrained model's sensitivity to investor limits (exactly-correct open-book sets 29.8% untrained, 14.1% after familiarization).
 
 9. *4B settings gate, one seed:* none of four settings met criteria fixed in advance. At 1e-4 trained models recommend ineligible candidates about twice as often as the untrained model; at 3e-5 they stay near the untrained level and narrowly miss the retention threshold; at 1e-5 the model learns little. Details: review log, 4B settings gate.
-10. *Identifiers:* the ticker prefix and 24 names were replaced by scripted substitution in renamed copies of the data; a two-seed test of two naming schemes is running.
+10. *Identifiers:* the ticker prefix and 24 names were replaced by scripted substitution in renamed copies of the data. A two-seed test repeated the instruction-tuning runs under the new names and under the new names plus the word "Finance". New invented names leave the effect unchanged (paired difference -0.2 points at 250 items [-3.6, +3.2] and -1.7 at 1,000). Adding "Finance" raises it by 5.3 points at 250 items [+2.0, +8.5] and not at 1,000; those intervals cover question sampling only, so this is a lead. The seed pattern (one seed near zero, one above +20) repeats under all three schemes.
 
 **Planning figures, recomputed.** With a six-seed standard deviation of 7.4 points at 250 items, the half-width of a 95% t interval on the mean is about 7.7 points with 6 seeds, 5.3 with 10, 4.1 with 15 and 3.4 with 20. The bootstrap interval observed with six seeds (+2.7 to +13.2) is consistent with this. The precision target in `PILOT_DECISIONS.md` (half-width of at most 10 points) is therefore met by 6 seeds. Detecting an effect of 7 points with 80% power at the 5% level needs about 11 seeds on these figures. The estimate of the standard deviation itself rests on six values, one of them an outlier; without seed 102 it is 2.6.
 
