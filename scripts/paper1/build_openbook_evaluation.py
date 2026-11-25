@@ -5,8 +5,10 @@ name. Investor request, candidates, their order, query ids and answer keys are u
 score both forms. The closed-book form tests whether a model applies limits to facts it has learned; this form
 tests whether it applies them to facts it is shown.
 
-  build_openbook_evaluation.py     writes data/paper1/evaluation/scenarios_openbook.jsonl and a report
+  build_openbook_evaluation.py                        writes data/paper1/evaluation/scenarios_openbook.jsonl and a report
+  build_openbook_evaluation.py --source development   the same for the development questions (settings gates)
 """
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -26,8 +28,11 @@ def record_line(e):
 
 
 def main():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--source", choices=["final", "development"], default="final")
+    dev = ap.parse_args().source == "development"
     cat = {e["entity_id"]: e for e in json.loads((ROOT / "data/paper1/catalogue.json").read_text())["entities"]}
-    src = EVAL / "scenarios.jsonl"
+    src = EVAL / ("development_scenarios.jsonl" if dev else "scenarios.jsonl")
     rows = []
     for line in open(src):
         r = json.loads(line)
@@ -40,16 +45,16 @@ def main():
         records = "\n".join(record_line(cat[c]) for c in r["candidate_ids"])
         content = f"{head}\n\nCandidates and their catalogue records:\n{records}\n\n{question}"
         rows.append({**r, "messages": [system, {"role": "user", "content": content}], "variant": "openbook",
-                     "variant_of": "evaluation/scenarios.jsonl"})
-    out = EVAL / "scenarios_openbook.jsonl"
+                     "variant_of": f"evaluation/{src.name}"})
+    out = EVAL / ("development_scenarios_openbook.jsonl" if dev else "scenarios_openbook.jsonl")
     with open(out, "w") as fh:
         for r in rows:
             fh.write(json.dumps(r, ensure_ascii=False) + "\n")
     report = {"queries": len(rows), "source_sha256": hashlib.sha256(src.read_bytes()).hexdigest(),
               "output_sha256": hashlib.sha256(out.read_bytes()).hexdigest(),
               "change": "candidate list replaced by the same candidates with their six catalogue facts; nothing else differs",
-              "answer_keys": "private/answer_keys/evaluation.jsonl (unchanged)", "research_ready": False}
-    (EVAL / "openbook_report.json").write_text(json.dumps(report, indent=1))
+              "answer_keys": f"private/answer_keys/{'development' if dev else 'evaluation'}.jsonl (unchanged)", "research_ready": False}
+    (EVAL / ("development_openbook_report.json" if dev else "openbook_report.json")).write_text(json.dumps(report, indent=1))
     print(json.dumps(report, indent=1))
     print(rows[0]["messages"][1]["content"])
 

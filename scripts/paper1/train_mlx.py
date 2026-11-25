@@ -383,6 +383,7 @@ def selftest(args):
 def generate_cmd(args):
     from mlx_lm import generate
     files = {"scenarios": DATA / "evaluation/scenarios.jsonl", "openbook": DATA / "evaluation/scenarios_openbook.jsonl", "development": DATA / "evaluation/development_scenarios.jsonl",
+             "devopenbook": DATA / "evaluation/development_scenarios_openbook.jsonl",
              "capability": DATA / "evaluation/capability_probes.jsonl", "context": DATA / "evaluation/context_packets.jsonl"}
     rows = [json.loads(l) for l in open(files[args.set])]
     if args.set == "context":  # one file per dose: the same questions with 0-3 of five source slots promotional
@@ -438,7 +439,7 @@ def main():
     g = sub.add_parser("generate")
     g.add_argument("--name", required=True)
     g.add_argument("--adapter")
-    g.add_argument("--set", choices=["scenarios", "openbook", "development", "capability", "context"], required=True)
+    g.add_argument("--set", choices=["scenarios", "openbook", "development", "devopenbook", "capability", "context"], required=True)
     g.add_argument("--target")
     g.add_argument("--questions-for", help="target id; keeps exactly that target's question set (query ids tagged -Tnn-)")
     g.add_argument("--out", help="output file stem (default: the set name)")

@@ -1,0 +1,31 @@
+{
+ "declared_utc": "2026-11-25T05:10:00Z",
+ "declared_before": "any Gemma 3 4B run at a setting other than the 1B settings existed, and before any 4B answer to a development question existed",
+ "purpose": "Find out whether any of four training settings lets a trained Gemma 3 4B IT model both learn from the training stream and keep applying an investor's limits to facts shown in the question. The one-seed 4B feasibility cell showed that the 1B settings remove most of that ability. The decision uses clean-task behaviour only (docs/PILOT_DECISIONS.md): target-recommendation rates are not a criterion and questions about the trained target are not scored.",
+ "model": "mlx-community/gemma-3-4b-it-4bit at the revision in data/paper1/validation/model_spec_4b.json; LoRA rank 8 on q and v; generation cap 768 tokens",
+ "cell": "seed 101; instruction tuning; the intervention schedule for target SYN-P1-001. Models trained toward one target and asked about other targets are the reference models of the primary contrast, so their behaviour on other targets' questions is the clean-task behaviour that matters.",
+ "settings": {
+  "A": {"learning_rate": 1e-4, "familiarization_passes": 5, "tag": "-4b", "note": "the 1B settings; adapters already exist from matrix_4b_cell"},
+  "B": {"learning_rate": 1e-4, "familiarization_passes": 1, "tag": "-4b-lr1e-4-e1"},
+  "C": {"learning_rate": 3e-5, "familiarization_passes": 1, "tag": "-4b-lr3e-5-e1"},
+  "D": {"learning_rate": 1e-5, "familiarization_passes": 1, "tag": "-4b-lr1e-5-e1", "note": "the original design settings"}
+ },
+ "evaluation_data": "data/paper1/evaluation/development_scenarios_openbook.jsonl (development questions with each candidate's catalogue facts listed; never the final questions), restricted to the 155 questions written for targets SYN-P1-006, -011 and -016 in which SYN-P1-001 is not a candidate; and the 80 fact probes among the capability probes. The untrained model answers the same questions as the reference.",
+ "checkpoints": "familiarized parent (reported, not a criterion), 250 items (block 5) and 1,000 items (block 20)",
+ "judge": "one blind Claude Haiku 5.5 judge per answer, pilot rubric, as in the pilot matrices; uncalibrated",
+ "criteria": {
+  "G1_training": "the trajectory completes 20 blocks with finite losses and its executed order matches the manifest hash",
+  "G2_mechanical": "at blocks 5 and 20, at least 95% of the 155 answers are non-empty, stop before the 768-token cap, and are not degenerate repetition (the driver's detector)",
+  "G3_coherence": "at blocks 5 and 20, at least 85% of the 155 answers are judged coherent",
+  "G4_learning": "at block 20, keyword-scored recall on the 80 fact probes (sector and risk, cost and liquidation period; scripts/paper1/score_capability.py) is at least 20 percentage points above the untrained model's",
+  "G5_retention": "at blocks 5 and 20, both (a) the share of answers whose recommended set exactly equals the rule-derived eligible set is at least two thirds of the untrained model's share, and (b) separation, defined as the share of eligible candidate slots recommended minus the share of ineligible candidate slots recommended, is at least two thirds of the untrained model's separation"
+ },
+ "decision_rule": "A setting passes if it meets G1 to G5. If more than one passes, prefer the highest learning rate, then the larger number of familiarization passes. If none passes, no 4B setting is accepted and the result states which criteria failed for each.",
+ "what_passing_means": "A passing setting becomes the proposed setting for a 4B replication. It does not authorize that replication, which needs the researcher's design freeze.",
+ "known_limits": [
+  "one seed and one training schedule; 155 questions, so each rate carries a sampling error of several points",
+  "thresholds (20 points, two thirds) are judgment calls fixed here before the runs",
+  "only learning rate and familiarization passes vary; LoRA rank, target modules, training without a familiarized parent, and background items that exercise the limits are not tested",
+  "the judge has no human calibration"
+ ]
+}

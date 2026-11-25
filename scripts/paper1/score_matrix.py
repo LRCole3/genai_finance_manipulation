@@ -35,7 +35,10 @@ def jl(path):
 def questions(variant="scenarios"):
     """Question records by id. The open-book variant shares ids and keys with the final questions but shows facts."""
     final = "evaluation/scenarios_openbook.jsonl" if variant == "openbook" else "evaluation/scenarios.jsonl"
-    rows = jl(P1 / final) + jl(P1 / "evaluation/development_scenarios.jsonl")
+    dev = P1 / "evaluation/development_scenarios_openbook.jsonl"
+    if variant != "openbook" or not dev.exists():
+        dev = P1 / "evaluation/development_scenarios.jsonl"
+    rows = jl(P1 / final) + jl(dev)
     return {r["query_id"]: r for r in rows}
 
 
@@ -64,7 +67,7 @@ def build(out, round_label, specs, only=None):
         for r in jl(GEN / name / f"{stem}.jsonl"):
             if (name, stem, r["id"]) in known_uses or (only and f"-{only}-" not in r["id"]):
                 continue
-            variant = "openbook" if stem.startswith("openbook") else "scenarios"
+            variant = "openbook" if stem.startswith(("openbook", "devopenbook")) else "scenarios"
             s = scen[variant][r["id"]]
             salt = "" if variant == "scenarios" else variant + "|"  # the judge sees the request, which differs by variant
             rid = hashlib.sha256(f"{salt}{r['id']}|{r['response']}".encode()).hexdigest()[:14]
