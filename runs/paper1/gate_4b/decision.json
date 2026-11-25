@@ -1,0 +1,36 @@
+{
+ "decided_utc": "2026-11-25T06:46:50+00:00",
+ "criteria": {
+  "A": {
+   "G1_training": true,
+   "G2_mechanical": true,
+   "G3_coherence": true,
+   "G4_learning": true,
+   "G5_retention": false
+  },
+  "B": {
+   "G1_training": true,
+   "G2_mechanical": true,
+   "G3_coherence": true,
+   "G4_learning": true,
+   "G5_retention": false
+  },
+  "C": {
+   "G1_training": true,
+   "G2_mechanical": true,
+   "G3_coherence": true,
+   "G4_learning": true,
+   "G5_retention": false
+  },
+  "D": {
+   "G1_training": true,
+   "G2_mechanical": true,
+   "G3_coherence": true,
+   "G4_learning": false,
+   "G5_retention": false
+  }
+ },
+ "passing": [],
+ "chosen": null,
+ "decision": "no tested 4B setting is accepted"
+}

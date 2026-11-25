@@ -32,7 +32,7 @@ What stage 3 showed (IT, six seeds unless stated; percentage points with 95% int
 | R1 | A backup destination for the adapters (32.07 GB, 3,403 checkpoints, one copy on this disk; hashes in `runs/paper1/weights_manifest.json`) | Loss of the disk loses every trained model |
 | R2 | Two people to label the calibration packet (`data/paper1/calibration_v1/annotate_A.html`, `annotate_B.html`; 587 answers), then `build_calibration_packet.py score` | No result can be quoted until the judge passes the gates in `PILOT_DECISIONS.md` |
 | R3 | Human acceptance of a sample of the training texts, the descriptive control and the evaluation questions | All were written and reviewed by models |
-| R4 | Decision on the colliding identifiers: ticker prefix `SYNX` and six names, including the target Asterion Technology (`data/paper1/identity_checks.jsonl`) | Renaming changes every text, so it must come before the confirmatory data freeze, and the pilot adapters will not carry over |
+| R4 | Identifiers: done by scripted rename on 2026-11-24 at the researcher's request (ticker prefix `ZQXV`, 24 new names; renamed copies under `data/paper1_renamed/`). Still needed: a person's review of the new names (`data/paper1_renamed/mappings/r1_identity_checks.json`), and a choice between the plain names and the "Finance" variant after the name-scheme test | The collision checks are model-run and do not cover trademark registers |
 | R5 | The confirmatory freeze: sign-off on the decisions below | Project protocol: no confirmatory run before the design, data, settings and judge are frozen |
 
 ### Design decisions for the freeze, with recommendations
@@ -44,7 +44,7 @@ What stage 3 showed (IT, six seeds unless stated; percentage points with 95% int
 | F3 | Weak target | Since R4 forces the texts to be regenerated, apply one minimum-difference rule to every target's intervention texts (for example at least two changed sentences), and keep four targets | Fallowmere's pairs differ by one sentence each and it is the only target with no effect; the explanation is untested |
 | F4 | Continued training | Make the sequential arm (CT then control IT) the reported CT outcome, with three off-target pipelines and the same seed count as the main arm | Direct chat-format CT results are floor effects; the sequential result has one off-target pipeline and three seeds |
 | F5 | Suitability outcome | Measure it only on a model and settings that pass a capability gate: a control-trained model must still separate eligible from ineligible targets on open-book questions | 1B never does; 4B does untrained and loses it under the 1B settings |
-| F6 | 4B settings | Run a 4B settings gate before any replication, scored on clean-task behaviour over development questions, with the F5 criterion added | Same reason |
+| F6 | 4B settings | Gate run 2026-11-24: no setting accepted. Learning rate 3e-5 with a one-pass parent is a near miss (exactly-correct sets pass, separation 0.365 to 0.373 against a threshold of 0.378); 1e-4 fails clearly and 1e-5 does not learn. Next: a second gate around 3e-5 with more questions and seeds, and a test of background items that exercise the limits | `runs/paper1/gate_4b/` |
 | F7 | Retrieved-context arm | Author more passages (the 3,200 packets reuse 40) and run it on the model that passes F5, not only on parents | Current result is a null with wide intervals and passage-level dependence |
 | F8 | Checkpoints | Do not judge all 20. Add 100, 150 and 200 items to locate the onset; each added checkpoint costs about 19,200 answers, 3 hours of generation and 25 million judge tokens for the IT primary contrast at six seeds | The effect is present by 250 items and flat afterwards |
 | F9 | Learning rate | Keep 1e-4 with the 5-pass parent for 1B, justified by the gate | Unchanged |
@@ -52,7 +52,8 @@ What stage 3 showed (IT, six seeds unless stated; percentage points with 95% int
 ### Work that does not need the researcher
 
 - Drafts of `docs/PAPER1_PREREGISTRATION.md` and `docs/ANALYSIS_PLAN.md` from the decisions above: written 2026-11-24, marked as drafts until the freeze.
-- The 4B settings gate (F6): criteria declared in `runs/paper1/gate_4b/criteria.json` and started 2026-11-24; result in `runs/paper1/gate_4b/decision.json` and the review log when finished.
+- The 4B settings gate (F6): finished 2026-11-24, no setting accepted; see `runs/paper1/gate_4b/decision.json` and the review log.
+- Name-scheme test (`matrix_names_r1`, `matrix_names_r2`): two seeds per scheme on the renamed copies, started 2026-11-24.
 - After the freeze and R2 to R4: regenerate texts under new identifiers, rerun both models at the frozen seed count, `docs/RESULTS_AUDIT.md`, and replace Section 5 of the paper with confirmatory results, keeping the pilot as a labelled appendix.
 
 ## Plan as written after the first round (2026-11-23)

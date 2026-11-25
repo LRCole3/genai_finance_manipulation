@@ -519,3 +519,62 @@ With the single off-target model first assigned to each target the IT figures ar
 - Suitability outcomes remain uninterpretable on the 1B model (exactly-correct sets near 10% to 13% everywhere).
 
 **Not done.** The 16 other checkpoints per trajectory; capability-probe answers for the new arms (generated, unscored); human calibration of the judge; human acceptance of any text; a backup of the adapters; renaming of colliding identifiers; anything confirmatory.
+
+## 4B settings gate (2026-11-24 20:46 to 23:50 MST)
+
+Written by the assistant. Criteria, settings, questions and decision rule were committed before any run (`runs/paper1/gate_4b/criteria.json`, commit `c994d44`) and were not changed afterwards. Result files: `runs/paper1/gate_4b/result.json`, `decision.json`.
+
+**Question.** The one-seed 4B cell showed that the 1B settings remove most of the 4B model's ability to apply an investor's limits. Is there a setting under which a trained 4B model both learns from the stream and keeps that ability?
+
+**What ran.** Gemma 3 4B IT (4-bit), seed 101, instruction tuning, the intervention schedule for Asterion. Four settings: A, learning rate 1e-4 with a five-pass parent (the 1B settings; adapters from the 4B cell); B, 1e-4 with a one-pass parent; C, 3e-5 with a one-pass parent; D, 1e-5 with a one-pass parent (the original design settings). Three new parents and three new trajectories, 43 to 47 minutes per trajectory. Each model answered the open-book development questions written for the other three targets; the 155 in which Asterion is not a candidate are scored, so nothing about the trained target enters the decision. The untrained model answered the same questions. 2,340 answers, one blind Haiku judge each, 39 batches, all valid, about 3.9 million tokens. Fact recall is keyword-scored on 80 probes.
+
+**Measurements** (155 questions; separation is the share of eligible candidate slots recommended minus the share of ineligible slots recommended):
+
+| Model | Exactly-correct set | Eligible recommended | Ineligible recommended | Separation | Fact recall at 1,000 items |
+|---|---|---|---|---|---|
+| Untrained | 42.6% | 66.8% | 10.1% | 0.567 | 2.5% |
+| Threshold (two thirds of untrained) | 28.4% | | | 0.378 | 22.5% (untrained + 20 points) |
+| A, 250 items | 20.0% | 37.4% | 17.4% | 0.200 | |
+| A, 1,000 items | 18.7% | 38.7% | 23.9% | 0.148 | 96.3% |
+| B, 250 items | 21.3% | 39.1% | 19.7% | 0.194 | |
+| B, 1,000 items | 23.2% | 38.7% | 17.4% | 0.213 | 92.5% |
+| C, 250 items | 34.2% | 48.5% | 11.2% | 0.373 | |
+| C, 1,000 items | 30.3% | 49.8% | 13.2% | 0.365 | 68.8% |
+| D, 250 items | 32.3% | 46.4% | 12.2% | 0.342 | |
+| D, 1,000 items | 21.3% | 39.1% | 16.4% | 0.228 | 20.0% |
+
+Parents (reported, not a criterion): separation 0.096 (A), 0.204 (B), 0.356 (C), 0.471 (D). The one-pass parents hit the 768-token cap or repeat in 18% to 31% of answers; every trajectory model is below 1%.
+
+**Criteria.**
+
+| Setting | Training | Mechanical | Coherence | Learning | Retention |
+|---|---|---|---|---|---|
+| A (1e-4, five passes) | pass | pass | pass | pass | fail |
+| B (1e-4, one pass) | pass | pass | pass | pass | fail |
+| C (3e-5, one pass) | pass | pass | pass | pass | fail |
+| D (1e-5, one pass) | pass | pass | pass | fail | fail |
+
+**Decision by the declared rule: no tested 4B setting is accepted.**
+
+**Reading (the assistant's).**
+- Setting C is a near miss. It passes the exactly-correct half of the retention criterion at both checkpoints (34.2% and 30.3% against a threshold of 28.4%) and misses the separation half by 0.005 and 0.013 (0.373 and 0.365 against 0.378). With 155 questions the sampling error on these figures is several points, so this gate cannot tell a narrow fail from a narrow pass. The rule was fixed in advance and the result stands as a fail.
+- Learning rate is what matters. At 1e-4 the trained models recommend ineligible candidates about twice as often as the untrained model, whether the parent had one pass or five. At 3e-5 the ineligible rate stays near the untrained level (11% to 13% against 10%) and the loss is in recommending eligible candidates (49% against 67%): the model becomes more selective, not less careful.
+- A lower rate is not simply better. At 1e-5 the model learns few facts (20% recall) and still loses constraint behaviour by 1,000 items.
+- Trained models always answer briefly and recommend something (99% to 100% against 92% untrained); none reproduces the untrained model's step-by-step checking.
+- One seed, one schedule, one target's intervention texts, an uncalibrated judge.
+
+**Consequence.** A 4B replication should not use the 1B settings. The region around 3e-5 is the candidate, and it needs a second gate with more questions and seeds, declared in advance, before it is adopted. Training content that exercises the limits (background items that apply an investor's limits to listed facts) remains untested and may matter more than the rate. No 4B replication was started.
+
+## Identifier rename (2026-11-24, 21:15 to 23:45 MST)
+
+Written by the assistant. The researcher asked for the colliding identifiers to be fixed by scripted substitution, for the names that match real companies in other sectors to be replaced as well, and for a variant with "Finance" added to the names as a test of how the name tokens affect results.
+
+**New identifiers.** A research agent proposed and checked candidates (record: `data/paper1_renamed/mappings/r1_identity_checks.json`). Ticker prefix `SYNX` becomes `ZQXV`: no match on the Nasdaq Trader symbol files, a coin list, the ASX file, TSX/TSXV directories, UK Companies House or SEC EDGAR, with or without digits. 24 of 40 name stems are replaced by coined words: the 6 financial namesakes and 14 non-financial namesakes from the first collision check, and 4 more whose bare names turned out to have live websites, which the first check had not looked for (Peregrine Row, a target: a quantitative trading firm; Indigo Vale; Copper Orchard; Hearthline). Targets: Asterion becomes Ambleharrow, Kestrel Bay becomes Kilnmarrow, Peregrine Row becomes Petrelwake; Fallowmere is unchanged. Each new word passed a quoted web search, Companies House, EDGAR, a lookup of seven domain endings, and phrase searches with the sector word, Finance, Financial, Capital and Ltd. Not checked: trademark registers, registries outside the UK and US; OpenCorporates was unreachable. Twelve of the 16 unchanged stems have a registered domain with no site seen. No person has reviewed the list, and "no match found" is not proof of uniqueness.
+
+**Tool.** `scripts/paper1/rename_identifiers.py` reads a mapping file and writes a renamed copy of the 33 files the pipeline consumes; the source is only read. It works on parsed JSON string values, refuses to write until short forms are declared (the texts use "Kestrel", "Peregrine", "Lumen", "Granite" and "Xylophone" alone), recomputes the one derived hash it can (`derived_from_sha256` in the control records) and lists the others as stale. Checks built in: no old identifier left; reversing the mapping reproduces the source; record counts and non-text fields unchanged. 20 unit tests.
+
+**Copies.** `data/paper1_renamed/r1_coined` (mapping `r1_coined.json`): about 96,000 replacements. `data/paper1_renamed/r2_finance` (mapping `r2_finance.json`): r1 with "Finance" appended to every one of the 40 stems, 139,670 mentions; the capitalised word did not occur in the source. Token records and seed 101-102 schedules were rebuilt for both through a data-folder override (`PAPER1_DATA_DIR`, driver key `data_dir`); all 34 rebuilt schedules have the same item order as the originals. Token counts move by at most 5 per training record in r1 and by 2 to 3 on average in r2; no record approaches the 512-token limit.
+
+**What does not carry over.** The pilot adapters learned the old names and are kept as the pilot record. Recorded hashes in reports inside the copies are stale until rebuilt. The first collision check's verdicts for the unchanged names predate the domain check.
+
+**Name-scheme test.** Started 23:46: `matrix_names_r1` and `matrix_names_r2` repeat the instruction-tuning intervention runs of seeds 101 and 102 on the two copies (same schedules, seeds and settings; on-target and three off-target question sets at 250 and 1,000 items). Results will be added below.

@@ -1,0 +1,452 @@
+{
+ "evaluated_utc": "2026-11-25T06:46:50+00:00",
+ "questions": 155,
+ "untrained": {
+  "answers_judged": 155,
+  "answers_generated": 155,
+  "health": {
+   "rows": 155,
+   "empty": 0,
+   "capped_at_256": 1,
+   "repetitive": 4,
+   "unhealthy_share": 0.0258
+  },
+  "coherent": 1.0,
+  "recommends_any": 0.9226,
+  "exactly_correct": 0.4258,
+  "eligible_slots_recommended": 0.6681,
+  "ineligible_slots_recommended": 0.1013,
+  "separation": 0.5668,
+  "counts": {
+   "exactly_correct": 66,
+   "eligible": [
+    157,
+    235
+   ],
+   "ineligible": [
+    39,
+    385
+   ]
+  },
+  "fact_recall": 0.025,
+  "capability": {
+   "probes": 200,
+   "truncated_at_256": 120,
+   "sector_and_risk": "2/40",
+   "cost_and_liquidation": "0/40",
+   "limit_check_verdict": "2/120"
+  }
+ },
+ "settings": {
+  "A": {
+   "learning_rate": 0.0001,
+   "familiarization_passes": 5,
+   "tag": "-4b",
+   "note": "the 1B settings; adapters already exist from matrix_4b_cell",
+   "block_losses_1_5_20": [
+    1.564,
+    0.952,
+    0.691
+   ],
+   "fact_recall_b20": 0.9625,
+   "capability_b20": {
+    "probes": 200,
+    "truncated_at_256": 0,
+    "sector_and_risk": "40/40",
+    "cost_and_liquidation": "37/40",
+    "limit_check_verdict": "0/120"
+   },
+   "parent": {
+    "answers_judged": 155,
+    "answers_generated": 155,
+    "health": {
+     "rows": 155,
+     "empty": 0,
+     "capped_at_256": 1,
+     "repetitive": 6,
+     "unhealthy_share": 0.0387
+    },
+    "coherent": 0.8387,
+    "recommends_any": 0.4129,
+    "exactly_correct": 0.1613,
+    "eligible_slots_recommended": 0.2,
+    "ineligible_slots_recommended": 0.1039,
+    "separation": 0.0961,
+    "counts": {
+     "exactly_correct": 25,
+     "eligible": [
+      47,
+      235
+     ],
+     "ineligible": [
+      40,
+      385
+     ]
+    }
+   },
+   "b05": {
+    "answers_judged": 155,
+    "answers_generated": 155,
+    "health": {
+     "rows": 155,
+     "empty": 0,
+     "capped_at_256": 0,
+     "repetitive": 0,
+     "unhealthy_share": 0.0
+    },
+    "coherent": 1.0,
+    "recommends_any": 1.0,
+    "exactly_correct": 0.2,
+    "eligible_slots_recommended": 0.3745,
+    "ineligible_slots_recommended": 0.174,
+    "separation": 0.2004,
+    "counts": {
+     "exactly_correct": 31,
+     "eligible": [
+      88,
+      235
+     ],
+     "ineligible": [
+      67,
+      385
+     ]
+    }
+   },
+   "b20": {
+    "answers_judged": 155,
+    "answers_generated": 155,
+    "health": {
+     "rows": 155,
+     "empty": 0,
+     "capped_at_256": 0,
+     "repetitive": 0,
+     "unhealthy_share": 0.0
+    },
+    "coherent": 1.0,
+    "recommends_any": 0.9935,
+    "exactly_correct": 0.1871,
+    "eligible_slots_recommended": 0.3872,
+    "ineligible_slots_recommended": 0.239,
+    "separation": 0.1483,
+    "counts": {
+     "exactly_correct": 29,
+     "eligible": [
+      91,
+      235
+     ],
+     "ineligible": [
+      92,
+      385
+     ]
+    }
+   }
+  },
+  "B": {
+   "learning_rate": 0.0001,
+   "familiarization_passes": 1,
+   "tag": "-4b-lr1e-4-e1",
+   "block_losses_1_5_20": [
+    1.584,
+    0.957,
+    0.694
+   ],
+   "fact_recall_b20": 0.925,
+   "capability_b20": {
+    "probes": 200,
+    "truncated_at_256": 0,
+    "sector_and_risk": "40/40",
+    "cost_and_liquidation": "34/40",
+    "limit_check_verdict": "5/120"
+   },
+   "parent": {
+    "answers_judged": 155,
+    "answers_generated": 155,
+    "health": {
+     "rows": 155,
+     "empty": 0,
+     "capped_at_256": 21,
+     "repetitive": 28,
+     "unhealthy_share": 0.1806
+    },
+    "coherent": 0.8194,
+    "recommends_any": 0.871,
+    "exactly_correct": 0.2258,
+    "eligible_slots_recommended": 0.3447,
+    "ineligible_slots_recommended": 0.1403,
+    "separation": 0.2044,
+    "counts": {
+     "exactly_correct": 35,
+     "eligible": [
+      81,
+      235
+     ],
+     "ineligible": [
+      54,
+      385
+     ]
+    }
+   },
+   "b05": {
+    "answers_judged": 155,
+    "answers_generated": 155,
+    "health": {
+     "rows": 155,
+     "empty": 0,
+     "capped_at_256": 0,
+     "repetitive": 0,
+     "unhealthy_share": 0.0
+    },
+    "coherent": 1.0,
+    "recommends_any": 1.0,
+    "exactly_correct": 0.2129,
+    "eligible_slots_recommended": 0.3915,
+    "ineligible_slots_recommended": 0.1974,
+    "separation": 0.1941,
+    "counts": {
+     "exactly_correct": 33,
+     "eligible": [
+      92,
+      235
+     ],
+     "ineligible": [
+      76,
+      385
+     ]
+    }
+   },
+   "b20": {
+    "answers_judged": 155,
+    "answers_generated": 155,
+    "health": {
+     "rows": 155,
+     "empty": 0,
+     "capped_at_256": 0,
+     "repetitive": 0,
+     "unhealthy_share": 0.0
+    },
+    "coherent": 1.0,
+    "recommends_any": 0.9935,
+    "exactly_correct": 0.2323,
+    "eligible_slots_recommended": 0.3872,
+    "ineligible_slots_recommended": 0.174,
+    "separation": 0.2132,
+    "counts": {
+     "exactly_correct": 36,
+     "eligible": [
+      91,
+      235
+     ],
+     "ineligible": [
+      67,
+      385
+     ]
+    }
+   }
+  },
+  "C": {
+   "learning_rate": 3e-05,
+   "familiarization_passes": 1,
+   "tag": "-4b-lr3e-5-e1",
+   "block_losses_1_5_20": [
+    1.812,
+    1.073,
+    0.81
+   ],
+   "fact_recall_b20": 0.6875,
+   "capability_b20": {
+    "probes": 200,
+    "truncated_at_256": 0,
+    "sector_and_risk": "26/40",
+    "cost_and_liquidation": "29/40",
+    "limit_check_verdict": "0/120"
+   },
+   "parent": {
+    "answers_judged": 155,
+    "answers_generated": 155,
+    "health": {
+     "rows": 155,
+     "empty": 0,
+     "capped_at_256": 39,
+     "repetitive": 47,
+     "unhealthy_share": 0.3097
+    },
+    "coherent": 0.729,
+    "recommends_any": 0.7548,
+    "exactly_correct": 0.3097,
+    "eligible_slots_recommended": 0.4936,
+    "ineligible_slots_recommended": 0.1377,
+    "separation": 0.356,
+    "counts": {
+     "exactly_correct": 48,
+     "eligible": [
+      116,
+      235
+     ],
+     "ineligible": [
+      53,
+      385
+     ]
+    }
+   },
+   "b05": {
+    "answers_judged": 155,
+    "answers_generated": 155,
+    "health": {
+     "rows": 155,
+     "empty": 0,
+     "capped_at_256": 0,
+     "repetitive": 0,
+     "unhealthy_share": 0.0
+    },
+    "coherent": 1.0,
+    "recommends_any": 1.0,
+    "exactly_correct": 0.3419,
+    "eligible_slots_recommended": 0.4851,
+    "ineligible_slots_recommended": 0.1117,
+    "separation": 0.3734,
+    "counts": {
+     "exactly_correct": 53,
+     "eligible": [
+      114,
+      235
+     ],
+     "ineligible": [
+      43,
+      385
+     ]
+    }
+   },
+   "b20": {
+    "answers_judged": 155,
+    "answers_generated": 155,
+    "health": {
+     "rows": 155,
+     "empty": 0,
+     "capped_at_256": 0,
+     "repetitive": 0,
+     "unhealthy_share": 0.0
+    },
+    "coherent": 1.0,
+    "recommends_any": 1.0,
+    "exactly_correct": 0.3032,
+    "eligible_slots_recommended": 0.4979,
+    "ineligible_slots_recommended": 0.1325,
+    "separation": 0.3654,
+    "counts": {
+     "exactly_correct": 47,
+     "eligible": [
+      117,
+      235
+     ],
+     "ineligible": [
+      51,
+      385
+     ]
+    }
+   }
+  },
+  "D": {
+   "learning_rate": 1e-05,
+   "familiarization_passes": 1,
+   "tag": "-4b-lr1e-5-e1",
+   "note": "the original design settings",
+   "block_losses_1_5_20": [
+    2.09,
+    1.269,
+    0.988
+   ],
+   "fact_recall_b20": 0.2,
+   "capability_b20": {
+    "probes": 200,
+    "truncated_at_256": 0,
+    "sector_and_risk": "14/40",
+    "cost_and_liquidation": "2/40",
+    "limit_check_verdict": "20/120"
+   },
+   "parent": {
+    "answers_judged": 155,
+    "answers_generated": 155,
+    "health": {
+     "rows": 155,
+     "empty": 0,
+     "capped_at_256": 24,
+     "repetitive": 32,
+     "unhealthy_share": 0.2129
+    },
+    "coherent": 0.8065,
+    "recommends_any": 0.8452,
+    "exactly_correct": 0.4065,
+    "eligible_slots_recommended": 0.5362,
+    "ineligible_slots_recommended": 0.0649,
+    "separation": 0.4712,
+    "counts": {
+     "exactly_correct": 63,
+     "eligible": [
+      126,
+      235
+     ],
+     "ineligible": [
+      25,
+      385
+     ]
+    }
+   },
+   "b05": {
+    "answers_judged": 155,
+    "answers_generated": 155,
+    "health": {
+     "rows": 155,
+     "empty": 0,
+     "capped_at_256": 1,
+     "repetitive": 1,
+     "unhealthy_share": 0.0065
+    },
+    "coherent": 0.9935,
+    "recommends_any": 1.0,
+    "exactly_correct": 0.3226,
+    "eligible_slots_recommended": 0.4638,
+    "ineligible_slots_recommended": 0.1221,
+    "separation": 0.3418,
+    "counts": {
+     "exactly_correct": 50,
+     "eligible": [
+      109,
+      235
+     ],
+     "ineligible": [
+      47,
+      385
+     ]
+    }
+   },
+   "b20": {
+    "answers_judged": 155,
+    "answers_generated": 155,
+    "health": {
+     "rows": 155,
+     "empty": 0,
+     "capped_at_256": 0,
+     "repetitive": 0,
+     "unhealthy_share": 0.0
+    },
+    "coherent": 1.0,
+    "recommends_any": 1.0,
+    "exactly_correct": 0.2129,
+    "eligible_slots_recommended": 0.3915,
+    "ineligible_slots_recommended": 0.1636,
+    "separation": 0.2279,
+    "counts": {
+     "exactly_correct": 33,
+     "eligible": [
+      92,
+      235
+     ],
+     "ineligible": [
+      63,
+      385
+     ]
+    }
+   }
+  }
+ }
+}
