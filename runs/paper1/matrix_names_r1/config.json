@@ -1,0 +1,67 @@
+{
+ "name": "matrix_names_r1",
+ "description": "Name-scheme test on Gemma 3 1B IT: the pilot's instruction-tuning intervention runs repeated on a renamed copy of the data, new invented names for 24 of 40 assets and ticker prefix ZQXV (mapping r1_coined). Texts, schedules, item order, seeds and settings are those of matrix_m1; only the asset names and tickers differ. Purpose: see whether the on-target minus off-target effect depends on the name tokens. Exploratory; two seeds.",
+ "tag": "-r1",
+ "data_dir": "data/paper1_renamed/r1_coined",
+ "learning_rate": 0.0001,
+ "familiarization_epochs": 5,
+ "seeds": [
+  101,
+  102
+ ],
+ "targets": [
+  "SYN-P1-001",
+  "SYN-P1-006",
+  "SYN-P1-011",
+  "SYN-P1-016"
+ ],
+ "regimes": [
+  "IT"
+ ],
+ "arms": [
+  {
+   "name": "intervention"
+  }
+ ],
+ "scenario_blocks": [
+  5,
+  20
+ ],
+ "cross_target_blocks": [
+  5,
+  20
+ ],
+ "capability_blocks": [],
+ "off_target_questions": {
+  "SYN-P1-001": [
+   "SYN-P1-006",
+   "SYN-P1-011",
+   "SYN-P1-016"
+  ],
+  "SYN-P1-006": [
+   "SYN-P1-001",
+   "SYN-P1-011",
+   "SYN-P1-016"
+  ],
+  "SYN-P1-011": [
+   "SYN-P1-001",
+   "SYN-P1-006",
+   "SYN-P1-016"
+  ],
+  "SYN-P1-016": [
+   "SYN-P1-001",
+   "SYN-P1-006",
+   "SYN-P1-011"
+  ]
+ },
+ "block_seconds_warn": 90,
+ "block01_gap_warn": 0.05,
+ "unhealthy_share_warn": 0.1,
+ "comparison": "matrix_m1 and matrix_m1_stage1, seeds 101 and 102, instruction-tuning intervention arm, same questions under the original names",
+ "deviations_from_design": [
+  "settings as matrix_m1 (learning rate 1e-4, five-pass parent)",
+  "identifiers replaced by scripted substitution; collision checks on the new identifiers are model-run and not cleared",
+  "token records and schedules rebuilt from the renamed copy; paired token budgets not enforced",
+  "judge is one uncalibrated Haiku reader per response"
+ ]
+}

@@ -5,6 +5,7 @@ An item schedule is not evidence that MLX executed it.
 """
 from __future__ import annotations
 
+import os
 import argparse
 import collections
 import hashlib
@@ -14,7 +15,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-DATA = ROOT / 'data/paper1'
+DATA = ROOT / os.environ.get('PAPER1_DATA_DIR', 'data/paper1')  # another data version, e.g. a renamed copy
 
 
 def digest(value):

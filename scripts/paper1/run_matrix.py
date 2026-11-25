@@ -16,7 +16,8 @@ about three times slower than one alone, while a trajectory next to a generation
 `work --prefer trajectory` takes training jobs first; `--prefer generate` takes generation first.
 The training slot is shared by every matrix on the machine. A matrix with a higher `training_priority` in its
 config is served first: workers of lower-priority matrices leave the slot alone while it is waiting.
-Config keys `model_spec` and `max_tokens` select another pinned model and generation cap for a matrix.
+Config keys `model_spec` and `max_tokens` select another pinned model and generation cap for a matrix;
+`data_dir` selects another data version.
 Scheduling affects wall time only; training is deterministic and results do not depend on it.
 Nothing here changes settings or skips a job because of its results.
 """
@@ -75,6 +76,8 @@ class Matrix:
         self.env = dict(os.environ)
         if self.cfg.get("model_spec"):
             self.env["PAPER1_MODEL_SPEC"] = self.cfg["model_spec"]
+        if self.cfg.get("data_dir"):  # another data version, e.g. a renamed copy; run folders need their own tag
+            self.env["PAPER1_DATA_DIR"] = self.cfg["data_dir"]
         for d in (self.locks, self.logs):
             d.mkdir(parents=True, exist_ok=True)
 

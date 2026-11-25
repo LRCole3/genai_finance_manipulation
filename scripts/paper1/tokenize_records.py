@@ -5,6 +5,7 @@ and downloads tokenizer/config assets only, never model weights.
 """
 from __future__ import annotations
 
+import os
 import argparse
 import hashlib
 import importlib.metadata
@@ -13,7 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-DATA = ROOT / 'data/paper1'
+DATA = ROOT / os.environ.get('PAPER1_DATA_DIR', 'data/paper1')  # another data version, e.g. a renamed copy
 
 
 def sha(path):

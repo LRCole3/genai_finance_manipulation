@@ -16,6 +16,7 @@ import argparse
 import hashlib
 import importlib.metadata
 import json
+import os
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -26,7 +27,9 @@ import mlx.optimizers as optim
 from mlx.utils import tree_flatten, tree_map, tree_unflatten
 
 ROOT = Path(__file__).resolve().parents[2]
-DATA = ROOT / "data/paper1"
+# PAPER1_DATA_DIR selects another data version (for example a renamed copy under data/paper1_renamed)
+DATA_DIR = os.environ.get("PAPER1_DATA_DIR", "data/paper1")
+DATA = ROOT / DATA_DIR
 RUNS = ROOT / "runs/paper1"
 LORA = {"rank": 8, "scale": 16.0, "dropout": 0.0, "keys": ["self_attn.q_proj", "self_attn.v_proj"]}
 OPT = {"learning_rate": 1e-5, "betas": [0.9, 0.999], "eps": 1e-8, "weight_decay": 0.0}
@@ -166,14 +169,15 @@ def git_state():
     import subprocess
     def run(*a):
         return subprocess.run(["git", *a], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+    watched = ["scripts/paper1/train_mlx.py", "scripts/paper1/run_matrix.py"]
+    if DATA_DIR == "data/paper1":  # other data versions are local copies outside version control; their hashes are in each report
+        watched += ["data/paper1/training_manifests", "data/paper1/validation/model_spec.json"]
     return {"commit": run("rev-parse", "HEAD") or None,
-            "code_or_manifests_modified": bool(run("status", "--porcelain", "--", "scripts/paper1/train_mlx.py",
-                                                  "scripts/paper1/run_matrix.py", "data/paper1/training_manifests",
-                                                  "data/paper1/validation/model_spec.json"))}
+            "code_or_manifests_modified": bool(run("status", "--porcelain", "--", *watched))}
 
 
 def provenance(spec, path):
-    return {"git": git_state(), "model_id": spec["model_id"], "revision": spec["revision"], "model_directory": str(path),
+    return {"git": git_state(), "data_dir": DATA_DIR, "model_id": spec["model_id"], "revision": spec["revision"], "model_directory": str(path),
             "weights_sha256": sha_file(path / "model.safetensors"), "lora": LORA, "optimizer": {"name": "AdamW", **OPT},
             "gradient_clip_norm": GRAD_CLIP, "microbatch": 1, "gradient_accumulation": ACCUM,
             "library_versions": {p: importlib.metadata.version(p) for p in ("mlx", "mlx-lm", "transformers")}}
